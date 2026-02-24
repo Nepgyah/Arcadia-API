@@ -1,6 +1,7 @@
 from miru.repository.miru_repository import MiruRepository
 from miru.models import Anime
 from django.core.paginator import Paginator
+from users.models import User
 
 class MiruService:
     ''' Service layer to apply business logic to Miru '''
@@ -44,3 +45,47 @@ class MiruService:
 
         return results, page_count, pagination['current_page'], total
     
+    @staticmethod
+    def add_anime_list_entry(user_id, anime_id, status, details):
+        user = User.objects.get(id=user_id)
+        anime = MiruRepository.get_anime_by_id(anime_id)
+
+        if anime == None or user == None:
+            return False
+        try:
+            MiruRepository.create_anime_list_entry(user, anime, status, details)
+        except Exception as e:
+            # TODO: Handle errors such as uniqueness, etc
+            return False
+        
+        return True
+
+    @staticmethod
+    def update_anime_list_entry(user_id, anime_id, status, details):
+        user = User.objects.get(id=user_id)
+        anime = MiruRepository.get_anime_by_id(anime_id)
+
+        if anime == None or user == None:
+            return False
+        try:
+            MiruRepository.update_anime_list_entry(user, anime, status, details)
+        except Exception as e:
+            # TODO: Handle errors such as uniqueness, etc
+            return False
+        
+        return True
+
+    @staticmethod
+    def delete_anime_list_entry(user_id, anime_id):
+        user = User.objects.get(id=user_id)
+        anime = MiruRepository.get_anime_by_id(anime_id)
+
+        if anime == None or user == None:
+            return False
+        
+        try:
+            MiruRepository.delete_anime_list_entry(user, anime)
+        except Exception as e:
+            return False
+
+        return True
