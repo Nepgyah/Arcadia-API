@@ -16,12 +16,27 @@ class MiruService:
     
     @staticmethod
     def get_anime_by_category(category, count):
+        """
+        Retrieves anime sorted by a category, descending. Defaults to the first 5 if count is not provided.
+        """
+
         if count == None:
             count = 5
         return MiruRepository.get_anime_by_category(category, count)
     
     @staticmethod
     def search_anime(filters, sort, pagination):
+        """
+        Searches anime with optional filters and sorts.
+        Filters are ignored with -1 input.
+
+        Returns:
+        - results: anime queryset based on the page
+        - page_count: total number of pages created from pagination
+        - pagination: current page of the paginated results
+        - total: total number of items from the anime queryset
+        """
+
         queryset = Anime.objects.all()
 
         if filters:
@@ -47,6 +62,13 @@ class MiruService:
     
     @staticmethod
     def add_anime_list_entry(user_id, anime_id, status, details):
+        """
+        Creates an anime list entry based on user_id and anime_id combination
+
+        Returns:
+        - Boolean status (ok) of the operation
+        """
+
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
@@ -62,6 +84,13 @@ class MiruService:
 
     @staticmethod
     def update_anime_list_entry(user_id, anime_id, status, details):
+        """
+        Updates a current anime list entry based on user_id and anime_id combination
+
+        Returns:
+        - Boolean status (ok) of the operation
+        """
+
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
@@ -77,6 +106,13 @@ class MiruService:
 
     @staticmethod
     def delete_anime_list_entry(user_id, anime_id):
+        """
+        Deletes a current anime list entry based on user_id and anime_id combination
+
+        Returns:
+        - Boolean status (ok) of the operation
+        """
+
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
