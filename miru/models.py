@@ -126,4 +126,4 @@ class AnimeListEntry(models.Model):
         unique_together = ('user', 'anime')
 
     def __str__(self):
-        return f'User: {self.user.username} - Anime: {self.anime.title} - Status: {self.get_status_display()}'
+        return f'{self.user} - Anime: {self.anime.title} - Status: {self.get_status_display()}'
