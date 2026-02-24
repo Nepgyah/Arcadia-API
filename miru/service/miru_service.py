@@ -89,3 +89,14 @@ class MiruService:
             return False
 
         return True
+    
+    @staticmethod
+    def get_anime_list_by_user_id(user_id):
+        user = User.objects.get(id=user_id)
+        anime_list =  MiruRepository.get_anime_list_by_user_id(user)
+        watching = anime_list.filter(status=0)
+        completed = anime_list.filter(status=1)
+        plan_to = anime_list.filter(status=2)
+        on_hold = anime_list.filter(status=3)
+
+        return watching, completed, plan_to, on_hold

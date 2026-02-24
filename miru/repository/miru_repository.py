@@ -77,3 +77,8 @@ class MiruRepository:
     @staticmethod
     def delete_anime_list_entry(user, anime):
         AnimeListEntry.objects.get(user=user, anime=anime).delete()
+
+    @staticmethod
+    def get_anime_list_by_user_id(user):
+        anime_list = AnimeListEntry.objects.filter(user=user)
+        return anime_list

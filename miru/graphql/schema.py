@@ -2,7 +2,8 @@ import graphene
 from graphene_django import DjangoObjectType
 from miru.models import (
     Anime,
-    AnimeCharacter
+    AnimeCharacter,
+    AnimeListEntry
 )
 from characters.schema import CharacterType
 from base.schema import GenreType
@@ -51,3 +52,12 @@ class AnimeType(DjangoObjectType):
     def resolve_characters(self, info):
         return AnimeCharacter.objects.filter(anime=self)
     
+class AnimeListEntryType(DjangoObjectType):
+    status = graphene.Int()
+
+    class Meta:
+        model = AnimeListEntry
+        field = "__all__"
+    
+    def resolve_status(self, info):
+        return self.status
