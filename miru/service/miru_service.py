@@ -136,3 +136,12 @@ class MiruService:
         on_hold = anime_list.filter(status=3)
 
         return watching, completed, plan_to, on_hold
+    
+    @staticmethod
+    def get_anime_list_entry(user_id, anime_id):
+        user = User.objects.get(id=user_id)
+        anime = MiruRepository.get_anime_by_id(anime_id)
+        if anime == None or user == None:
+            return None
+        
+        return MiruRepository.get_anime_list_entry(user, anime)

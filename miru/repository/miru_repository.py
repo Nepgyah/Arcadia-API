@@ -82,3 +82,10 @@ class MiruRepository:
     def get_anime_list_by_user_id(user):
         anime_list = AnimeListEntry.objects.filter(user=user)
         return anime_list
+    
+    @staticmethod
+    def get_anime_list_entry(user, anime):
+        try:
+            return AnimeListEntry.objects.get(user=user, anime=anime)
+        except AnimeListEntry.DoesNotExist:
+            return None

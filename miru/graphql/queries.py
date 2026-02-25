@@ -36,6 +36,7 @@ class Query(graphene.ObjectType):
     anime_by_category = graphene.List(AnimeType, category=graphene.String(required=True), count=graphene.Int(required=False))
     search_anime = graphene.Field(AnimeFilterResults, filters=AnimeFilterInput(), sort=MediaSortInput(), pagination=PaginationInput())
     get_anime_list = graphene.Field(AnimeEntryListResults, user_id=graphene.ID(required=True))
+    get_anime_list_entry = graphene.Field(AnimeListEntryType, user_id=graphene.ID(required=True), anime_id=graphene.ID(required=True))
 
     def resolve_anime_by_id(self, info, id):
         return MiruService.get_anime_by_id(id)
@@ -63,3 +64,6 @@ class Query(graphene.ObjectType):
             plan_to = plan_to,
             on_hold = on_hold
         )
+    
+    def resolve_get_anime_list_entry(self, info, user_id, anime_id):
+        return MiruService.get_anime_list_entry(user_id, anime_id)
