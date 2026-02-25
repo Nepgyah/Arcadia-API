@@ -12,3 +12,7 @@ class User(models.Model):
     
     def __str__(self):
         return f"D2X User ID: {self.id}"
+    
+    @property
+    def is_authenticated(self):
+        return True

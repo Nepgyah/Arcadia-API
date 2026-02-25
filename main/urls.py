@@ -22,6 +22,7 @@ from .schema import schema
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/users/', include('users.urls')),
     path('api/util/', include('util.urls')),
     path('api/miru/', include('miru.urls')),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema)))
