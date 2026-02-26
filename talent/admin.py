@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import (
+    VoiceActor,
+    Artist
+)
 
-# Register your models here.
+admin.site.register(VoiceActor)
+admin.site.register(Artist)

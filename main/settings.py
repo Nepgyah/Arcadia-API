@@ -46,6 +46,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 INSTALLED_APPS = [
     'users',
+    'talent',
     'base',
     'miru',
     'characters',
