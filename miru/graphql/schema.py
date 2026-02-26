@@ -26,6 +26,7 @@ class AnimeType(DjangoObjectType):
     season = graphene.String()
     genres = graphene.List(GenreType)
     characters = graphene.List(AnimeCharacterType)
+    studio = graphene.String()
 
     class Meta:
         model = Anime
@@ -48,6 +49,9 @@ class AnimeType(DjangoObjectType):
     
     def resolve_genres(self, info):
         return self.genres.all()
+    
+    def resolve_studio(self, info):
+        return self.studio
     
     def resolve_characters(self, info):
         return AnimeCharacter.objects.filter(anime=self)
