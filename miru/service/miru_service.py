@@ -90,7 +90,7 @@ class MiruService:
         Returns:
         - Boolean status (ok) of the operation
         """
-
+        
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 

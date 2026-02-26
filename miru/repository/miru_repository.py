@@ -56,7 +56,7 @@ class MiruRepository:
     @staticmethod
     def update_anime_list_entry(user, anime, status, details):
         animeEntry = AnimeListEntry.objects.get(user=user, anime=anime)
-
+        
         if status != animeEntry.status:
             animeEntry.status = status
 
