@@ -1,5 +1,5 @@
 from django.db import models
-from characters.models import Character
+from talent.models import Character
 from base.models import (
     Company,
     Genre,

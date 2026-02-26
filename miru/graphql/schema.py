@@ -5,7 +5,7 @@ from miru.models import (
     AnimeCharacter,
     AnimeListEntry
 )
-from characters.schema import CharacterType
+from talent.schema import CharacterType
 from base.schema import GenreType
 
 class AnimeCharacterType(DjangoObjectType):

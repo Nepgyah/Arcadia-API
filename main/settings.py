@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'talent',
     'base',
     'miru',
-    'characters',
     'corsheaders',
     'graphene_django',
     'django.contrib.admin',
