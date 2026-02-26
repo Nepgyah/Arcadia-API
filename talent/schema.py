@@ -1,14 +1,27 @@
 import graphene
 from graphene_django import DjangoObjectType
 from .models import (
-    Character
+    Character,
+    VoiceActor
 )
 
+class VoiceActorType(DjangoObjectType):
+
+    class Meta:
+        model = VoiceActor
+        fields = "__all__"
+
 class CharacterType(DjangoObjectType):
+    voice_actor = graphene.Field(VoiceActorType)
 
     class Meta:
         model = Character
         fields = "__all__"
+
+    def resolve_voice_actor(self, info):
+        if (self.voice_actor):
+            return VoiceActor.objects.get(id=self.voice_actor.id)
+        return None
 
 class Query(graphene.ObjectType):
 
