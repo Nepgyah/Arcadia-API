@@ -1,4 +1,5 @@
 import graphene
+from graphene.types.generic import GenericScalar
 from graphene_django import DjangoObjectType
 from .models import (
     Franchise,
@@ -9,10 +10,14 @@ from base.repository.franchise_repository import FranchiseRepository
 from base.service.franchise_service import FranchiseService
 
 class FranchiseType(DjangoObjectType):
+    socials = GenericScalar()
 
     class Meta:
         model = Franchise
         fields = '__all__'
+
+    def resolve_socials(self, info):
+        return self.socials
 
 class GenreType(DjangoObjectType):
 
