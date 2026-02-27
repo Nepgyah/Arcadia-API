@@ -3,7 +3,8 @@ from graphene_django import DjangoObjectType
 from miru.models import (
     Anime,
     AnimeCharacter,
-    AnimeListEntry
+    AnimeListEntry,
+    AnimeRelation
 )
 from talent.schema import CharacterType
 from base.schema import GenreType
@@ -18,6 +19,34 @@ class AnimeCharacterType(DjangoObjectType):
 
     def resolve_role(self, info):
         return self.get_role_display()
+
+class AnimePrevFlowType(DjangoObjectType):
+    relation_type = graphene.String()
+    anime = graphene.Field(lambda: AnimeType)
+
+    class Meta:
+        model = AnimeRelation
+        fields = "__all__"
+
+    def resolve_relation_type(self, info):
+        return self.get_relation_type_display()
+    
+    def resolve_anime(self, info):
+        return self.from_anime
+
+class AnimeNextFlowType(DjangoObjectType):
+    relation_type = graphene.String()
+    anime = graphene.Field(lambda: AnimeType)
+
+    class Meta:
+        model = AnimeRelation
+        fields = "__all__"
+
+    def resolve_relation_type(self, info):
+        return self.get_relation_type_display()
+    
+    def resolve_anime(self, info):
+        return self.to_anime
     
 class AnimeType(DjangoObjectType):
     status = graphene.String()
@@ -27,6 +56,8 @@ class AnimeType(DjangoObjectType):
     genres = graphene.List(GenreType)
     characters = graphene.List(AnimeCharacterType)
     studio = graphene.String()
+    prev_anime = graphene.Field(AnimePrevFlowType)
+    next_anime = graphene.Field(AnimeNextFlowType)
 
     class Meta:
         model = Anime
@@ -56,6 +87,18 @@ class AnimeType(DjangoObjectType):
     def resolve_characters(self, info):
         return AnimeCharacter.objects.filter(anime=self)
     
+    def resolve_prev_anime(self, info):
+        try:
+            return AnimeRelation.objects.get(to_anime_id=self.id, relation_type='series_entry')
+        except AnimeRelation.DoesNotExist:
+            return None
+        
+    def resolve_next_anime(self, info):
+        try:
+            return AnimeRelation.objects.get(from_anime_id=self.id, relation_type='series_entry')
+        except AnimeRelation.DoesNotExist:
+            return None
+        
 class AnimeListEntryType(DjangoObjectType):
     status = graphene.Int()
 
