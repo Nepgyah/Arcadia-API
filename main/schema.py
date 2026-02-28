@@ -1,14 +1,19 @@
 import graphene
-import characters.schema
+import talent.schema
 import base.schema
-import miru.schema
+import miru.graphql.queries
+import miru.graphql.mutations
 
 class Query(
-    characters.schema.Query,
+    talent.schema.Query,
     base.schema.Query,
-    miru.schema.Query,
+    miru.graphql.queries.Query,
     graphene.ObjectType
 ):
     pass
 
-schema = graphene.Schema(query=Query)
+class Mutation(
+    miru.graphql.mutations.Mutation
+):
+    pass
+schema = graphene.Schema(query=Query, mutation=Mutation)

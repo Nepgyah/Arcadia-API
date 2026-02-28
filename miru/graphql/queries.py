@@ -1,60 +1,17 @@
 import graphene
-from graphene_django import DjangoObjectType
-from .models import (
-    Anime,
-    AnimeCharacter
-)
-from characters.schema import CharacterType
-from .service.miru_service import MiruService
-from base.schema import GenreType
+
 from util.schema import (
     MediaSortInput,
     PaginationInput
 )
-class AnimeCharacterType(DjangoObjectType):
-    character = graphene.Field(CharacterType)
-    role = graphene.String()
 
-    class Meta:
-        model = AnimeCharacter
-        fields = "__all__"
-
-    def resolve_role(self, info):
-        return self.get_role_display()
-    
-class AnimeType(DjangoObjectType):
-    status = graphene.String()
-    type = graphene.String()
-    rating = graphene.String()
-    season = graphene.String()
-    genres = graphene.List(GenreType)
-    characters = graphene.List(AnimeCharacterType)
-
-    class Meta:
-        model = Anime
-        fields = "__all__"
-
-    def resolve_rating(self, info):
-        return self.get_rating_display()
-    
-    def resolve_type(self, info):
-        return self.get_type_display()
-    
-    def resolve_status(self, info):
-        return self.get_status_display()
-    
-    def resolve_season(self, info):
-        if self.season:
-            return str(self.season)
-        else:
-            return 'N/A'
-    
-    def resolve_genres(self, info):
-        return self.genres.all()
-    
-    def resolve_characters(self, info):
-        return AnimeCharacter.objects.filter(anime=self)
-    
+from .schema import (
+    AnimeType,
+    AnimeCharacterType,
+    AnimeListEntryType
+)
+from miru.service.miru_service import MiruService
+from users.models import User
 class AnimeFilterInput(graphene.InputObjectType):
     title = graphene.String()
     type = graphene.Int()
@@ -65,13 +22,22 @@ class AnimeFilterResults(graphene.ObjectType):
     page_count = graphene.Int()
     current_page = graphene.Int()
     total = graphene.Int()
-    
+
+class AnimeEntryListResults(graphene.ObjectType):
+    username = graphene.String()
+    watching = graphene.List(AnimeListEntryType)
+    completed = graphene.List(AnimeListEntryType)
+    plan_to = graphene.List(AnimeListEntryType)
+    on_hold = graphene.List(AnimeListEntryType)
+
 class Query(graphene.ObjectType):
 
     anime_by_id = graphene.Field(AnimeType, id=graphene.Int(required=True))
     characters_by_anime = graphene.List(AnimeCharacterType, id=graphene.Int(required=True))
     anime_by_category = graphene.List(AnimeType, category=graphene.String(required=True), count=graphene.Int(required=False))
     search_anime = graphene.Field(AnimeFilterResults, filters=AnimeFilterInput(), sort=MediaSortInput(), pagination=PaginationInput())
+    get_anime_list = graphene.Field(AnimeEntryListResults, user_id=graphene.ID(required=True))
+    get_anime_list_entry = graphene.Field(AnimeListEntryType, user_id=graphene.ID(required=True), anime_id=graphene.ID(required=True))
 
     def resolve_anime_by_id(self, info, id):
         return MiruService.get_anime_by_id(id)
@@ -90,3 +56,17 @@ class Query(graphene.ObjectType):
             current_page = current_page,
             total = total
         )
+
+    def resolve_get_anime_list(self, info, user_id):
+        user = User.objects.get(id=user_id)
+        watching, completed, plan_to, on_hold = MiruService.get_anime_list_by_user_id(user_id)
+        return AnimeEntryListResults (
+            username = user.username,
+            watching = watching,
+            completed = completed,
+            plan_to = plan_to,
+            on_hold = on_hold
+        )
+    
+    def resolve_get_anime_list_entry(self, info, user_id, anime_id):
+        return MiruService.get_anime_list_entry(user_id, anime_id)
