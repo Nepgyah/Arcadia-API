@@ -1,5 +1,7 @@
 # Arcadia API
 Introducing the Arcadia API. The backend service that helps users view and track anime, manga, games and music.
+<br><br>
+Visit Arcadia: https://arcadia-platform.vercel.app
 
 ## How it works
 Arcadia holds the backend logic for all the apps on one django server. When dealing with data for the Arcadia apps, frontends can communicate via a single graphql endpoint. For actions dealing with authentication/accounts, frontends call specific endpoints created via Django Rest Framework. The main reason for integrating 2 different types of apis is for practice and application.
