@@ -8,10 +8,11 @@ class User(models.Model):
     '''
 
     d2x_id = models.IntegerField(null=False, blank=False)
+    username = models.TextField(null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f"D2X User ID: {self.id}"
+        return f"D2X User ID: {self.d2x_id}"
     
     @property
     def is_authenticated(self):

@@ -11,7 +11,7 @@ from .schema import (
     AnimeListEntryType
 )
 from miru.service.miru_service import MiruService
-
+from users.models import User
 class AnimeFilterInput(graphene.InputObjectType):
     title = graphene.String()
     type = graphene.Int()
@@ -24,6 +24,7 @@ class AnimeFilterResults(graphene.ObjectType):
     total = graphene.Int()
 
 class AnimeEntryListResults(graphene.ObjectType):
+    username = graphene.String()
     watching = graphene.List(AnimeListEntryType)
     completed = graphene.List(AnimeListEntryType)
     plan_to = graphene.List(AnimeListEntryType)
@@ -57,8 +58,10 @@ class Query(graphene.ObjectType):
         )
 
     def resolve_get_anime_list(self, info, user_id):
+        user = User.objects.get(id=user_id)
         watching, completed, plan_to, on_hold = MiruService.get_anime_list_by_user_id(user_id)
         return AnimeEntryListResults (
+            username = user.username,
             watching = watching,
             completed = completed,
             plan_to = plan_to,
