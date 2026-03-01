@@ -28,23 +28,31 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Who is allowed to communicate with the django server
 ALLOWED_HOSTS = [
-    'clumsy-fidela-team-d2x-8009ada3.koyeb.app'
+    'clumsy-fidela-team-d2x-8009ada3.koyeb.app',
+    "localhost"
 ]
 
+# Who can call the API
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:6767", #D2X Website local
     "http://localhost:3000", #Arcadia Platform local
     "https://arcadia-platform.vercel.app"
 ]
 
+# Can you send with cookies in header?
 CORS_ALLOW_CREDENTIALS = True
 
+# Who is allowed to make unsafe (post, put, patch, delete) calls
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:6767",
     "http://localhost:3000",
     "https://arcadia-platform.vercel.app"
 ]
+
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
 
 # Application definition
 

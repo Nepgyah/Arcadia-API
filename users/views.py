@@ -1,16 +1,22 @@
+import os
+from django.conf import settings
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.conf import settings
+from dotenv import load_dotenv
+
 from users.models import User
 from rest_framework.permissions import IsAuthenticated
+
+load_dotenv()
+
 class DemoLoginView(APIView):
     """
     Temp view: Simulates login and use of jwt token for auth
     """
 
     def post(self, request):
-        print('Demo API called')
         user = User.objects.first()
 
         refresh = RefreshToken.for_user(user)
@@ -28,16 +34,16 @@ class DemoLoginView(APIView):
             key="access_token",
             value=access_token,
             httponly=True,
-            secure=False,  # True in production
-            samesite="Lax"
+            secure=bool(os.environ.get("COOKIE_SECURE")),
+            samesite=os.environ.get("COOKIE_SAME_SITE"),
         )
 
         response.set_cookie(
             key="refresh_token",
             value=refresh_token,
             httponly=True,
-            secure=False,
-            samesite="Lax"
+            secure=bool(os.environ.get("COOKIE_SECURE")),
+            samesite=os.environ.get("COOKIE_SAME_SITE"),
         )
 
         return response
