@@ -4,7 +4,8 @@ from miru.models import (
     Anime,
     AnimeCharacter,
     AnimeListEntry,
-    AnimeRelation
+    AnimeRelation,
+    AnimeEpisode
 )
 from talent.schema import CharacterType
 from base.schema import GenreType
@@ -108,3 +109,9 @@ class AnimeListEntryType(DjangoObjectType):
     
     def resolve_status(self, info):
         return self.status
+    
+class AnimeEpisodeType(DjangoObjectType):
+
+    class Meta:
+        model = AnimeEpisode
+        field = "__all__"
