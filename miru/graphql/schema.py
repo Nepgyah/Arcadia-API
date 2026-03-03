@@ -59,6 +59,7 @@ class AnimeType(DjangoObjectType):
     studio = graphene.String()
     prev_anime = graphene.Field(AnimePrevFlowType)
     next_anime = graphene.Field(AnimeNextFlowType)
+    latest_episode = graphene.Field(lambda: AnimeEpisodeType)
 
     class Meta:
         model = Anime
@@ -99,7 +100,10 @@ class AnimeType(DjangoObjectType):
             return AnimeRelation.objects.get(from_anime_id=self.id, relation_type='series_entry')
         except AnimeRelation.DoesNotExist:
             return None
-        
+    
+    def resolve_latest_episode(self, info):
+        return AnimeEpisode.objects.filter(anime=self).last()
+    
 class AnimeListEntryType(DjangoObjectType):
     status = graphene.Int()
 
