@@ -10,7 +10,12 @@ class MiruRepository:
     @staticmethod
     def get_anime_by_id(id):
         try:
-            return Anime.objects.get(id=id)
+            return Anime.objects.select_related(
+                'season',
+                'studio'
+            ).prefetch_related(
+                'genres'
+            ).get(id=id)
         except Anime.DoesNotExist:
             return None
         
