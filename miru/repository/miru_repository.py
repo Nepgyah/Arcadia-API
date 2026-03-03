@@ -1,7 +1,8 @@
 from miru.models import (
     Anime,
     AnimeCharacter,
-    AnimeListEntry
+    AnimeListEntry,
+    AnimeEpisode
 )
 
 class MiruRepository:
@@ -94,3 +95,7 @@ class MiruRepository:
             return AnimeListEntry.objects.get(user=user, anime=anime)
         except AnimeListEntry.DoesNotExist:
             return None
+        
+    @staticmethod
+    def episodes_by_anime_id(anime_id):
+        return AnimeEpisode.objects.filter(anime_id=anime_id)
