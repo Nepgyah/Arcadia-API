@@ -3,6 +3,14 @@ Introducing the Arcadia API. The backend service that helps users view and track
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
+## Latest Release - Alpha v0.3
+- **Miru v0.3**
+    - **Models**
+        - Add AnimeEpisode
+    - **API**
+        - Add graphql query for anime episodes
+        - Adjusted graphl query for fetching anime details
+
 ## How it works
 Arcadia holds the backend logic for all the apps on one django server. When dealing with data for the Arcadia apps, frontends can communicate via a single graphql endpoint. For actions dealing with authentication/accounts, frontends call specific endpoints created via Django Rest Framework. The main reason for integrating 2 different types of apis is for practice and application.
 
