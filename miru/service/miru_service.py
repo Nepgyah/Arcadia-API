@@ -145,3 +145,7 @@ class MiruService:
             return None
         
         return MiruRepository.get_anime_list_entry(user, anime)
+    
+    @staticmethod
+    def episodes_by_anime_id(anime_id):
+        return MiruRepository.episodes_by_anime_id(anime_id)

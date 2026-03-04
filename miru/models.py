@@ -71,6 +71,22 @@ class Anime(Media):
     def __str__(self):
         return self.title
     
+class AnimeEpisode(models.Model):
+
+    number = models.IntegerField()
+    title = models.CharField(max_length=255, null=True, blank=True)
+    description = models.TextField(default='A description will be written later')
+    anime = models.ForeignKey(Anime, on_delete=models.CASCADE, null=False, blank=False)
+
+    class Meta:
+        ordering = ['anime', 'number']
+        
+    def __str__(self):
+        if self.title:
+            return f"Ep: {self.number} - {self.title}"
+        else:
+            return f"Ep: {self.number}"
+
 class AnimeCharacter(models.Model):
 
     class Role(models.IntegerChoices):

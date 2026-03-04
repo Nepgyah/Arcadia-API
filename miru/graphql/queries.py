@@ -8,10 +8,13 @@ from util.schema import (
 from .schema import (
     AnimeType,
     AnimeCharacterType,
-    AnimeListEntryType
+    AnimeListEntryType,
+    AnimeEpisodeType
 )
+
 from miru.service.miru_service import MiruService
 from users.models import User
+
 class AnimeFilterInput(graphene.InputObjectType):
     title = graphene.String()
     type = graphene.Int()
@@ -38,6 +41,7 @@ class Query(graphene.ObjectType):
     search_anime = graphene.Field(AnimeFilterResults, filters=AnimeFilterInput(), sort=MediaSortInput(), pagination=PaginationInput())
     get_anime_list = graphene.Field(AnimeEntryListResults, user_id=graphene.ID(required=True))
     get_anime_list_entry = graphene.Field(AnimeListEntryType, user_id=graphene.ID(required=True), anime_id=graphene.ID(required=True))
+    get_anime_episodes = graphene.List(AnimeEpisodeType, anime_id=graphene.ID(required=True))
 
     def resolve_anime_by_id(self, info, id):
         return MiruService.get_anime_by_id(id)
@@ -70,3 +74,6 @@ class Query(graphene.ObjectType):
     
     def resolve_get_anime_list_entry(self, info, user_id, anime_id):
         return MiruService.get_anime_list_entry(user_id, anime_id)
+    
+    def resolve_get_anime_episodes(self, info, anime_id):
+        return MiruService.episodes_by_anime_id(anime_id)
