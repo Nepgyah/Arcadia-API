@@ -21,7 +21,7 @@ class Query(graphene.ObjectType):
         return CharacterService.get_character_by_id(id)
     
     def resolve_voice_actor_by_id(self, info, id):
-        voice_actor, characters =  VoiceActorService.get_voice_actor_by_id(id)
+        voice_actor, characters =  VoiceActorService.get_voice_actor_by_id(id, True)
 
         return VoiceActorResults(
             voice_actor = voice_actor,

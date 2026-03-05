@@ -24,6 +24,4 @@ class CharacterType(DjangoObjectType):
         fields = "__all__"
 
     def resolve_voice_actor(self, info):
-        if (self.voice_actor):
-            return VoiceActorService.get_voice_actor_by_id(self.voice_actor.id)
-        return None
+        return VoiceActorService.get_voice_actor_by_id(self.voice_actor.id)
