@@ -4,17 +4,26 @@ from .schema import (
     CharacterType,
     VoiceActorType
 )
-
+from miru.graphql.schema import AnimeCharacterType
 from talent.service.character import CharacterService
 from talent.service.voice_actor import VoiceActorService
+
+class VoiceActorResults(graphene.ObjectType):
+    voice_actor = graphene.Field(VoiceActorType)
+    characters = graphene.List(AnimeCharacterType)
 
 class Query(graphene.ObjectType):
 
     character_by_id = graphene.Field(CharacterType, id=graphene.Int(required=True))
-    voice_actor_by_id = graphene.Field(VoiceActorType, id=graphene.ID(required=True))
+    voice_actor_by_id = graphene.Field(VoiceActorResults, id=graphene.ID(required=True))
 
     def resolve_character_by_id(self, info, id):
         return CharacterService.get_character_by_id(id)
     
     def resolve_voice_actor_by_id(self, info, id):
-        return VoiceActorService.get_voice_actor_by_id(id)
+        voice_actor, characters =  VoiceActorService.get_voice_actor_by_id(id)
+
+        return VoiceActorResults(
+            voice_actor = voice_actor,
+            characters = characters
+        )
