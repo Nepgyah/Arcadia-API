@@ -1,11 +1,11 @@
 import graphene
-import talent.graphql.schema
+import talent.graphql.query
 import base.schema
 import miru.graphql.queries
 import miru.graphql.mutations
 
 class Query(
-    talent.graphql.schema.Query,
+    talent.graphql.query.Query,
     base.schema.Query,
     miru.graphql.queries.Query,
     graphene.ObjectType

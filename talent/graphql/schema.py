@@ -4,7 +4,7 @@ from talent.models import (
     Character,
     VoiceActor
 )
-from talent.service.voice_actor_service import VoiceActorService
+from talent.service.voice_actor import VoiceActorService
 
 class VoiceActorType(DjangoObjectType):
 
@@ -23,10 +23,3 @@ class CharacterType(DjangoObjectType):
         if (self.voice_actor):
             return VoiceActorService.get_voice_actor_by_id(self.voice_actor.id)
         return None
-
-class Query(graphene.ObjectType):
-
-    character_by_id = graphene.Field(CharacterType, id=graphene.Int(required=True))
-
-    def resolve_character_by_id(self, info, id):
-        return Character.objects.get(id=1)
