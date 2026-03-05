@@ -7,10 +7,14 @@ from talent.models import (
 from talent.service.voice_actor import VoiceActorService
 
 class VoiceActorType(DjangoObjectType):
+    characters = graphene.List(lambda: CharacterType)
 
     class Meta:
         model = VoiceActor
         fields = "__all__"
+
+    def resolve_characters(self, info):
+        return self.characters.all()
 
 class CharacterType(DjangoObjectType):
     voice_actor = graphene.Field(VoiceActorType)

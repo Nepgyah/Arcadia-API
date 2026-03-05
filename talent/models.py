@@ -39,7 +39,7 @@ class Character(models.Model):
     last_name=models.CharField(max_length=150, null=True, blank=True)
     nicknames=models.JSONField(default=list, blank=True)
     slug=models.SlugField(unique=True, blank=True)
-    voice_actor=models.ForeignKey(VoiceActor, on_delete=models.SET_NULL, null=True, blank=True)
+    voice_actor=models.ForeignKey(VoiceActor, on_delete=models.SET_NULL, null=True, blank=True, related_name='characters')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name or ''}"
