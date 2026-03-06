@@ -56,7 +56,7 @@ class UserView(APIView):
             data= { 
                 'user': {
                     'id': request.user.id,
-                    'username': 'Arcadia Demo',
+                    'username': request.user.username,
                     'picturePreset': 1
                 }
             }, status=200)

@@ -27,23 +27,47 @@ class ObtainD2XAuthorization(APIView):
     def post(self, request):
         auth_code = request.data.get('auth_code')
 
-        print('Calling D2X API for exchange')
-        d2x_response = requests.post(
-            f"{os.environ.get("D2X_URL")}oauth/exchange/",
-            data={
-                'auth_code': auth_code,
-                'client_id': 'arcadia-client',
-                'client_secret': os.environ.get("CLIENT_SECRET")
-            }
-        )
-        data = d2x_response.json()
+        try:
+            d2x_response = requests.post(
+                f"{os.environ.get("D2X_URL")}oauth/exchange/",
+                data={
+                    'auth_code': auth_code,
+                    'client_id': 'arcadia-client',
+                    'client_secret': os.environ.get("CLIENT_SECRET")
+                },
+                timeout=30
+            )
+            if (d2x_response.ok):
+                data = d2x_response.json()
+                d2x_id = data.get('d2x_id')
+            else:
+                return Response(
+                    status=500,
+                    data={'detail': f"D2X API: {d2x_response.json().get('detail')}"}
+                )
+        except ConnectionError:
+            return Response(
+                status=500,
+                data={'detail':'Failure to connect to D2X API'}
+            )
+        except TimeoutError:
+            return Response(
+                status=500,
+                data={'detail':'Connection to D2X API timed out'}
+            )
+        except Exception:
+            return Response(
+                status=500,
+                data={'detail':'D2X API Error'}
+            )
+        try:
+            user = User.objects.get(d2x_id=d2x_id)
+        except User.DoesNotExist:
+            user = User.objects.create(
+                d2x_id=data.get('d2x_id'),
+                username=data.get('d2x_username')
+            )
 
-        user = User.objects.create(
-            d2x_id=data.get('d2x_id'),
-            username=data.get('d2x_username')
-        )
-
-        print('Creating tokens for arcadia user')
         refresh = RefreshToken.for_user(user)
 
         refresh["username"] = user.username
@@ -53,7 +77,6 @@ class ObtainD2XAuthorization(APIView):
 
         response = Response(status=200, data={'detail' : "Authorization from d2x granted"})
 
-        print('Setting cookie')
         response.set_cookie(
             key="access_token",
             value=access_token,

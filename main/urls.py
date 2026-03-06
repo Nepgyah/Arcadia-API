@@ -23,7 +23,7 @@ from util.views import ObtainD2XAuthorization
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/users/', include('users.urls')),
+    path('api/user/', include('users.urls')),
     path('api/util/', include('util.urls')),
     path('api/miru/', include('miru.urls')),
     path('api/oauth/exchange/', ObtainD2XAuthorization.as_view(), name="oauth-obtain-d2x-auth"),
