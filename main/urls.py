@@ -19,11 +19,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.urls import path, include
 from graphene_django.views import GraphQLView
 from .schema import schema
+from util.views import ObtainD2XAuthorization
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
     path('api/util/', include('util.urls')),
     path('api/miru/', include('miru.urls')),
+    path('api/oauth/exchange/', ObtainD2XAuthorization.as_view(), name="oauth-obtain-d2x-auth"),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema)))
 ]
