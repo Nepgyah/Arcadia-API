@@ -81,31 +81,36 @@ class ObtainD2XAuthorization(APIView):
         access_token = str(refresh.access_token)
         refresh_token = str(refresh)
 
-        response = Response(status=200, data={'detail' : "Authorization from d2x granted"})
-
         access_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
-        response.set_cookie(
-            key='access_token',
-            value=access_token,
-            httponly=True,
-            secure=bool(os.environ.get("COOKIE_SECURE")),
-            samesite=os.environ.get("COOKIE_SAME_SITE"),
-            expires = access_expiry,
-            path='/',
-        )
+        access = {
+            'key': 'access_token',
+            'value': access_token,
+            'httponly': True,
+            'secure': bool(os.environ.get("COOKIE_SECURE")),
+            'samesite': os.environ.get("COOKIE_SAME_SITE"),
+            'expires': access_expiry,
+            'path': '/',
+        }
 
         refresh_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
-        response.set_cookie(
-            key='refresh_token',
-            value=refresh_token,
-            httponly=True,
-            secure=bool(os.environ.get("COOKIE_SECURE")),
-            samesite=os.environ.get("COOKIE_SAME_SITE"),
-            expires = refresh_expiry,
-            path='/',
-        )
+        refresh = {
+            'key': 'refresh_token',
+            'value': refresh_token,
+            'httponly': True,
+            'secure': bool(os.environ.get("COOKIE_SECURE")),
+            'samesite': os.environ.get("COOKIE_SAME_SITE"),
+            'expires': refresh_expiry,
+            'path': '/',
+        }
+        
+        response = Response(status=200, data={
+            'detail':'Token refreshed',
+            'access_token': access,
+            'refresh_token': refresh
+        })
 
         return response
+        # return response
     
 class TokenRefreshView(APIView):
     permission_classes = [AllowAny]
