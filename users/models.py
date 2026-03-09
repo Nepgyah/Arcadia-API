@@ -7,7 +7,7 @@ class User(models.Model):
         arcadia account related models and main d2x accounts.
     '''
 
-    d2x_id = models.IntegerField(null=False, blank=False)
+    d2x_id = models.IntegerField(null=False, blank=False, unique=True)
     username = models.TextField(null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     

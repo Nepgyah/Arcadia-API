@@ -7,7 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from dotenv import load_dotenv
 
 from users.models import User
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 load_dotenv()
 
@@ -56,7 +56,19 @@ class UserView(APIView):
             data= { 
                 'user': {
                     'id': request.user.id,
-                    'username': 'Arcadia Demo',
+                    'username': request.user.username,
                     'picturePreset': 1
                 }
             }, status=200)
+    
+class UpdateUser(APIView):
+    permission_classes = [AllowAny]
+
+    def post (self, request, id):
+        try:
+            arcadia_user = User.objects.get(d2x_id=id)
+            arcadia_user.username = request.data.get('username')
+            arcadia_user.save()
+            return Response(status=200, data={'detail':'Arcadia username updated'})
+        except User.DoesNotExist:
+            return Response(status=400, data={'detail':'Invalid user id.'})
