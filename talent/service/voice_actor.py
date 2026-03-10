@@ -7,6 +7,7 @@ class VoiceActorService:
     def get_voice_actor_by_id(id, withCharDetails = False):
         if not withCharDetails:
             voice_actor = VoiceActorRepository.get_voice_actor_by_id(id)
+            return voice_actor
         else:
             voice_actor = VoiceActor.objects.prefetch_related(
                 'characters__animecharacter_set__anime'
