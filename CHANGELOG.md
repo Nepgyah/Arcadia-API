@@ -3,6 +3,14 @@
 | ---------- | ------- |
 | Miru       | 0.3     |
 
+## Alpha v0.3 - 3/4/2026
+- **Miru v0.3**
+    - **Models**
+        - Add AnimeEpisode
+    - **API**
+        - Add graphql query for anime episodes
+        - Adjusted graphl query for fetching anime details
+
 ## Alpha v0.2 - 2/8/2026
 - **Miru v0.2**
     - **Models**
