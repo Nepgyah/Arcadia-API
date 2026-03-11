@@ -97,6 +97,9 @@ class AnimeCharacter(models.Model):
     character=models.ForeignKey(Character, on_delete=models.CASCADE)
     role=models.IntegerField(choices=Role.choices, default=Role.SUPPORT, blank=True)
 
+    class Meta:
+        unique_together = ('anime', 'character')
+
     def __str__(self):
         return f"{self.character} in {self.anime} as {self.get_role_display()} character"
     

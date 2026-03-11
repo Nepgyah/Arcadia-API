@@ -1,4 +1,5 @@
 import graphene
+from graphene.types.generic import GenericScalar
 from graphene_django import DjangoObjectType
 from talent.models import (
     Character,
@@ -8,6 +9,7 @@ from talent.service.voice_actor import VoiceActorService
 
 class VoiceActorType(DjangoObjectType):
     characters = graphene.List(lambda: CharacterType)
+    socials = GenericScalar()
 
     class Meta:
         model = VoiceActor
