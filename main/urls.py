@@ -26,6 +26,7 @@ urlpatterns = [
     path('api/user/', include('users.urls')),
     path('api/util/', include('util.urls')),
     path('api/miru/', include('miru.urls')),
+    path('api/asobu/', include('asobu.urls')),
     path('api/oauth/exchange/', ObtainD2XAuthorization.as_view(), name="oauth-obtain-d2x-auth"),
     path('api/oauth/refresh/', TokenRefreshView.as_view(), name='oauth_token_refresh'),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema)))
