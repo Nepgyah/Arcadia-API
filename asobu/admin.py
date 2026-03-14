@@ -1,8 +1,7 @@
 from django.contrib import admin
 from .models import (
-    Developer,
+    GameCompany,
     Platform,
-    Publisher,
     Tag,
     Game,
     DLC,
@@ -15,12 +14,8 @@ from .models import (
 class PlatformAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
-@admin.register(Developer)
-class DeveloperAdmin(admin.ModelAdmin):
-    search_fields = ['name']
-
-@admin.register(Publisher)
-class PublisherAdmin(admin.ModelAdmin):
+@admin.register(GameCompany)
+class GameCompanyAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 class GameCharacterInline(admin.TabularInline):

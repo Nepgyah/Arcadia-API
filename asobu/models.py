@@ -4,7 +4,7 @@ from base.models import Company, Media, Genre
 from talent.models import Character
 from util.helpers import unique_slugify
 
-class Developer(Company):
+class GameCompany(Company):
 
     def __str__(self):
         return f"{self.name}"
@@ -16,10 +16,6 @@ class Platform(models.Model):
     def __str__(self):
         return f"{self.name}"
     
-class Publisher(Company):
-
-    def __str__(self):
-        return f"{self.name}"
     
 class Tag(models.Model):
 
@@ -54,14 +50,14 @@ class Game(Media):
         PEGI_18 = 4, 'PEGI 18'
         PEGI_PENDING = 5, 'Rating Pending'
 
-    trailer_url = models.URLField()
+    trailer_url = models.URLField(null=True, blank=True)
     status = models.IntegerField(choices=Status.choices, default=Status.ANNOUNCED)
-    tags = models.ManyToManyField(Tag, related_name='tagged_games')
+    tags = models.ManyToManyField(Tag, related_name='tagged_games', blank=True)
     genres = models.ManyToManyField(Genre, related_name='games', blank=True)
     esrb_rating = models.IntegerField(choices=ESRB.choices, default=ESRB.PENDING)
     pegi_rating = models.IntegerField(choices=PEGI.choices, default=PEGI.PEGI_PENDING)
-    developers = models.ManyToManyField(Developer, related_name='developed_games')
-    publishers = models.ManyToManyField(Publisher, related_name='published_games')
+    developers = models.ManyToManyField(GameCompany, related_name='developed_games', null=True, blank=True)
+    publishers = models.ManyToManyField(GameCompany, related_name='published_games', null=True, blank=True)
     characters = models.ManyToManyField(Character, through='GameCharacter', related_name='games')
     platforms = models.ManyToManyField(Platform, through='GamePlatform', related_name='released_games')
     steam_id = models.PositiveIntegerField(unique=True, null=True, blank=True)
