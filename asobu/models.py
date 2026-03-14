@@ -12,7 +12,6 @@ class Developer(Company):
 class Platform(models.Model):
 
     name=models.CharField(max_length=150)
-    release_date = models.DateField(null=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -81,7 +80,7 @@ class DLC(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
 
     def save(self, *args, **kwargs):
-        self.slug = unique_slugify(self.title)
+        self.slug = unique_slugify(instance=self, value=self.title)
         super().save(*args, **kwargs)
 
 class GamePlatform(models.Model):

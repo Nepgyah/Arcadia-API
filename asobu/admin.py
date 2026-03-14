@@ -11,6 +11,18 @@ from .models import (
     GameCharacter
 )
 
+@admin.register(Platform)
+class PlatformAdmin(admin.ModelAdmin):
+    search_fields = ['name']
+
+@admin.register(Developer)
+class DeveloperAdmin(admin.ModelAdmin):
+    search_fields = ['name']
+
+@admin.register(Publisher)
+class PublisherAdmin(admin.ModelAdmin):
+    search_fields = ['name']
+
 class GameCharacterInline(admin.TabularInline):
     model = GameCharacter
     extra = 1
@@ -18,7 +30,8 @@ class GameCharacterInline(admin.TabularInline):
 
 class GameRelationInline(admin.TabularInline):
     model = GameRelation
-    extra = 1,
+    fk_name = 'to_game'
+    extra = 1
     autocomplete_fields = ['from_game']
 
 class GamePlatformInline(admin.TabularInline):
@@ -28,12 +41,9 @@ class GamePlatformInline(admin.TabularInline):
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-    inlines = [GameCharacterInline, GameRelation]
+    inlines = [GameCharacterInline, GameRelationInline, GamePlatformInline]
     search_fields = ['title']
     
-admin.site.register(Developer)
-admin.site.register(Platform)
-admin.site.register(Publisher)
 admin.site.register(Tag)
 admin.site.register(DLC)
 

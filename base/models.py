@@ -12,7 +12,7 @@ class Company(models.Model):
         return f"{self.name}"
     
     def save(self, *args, **kwargs):
-        self.slug = unique_slugify(self.name)
+        self.slug = unique_slugify(instance=self, value=self.name)
         super().save(*args, **kwargs)
 
 class Genre(models.Model):
@@ -31,7 +31,7 @@ class Franchise(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        self.slug = unique_slugify(self.name)
+        self.slug = unique_slugify(instance=self, value=self.name)
         super().save(*args, **kwargs)
 
 class Media(models.Model):
@@ -56,5 +56,5 @@ class Media(models.Model):
         return self.title
     
     def save(self, *args, **kwargs):
-        self.slug = unique_slugify(self.title)
+        self.slug = unique_slugify(instance=self, value=self.title)
         super().save(*args, **kwargs)
