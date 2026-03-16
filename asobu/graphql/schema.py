@@ -7,7 +7,8 @@ from asobu.models import (
     Game,
     GameCharacter,
     GamePlatform,
-    GameRelation
+    GameRelation,
+    DLC
 )
 from base.schema import GenreType
 from talent.graphql.schema import CharacterType
@@ -69,7 +70,7 @@ class GamePlatformType(DjangoObjectType):
     
     def resolve_platform(self, info):
         return Platform.objects.get(id=self.platform.id)
-    
+
 class GameType(DjangoObjectType):
 
     class Meta:
@@ -112,3 +113,14 @@ class GameType(DjangoObjectType):
     
     def resolve_platforms(self, info):
         return self.gameplatform_set.all()
+    
+class DLCType(DjangoObjectType):
+
+    class Meta:
+        model = DLC
+
+    game = graphene.Field(GameType)
+
+    def resolve_game(self, info):
+        return Game.objects.get(id=self.game.id)
+    
