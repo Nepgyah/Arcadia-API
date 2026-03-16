@@ -42,10 +42,7 @@ class GameCharacterType(DjangoObjectType):
     role = graphene.String()
 
     def resolve_game(self, info):
-        try:
-            Game.objects.get(id=self.game.id)
-        except Game.DoesNotExist:
-            return None
+        return self.game
     
     def resolve_character(self, info):
         try:
