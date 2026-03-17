@@ -69,7 +69,7 @@ class Anime(Media):
         ordering = ['-score']
 
     def __str__(self):
-        return self.title
+        return str(self.title)
     
 class AnimeEpisode(models.Model):
 
@@ -84,8 +84,7 @@ class AnimeEpisode(models.Model):
     def __str__(self):
         if self.title:
             return f"Ep: {self.number} - {self.title}"
-        else:
-            return f"Ep: {self.number}"
+        return f"Ep: {self.number}"
 
 class AnimeCharacter(models.Model):
 

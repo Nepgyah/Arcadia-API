@@ -20,7 +20,7 @@ class AddAnimeListMutation(graphene.Mutation):
 
     # Define the for the mutation go here, use services, repo, etc
     @classmethod
-    def mutate(cls, root, info, anime_id, user_id, status, details):
+    def mutate(cls, _root, _info, anime_id, user_id, status, details):
         ok = MiruService.add_anime_list_entry(user_id, anime_id, status, details)
 
         # Return an instance, make sure to set the values of your returns
@@ -36,7 +36,7 @@ class UpdateAnimeListMutation(graphene.Mutation):
         details = AddAnimeListEntryMetaData(required=False)
 
     @staticmethod
-    def mutate(root, info, anime_id, user_id, status, details):
+    def mutate(_root, _info, anime_id, user_id, status, details):
         ok = MiruService.update_anime_list_entry(user_id, anime_id, status, details)
 
         return UpdateAnimeListMutation(ok=ok)
@@ -49,7 +49,7 @@ class DeleteAnimeListMutation(graphene.Mutation):
         anime_id = graphene.ID()
 
     @staticmethod
-    def mutate(root, info, user_id, anime_id):
+    def mutate(_root, _info, user_id, anime_id):
         ok = MiruService.delete_anime_list_entry(user_id, anime_id)
 
         return DeleteAnimeListMutation(ok=ok)
