@@ -19,11 +19,11 @@ class Query(graphene.ObjectType):
     character_by_id = graphene.Field(CharacterType, id=graphene.Int(required=True))
     voice_actor_by_id = graphene.Field(VoiceActorResults, id=graphene.ID(required=True))
 
-    def resolve_character_by_id(self, info, id):
-        return CharacterService.get_character_by_id(id)
+    def resolve_character_by_id(self, _info, character_id):
+        return CharacterService.get_character_by_id(character_id)
     
-    def resolve_voice_actor_by_id(self, info, id):
-        voice_actor, characters =  VoiceActorService.get_voice_actor_by_id(id, True)
+    def resolve_voice_actor_by_id(self, _info, character_id):
+        voice_actor, characters =  VoiceActorService.get_voice_actor_by_id(character_id, True)
 
         related_anime = characters['animes']
         related_games = characters['games']
