@@ -1,13 +1,14 @@
 import graphene
 
-from .schema import (
-    CharacterType,
-    VoiceActorType
-)
 from asobu.graphql.schema import GameCharacterType
 from miru.graphql.schema import AnimeCharacterType
 from talent.service.character import CharacterService
 from talent.service.voice_actor import VoiceActorService
+
+from .schema import (
+    CharacterType,
+    VoiceActorType
+)
 
 class VoiceActorResults(graphene.ObjectType):
     voice_actor = graphene.Field(VoiceActorType)

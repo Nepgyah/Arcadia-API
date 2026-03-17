@@ -62,5 +62,4 @@ class Artist(Talent):
             return self.voice_actor.display_name
         if self.character:
             return self.character
-        else:
-            return self.name
+        return self.name

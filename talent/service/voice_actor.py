@@ -7,39 +7,39 @@ from miru.models import AnimeCharacter
 class VoiceActorService:
 
     @staticmethod
-    def get_voice_actor_by_id(id, withCharDetails = False):
+    def get_voice_actor_by_id(va_id, withCharDetails = False):
         if not withCharDetails:
-            voice_actor = VoiceActorRepository.get_voice_actor_by_id(id)
+            voice_actor = VoiceActorRepository.get_voice_actor_by_id(va_id)
             return voice_actor
-        else:
-            voice_actor = VoiceActor.objects.prefetch_related(
-                Prefetch(
-                    'characters',
-                    queryset=Character.objects.prefetch_related(
-                        Prefetch(
-                            'animecharacter_set', 
-                            queryset=AnimeCharacter.objects.select_related('anime')
-                        ),
-                        Prefetch(
-                            'gamecharacter_set',
-                            queryset=GameCharacter.objects.select_related('game')
-                        )
+        
+        voice_actor = VoiceActor.objects.prefetch_related(
+            Prefetch(
+                'characters',
+                queryset=Character.objects.prefetch_related(
+                    Prefetch(
+                        'animecharacter_set', 
+                        queryset=AnimeCharacter.objects.select_related('anime')
                     ),
-                )
-            ).get(id=id)
-            anime_details = []
-            game_details = []
+                    Prefetch(
+                        'gamecharacter_set',
+                        queryset=GameCharacter.objects.select_related('game')
+                    )
+                ),
+            )
+        ).get(id=id)
+        anime_details = []
+        game_details = []
 
-            for character in voice_actor.characters.all():
-                for animeLink in character.animecharacter_set.all():
-                    anime_details.append(animeLink)
+        for character in voice_actor.characters.all():
+            for animeLink in character.animecharacter_set.all():
+                anime_details.append(animeLink)
 
-                for gameLink in character.gamecharacter_set.all():
-                    game_details.append(gameLink)
+            for gameLink in character.gamecharacter_set.all():
+                game_details.append(gameLink)
 
-            character_details = {
-                'animes': anime_details,
-                'games': game_details
-            }
+        character_details = {
+            'animes': anime_details,
+            'games': game_details
+        }
 
-            return voice_actor, character_details
+        return voice_actor, character_details

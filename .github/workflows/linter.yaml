@@ -26,3 +26,7 @@ jobs:
       - name: Analysing Miru App
         run: |
           pylint miru
+
+      - name: Analysing Talent App
+        run: |
+          pylint talent
