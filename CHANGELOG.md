@@ -3,6 +3,10 @@
 | ---------- | ------- |
 | Miru       | 0.3     |
 
+## Alpha v0.4 - 3/9/2026
+- **General**
+    - Add oauth journey via D2X Accounts
+
 ## Alpha v0.3 - 3/4/2026
 - **Miru v0.3**
     - **Models**
