@@ -1,6 +1,8 @@
+from django.db.models import Prefetch
+from asobu.models import GameCharacter
 from talent.repository.voice_actor_repository import VoiceActorRepository
 from miru.models import AnimeCharacter
-from talent.models import VoiceActor
+from talent.models import VoiceActor, Character
 class VoiceActorService:
 
     @staticmethod
@@ -10,12 +12,33 @@ class VoiceActorService:
             return voice_actor
         else:
             voice_actor = VoiceActor.objects.prefetch_related(
-                'characters__animecharacter_set__anime'
+                Prefetch(
+                    'characters',
+                    queryset=Character.objects.prefetch_related(
+                        Prefetch(
+                            'animecharacter_set', 
+                            queryset=AnimeCharacter.objects.select_related('anime')
+                        ),
+                        Prefetch(
+                            'gamecharacter_set',
+                            queryset=GameCharacter.objects.select_related('game')
+                        )
+                    ),
+                )
             ).get(id=id)
-            character_details = []
+            anime_details = []
+            game_details = []
 
             for character in voice_actor.characters.all():
-                for link in character.animecharacter_set.all():
-                    character_details.append(link)
+                for animeLink in character.animecharacter_set.all():
+                    anime_details.append(animeLink)
+
+                for gameLink in character.gamecharacter_set.all():
+                    game_details.append(gameLink)
+
+            character_details = {
+                'animes': anime_details,
+                'games': game_details
+            }
 
             return voice_actor, character_details

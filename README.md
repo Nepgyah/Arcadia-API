@@ -3,9 +3,17 @@ Introducing the Arcadia API. The backend service that helps users view and track
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
-## Latest Release - Alpha v0.4 - 3/9/2026
-- **General**
-    - Add oauth journey via D2X Accounts
+## Latest Release - Alpha v0.5 - 3/16/2026
+- **Asobu**
+    - **Models**
+        - Add game model
+        - Add relation models (characters, games, platforms)
+    - **Graphql API**
+        - Add queries for games, character by games and franchise by games
+
+- **Talent**
+    - **Service**
+        - Improve querying efficiency
 
 ## How it works
 Arcadia holds the backend logic for all the apps on one django server. When dealing with data for the Arcadia apps, frontends can communicate via a single graphql endpoint. For actions dealing with authentication/accounts, frontends call specific endpoints created via Django Rest Framework. The main reason for integrating 2 different types of apis is for practice and application.

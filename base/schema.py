@@ -29,9 +29,13 @@ class Query(graphene.ObjectType):
 
     franchise_by_id = graphene.Field(FranchiseType, id=graphene.Int(required=True))
     franchise_by_anime = graphene.Field(FranchiseType, id=graphene.Int(required=True))
+    franchise_by_game = graphene.Field(FranchiseType, id=graphene.ID(required=True))
 
     def resolve_franchise_by_id(self, info, id):
         return FranchiseRepository.get_franchise_by_id(id)
     
     def resolve_franchise_by_anime(self, info, id):
         return FranchiseService.get_franchise_by_anime(id)
+    
+    def resolve_franchise_by_game(self, info, id):
+        return FranchiseService.get_franchise_by_game(id)
