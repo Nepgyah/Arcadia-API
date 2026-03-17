@@ -10,19 +10,19 @@ class MiruRepository:
     ''' Repository layer to work with Anime, AnimeCharacters, etc '''
 
     @staticmethod
-    def get_anime_by_id(id: int) -> Anime:
+    def get_anime_by_id(anime_id: int) -> Anime:
         try:
             return Anime.objects.select_related(
                 'season',
                 'studio'
             ).prefetch_related(
                 'genres'
-            ).get(id=id)
+            ).get(id=anime_id)
         except Anime.DoesNotExist:
             return None
         
     @staticmethod
-    def get_characters_by_anime(id: int) -> list[AnimeCharacter]:
+    def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
         """
             Returns a list of characters related to an anime.
 
@@ -30,14 +30,14 @@ class MiruRepository:
         """
 
         try:
-            anime = Anime.objects.get(id=id)
+            anime = Anime.objects.get(id=anime_id)
             return AnimeCharacter.objects.filter(anime=anime)
         except Anime.DoesNotExist:
             return []
         
     @staticmethod
     def get_anime_by_category(category: str, count: int) -> list[Anime]: 
-        return Anime.objects.order_by(category)[:5]
+        return Anime.objects.order_by(category)[:count]
     
     @staticmethod
     def create_anime_list_entry(user: User, anime: Anime, status: int, details: dict) -> None:

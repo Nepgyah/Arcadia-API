@@ -11,7 +11,7 @@ class TestRepository:
 
     def test_get_anime_by_id_returns_none(self, anime_fixture):
         anime = MiruRepository.get_anime_by_id(99)
-        assert anime == None
+        assert anime is None
 
     def test_get_characters_by_anime(self, anime_fixture, bocchi_character_fixtures):
         characters = MiruRepository.get_characters_by_anime(id=anime_fixture.id)

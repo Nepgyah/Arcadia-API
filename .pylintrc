@@ -1,0 +1,52 @@
+[MAIN]
+load-plugins=pylint_django
+django-settings-module=main.settings
+fail-under=9.00
+
+[MESSAGES CONTROL]
+disable=
+    attribute-defined-outside-init,
+    invalid-name,
+    missing-docstring,
+    protected-access,
+    too-few-public-methods,
+    no-member,
+    # handled by black
+    format,
+    # We anticipate #3512 where it will become optional
+    fixme
+
+[BASIC]
+
+# Good variable names which should always be accepted, separated by a comma
+good-names=i,j,k,ex,Run,_
+
+# Good variable names regexes, separated by a comma. If names match any regex,
+# they will always be accepted
+good-names-rgxs=
+
+# Bad variable names which should always be refused, separated by a comma
+bad-names=foo,bar,baz,toto,tutu,tata
+
+[TYPECHECK]
+# This is the "Safety Net" - it tells Pylint to ignore 'objects' members
+# specifically for classes that look like Django models.
+generated-members=objects,id,pk,_set
+
+[VARIABLES]
+# Tells pylint to ignore 'redefined-outer-name' for arguments 
+# that match a defined fixture.
+ignored-argument-names=arg|args|kwargs|id|_.*|.*_fixture|client_query
+
+[DESIGN]
+# Maximum number of arguments for function / method
+max-args = 9
+
+# Maximum number of locals for function / method body
+max-locals = 19
+
+# Maximum number of return / yield for function / method body
+max-returns=11
+
+# Maximum number of statements in function / method body
+max-statements = 50

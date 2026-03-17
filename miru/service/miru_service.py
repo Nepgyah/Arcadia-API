@@ -1,18 +1,18 @@
+from django.core.paginator import Paginator
 from miru.repository.miru_repository import MiruRepository
 from miru.models import Anime, AnimeCharacter, AnimeListEntry, AnimeEpisode
-from django.core.paginator import Paginator
 from users.models import User
 
 class MiruService:
     ''' Service layer to apply business logic to Miru '''
 
     @staticmethod
-    def get_anime_by_id(id: int) -> Anime:
-        return MiruRepository.get_anime_by_id(id)
+    def get_anime_by_id(anime_id: int) -> Anime:
+        return MiruRepository.get_anime_by_id(anime_id)
     
     @staticmethod
-    def get_characters_by_anime(id: int) -> list[AnimeCharacter]:
-        return MiruRepository.get_characters_by_anime(id)
+    def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
+        return MiruRepository.get_characters_by_anime(anime_id)
     
     @staticmethod
     def get_anime_by_category(category: str, count: int) -> list[Anime]:
@@ -20,7 +20,7 @@ class MiruService:
         Retrieves anime sorted by a category, descending. Defaults to the first 5 if count is not provided.
         """
 
-        if count == None:
+        if count is None:
             count = 5
         return MiruRepository.get_anime_by_category(category, count)
     
@@ -72,11 +72,11 @@ class MiruService:
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
-        if anime == None or user == None:
+        if anime is None or user is None:
             return False
         try:
             MiruRepository.create_anime_list_entry(user, anime, status, details)
-        except Exception as e:
+        except Exception:
             # TODO: Handle errors such as uniqueness, etc
             return False
         
@@ -94,11 +94,11 @@ class MiruService:
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
-        if anime == None or user == None:
+        if anime is None or user is None:
             return False
         try:
             MiruRepository.update_anime_list_entry(user, anime, status, details)
-        except Exception as e:
+        except Exception:
             # TODO: Handle errors such as uniqueness, etc
             return False
         
@@ -116,12 +116,12 @@ class MiruService:
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
-        if anime == None or user == None:
+        if anime is None or user is None:
             return False
         
         try:
             MiruRepository.delete_anime_list_entry(user, anime)
-        except Exception as e:
+        except Exception:
             return False
 
         return True
@@ -141,7 +141,7 @@ class MiruService:
     def get_anime_list_entry(user_id, anime_id) -> AnimeListEntry:
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
-        if anime == None or user == None:
+        if anime is None or user is None:
             return None
         
         return MiruRepository.get_anime_list_entry(user, anime)
