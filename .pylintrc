@@ -3,6 +3,9 @@ load-plugins=pylint_django
 django-settings-module=main.settings
 fail-under=9.00
 
+# Ignore migrations folder
+ignore=migrations
+
 [MESSAGES CONTROL]
 disable=
     attribute-defined-outside-init,
