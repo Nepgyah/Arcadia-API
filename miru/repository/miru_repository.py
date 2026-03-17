@@ -4,12 +4,13 @@ from miru.models import (
     AnimeListEntry,
     AnimeEpisode
 )
+from users.models import User
 
 class MiruRepository:
     ''' Repository layer to work with Anime, AnimeCharacters, etc '''
 
     @staticmethod
-    def get_anime_by_id(id):
+    def get_anime_by_id(id: int) -> Anime:
         try:
             return Anime.objects.select_related(
                 'season',
@@ -21,7 +22,7 @@ class MiruRepository:
             return None
         
     @staticmethod
-    def get_characters_by_anime(id):
+    def get_characters_by_anime(id: int) -> list[AnimeCharacter]:
         """
             Returns a list of characters related to an anime.
 
@@ -35,11 +36,11 @@ class MiruRepository:
             return []
         
     @staticmethod
-    def get_anime_by_category(category, count):
+    def get_anime_by_category(category: str, count: int) -> list[Anime]: 
         return Anime.objects.order_by(category)[:5]
     
     @staticmethod
-    def create_anime_list_entry(user, anime, status, details):
+    def create_anime_list_entry(user: User, anime: Anime, status: int, details: dict) -> None:
         animeEntry = AnimeListEntry(
             user = user,
             anime = anime,
@@ -60,7 +61,7 @@ class MiruRepository:
         animeEntry.save()
 
     @staticmethod
-    def update_anime_list_entry(user, anime, status, details):
+    def update_anime_list_entry(user: User, anime: Anime, status: int, details: dict) -> None:
         animeEntry = AnimeListEntry.objects.get(user=user, anime=anime)
         
         if status != animeEntry.status:
@@ -81,21 +82,21 @@ class MiruRepository:
         animeEntry.save()
         
     @staticmethod
-    def delete_anime_list_entry(user, anime):
+    def delete_anime_list_entry(user: User, anime: Anime) -> None:
         AnimeListEntry.objects.get(user=user, anime=anime).delete()
 
     @staticmethod
-    def get_anime_list_by_user_id(user):
+    def get_anime_list_by_user_id(user: User) -> list[AnimeListEntry]:
         anime_list = AnimeListEntry.objects.filter(user=user)
         return anime_list
     
     @staticmethod
-    def get_anime_list_entry(user, anime):
+    def get_anime_list_entry(user: User, anime: Anime) -> AnimeListEntry:
         try:
             return AnimeListEntry.objects.get(user=user, anime=anime)
         except AnimeListEntry.DoesNotExist:
             return None
         
     @staticmethod
-    def episodes_by_anime_id(anime_id):
+    def episodes_by_anime_id(anime_id: int) -> list[AnimeEpisode]:
         return AnimeEpisode.objects.filter(anime_id=anime_id)

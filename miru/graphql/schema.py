@@ -109,7 +109,7 @@ class AnimeListEntryType(DjangoObjectType):
 
     class Meta:
         model = AnimeListEntry
-        field = "__all__"
+        fields = "__all__"
     
     def resolve_status(self, info):
         return self.status
@@ -118,4 +118,4 @@ class AnimeEpisodeType(DjangoObjectType):
 
     class Meta:
         model = AnimeEpisode
-        field = "__all__"
+        fields = "__all__"

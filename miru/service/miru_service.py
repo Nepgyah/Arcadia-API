@@ -1,5 +1,5 @@
 from miru.repository.miru_repository import MiruRepository
-from miru.models import Anime
+from miru.models import Anime, AnimeCharacter, AnimeListEntry, AnimeEpisode
 from django.core.paginator import Paginator
 from users.models import User
 
@@ -7,15 +7,15 @@ class MiruService:
     ''' Service layer to apply business logic to Miru '''
 
     @staticmethod
-    def get_anime_by_id(id):
+    def get_anime_by_id(id: int) -> Anime:
         return MiruRepository.get_anime_by_id(id)
     
     @staticmethod
-    def get_characters_by_anime(id):
+    def get_characters_by_anime(id: int) -> list[AnimeCharacter]:
         return MiruRepository.get_characters_by_anime(id)
     
     @staticmethod
-    def get_anime_by_category(category, count):
+    def get_anime_by_category(category: str, count: int) -> list[Anime]:
         """
         Retrieves anime sorted by a category, descending. Defaults to the first 5 if count is not provided.
         """
@@ -25,7 +25,7 @@ class MiruService:
         return MiruRepository.get_anime_by_category(category, count)
     
     @staticmethod
-    def search_anime(filters, sort, pagination):
+    def search_anime(filters: dict, sort: dict, pagination: dict):
         """
         Searches anime with optional filters and sorts.
         Filters are ignored with -1 input.
@@ -61,7 +61,7 @@ class MiruService:
         return results, page_count, pagination['current_page'], total
     
     @staticmethod
-    def add_anime_list_entry(user_id, anime_id, status, details):
+    def add_anime_list_entry(user_id: int, anime_id: int, status: int, details: dict) -> bool:
         """
         Creates an anime list entry based on user_id and anime_id combination
 
@@ -83,7 +83,7 @@ class MiruService:
         return True
 
     @staticmethod
-    def update_anime_list_entry(user_id, anime_id, status, details):
+    def update_anime_list_entry(user_id: int, anime_id: int, status: int, details: dict) -> bool:
         """
         Updates a current anime list entry based on user_id and anime_id combination
 
@@ -105,7 +105,7 @@ class MiruService:
         return True
 
     @staticmethod
-    def delete_anime_list_entry(user_id, anime_id):
+    def delete_anime_list_entry(user_id: int, anime_id: int) -> bool:
         """
         Deletes a current anime list entry based on user_id and anime_id combination
 
@@ -127,7 +127,7 @@ class MiruService:
         return True
     
     @staticmethod
-    def get_anime_list_by_user_id(user_id):
+    def get_anime_list_by_user_id(user_id: int) -> list[AnimeListEntry]:
         user = User.objects.get(id=user_id)
         anime_list =  MiruRepository.get_anime_list_by_user_id(user)
         watching = anime_list.filter(status=0)
@@ -138,7 +138,7 @@ class MiruService:
         return watching, completed, plan_to, on_hold
     
     @staticmethod
-    def get_anime_list_entry(user_id, anime_id):
+    def get_anime_list_entry(user_id, anime_id) -> AnimeListEntry:
         user = User.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
         if anime == None or user == None:
@@ -147,5 +147,5 @@ class MiruService:
         return MiruRepository.get_anime_list_entry(user, anime)
     
     @staticmethod
-    def episodes_by_anime_id(anime_id):
+    def episodes_by_anime_id(anime_id: int) -> AnimeEpisode:
         return MiruRepository.episodes_by_anime_id(anime_id)
