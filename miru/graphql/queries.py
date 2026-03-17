@@ -35,8 +35,8 @@ class AnimeEntryListResults(graphene.ObjectType):
 
 class Query(graphene.ObjectType):
 
-    anime_by_id = graphene.Field(AnimeType, id=graphene.Int(required=True))
-    characters_by_anime = graphene.List(AnimeCharacterType, id=graphene.Int(required=True))
+    anime_by_id = graphene.Field(AnimeType, id=graphene.ID(required=True))
+    characters_by_anime = graphene.List(AnimeCharacterType, id=graphene.ID(required=True))
     anime_by_category = graphene.List(AnimeType, category=graphene.String(required=True), count=graphene.Int(required=False))
     search_anime = graphene.Field(AnimeFilterResults, filters=AnimeFilterInput(), sort=MediaSortInput(), pagination=PaginationInput())
     get_anime_list = graphene.Field(AnimeEntryListResults, user_id=graphene.ID(required=True))

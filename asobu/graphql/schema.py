@@ -115,7 +115,8 @@ class DLCType(DjangoObjectType):
 
     class Meta:
         model = DLC
-
+        fields = '__all__'
+        
     game = graphene.Field(GameType)
 
     def resolve_game(self, info):
