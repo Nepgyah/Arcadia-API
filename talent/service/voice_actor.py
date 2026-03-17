@@ -1,8 +1,9 @@
 from django.db.models import Prefetch
 from asobu.models import GameCharacter
 from talent.repository.voice_actor_repository import VoiceActorRepository
-from miru.models import AnimeCharacter
 from talent.models import VoiceActor, Character
+from miru.models import AnimeCharacter
+
 class VoiceActorService:
 
     @staticmethod
