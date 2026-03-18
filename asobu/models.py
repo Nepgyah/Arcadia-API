@@ -22,7 +22,7 @@ class Tag(models.Model):
     name=models.CharField(max_length=150)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
     
 class Game(Media):
     
@@ -66,7 +66,7 @@ class Game(Media):
         ordering = ['-score']
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
 class DLC(models.Model):
 
