@@ -26,7 +26,7 @@ class VoiceActorService:
                     )
                 ),
             )
-        ).get(id=id)
+        ).get(id=va_id)
         anime_details = []
         game_details = []
 
