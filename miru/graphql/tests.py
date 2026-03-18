@@ -1,4 +1,3 @@
-import json
 import pytest
 from graphene_django.utils.testing import graphql_query
 
@@ -13,7 +12,7 @@ def test_anime_by_id(client_query, anime_fixture):
     response = client_query(
         query = '''
             query GetAnime($id: ID!) {
-                animeById(id: $id) {
+                animeById(animeId: $id) {
                     id
                     title
                     score
@@ -31,7 +30,7 @@ def test_anime_by_id_not_found(client_query, anime_fixture):
     response = client_query(
         query = '''
             query GetAnime($id: ID!) {
-                animeById(id: $id) {
+                animeById(animeId: $id) {
                     id
                     title
                     score
@@ -50,7 +49,7 @@ def test_characters_by_anime(client_query, anime_fixture):
     response = client_query(
         query = '''
             query GetCharactersByAnime($id: ID!) {
-                charactersByAnime(id: $id) {
+                charactersByAnime(animeId: $id) {
                     id
                 }
             }
@@ -66,7 +65,7 @@ def test_characters_by_anime_not_found(client_query, anime_fixture):
     response = client_query(
         query = '''
             query GetCharactersByAnime($id: ID!) {
-                charactersByAnime(id: $id) {
+                charactersByAnime(animeId: $id) {
                     id
                 }
             }

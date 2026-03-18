@@ -3,6 +3,18 @@
 | ---------- | ------- |
 | Miru       | 0.3     |
 
+## Alpha v0.5 - 3/16/2026
+- **Asobu**
+    - **Models**
+        - Add game model
+        - Add relation models (characters, games, platforms)
+    - **Graphql API**
+        - Add queries for games, character by games and franchise by games
+
+- **Talent**
+    - **Service**
+        - Improve querying efficiency
+
 ## Alpha v0.4 - 3/9/2026
 - **General**
     - Add oauth journey via D2X Accounts

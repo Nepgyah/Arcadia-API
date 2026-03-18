@@ -7,7 +7,6 @@ from asobu.models import (
     Game,
     GameCharacter,
     GamePlatform,
-    GameRelation,
     DLC
 )
 from base.schema import GenreType
@@ -41,16 +40,16 @@ class GameCharacterType(DjangoObjectType):
     character = graphene.Field(CharacterType)
     role = graphene.String()
 
-    def resolve_game(self, info):
+    def resolve_game(self, _info):
         return self.game
     
-    def resolve_character(self, info):
+    def resolve_character(self, _info):
         try:
             return GameCharacter.objects.get(character_id=self.character.id, game_id=self.game.id).character
         except GameCharacter.DoesNotExist:
             return None
         
-    def resolve_role(self, info):
+    def resolve_role(self, _info):
         return self.get_role_display()
 
 class GamePlatformType(DjangoObjectType):
@@ -62,10 +61,10 @@ class GamePlatformType(DjangoObjectType):
     game = graphene.Field(lambda: GameType)
     platform = graphene.Field(lambda: PlatformType)
     
-    def resolve_game(self, info):
+    def resolve_game(self, _info):
         return Game.objects.get(id=self.game.id)
     
-    def resolve_platform(self, info):
+    def resolve_platform(self, _info):
         return Platform.objects.get(id=self.platform.id)
 
 class GameType(DjangoObjectType):
@@ -84,31 +83,31 @@ class GameType(DjangoObjectType):
     character_relations = graphene.List(GameCharacterType)
     platforms = graphene.List(GamePlatformType)
 
-    def resolve_status(self, info):
+    def resolve_status(self, _info):
         return self.get_status_display()
     
-    def resolve_tags(self, info):
+    def resolve_tags(self, _info):
         return self.tags.all()
 
-    def resolve_genres(self, info):
+    def resolve_genres(self, _info):
         return self.genres.all()
     
-    def resolve_esrb_rating(self, info):
+    def resolve_esrb_rating(self, _info):
         return self.get_esrb_rating_display()
     
-    def resolve_pegi_rating(self, info):
+    def resolve_pegi_rating(self, _info):
         return self.get_pegi_rating_display()
     
-    def resolve_developers(self, info):
+    def resolve_developers(self, _info):
         return self.developers.all()
 
-    def resolve_publishers(self, info):
+    def resolve_publishers(self, _info):
         return self.publishers.all()
     
-    def resolve_character_relations(self, info):
+    def resolve_character_relations(self, _info):
         return self.gamecharacter_set.all()
     
-    def resolve_platforms(self, info):
+    def resolve_platforms(self, _info):
         return self.gameplatform_set.all()
     
 class DLCType(DjangoObjectType):
@@ -119,6 +118,6 @@ class DLCType(DjangoObjectType):
         
     game = graphene.Field(GameType)
 
-    def resolve_game(self, info):
+    def resolve_game(self, _info):
         return Game.objects.get(id=self.game.id)
     

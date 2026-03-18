@@ -23,6 +23,14 @@ jobs:
           pip install -r requirements.txt
           pip install pylint
 
+      - name: Analysing Asobu App
+        run: |
+          pylint asobu
+
       - name: Analysing Miru App
         run: |
           pylint miru
+
+      - name: Analysing Talent App
+        run: |
+          pylint talent

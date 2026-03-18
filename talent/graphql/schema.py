@@ -15,7 +15,7 @@ class VoiceActorType(DjangoObjectType):
         model = VoiceActor
         fields = "__all__"
 
-    def resolve_characters(self, info):
+    def resolve_characters(self, _info):
         return self.characters.all()
 
 class CharacterType(DjangoObjectType):
@@ -25,5 +25,5 @@ class CharacterType(DjangoObjectType):
         model = Character
         fields = "__all__"
 
-    def resolve_voice_actor(self, info):
+    def resolve_voice_actor(self, _info):
         return VoiceActorService.get_voice_actor_by_id(self.voice_actor.id)

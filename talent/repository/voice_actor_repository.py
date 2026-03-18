@@ -1,5 +1,3 @@
-from django.db.models import prefetch_related_objects
-
 from talent.models import (
     VoiceActor
 )
@@ -7,9 +5,9 @@ from talent.models import (
 class VoiceActorRepository:
 
     @staticmethod
-    def get_voice_actor_by_id(id):
+    def get_voice_actor_by_id(va_id):
         try:
-            return VoiceActor.objects.prefetch_related('characters').get(id=id)
+            return VoiceActor.objects.prefetch_related('characters').get(id=va_id)
         except VoiceActor.DoesNotExist:
             return None
         
