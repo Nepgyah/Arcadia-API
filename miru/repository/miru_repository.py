@@ -13,8 +13,9 @@ class MiruRepository:
     def get_anime_by_id(anime_id: int) -> Anime:
         try:
             return Anime.objects.select_related(
-                'season',
-                'studio'
+                'prev_anime',
+                'next_anime',
+                'franchise'
             ).prefetch_related(
                 'genres'
             ).get(id=anime_id)

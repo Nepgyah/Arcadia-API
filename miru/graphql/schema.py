@@ -1,6 +1,7 @@
 import graphene
 from graphene_django import DjangoObjectType
 from miru.models.anime import Anime
+from miru.models.misc import AnimeCompany
 from miru.models.relations import (
     AnimeCharacter,
     AnimeEpisode,
@@ -9,6 +10,12 @@ from miru.models.relations import (
 from miru.models.list_entry import AnimeListEntry
 from talent.graphql.schema import CharacterType
 from base.schema import GenreType
+
+class AnimeCompanyType(DjangoObjectType):
+
+    class Meta:
+        model = AnimeCompany
+        fields = "__all__"
 
 class AnimeCharacterType(DjangoObjectType):
     character = graphene.Field(CharacterType)
@@ -50,58 +57,53 @@ class AnimeNextFlowType(DjangoObjectType):
         return self.to_anime
     
 class AnimeType(DjangoObjectType):
-    status = graphene.String()
-    type = graphene.String()
-    rating = graphene.String()
     season = graphene.String()
+    type = graphene.String()
+    status = graphene.String()
+    rating = graphene.String()
     genres = graphene.List(GenreType)
+
     characters = graphene.List(AnimeCharacterType)
-    studio = graphene.String()
-    prev_anime = graphene.Field(AnimePrevFlowType)
-    next_anime = graphene.Field(AnimeNextFlowType)
-    latest_episode = graphene.Field(lambda: AnimeEpisodeType)
+
+    producers = graphene.List(AnimeCompanyType)
+    studios = graphene.List(AnimeCharacterType)
+
+    prev_anime = graphene.List(lambda: AnimeType)
+    next_anime = graphene.List(lambda: AnimeType)
 
     class Meta:
         model = Anime
         fields = "__all__"
 
-    def resolve_rating(self, _info):
-        return self.get_rating_display()
-    
+    def resolve_season(self, _info):
+        return self.season_string
+
     def resolve_type(self, _info):
         return self.get_type_display()
     
     def resolve_status(self, _info):
         return self.get_status_display()
     
-    def resolve_season(self, _info):
-        if self.season:
-            return str(self.season)
-        return 'N/A'
+    def resolve_rating(self, _info):
+        return self.get_rating_display()
     
     def resolve_genres(self, _info):
         return self.genres.all()
     
-    def resolve_studio(self, _info):
-        return self.studio
-    
     def resolve_characters(self, _info):
         return AnimeCharacter.objects.filter(anime=self)
     
-    def resolve_prev_anime(self, _info):
-        try:
-            return RelatedAnime.objects.get(to_anime_id=self.id, relation_type='series_entry')
-        except RelatedAnime.DoesNotExist:
-            return None
-        
-    def resolve_next_anime(self, _info):
-        try:
-            return RelatedAnime.objects.get(from_anime_id=self.id, relation_type='series_entry')
-        except RelatedAnime.DoesNotExist:
-            return None
+    def resolve_producers(self, _info):
+        return []
     
-    def resolve_latest_episode(self, _info):
-        return AnimeEpisode.objects.filter(anime=self).last()
+    def resolve_studios(self, _info):
+        return []
+    
+    def resolve_prev_anime(self, _info):
+        return self.prev_anime
+    
+    def resolve_next_anime(self, _info):
+        return self.next_anime
     
 class AnimeListEntryType(DjangoObjectType):
     status = graphene.Int()

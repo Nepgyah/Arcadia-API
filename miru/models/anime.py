@@ -4,7 +4,6 @@ from base.models import (
     Media
 )
 from talent.models import Character
-from miru.models.relations import AnimeCharacter
 from .misc import AnimeCompany
 
 class Anime(Media):
@@ -68,6 +67,10 @@ class Anime(Media):
 
     def __str__(self):
         return str(self.title)
+    
+    @property
+    def season_string(self):
+        return f"{self.get_season_display()} {self.season_year}"
     
 class AniListData(models.Model):
 
