@@ -55,4 +55,6 @@ def SyncMainData(anime_obj, data) -> None:
 
     formatted_end_date = f"{data.get('endDate').get('year')}-{data.get('endDate').get('month')}-{data.get('endDate').get('day')}"
     anime_obj.airing_end_date = formatted_end_date
+
+    anime_obj.summary = data.get('description')
         

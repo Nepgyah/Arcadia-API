@@ -19,6 +19,7 @@ def FetchAnilistData(anilist_id):
                 native
                 romaji
             }
+            description
             synonyms
             season
             seasonYear
