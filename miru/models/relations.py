@@ -35,6 +35,7 @@ class AnimeEpisode(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(default='A description will be written later')
     anime = models.ForeignKey('miru.anime', on_delete=models.CASCADE, null=False, blank=False, related_name='episodes')
+    cover_img_url = models.URLField(null=True, blank=True)
     url = models.URLField(null=True, blank=True)
 
     class Meta:

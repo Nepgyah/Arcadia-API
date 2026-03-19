@@ -10,8 +10,9 @@ class Talent(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     bio = models.TextField(default='A bio will be written later', blank=True)
     socials = models.JSONField(null=True, blank=True)
-
-    class Meta:
+    cover_img_url = models.URLField(null=True, blank=True)
+    
+    class Meta: 
         abstract = True
 
     def save(self, *args, **kwargs):
@@ -40,15 +41,23 @@ class Character(models.Model):
     nicknames=models.JSONField(default=list, blank=True)
     slug=models.SlugField(unique=True, blank=True)
     voice_actor=models.ForeignKey(VoiceActor, on_delete=models.SET_NULL, null=True, blank=True, related_name='characters')
+    cover_img_url = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name or ''}"
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            full_name = f"{self.first_name} {self.last_name}".strip()
+            temp_last_name = self.last_name
+            if temp_last_name is None:
+                temp_last_name = ""
+            full_name = f"{self.first_name} {temp_last_name}".strip()
             self.slug = unique_slugify(self, full_name)
         super().save(*args, **kwargs)
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name or ''}"
     
 class Artist(Talent):
     name = models.CharField(max_length=150)

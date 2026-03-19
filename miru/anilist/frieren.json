@@ -1,0 +1,710 @@
+{
+  "data": {
+    "Media": {
+      "title": {
+        "english": "Umamusume: Pretty Derby",
+        "native": "ウマ娘 プリティーダービー",
+        "romaji": "Uma Musume: Pretty Derby"
+      },
+      "synonyms": [
+        "สาวม้าโมเอะ"
+      ],
+      "season": "SPRING",
+      "seasonYear": 2018,
+      "format": "TV",
+      "status": "FINISHED",
+      "episodes": 13,
+      "hashtag": "#アニメウマ娘 #ウマ娘",
+      "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98514-0uYzay4a1iiL.jpg",
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx98514-mEh3Gl58AWgc.jpg"
+      },
+      "genres": [
+        "Drama",
+        "Slice of Life",
+        "Sports"
+      ],
+      "startDate": {
+        "day": 2,
+        "month": 4,
+        "year": 2018
+      },
+      "endDate": {
+        "day": 18,
+        "month": 6,
+        "year": 2018
+      },
+      "streamingEpisodes": [
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff8c8874c8c5aaed120c531acc0596e1522582422_full.jpg",
+          "title": "Episode 1 - Gate of Dreams!"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/94cb334c62fb8fdcf1120f1a4d7e6e621522582529_full.jpg",
+          "title": "Episode 2 - The Debut Race out of Nowhere"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e8a4673fac1347c6857d55211114556e1523178571_full.jpg",
+          "title": "Episode 3 - First Big Win"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/556f5de6c37bc696bb5b6ea27c1c82631523786845_full.jpg",
+          "title": "Episode 4 - Special Training!"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2de647128b901f483bd6102f3d4d44e1524401637_full.jpg",
+          "title": "Episode 5 - The Derby With Rivals"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fcf55d9d062555e8dc2ea31b4428aee21524697366_full.jpg",
+          "title": "Episode 6 - Autumn Skies and Horse Girls"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/bab3402d5f2fb54e874b44ee1a9279ae1525617767_full.jpg",
+          "title": "Episode 7 - Promise"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/773179619a90f810141ef51626e30ac81526218968_full.jpg",
+          "title": "Episode 8 - For You"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a82688073847b62be1ea5cf1b071489b1526823413_full.jpg",
+          "title": "Episode 9 - Dreams of Spica"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d6bb2fcfde60aefb30901243ac07df51527577246_full.jpg",
+          "title": "Episode 10 - No Matter How Many Times I Lose"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/585e21eae3d229db2597fa8bd17f6a901528009131_full.jpg",
+          "title": "Episode 11 - Welcome Back!"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/978ab24c5d15c131fa7d87e1c7709cdc1528623466_full.jpg",
+          "title": "Episode 12 - Stage of Dreams"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
+          "title": "Episode 13 - Echo, Fanfare!"
+        }
+      ],
+      "characters": {
+        "edges": [
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Oguri Cap",
+                "full": "Oguri Cap",
+                "last": ""
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b96114-uqnjPK9012rB.png"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Tomoyo",
+                  "last": "Takayanagi"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n122320-tV8CERbhYcNV.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "MAIN",
+            "node": {
+              "name": {
+                "first": "Silence Suzuka",
+                "full": "Silence Suzuka",
+                "last": ""
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125298-MyaIqv1U5mcg.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Marika",
+                  "last": "Kouno"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n119383-En92dXrTlJTY.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "MAIN",
+            "node": {
+              "name": {
+                "first": "Special Week",
+                "full": "Special Week",
+                "last": ""
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125299-hFsb6X8zcV7B.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Azumi",
+                  "last": "Waki"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n119517-ggxWaTnTOrxW.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Toukai Teiou",
+                "full": "Toukai Teiou",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125300-HdAysj1aqAbS.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Machico",
+                  "last": ""
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n119606-f5yQ1XJAQiBN.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Daiwa Scarlet",
+                "full": "Daiwa Scarlet",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125301-8Di5MojIiCLP.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Chisa",
+                  "last": "Kimura"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/125302-IauFzcIvSkos.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "El Condor Pasa",
+                "full": "El Condor Pasa",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125303-cVlxMH7W2zVE.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Minami",
+                  "last": "Takahashi"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n117003-UucaZmQjVSV7.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Vodka",
+                "full": "Vodka",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125304-Sd9UI8WVvqaA.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Ayaka",
+                  "last": "Oohashi"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n110903-GTQtkAs2pmO5.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Gold Ship",
+                "full": "Gold Ship",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125305-EH7Kf1WPFY5x.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Hitomi",
+                  "last": "Ueda"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n125306-Kq7WCcO2EwbG.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Trainer",
+                "full": "Trainer",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/125308-zi5QLqjXLBAF.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Kouji",
+                  "last": "Okino"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n127044-YGqvBYZ6ZfG2.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Mejiro McQueen",
+                "full": "Mejiro McQueen",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125309-gt6fsEghQK4D.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Saori",
+                  "last": "Oonishi"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n114884-UzAes6hUiiOJ.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Seiun Sky",
+                "full": "Seiun Sky",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125310-fhRVTmEHlipC.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Akari",
+                  "last": "Kitou"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n119722-Ls7ORfBejJEP.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Maruzensky",
+                "full": "Maruzensky",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140842-bsmco7QSJAaq.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Lynn",
+                  "last": ""
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n118806-AlHvdje5aHje.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Narita Brian",
+                "full": "Narita Brian",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140843-LbiFefZSH8w5.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Yuuka",
+                  "last": "Aisaka"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n118478-DPtc9CAmbJOC.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Symboli Rudolf",
+                "full": "Symboli Rudolf",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140844-96LRbgsDyMdV.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Azusa",
+                  "last": "Tadokoro"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n112297-seUP8O4obuYO.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "T.M. Opera O",
+                "full": "T.M. Opera O",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140845-BT4Q3o93CM1u.png"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Sora",
+                  "last": "Tokui"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n106361-EMvWLkEKavEM.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Air Groove",
+                "full": "Air Groove",
+                "last": ""
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140846-gsLxIFWO23fg.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Ruriko",
+                  "last": "Aoki"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/24922-GZMYC1vTwn4W.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Fuji Kiseki",
+                "full": "Fuji Kiseki",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140847-q56xUfctlT9f.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Eriko",
+                  "last": "Matsui"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n115835-3uhE3pEKEsEN.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Grass Wonder",
+                "full": "Grass Wonder",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140848-pYoMXeoZ8Pve.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Rena",
+                  "last": "Maeda"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n112101-nOHhohG1NHb9.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Taiki Shuttle",
+                "full": "Taiki Shuttle",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140849-f4tLbbh2wTQ0.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Yuka",
+                  "last": "Ootsubo"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n107452-PcfGagaON83G.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Hishi Amazon",
+                "full": "Hishi Amazon",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b140850-O7JnZLOjrNkB.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Yuiko",
+                  "last": "Tatsumi"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n101997-AUljb27RuBmm.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "King Halo",
+                "full": "King Halo",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b164139-0ko3YUiGiYKi.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Iori",
+                  "last": "Saeki"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n139844-zjqS38xT2FK4.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Biwa Hayahide",
+                "full": "Biwa Hayahide",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b174851-9HjNmymT6Gig.png"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Yui",
+                  "last": "Kondou"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n118538-uTOPpwruceqk.png"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Winning Ticket",
+                "full": "Winning Ticket",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b174852-lfncTjSNRYAp.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Yui",
+                  "last": "Watanabe"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/11864.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Hana",
+                "full": "Hana Toujou",
+                "last": "Toujou"
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b200349-H9F8fl4kDnIq.png"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Megumi",
+                  "last": "Toyoguchi"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n95144-9Y8CtDVmxogE.jpg"
+                }
+              }
+            ]
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "name": {
+                "first": "Nice Nature",
+                "full": "Nice Nature",
+                "last": null
+              },
+              "image": {
+                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b200350-UsnX4I52yudh.jpg"
+              }
+            },
+            "voiceActors": [
+              {
+                "name": {
+                  "first": "Kaori",
+                  "last": "Maeda"
+                },
+                "image": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/staff/large/n126863-UhefvoqVWVbB.jpg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

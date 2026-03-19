@@ -46,7 +46,7 @@ class Anime(Media):
     type = models.IntegerField(choices=MediaType, default=MediaType.TV)
     status = models.IntegerField(choices=Status.choices, default=Status.NOT_YET_AIRED, blank=True)
     rating = models.IntegerField(choices=Rating.choices, default=Rating.NOT_RATED)
-    genres= models.ManyToManyField(Genre, related_name='animes', blank=True)
+    genres = models.ManyToManyField(Genre, related_name='animes', blank=True)
     episode_count = models.SmallIntegerField(null=True, blank=True)
     hashtag = models.CharField(max_length=128, null=True, blank=True)
     banner_img_url = models.URLField(null=True, blank=True)
@@ -54,8 +54,8 @@ class Anime(Media):
 
     characters = models.ManyToManyField(Character, through='AnimeCharacter', related_name='animes', blank=True)
 
-    producer = models.ManyToManyField(AnimeCompany, related_name='produced_animes', null=True, blank=True)
-    studio = models.ManyToManyField(AnimeCompany, related_name='studio_animes', null=True, blank=True)
+    producer = models.ManyToManyField(AnimeCompany, related_name='produced_animes', null=True)
+    studio = models.ManyToManyField(AnimeCompany, related_name='studio_animes', null=True)
 
     prev_anime = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='next_entries')
     related_anime = models.ManyToManyField('self', through='RelatedAnime', symmetrical=False, related_name='related_to_anime', blank=True)
@@ -75,7 +75,10 @@ class Anime(Media):
     
 class AniListData(models.Model):
 
-    anime = models.OneToOneField(Anime, on_delete=models.CASCADE, primary_key=True)
-    anilist_id = models.IntegerField(null=False, blank=False)
+    anime = models.OneToOneField(Anime, on_delete=models.CASCADE, null=True, blank=True)
+    anilist_id = models.IntegerField(null=False, blank=False, unique=True)
     rank_score = models.SmallIntegerField(null=True, blank=True)
     rank_popular = models.SmallIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return str(f"Anilist data for: {self.anime}")

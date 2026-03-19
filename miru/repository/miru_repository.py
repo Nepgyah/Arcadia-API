@@ -19,8 +19,6 @@ class MiruRepository:
                 'genres',
                 'next_entries'
             ).get(id=anime_id)
-            print(anime.prev_anime)
-            print(anime.next_entries.all())
             return anime
         except Anime.DoesNotExist:
             return None

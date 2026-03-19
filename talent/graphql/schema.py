@@ -20,6 +20,7 @@ class VoiceActorType(DjangoObjectType):
 
 class CharacterType(DjangoObjectType):
     voice_actor = graphene.Field(VoiceActorType)
+    full_name = graphene.String()
 
     class Meta:
         model = Character
@@ -27,3 +28,6 @@ class CharacterType(DjangoObjectType):
 
     def resolve_voice_actor(self, _info):
         return VoiceActorService.get_voice_actor_by_id(self.voice_actor.id)
+    
+    def resolve_full_name(self, _info):
+        return self.full_name

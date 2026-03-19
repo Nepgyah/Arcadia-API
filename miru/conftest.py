@@ -1,9 +1,6 @@
 import pytest
-from miru.models import (
-    Anime, 
-    AnimeCharacter,
-    AnimeRelation
-)
+from miru.models.anime import Anime
+from miru.models.relations import AnimeCharacter
 from talent.models import Character
 
 # Conftest allows you to declare fixtures and have every test below in the tree access them
@@ -19,24 +16,15 @@ def anime_fixture():
     return anime
 
 @pytest.fixture
-def anime_sequel_fixture():
+def anime_sequel_fixture(anime_fixture):
     anime = Anime.objects.create(
-        title='Bocchi the rock',
-        slug='bocchi-the-rock',
+        title='Bocchi the rock Season 2',
+        slug='bocchi-the-rock-season-2',
+        prev_anime=anime_fixture,
         type=0
     )
 
     return anime
-
-@pytest.fixture
-def anime_relation_fixture(anime_fixture, anime_sequel_fixture):
-    anime_relation = AnimeRelation.objects.create(
-        from_anime = anime_fixture,
-        to_anime = anime_sequel_fixture,
-        relation_type = 'series_entry'
-    )
-
-    return anime_relation
 
 @pytest.fixture
 def bocchi_character_fixtures(anime_fixture):
