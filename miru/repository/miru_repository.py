@@ -1,9 +1,9 @@
-from miru.models import (
-    Anime,
+from miru.models.anime import Anime
+from miru.models.relations import (
     AnimeCharacter,
-    AnimeListEntry,
     AnimeEpisode
 )
+from miru.models.list_entry import AnimeListEntry
 from users.models import User
 
 class MiruRepository:

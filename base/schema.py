@@ -5,7 +5,6 @@ from .models import (
     Franchise,
     Genre
 )
-from miru.models import Anime
 from base.repository.franchise_repository import FranchiseRepository
 from base.service.franchise_service import FranchiseService
 

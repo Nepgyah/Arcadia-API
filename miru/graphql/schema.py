@@ -1,12 +1,12 @@
 import graphene
 from graphene_django import DjangoObjectType
-from miru.models import (
-    Anime,
+from miru.models.anime import Anime
+from miru.models.relations import (
     AnimeCharacter,
-    AnimeListEntry,
-    AnimeRelation,
-    AnimeEpisode
+    AnimeEpisode,
+    RelatedAnime
 )
+from miru.models.list_entry import AnimeListEntry
 from talent.graphql.schema import CharacterType
 from base.schema import GenreType
 
@@ -26,7 +26,7 @@ class AnimePrevFlowType(DjangoObjectType):
     anime = graphene.Field(lambda: AnimeType)
 
     class Meta:
-        model = AnimeRelation
+        model = RelatedAnime
         fields = "__all__"
 
     def resolve_relation_type(self, _info):
@@ -40,7 +40,7 @@ class AnimeNextFlowType(DjangoObjectType):
     anime = graphene.Field(lambda: AnimeType)
 
     class Meta:
-        model = AnimeRelation
+        model = RelatedAnime
         fields = "__all__"
 
     def resolve_relation_type(self, _info):
@@ -90,14 +90,14 @@ class AnimeType(DjangoObjectType):
     
     def resolve_prev_anime(self, _info):
         try:
-            return AnimeRelation.objects.get(to_anime_id=self.id, relation_type='series_entry')
-        except AnimeRelation.DoesNotExist:
+            return RelatedAnime.objects.get(to_anime_id=self.id, relation_type='series_entry')
+        except RelatedAnime.DoesNotExist:
             return None
         
     def resolve_next_anime(self, _info):
         try:
-            return AnimeRelation.objects.get(from_anime_id=self.id, relation_type='series_entry')
-        except AnimeRelation.DoesNotExist:
+            return RelatedAnime.objects.get(from_anime_id=self.id, relation_type='series_entry')
+        except RelatedAnime.DoesNotExist:
             return None
     
     def resolve_latest_episode(self, _info):
