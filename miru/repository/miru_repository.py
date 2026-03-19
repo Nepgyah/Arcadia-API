@@ -12,13 +12,16 @@ class MiruRepository:
     @staticmethod
     def get_anime_by_id(anime_id: int) -> Anime:
         try:
-            return Anime.objects.select_related(
+            anime = Anime.objects.select_related(
                 'prev_anime',
-                'next_anime',
                 'franchise'
             ).prefetch_related(
-                'genres'
+                'genres',
+                'next_entries'
             ).get(id=anime_id)
+            print(anime.prev_anime)
+            print(anime.next_entries.all())
+            return anime
         except Anime.DoesNotExist:
             return None
         

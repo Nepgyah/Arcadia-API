@@ -68,8 +68,8 @@ class AnimeType(DjangoObjectType):
     producers = graphene.List(AnimeCompanyType)
     studios = graphene.List(AnimeCharacterType)
 
-    prev_anime = graphene.List(lambda: AnimeType)
-    next_anime = graphene.List(lambda: AnimeType)
+    prequel = graphene.Field(lambda: AnimeType)
+    sequels = graphene.List(lambda: AnimeType)
 
     class Meta:
         model = Anime
@@ -99,11 +99,11 @@ class AnimeType(DjangoObjectType):
     def resolve_studios(self, _info):
         return []
     
-    def resolve_prev_anime(self, _info):
+    def resolve_prequel(self, _info):
         return self.prev_anime
     
-    def resolve_next_anime(self, _info):
-        return self.next_anime
+    def resolve_sequels(self, _info):
+        return self.next_entries.all()
     
 class AnimeListEntryType(DjangoObjectType):
     status = graphene.Int()

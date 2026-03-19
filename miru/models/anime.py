@@ -57,8 +57,7 @@ class Anime(Media):
     producer = models.ManyToManyField(AnimeCompany, related_name='produced_animes', null=True, blank=True)
     studio = models.ManyToManyField(AnimeCompany, related_name='studio_animes', null=True, blank=True)
 
-    prev_anime = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='as_next_anime')
-    next_anime = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='as_previous_anime')
+    prev_anime = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='next_entries')
     related_anime = models.ManyToManyField('self', through='RelatedAnime', symmetrical=False, related_name='related_to_anime', blank=True)
 
     airing_start_date=models.DateField(null=True, blank=True)
