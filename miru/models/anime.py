@@ -69,6 +69,8 @@ class Anime(Media):
     
     @property
     def season_string(self):
+        if self.season is None and self.season_year is None:
+            return None
         return f"{self.get_season_display()} {self.season_year}"
     
 class AniListData(models.Model):
