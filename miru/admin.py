@@ -1,3 +1,4 @@
+import logging
 from django.db import transaction, IntegrityError
 from django.contrib import admin
 from base.anilist_scripts.syncGenres import SyncGenres
@@ -8,7 +9,6 @@ from miru.anilist.syncEpisodes import SyncEpisodes
 from miru.anilist.syncCharacters import SyncCharacters
 from .models.anime import (
     Anime,
-    AniListImporter,
     AniListData
 )
 from .models.relations import (
@@ -42,43 +42,57 @@ admin.site.register(AnimeCompany)
 admin.site.register(AnimeListEntry)
 admin.site.register(AnimeEpisode)
 
-@admin.register(AniListImporter)
+@admin.register(AniListData)
 class AniListImporterAdmin(admin.ModelAdmin):
     form = AniListForm
 
     def save_model(self, request, obj, form, change):
         anilist_id = form.cleaned_data.get('anilist_id')
 
-        #TODO: Call anilist data script
         try:
             with transaction.atomic():
+                logging.basicConfig(level=logging.INFO)
                 anime_obj = Anime()
                 anilist_data = FetchAnilistData(anilist_id)
+                logging.info("Fetching anilist data: Success - Anilist ID: %s", anilist_id)
 
                 SyncMainData(anime_obj, anilist_data)
-
-                #TODO: SAVE ANIME OBJ
                 anime_obj.save()
-                
+                logging.info("Saving anime object: Success - ID: %s", anime_obj.id)
+
                 SyncAnimeCompanies(anime_obj, anilist_data)
+                logging.info('Syncing companies: Success')
 
                 genre_list = SyncGenres(anilist_data)
                 anime_obj.genres.set(genre_list)
+                logging.info('Syncing genres: Success')
 
                 SyncEpisodes(anime_obj, anilist_data)
+                logging.info('Syncing episodes: Success')
 
                 SyncCharacters(anime_obj, anilist_data)
-                
-                AniListData.objects.create(
-                    anime = anime_obj,
-                    anilist_id = anilist_id,
-                    rank_score = anilist_data.get('rankings')[0].get('rank'),
-                    rank_popular = None
-                )
-        except IntegrityError:
-            print('Integirty error')
+                logging.info('Syncing characters: Success')
 
+                rank_score = None
+                rank_popular = None
+
+                for rank_item in anilist_data.get('rankings'):
+                    if rank_item.get('type') == 'POPULAR' and bool(rank_item.get('allTime')):
+                        rank_popular = rank_item.get('rank')
+                    
+                    if rank_item.get('type') == 'RATED' and bool(rank_item.get('allTime')):
+                        rank_score = rank_item.get('rank')
+                
+                logging.info('Syncing anilist rankings: Success')
+
+                obj.anime = anime_obj
+                obj.anilist_id = anilist_id
+                obj.rank_score = rank_score
+                obj.rank_popular = rank_popular
+                
+                logging.basicConfig(level=logging.WARNING)
+
+                return super().save_model(request, obj, form, change)
+            
         except Exception as e:
-            print(f'integrity error: {e}')
-        # obj.sync_with_anilist()
-        # return super().save_model(request, obj, form, change)
+            logging.error('Exception: %s', e)

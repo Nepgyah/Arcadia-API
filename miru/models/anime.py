@@ -54,8 +54,8 @@ class Anime(Media):
 
     characters = models.ManyToManyField(Character, through='AnimeCharacter', related_name='animes', blank=True)
 
-    producer = models.ManyToManyField(AnimeCompany, related_name='produced_animes', null=True, blank=True)
-    studio = models.ManyToManyField(AnimeCompany, related_name='studio_animes', null=True, blank=True)
+    producer = models.ManyToManyField(AnimeCompany, related_name='produced_animes', null=True)
+    studio = models.ManyToManyField(AnimeCompany, related_name='studio_animes', null=True)
 
     prev_anime = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='next_entries')
     related_anime = models.ManyToManyField('self', through='RelatedAnime', symmetrical=False, related_name='related_to_anime', blank=True)
@@ -76,15 +76,9 @@ class Anime(Media):
 class AniListData(models.Model):
 
     anime = models.OneToOneField(Anime, on_delete=models.CASCADE, null=True, blank=True)
-    anilist_id = models.IntegerField(null=False, blank=False)
+    anilist_id = models.IntegerField(null=False, blank=False, unique=True)
     rank_score = models.SmallIntegerField(null=True, blank=True)
     rank_popular = models.SmallIntegerField(null=True, blank=True)
 
     def __str__(self):
         return str(f"Anilist data for: {self.anime}")
-    
-class AniListImporter(AniListData):
-    class Meta:
-        proxy = True
-        verbose_name = "Anilist Importer"
-        verbose_name_plural = "Anilist Importers"

@@ -1,9 +1,9 @@
 from django import forms
-from miru.models.anime import AniListImporter
+from miru.models.anime import AniListData
 
 class AniListForm(forms.ModelForm):
     class Meta:
-        model = AniListImporter
+        model = AniListData
         fields = ['anilist_id']
 
     def clean_anilist_id(self):

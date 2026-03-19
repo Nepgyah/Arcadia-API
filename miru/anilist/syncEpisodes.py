@@ -1,3 +1,4 @@
+import logging
 from miru.models.relations import AnimeEpisode
 
 def SyncEpisodes(anime_obj, data):
@@ -6,13 +7,16 @@ def SyncEpisodes(anime_obj, data):
     """
     episodes_data = data.get('streamingEpisodes')
     if episodes_data == []:
-        print('Skipping episodes')
         return
     
     episode_objects = []
 
     for index, episode in enumerate(episodes_data):
         ep_title = episode.get('title')
+        if ep_title == 'Unknown':
+            logging.warning('Unknown episode data found, skipping episode sync')
+            break
+
         formatted_title = ep_title.split('-')[1].strip()
 
         temp_episode = AnimeEpisode(
