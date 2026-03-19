@@ -19,7 +19,7 @@ class Genre(models.Model):
     name=models.CharField(max_length=150)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 class Franchise(models.Model):
     
@@ -28,7 +28,7 @@ class Franchise(models.Model):
     socials = models.JSONField(null=True, blank=True)
     
     def __str__(self):
-        return self.name
+        return str(self.name)
     
     def save(self, *args, **kwargs):
         self.slug = unique_slugify(instance=self, value=self.name)

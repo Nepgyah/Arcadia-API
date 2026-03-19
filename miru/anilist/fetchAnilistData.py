@@ -1,15 +1,14 @@
 import os
 from pathlib import Path
 import requests
-import os
-import json
 BASE_DIR = Path(__file__).resolve().parent
 
 def FetchAnilistData(anilist_id):
     anilist_api_url = os.environ.get('ANILIST_API')
+
     if anilist_api_url is None:
         print('ANILIST_API env key not found')
-        return
+        return None
     
     query = '''
     query Media($mediaId: Int) {
@@ -72,6 +71,14 @@ def FetchAnilistData(anilist_id):
                     }
                 }
             }
+            studios {
+                edges {
+                    node {
+                        isAnimationStudio
+                        name
+                    }
+                }
+            }
         }
     }
     '''
@@ -93,3 +100,4 @@ def FetchAnilistData(anilist_id):
 
     except requests.Timeout:
         print('Error: Anilist API timed out')
+        return None

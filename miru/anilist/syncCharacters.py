@@ -1,6 +1,6 @@
 from miru.models.relations import AnimeCharacter
 from talent.models import Character
-from miru.anilist.syncVoiceActor import SyncVoiceActor
+from base.anilist_scripts.syncVoiceActor import SyncVoiceActor
 
 def SyncCharacters(anime_obj, data):
 
@@ -13,7 +13,6 @@ def SyncCharacters(anime_obj, data):
         if va_data:
             va_object = SyncVoiceActor(va_data[0])
         else:
-            print('No voice actor data found')
             va_object = None
             
         first_name = character.get('node').get('name').get('first')
@@ -27,7 +26,6 @@ def SyncCharacters(anime_obj, data):
                 last_name=last_name,
                 voice_actor=va_object
             )
-            print(f"Character found: {arcadia_character}")
             
         except Character.DoesNotExist:
             arcadia_character = Character.objects.create(
@@ -36,7 +34,6 @@ def SyncCharacters(anime_obj, data):
                 cover_img_url=character.get('node').get('image').get('large'),
                 voice_actor=va_object
             )
-            print(f"New character created: {arcadia_character}")
 
         if character.get('role') == 'MAIN':
             role = 0

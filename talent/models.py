@@ -54,6 +54,10 @@ class Character(models.Model):
             full_name = f"{self.first_name} {temp_last_name}".strip()
             self.slug = unique_slugify(self, full_name)
         super().save(*args, **kwargs)
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name or ''}"
     
 class Artist(Talent):
     name = models.CharField(max_length=150)
