@@ -11,6 +11,7 @@ from .models.relations import (
 from .forms import AniListForm
 from .models.misc import AnimeCompany
 from .models.list_entry import AnimeListEntry
+from miru.anilist.anilist_main import FetchAnilistEntry
 
 # Register your models here.
 class AnimeCharacterInline(admin.TabularInline):
@@ -40,6 +41,11 @@ class AniListImporterAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
 
         #TODO: Call anilist data script
-        print('Running Anilist')
-        obj.sync_with_anilist()
+        anime_obj = Anime()
+        FetchAnilistEntry(anime_obj)
+        print('Done')
+        print(anime_obj.title)
+        print(anime_obj.airing_start_date)
+        print(anime_obj.airing_end_date)
+        # obj.sync_with_anilist()
         # return super().save_model(request, obj, form, change)

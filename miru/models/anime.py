@@ -47,7 +47,7 @@ class Anime(Media):
     type = models.IntegerField(choices=MediaType, default=MediaType.TV)
     status = models.IntegerField(choices=Status.choices, default=Status.NOT_YET_AIRED, blank=True)
     rating = models.IntegerField(choices=Rating.choices, default=Rating.NOT_RATED)
-    genres= models.ManyToManyField(Genre, related_name='animes', blank=True)
+    genres = models.ManyToManyField(Genre, related_name='animes', blank=True)
     episode_count = models.SmallIntegerField(null=True, blank=True)
     hashtag = models.CharField(max_length=128, null=True, blank=True)
     banner_img_url = models.URLField(null=True, blank=True)
