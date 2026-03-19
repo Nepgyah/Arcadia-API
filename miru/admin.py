@@ -1,5 +1,6 @@
 from django.db import transaction, IntegrityError
 from django.contrib import admin
+from base.anilist_scripts.syncGenres import SyncGenres
 from miru.anilist.fetchAnilistData import FetchAnilistData
 from miru.anilist.syncMainData import SyncMainData
 from miru.anilist.syncEpisodes import SyncEpisodes
@@ -55,11 +56,15 @@ class AniListImporterAdmin(admin.ModelAdmin):
 
                 #TODO: SAVE ANIME OBJ
                 anime_obj.save()
-
+                
+                genre_list = SyncGenres(anilist_data)
+                anime_obj.genres.set(genre_list)
+                
                 SyncEpisodes(anime_obj, anilist_data)
 
                 SyncCharacters(anime_obj, anilist_data)
-                print('Done')
+
+
         except Exception as e:
             print(f'integrity error: {e}')
         # obj.sync_with_anilist()
