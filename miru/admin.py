@@ -1,10 +1,14 @@
 from django.contrib import admin
-from .models.anime import Anime
+from .models.anime import (
+    Anime,
+    AniListImporter
+)
 from .models.relations import (
     AnimeCharacter,
     AnimeEpisode,
     RelatedAnime
 )
+from .forms import AniListForm
 from .models.misc import AnimeCompany
 from .models.list_entry import AnimeListEntry
 
@@ -28,3 +32,14 @@ class AnimeAdmin(admin.ModelAdmin):
 admin.site.register(AnimeCompany)
 admin.site.register(AnimeListEntry)
 admin.site.register(AnimeEpisode)
+
+@admin.register(AniListImporter)
+class AniListImporterAdmin(admin.ModelAdmin):
+    form = AniListForm
+
+    def save_model(self, request, obj, form, change):
+
+        #TODO: Call anilist data script
+        print('Running Anilist')
+        obj.sync_with_anilist()
+        # return super().save_model(request, obj, form, change)

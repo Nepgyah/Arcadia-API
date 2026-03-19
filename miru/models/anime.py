@@ -5,6 +5,7 @@ from base.models import (
 )
 from talent.models import Character
 from .misc import AnimeCompany
+from miru.anilist.anilist_main import FetchAnilistEntry
 
 class Anime(Media):
     
@@ -75,7 +76,16 @@ class Anime(Media):
     
 class AniListData(models.Model):
 
-    anime = models.OneToOneField(Anime, on_delete=models.CASCADE, primary_key=True)
+    anime = models.OneToOneField(Anime, on_delete=models.CASCADE, null=True, blank=True)
     anilist_id = models.IntegerField(null=False, blank=False)
     rank_score = models.SmallIntegerField(null=True, blank=True)
     rank_popular = models.SmallIntegerField(null=True, blank=True)
+
+class AniListImporter(AniListData):
+    class Meta:
+        proxy = True
+        verbose_name = "Anilist Importer"
+        verbose_name_plural = "Anilist Importers"
+
+    def sync_with_anilist(self):
+        FetchAnilistEntry(self)
