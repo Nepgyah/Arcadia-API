@@ -6,6 +6,7 @@ def SyncEpisodes(anime_obj, data):
     """
     episodes_data = data.get('streamingEpisodes')
     if episodes_data == []:
+        print('Skipping episodes')
         return
     
     episode_objects = []
@@ -24,4 +25,3 @@ def SyncEpisodes(anime_obj, data):
 
     #TODO: BULK SAVE EPISODES
     AnimeEpisode.objects.bulk_create(episode_objects)
-    print(episode_objects)

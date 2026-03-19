@@ -12,37 +12,83 @@ def FetchAnilistData(anilist_id):
         return
     
     query = '''
-    query Query($mediaId: Int) {
+    query Media($mediaId: Int) {
         Media(id: $mediaId) {
-            description
             title {
                 english
                 native
                 romaji
             }
+            synonyms
+            season
+            seasonYear
+            format
+            status
+            episodes
+            hashtag
+            bannerImage
+            coverImage {
+                large
+            }
+            genres
+
+            startDate {
+                day
+                month
+                year
+            }
+            endDate {
+                day
+                month
+                year
+            }
+            streamingEpisodes {
+                site
+                thumbnail
+                title
+            }
+            characters {
+                edges {
+                    role
+                    node {
+                        name {
+                            first
+                            full
+                            last
+                        }
+                        image {
+                            large
+                        }
+                    }
+                    voiceActors {
+                        name {
+                            first
+                            last
+                        }
+                        image {
+                            large
+                        }
+                    }
+                }
+            }
         }
     }
     '''
 
-    variables = {'mediaId': 182255}
+    variables = {'mediaId': anilist_id}
 
     try:
-        # print('Attempting to call anilist api')
-        # response = requests.post(
-        #     anilist_api_url,
-        #     json={'query': query, 'variables': variables },
-        #     timeout=20
-        # )
-        # if response.status_code != 200:
-        #     print('Error from anilist api')
-        
-        with open(BASE_DIR / 'frieren.json', 'r', encoding='utf-8') as f:
-            response = json.load(f)
-        
-        # data = response.json().get('data').get('Media')
-        data = response.get('data').get('Media')
+        print(f"Attempting to call anilist api for media id: {anilist_id}")
+        response = requests.post(
+            anilist_api_url,
+            json={'query': query, 'variables': variables },
+            timeout=20
+        )
+        if response.status_code != 200:
+            print('Error from anilist api')
+
+        data = response.json().get('data').get('Media')
         return data
 
-        
     except requests.Timeout:
         print('Error: Anilist API timed out')

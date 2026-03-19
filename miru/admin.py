@@ -44,12 +44,13 @@ class AniListImporterAdmin(admin.ModelAdmin):
     form = AniListForm
 
     def save_model(self, request, obj, form, change):
+        anilist_id = form.cleaned_data.get('anilist_id')
 
         #TODO: Call anilist data script
         try:
             with transaction.atomic():
                 anime_obj = Anime()
-                anilist_data = FetchAnilistData(182255)
+                anilist_data = FetchAnilistData(anilist_id)
                 SyncMainData(anime_obj, anilist_data)
 
                 #TODO: SAVE ANIME OBJ
