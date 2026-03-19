@@ -5,7 +5,6 @@ from base.models import (
 )
 from talent.models import Character
 from .misc import AnimeCompany
-from miru.anilist.anilist_main import FetchAnilistEntry
 
 class Anime(Media):
     
@@ -86,6 +85,3 @@ class AniListImporter(AniListData):
         proxy = True
         verbose_name = "Anilist Importer"
         verbose_name_plural = "Anilist Importers"
-
-    def sync_with_anilist(self):
-        FetchAnilistEntry(self)

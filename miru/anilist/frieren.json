@@ -2,38 +2,383 @@
   "data": {
     "Media": {
       "title": {
-        "english": "Frieren: Beyond Journey’s End Season 2",
-        "native": "葬送のフリーレン 第2期",
-        "romaji": "Sousou no Frieren 2nd Season"
+        "english": "Umamusume: Pretty Derby",
+        "native": "ウマ娘 プリティーダービー",
+        "romaji": "Uma Musume: Pretty Derby"
       },
       "synonyms": [
-        "Провожающая в последний путь Фрирен 2",
-        "장송의 프리렌 2기"
+        "สาวม้าโมเอะ"
       ],
-      "season": "WINTER",
-      "seasonYear": 2026,
+      "season": "SPRING",
+      "seasonYear": 2018,
       "format": "TV",
-      "status": "RELEASING",
-      "episodes": 10,
-      "hashtag": "#フリーレン #frieren",
-      "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/182255-wyHvp6zJbWsO.jpg",
+      "status": "FINISHED",
+      "episodes": 13,
+      "hashtag": "#アニメウマ娘 #ウマ娘",
+      "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98514-0uYzay4a1iiL.jpg",
       "coverImage": {
-        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx182255-butzrqd4I0aC.jpg"
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx98514-mEh3Gl58AWgc.jpg"
       },
       "genres": [
-        "Adventure",
         "Drama",
-        "Fantasy"
+        "Slice of Life",
+        "Sports"
       ],
       "startDate": {
-        "day": 16,
-        "month": 1,
-        "year": 2026
+        "day": 2,
+        "month": 4,
+        "year": 2018
       },
       "endDate": {
-        "day": 27,
-        "month": 3,
-        "year": 2026
+        "day": 18,
+        "month": 6,
+        "year": 2018
+      },
+      "streamingEpisodes": [
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff8c8874c8c5aaed120c531acc0596e1522582422_full.jpg",
+          "title": "Episode 1 - Gate of Dreams!"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/94cb334c62fb8fdcf1120f1a4d7e6e621522582529_full.jpg",
+          "title": "Episode 2 - The Debut Race out of Nowhere"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e8a4673fac1347c6857d55211114556e1523178571_full.jpg",
+          "title": "Episode 3 - First Big Win"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/556f5de6c37bc696bb5b6ea27c1c82631523786845_full.jpg",
+          "title": "Episode 4 - Special Training!"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2de647128b901f483bd6102f3d4d44e1524401637_full.jpg",
+          "title": "Episode 5 - The Derby With Rivals"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fcf55d9d062555e8dc2ea31b4428aee21524697366_full.jpg",
+          "title": "Episode 6 - Autumn Skies and Horse Girls"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/bab3402d5f2fb54e874b44ee1a9279ae1525617767_full.jpg",
+          "title": "Episode 7 - Promise"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/773179619a90f810141ef51626e30ac81526218968_full.jpg",
+          "title": "Episode 8 - For You"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a82688073847b62be1ea5cf1b071489b1526823413_full.jpg",
+          "title": "Episode 9 - Dreams of Spica"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d6bb2fcfde60aefb30901243ac07df51527577246_full.jpg",
+          "title": "Episode 10 - No Matter How Many Times I Lose"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/585e21eae3d229db2597fa8bd17f6a901528009131_full.jpg",
+          "title": "Episode 11 - Welcome Back!"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/978ab24c5d15c131fa7d87e1c7709cdc1528623466_full.jpg",
+          "title": "Episode 12 - Stage of Dreams"
+        },
+        {
+          "site": "Crunchyroll",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
+          "title": "Episode 13 - Echo, Fanfare!"
+        }
+      ],
+      "characters": {
+        "edges": [
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Oguri Cap",
+                "full": "Oguri Cap",
+                "last": ""
+              }
+            }
+          },
+          {
+            "role": "MAIN",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Silence Suzuka",
+                "full": "Silence Suzuka",
+                "last": ""
+              }
+            }
+          },
+          {
+            "role": "MAIN",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Special Week",
+                "full": "Special Week",
+                "last": ""
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Toukai Teiou",
+                "full": "Toukai Teiou",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Daiwa Scarlet",
+                "full": "Daiwa Scarlet",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "El Condor Pasa",
+                "full": "El Condor Pasa",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Vodka",
+                "full": "Vodka",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Gold Ship",
+                "full": "Gold Ship",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Trainer",
+                "full": "Trainer",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Mejiro McQueen",
+                "full": "Mejiro McQueen",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Seiun Sky",
+                "full": "Seiun Sky",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Maruzensky",
+                "full": "Maruzensky",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Narita Brian",
+                "full": "Narita Brian",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Symboli Rudolf",
+                "full": "Symboli Rudolf",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "T.M. Opera O",
+                "full": "T.M. Opera O",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Air Groove",
+                "full": "Air Groove",
+                "last": ""
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Fuji Kiseki",
+                "full": "Fuji Kiseki",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Grass Wonder",
+                "full": "Grass Wonder",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Taiki Shuttle",
+                "full": "Taiki Shuttle",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Hishi Amazon",
+                "full": "Hishi Amazon",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "King Halo",
+                "full": "King Halo",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Biwa Hayahide",
+                "full": "Biwa Hayahide",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Winning Ticket",
+                "full": "Winning Ticket",
+                "last": null
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Hana",
+                "full": "Hana Toujou",
+                "last": "Toujou"
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "name": null,
+            "node": {
+              "name": {
+                "first": "Nice Nature",
+                "full": "Nice Nature",
+                "last": null
+              }
+            }
+          }
+        ]
       }
     }
   }

@@ -46,7 +46,10 @@ class Character(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            full_name = f"{self.first_name} {self.last_name}".strip()
+            temp_last_name = self.last_name
+            if temp_last_name is None:
+                temp_last_name = ""
+            full_name = f"{self.first_name} {temp_last_name}".strip()
             self.slug = unique_slugify(self, full_name)
         super().save(*args, **kwargs)
     

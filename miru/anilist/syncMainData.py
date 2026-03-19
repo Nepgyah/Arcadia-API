@@ -1,7 +1,18 @@
-def setMetadata(anime_obj, data):
+import requests
+import os
+import json
+from dotenv import load_dotenv
+from pathlib import Path
+
+load_dotenv()
+
+BASE_DIR = Path(__file__).resolve().parent
+
+def SyncMainData(anime_obj, data) -> None:
     """
     Configures title fields for the anime
     """
+    
     anime_obj.title = data.get('title').get('english')
     anime_obj.title_ja = data.get('title').get('native')
     anime_obj.title_romaji = data.get('title').get('romaji')
@@ -44,5 +55,4 @@ def setMetadata(anime_obj, data):
 
     formatted_end_date = f"{data.get('endDate').get('year')}-{data.get('endDate').get('month')}-{data.get('endDate').get('day')}"
     anime_obj.airing_end_date = formatted_end_date
-
-    return
+        
