@@ -14,14 +14,9 @@ def SyncAnimeCompanies(anime_obj, data):
     for company in companies:
         is_studio = company.get('node').get('isAnimationStudio')
 
-        anime_company_instance, created = AnimeCompany.objects.get_or_create(
+        anime_company_instance, _created = AnimeCompany.objects.get_or_create(
             name = company.get('node').get('name')
         )
-
-        if created:
-            print(f'Creating new company {anime_company_instance}')
-        else:
-            print(f'Previous company found {anime_company_instance}')
 
         if is_studio:
             studio_list.append(anime_company_instance)

@@ -8,7 +8,8 @@ from miru.anilist.syncEpisodes import SyncEpisodes
 from miru.anilist.syncCharacters import SyncCharacters
 from .models.anime import (
     Anime,
-    AniListImporter
+    AniListImporter,
+    AniListData
 )
 from .models.relations import (
     AnimeCharacter,
@@ -67,7 +68,15 @@ class AniListImporterAdmin(admin.ModelAdmin):
                 SyncEpisodes(anime_obj, anilist_data)
 
                 SyncCharacters(anime_obj, anilist_data)
-
+                
+                AniListData.objects.create(
+                    anime = anime_obj,
+                    anilist_id = anilist_id,
+                    rank_score = anilist_data.get('rankings')[0].get('rank'),
+                    rank_popular = None
+                )
+        except IntegrityError:
+            print('Integirty error')
 
         except Exception as e:
             print(f'integrity error: {e}')

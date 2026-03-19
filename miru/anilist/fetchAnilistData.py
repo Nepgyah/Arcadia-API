@@ -11,7 +11,7 @@ def FetchAnilistData(anilist_id):
         return None
     
     query = '''
-    query Media($mediaId: Int) {
+    query Media($mediaId: Int, $language: StaffLanguage) {
         Media(id: $mediaId) {
             title {
                 english
@@ -60,7 +60,7 @@ def FetchAnilistData(anilist_id):
                             large
                         }
                     }
-                    voiceActors {
+                    voiceActors(language: $language) {
                         name {
                             first
                             last
@@ -68,6 +68,7 @@ def FetchAnilistData(anilist_id):
                         image {
                             large
                         }
+                        languageV2
                     }
                 }
             }
@@ -79,11 +80,20 @@ def FetchAnilistData(anilist_id):
                     }
                 }
             }
+            rankings {
+                format
+                rank
+                context
+                type
+                year
+                allTime
+                season
+            }
         }
     }
     '''
 
-    variables = {'mediaId': anilist_id}
+    variables = {'mediaId': anilist_id, 'language': "JAPANESE"}
 
     try:
         print(f"Attempting to call anilist api for media id: {anilist_id}")

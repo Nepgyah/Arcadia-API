@@ -80,6 +80,9 @@ class AniListData(models.Model):
     rank_score = models.SmallIntegerField(null=True, blank=True)
     rank_popular = models.SmallIntegerField(null=True, blank=True)
 
+    def __str__(self):
+        return str(f"Anilist data for: {self.anime}")
+    
 class AniListImporter(AniListData):
     class Meta:
         proxy = True
