@@ -3,6 +3,13 @@
 | ---------- | ------- |
 | Miru       | 0.3     |
 
+## Alpha v0.6 - 3/17/2026
+- **General**
+    - Add github actions for the following
+        - Run unit tests on pr to main
+        - Run python linter on pr to main
+    - Improved code following pylinter suggestions
+
 ## Alpha v0.5 - 3/16/2026
 - **Asobu**
     - **Models**
