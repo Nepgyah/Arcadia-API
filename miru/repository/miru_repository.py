@@ -1,9 +1,9 @@
-from miru.models import (
-    Anime,
+from miru.models.anime import Anime
+from miru.models.relations import (
     AnimeCharacter,
-    AnimeListEntry,
     AnimeEpisode
 )
+from miru.models.list_entry import AnimeListEntry
 from users.models import User
 
 class MiruRepository:
@@ -12,12 +12,16 @@ class MiruRepository:
     @staticmethod
     def get_anime_by_id(anime_id: int) -> Anime:
         try:
-            return Anime.objects.select_related(
-                'season',
-                'studio'
+            anime = Anime.objects.select_related(
+                'prev_anime',
+                'franchise'
             ).prefetch_related(
-                'genres'
+                'genres',
+                'next_entries'
             ).get(id=anime_id)
+            print(anime.prev_anime)
+            print(anime.next_entries.all())
+            return anime
         except Anime.DoesNotExist:
             return None
         

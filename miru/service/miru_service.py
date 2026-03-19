@@ -1,6 +1,11 @@
 from django.core.paginator import Paginator
 from miru.repository.miru_repository import MiruRepository
-from miru.models import Anime, AnimeCharacter, AnimeListEntry, AnimeEpisode
+from miru.models.anime import Anime
+from miru.models.relations import (
+    AnimeCharacter,
+    AnimeEpisode
+)
+from miru.models.list_entry import AnimeListEntry
 from users.models import User
 
 class MiruService:

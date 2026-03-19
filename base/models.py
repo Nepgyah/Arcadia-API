@@ -53,7 +53,7 @@ class Media(models.Model):
         ordering = ['-score']
         
     def __str__(self):
-        return self.title
+        return str(self.title)
     
     def save(self, *args, **kwargs):
         self.slug = unique_slugify(instance=self, value=self.title)
