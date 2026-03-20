@@ -50,16 +50,20 @@ class Game(Media):
         PEGI_18 = 4, 'PEGI 18'
         PEGI_PENDING = 5, 'Rating Pending'
 
-    trailer_url = models.URLField(null=True, blank=True)
     status = models.IntegerField(choices=Status.choices, default=Status.ANNOUNCED)
     tags = models.ManyToManyField(Tag, related_name='tagged_games', blank=True)
     genres = models.ManyToManyField(Genre, related_name='games', blank=True)
     esrb_rating = models.IntegerField(choices=ESRB.choices, default=ESRB.PENDING)
     pegi_rating = models.IntegerField(choices=PEGI.choices, default=PEGI.PEGI_PENDING)
-    developers = models.ManyToManyField(GameCompany, related_name='developed_games', null=True)
-    publishers = models.ManyToManyField(GameCompany, related_name='published_games', null=True)
+    prev_game = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='next_entries')
+    trailer_url = models.URLField(null=True, blank=True)
+    
     characters = models.ManyToManyField(Character, through='GameCharacter', related_name='games')
     platforms = models.ManyToManyField(Platform, through='GamePlatform', related_name='released_games')
+
+    developers = models.ManyToManyField(GameCompany, related_name='developed_games', blank=True)
+    publishers = models.ManyToManyField(GameCompany, related_name='published_games', blank=True)
+    
     steam_id = models.PositiveIntegerField(unique=True, null=True, blank=True)
     
     class Meta:
@@ -70,10 +74,15 @@ class Game(Media):
 
 class DLC(models.Model):
 
+    class DLCType(models.IntegerChoices):
+        STORY = 0, 'Story'
+        COSMETIC = 1, 'Cosmetic'
+
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=255)
     score = models.FloatField(default=0.0)
     slug = models.SlugField(unique=True, blank=True)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
+    type = models.IntegerField(choices=DLCType.choices, default=DLCType.STORY, blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = unique_slugify(instance=self, value=self.title)
@@ -95,14 +104,18 @@ class GamePlatform(models.Model):
         return f"{self.game.title} on {self.platform.name}"
     
 class GameRelation(models.Model):
+    """
+        Misc relation case that is not a dlc or part of the main game progression.
+        Example: Global release, etc
+    """
 
     class Type(models.TextChoices):
-        SERIES_ENTRY = 'series_entry', 'Series Entry'
-        RE_RELEASE = 're_release', 'Rerelease'
+        RE_RELEASE = 're_release', 'Re-release'
+        OTHER = 'other', 'Other'
 
     from_game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='as_predeccessor')
     to_game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='as_sucessor')
-    type = models.CharField(choices=Type.choices, default=Type.SERIES_ENTRY, blank=True)
+    type = models.CharField(choices=Type.choices, default=Type.RE_RELEASE, blank=True)
 
     def __str__(self):
         return f"{self.to_game.title} is a {self.get_type_display()} for {self.from_game.title}"
