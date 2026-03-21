@@ -56,5 +56,6 @@ class Media(models.Model):
         return str(self.title)
     
     def save(self, *args, **kwargs):
-        self.slug = unique_slugify(instance=self, value=self.title)
+        if self.slug is not None:
+            self.slug = unique_slugify(instance=self, value=self.title)
         super().save(*args, **kwargs)
