@@ -1206,7 +1206,7 @@
         "slug": "ishikawa-yui",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n100142-k6RP0HzXffUG.png",
         "first_name": "Ishikawa",
         "last_name": "Yui"
     }
@@ -1218,7 +1218,7 @@
         "slug": "yui-ogura",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n105981-CDMPx1Q79Aum.png",
         "first_name": "Yui",
         "last_name": "Ogura"
     }
@@ -1905,6 +1905,30 @@
         "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24822-ry2jbsM1CjQa.jpg",
         "first_name": "Hina",
         "last_name": "Kino"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 160,
+    "fields": {
+        "slug": "azusa-tachibana",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n337852-tQCDWWlBYpg5.png",
+        "first_name": "Azusa",
+        "last_name": "Tachibana"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 161,
+    "fields": {
+        "slug": "shion-wakayama",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n148220-Tj3U7jdXZehG.png",
+        "first_name": "Shion",
+        "last_name": "Wakayama"
     }
 },
 {
@@ -3972,6 +3996,78 @@
     }
 },
 {
+    "model": "talent.character",
+    "pk": 173,
+    "fields": {
+        "first_name": "Endministrator (Female)",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "endministrator-female",
+        "voice_actor": 160,
+        "cover_img_url": null
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 174,
+    "fields": {
+        "first_name": "Perlica",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "perlica",
+        "voice_actor": 161,
+        "cover_img_url": null
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 175,
+    "fields": {
+        "first_name": "Chen",
+        "last_name": "Qianyu",
+        "nicknames": [],
+        "slug": "chen-qianyu",
+        "voice_actor": 57,
+        "cover_img_url": null
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 176,
+    "fields": {
+        "first_name": "Ember",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "ember",
+        "voice_actor": 50,
+        "cover_img_url": null
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 177,
+    "fields": {
+        "first_name": "Avywenna",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "avywenna",
+        "voice_actor": 55,
+        "cover_img_url": null
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 178,
+    "fields": {
+        "first_name": "TangTang",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "tangtang",
+        "voice_actor": 10,
+        "cover_img_url": null
+    }
+},
+{
     "model": "base.genre",
     "pk": 1,
     "fields": {
@@ -4056,6 +4152,13 @@
     }
 },
 {
+    "model": "base.genre",
+    "pk": 13,
+    "fields": {
+        "name": "Cunny"
+    }
+},
+{
     "model": "base.franchise",
     "pk": 1,
     "fields": {
@@ -4100,6 +4203,32 @@
             "instagram": {
                 "url": "https://www.instagram.com/rggstudiowest/",
                 "handle": "@RGG Studio"
+            }
+        }
+    }
+},
+{
+    "model": "base.franchise",
+    "pk": 4,
+    "fields": {
+        "name": "Uma Musume: Pretty Derby",
+        "slug": "uma-musume-pretty-derby",
+        "socials": {
+            "reddit": {
+                "url": "https://www.reddit.com/r/UmaMusume/",
+                "handle": "r/UmaMusume"
+            },
+            "twitter": {
+                "url": "https://x.com/umamusume_eng",
+                "handle": "@umamusume_eng"
+            },
+            "website": {
+                "url": "https://umamusume.com",
+                "handle": "Umamusume.com"
+            },
+            "youtube": {
+                "url": "https://www.youtube.com/@umamusume_eng",
+                "handle": "@umamusume_eng"
             }
         }
     }
@@ -7529,11 +7658,11 @@
         "title": "Umamusume: Cinderella Gray",
         "score": 0.0,
         "users": 0,
-        "slug": "umamusume-cinderella-gray",
-        "summary": "Unbeknownst to those around her in the destitute countryside of Kasamatsu, the staggering potential of this ashen-haired \"Beast” will soon rock Japan with her feet and catapult her to the national stage—down the path of a legend. <br><br>\nFollow Oguri Cap and her insatiable appetite as the starting gates open on this Umamusume's hot-blooded Cinderella story! <br><br>\n\n(Source: It's Anime powered by REMOW, edited)",
+        "slug": "umamusume-cinderella-gray-2",
+        "summary": "Unbeknownst to those around her in the destitute countryside of Kasamatsu, the staggering potential of this ashen-haired \"Beast” will soon rock Japan with her feet and catapult her to the national stage—down the path of a legend. <br><br>\r\nFollow Oguri Cap and her insatiable appetite as the starting gates open on this Umamusume's hot-blooded Cinderella story! <br><br>\r\n\r\n(Source: It's Anime powered by REMOW, edited)",
         "created_at": "2026-03-19T21:45:25.431Z",
-        "franchise": null,
-        "title_native": null,
+        "franchise": 4,
+        "title_native": "ウマ娘 シンデレラグレイ",
         "title_romaji": "Uma Musume: Cinderella Gray",
         "other_titles": [],
         "season": 1,
@@ -7548,7 +7677,7 @@
         "prev_anime": null,
         "airing_start_date": "2025-04-06",
         "airing_end_date": "2025-06-29",
-        "updated_at": "2026-03-19T21:45:25.432Z",
+        "updated_at": "2026-03-20T04:34:01.651Z",
         "genres": [
             1,
             2
@@ -7999,8 +8128,8 @@
     "model": "asobu.gamecompany",
     "pk": 1,
     "fields": {
-        "name": "COGNOSPHERE PTE. LTD.",
-        "slug": "cognosphere-pte-ltd"
+        "name": "NEXON Games",
+        "slug": "nexon-games"
     }
 },
 {
@@ -8015,67 +8144,37 @@
     "model": "asobu.gamecompany",
     "pk": 3,
     "fields": {
-        "name": "SUNBORN",
-        "slug": "sunborn"
+        "name": "Hypergryph",
+        "slug": "hypergryph"
     }
 },
 {
     "model": "asobu.gamecompany",
     "pk": 4,
     "fields": {
-        "name": "Darkwinter Software",
-        "slug": "darkwinter-software"
-    }
-},
-{
-    "model": "asobu.gamecompany",
-    "pk": 5,
-    "fields": {
-        "name": "Sega",
-        "slug": "sega"
-    }
-},
-{
-    "model": "asobu.gamecompany",
-    "pk": 6,
-    "fields": {
-        "name": "Ryu Ga Gotoku",
-        "slug": "ryu-ga-gotoku"
+        "name": "GRYPHLINE",
+        "slug": "gryphline"
     }
 },
 {
     "model": "asobu.platform",
     "pk": 1,
     "fields": {
-        "name": "PC"
-    }
-},
-{
-    "model": "asobu.platform",
-    "pk": 2,
-    "fields": {
-        "name": "PS5"
-    }
-},
-{
-    "model": "asobu.platform",
-    "pk": 3,
-    "fields": {
-        "name": "PS4"
+        "name": "Steam"
     }
 },
 {
     "model": "asobu.tag",
     "pk": 1,
     "fields": {
-        "name": "RPG"
+        "name": "Shooter"
     }
 },
 {
     "model": "asobu.tag",
     "pk": 2,
     "fields": {
-        "name": "Adventure"
+        "name": "Visual Novel"
     }
 },
 {
@@ -8089,66 +8188,58 @@
     "model": "asobu.tag",
     "pk": 4,
     "fields": {
-        "name": "Free To Play"
+        "name": "Anime"
     }
 },
 {
     "model": "asobu.tag",
     "pk": 5,
     "fields": {
-        "name": "Anime"
+        "name": "Story Rich"
     }
 },
 {
     "model": "asobu.tag",
     "pk": 6,
     "fields": {
-        "name": "Turn Based"
+        "name": "Gacha"
     }
 },
 {
     "model": "asobu.tag",
     "pk": 7,
     "fields": {
-        "name": "Beat Em Up"
-    }
-},
-{
-    "model": "asobu.tag",
-    "pk": 8,
-    "fields": {
-        "name": "Detective"
+        "name": "Minigames"
     }
 },
 {
     "model": "asobu.game",
     "pk": 1,
     "fields": {
-        "title": "Honkai: Star Rail",
-        "score": 0.0,
+        "title": "Honkai Star Rail",
+        "score": 9.8,
         "users": 0,
         "slug": "honkai-star-rail",
-        "summary": "Honkai: Star Rail is a 2023 free-to-play role-playing gacha video game developed and published by miHoYo. It is the fourth installment in the Honkai series, utilizing some characters from Honkai Impact 3rd and some gameplay elements from Genshin Impact.",
-        "created_at": "2026-03-19T23:01:49.684Z",
-        "updated_at": "2026-03-19T23:01:49.684Z",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-03-20T19:42:32.618Z",
+        "updated_at": "2026-03-20T20:35:17.312Z",
         "franchise": 1,
-        "trailer_url": null,
         "status": 0,
         "esrb_rating": 5,
         "pegi_rating": 5,
+        "prev_game": null,
+        "trailer_url": "https://www.youtube.com/embed/GaT1GftoqV0?si=_r1BKIWJJlOTaFK6",
         "steam_id": null,
         "tags": [
-            1,
-            2
+            4,
+            6,
+            7
         ],
         "genres": [
             8,
-            1,
-            3,
-            4
+            3
         ],
         "developers": [
-            1,
             2
         ],
         "publishers": [
@@ -8160,19 +8251,130 @@
     "model": "asobu.game",
     "pk": 2,
     "fields": {
-        "title": "Girls' Frontline 2: Exilium",
-        "score": 0.0,
+        "title": "Genshin Impact",
+        "score": 8.5,
         "users": 0,
-        "slug": "girls-frontline-2-exilium",
-        "summary": "Continuing the legacy of the Girls' Frontline world, this all-new adventure casts you as the Commander, challenging you to lead your squad of Tactical Dolls deep into perilous contamination zones and overcome enemies with tactical prowess.",
-        "created_at": "2026-03-20T00:01:44.384Z",
-        "updated_at": "2026-03-20T00:01:44.384Z",
-        "franchise": 2,
+        "slug": "genshin-impact",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-03-20T19:42:42.557Z",
+        "updated_at": "2026-03-20T19:45:30.481Z",
+        "franchise": 1,
+        "status": 0,
+        "esrb_rating": 5,
+        "pegi_rating": 5,
+        "prev_game": null,
         "trailer_url": null,
+        "steam_id": null,
+        "tags": [],
+        "genres": [],
+        "developers": [],
+        "publishers": []
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 3,
+    "fields": {
+        "title": "Blue Archive",
+        "score": 9.1,
+        "users": 0,
+        "slug": "blue-archive-2",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-03-20T19:42:49.315Z",
+        "updated_at": "2026-03-20T20:18:14.050Z",
+        "franchise": null,
+        "status": 0,
+        "esrb_rating": 5,
+        "pegi_rating": 5,
+        "prev_game": null,
+        "trailer_url": null,
+        "steam_id": null,
+        "tags": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "genres": [
+            2,
+            13
+        ],
+        "developers": [
+            1
+        ],
+        "publishers": [
+            1
+        ]
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 4,
+    "fields": {
+        "title": "Judgement",
+        "score": 9.8,
+        "users": 0,
+        "slug": "judgement",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-03-20T19:43:05.259Z",
+        "updated_at": "2026-03-20T19:48:08.890Z",
+        "franchise": 3,
         "status": 2,
         "esrb_rating": 3,
-        "pegi_rating": 3,
-        "steam_id": 3347400,
+        "pegi_rating": 4,
+        "prev_game": null,
+        "trailer_url": "https://www.youtube.com/embed/T5rKyRHorMA?si=EdputYWXf-0YfFSE",
+        "steam_id": null,
+        "tags": [],
+        "genres": [],
+        "developers": [],
+        "publishers": []
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 5,
+    "fields": {
+        "title": "Lost Judgement",
+        "score": 0.0,
+        "users": 0,
+        "slug": "lost-judgement",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-03-20T19:43:09.382Z",
+        "updated_at": "2026-03-20T19:48:51.305Z",
+        "franchise": null,
+        "status": 0,
+        "esrb_rating": 3,
+        "pegi_rating": 4,
+        "prev_game": 4,
+        "trailer_url": "https://www.youtube.com/embed/r94gYkiue-k?si=pxW-Ds_kN9jKe-9X",
+        "steam_id": null,
+        "tags": [],
+        "genres": [],
+        "developers": [],
+        "publishers": []
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 6,
+    "fields": {
+        "title": "Arknights: Endfield",
+        "score": 9.0,
+        "users": 0,
+        "slug": "arknights-endfield",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-03-20T21:36:53.507Z",
+        "updated_at": "2026-03-20T21:36:53.507Z",
+        "franchise": null,
+        "status": 2,
+        "esrb_rating": 2,
+        "pegi_rating": 2,
+        "prev_game": null,
+        "trailer_url": null,
+        "steam_id": null,
         "tags": [
             3,
             4,
@@ -8180,47 +8382,15 @@
             6
         ],
         "genres": [
-            3
-        ],
-        "developers": [
-            3
-        ],
-        "publishers": [
-            4
-        ]
-    }
-},
-{
-    "model": "asobu.game",
-    "pk": 3,
-    "fields": {
-        "title": "Judgement",
-        "score": 0.0,
-        "users": 0,
-        "slug": "judgement",
-        "summary": "Judgment (JUDGE EYES：死神の遺言 Judge Eyes: Shinigami no Yuigon, lit. \"Judge Eyes: The Grim Reaper's Will\"), previously known as Project JUDGE, is an action-adventure/beat-'em-up game released for the PlayStation 4 on December 13, 2018 in Japan and on June 25, 2019 worldwide. A remaster was released for the PS5, Xbox Series X|S, and Google Stadia on April 23, 2021. The remastered version was released for PC alongside Lost Judgment as part of \"The Judgment Collection\" on September 14, 2022.",
-        "created_at": "2026-03-20T00:42:05.850Z",
-        "updated_at": "2026-03-20T00:42:05.850Z",
-        "franchise": 3,
-        "trailer_url": null,
-        "status": 2,
-        "esrb_rating": 3,
-        "pegi_rating": 4,
-        "steam_id": null,
-        "tags": [
-            8,
-            7
-        ],
-        "genres": [
-            9,
             3,
-            4
+            4,
+            13
         ],
         "developers": [
-            6
+            3
         ],
         "publishers": [
-            5
+            4
         ]
     }
 },
@@ -8228,50 +8398,54 @@
     "model": "asobu.gameplatform",
     "pk": 1,
     "fields": {
-        "game": 1,
-        "platform": 1,
-        "release_date": "2023-04-26"
-    }
-},
-{
-    "model": "asobu.gameplatform",
-    "pk": 2,
-    "fields": {
-        "game": 1,
-        "platform": 2,
-        "release_date": "2023-10-11"
-    }
-},
-{
-    "model": "asobu.gameplatform",
-    "pk": 3,
-    "fields": {
-        "game": 2,
-        "platform": 1,
-        "release_date": "2025-02-11"
-    }
-},
-{
-    "model": "asobu.gameplatform",
-    "pk": 4,
-    "fields": {
-        "game": 3,
-        "platform": 3,
-        "release_date": "2018-12-13"
-    }
-},
-{
-    "model": "asobu.gameplatform",
-    "pk": 5,
-    "fields": {
         "game": 3,
         "platform": 1,
-        "release_date": "2022-09-14"
+        "release_date": "2025-07-03"
     }
 },
 {
     "model": "asobu.gamecharacter",
     "pk": 1,
+    "fields": {
+        "game": 4,
+        "character": 115,
+        "is_playable": true,
+        "role": 0
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 2,
+    "fields": {
+        "game": 4,
+        "character": 116,
+        "is_playable": false,
+        "role": 1
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 3,
+    "fields": {
+        "game": 5,
+        "character": 115,
+        "is_playable": true,
+        "role": 0
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 4,
+    "fields": {
+        "game": 5,
+        "character": 116,
+        "is_playable": false,
+        "role": 1
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 5,
     "fields": {
         "game": 1,
         "character": 108,
@@ -8281,7 +8455,7 @@
 },
 {
     "model": "asobu.gamecharacter",
-    "pk": 2,
+    "pk": 6,
     "fields": {
         "game": 1,
         "character": 109,
@@ -8291,60 +8465,70 @@
 },
 {
     "model": "asobu.gamecharacter",
-    "pk": 3,
+    "pk": 7,
     "fields": {
         "game": 1,
         "character": 110,
         "is_playable": true,
-        "role": 0
-    }
-},
-{
-    "model": "asobu.gamecharacter",
-    "pk": 4,
-    "fields": {
-        "game": 2,
-        "character": 112,
-        "is_playable": true,
-        "role": 0
-    }
-},
-{
-    "model": "asobu.gamecharacter",
-    "pk": 5,
-    "fields": {
-        "game": 2,
-        "character": 113,
-        "is_playable": true,
         "role": 1
-    }
-},
-{
-    "model": "asobu.gamecharacter",
-    "pk": 6,
-    "fields": {
-        "game": 2,
-        "character": 114,
-        "is_playable": true,
-        "role": 1
-    }
-},
-{
-    "model": "asobu.gamecharacter",
-    "pk": 7,
-    "fields": {
-        "game": 3,
-        "character": 115,
-        "is_playable": true,
-        "role": 0
     }
 },
 {
     "model": "asobu.gamecharacter",
     "pk": 8,
     "fields": {
-        "game": 3,
-        "character": 116,
+        "game": 6,
+        "character": 173,
+        "is_playable": true,
+        "role": 0
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 9,
+    "fields": {
+        "game": 6,
+        "character": 174,
+        "is_playable": true,
+        "role": 0
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 10,
+    "fields": {
+        "game": 6,
+        "character": 175,
+        "is_playable": true,
+        "role": 0
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 11,
+    "fields": {
+        "game": 6,
+        "character": 176,
+        "is_playable": true,
+        "role": 1
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 12,
+    "fields": {
+        "game": 6,
+        "character": 177,
+        "is_playable": false,
+        "role": 1
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 13,
+    "fields": {
+        "game": 6,
+        "character": 178,
         "is_playable": false,
         "role": 1
     }

@@ -78,10 +78,14 @@ class GameType(DjangoObjectType):
     genres = graphene.List(GenreType)
     esrb_rating = graphene.String()
     pegi_rating = graphene.String()
-    developers = graphene.List(GameCompanyType)
-    publishers = graphene.List(GameCompanyType)
+    prequel = graphene.Field(lambda: GameType)
+    sequels = graphene.List(lambda: GameType)
+
     character_relations = graphene.List(GameCharacterType)
     platforms = graphene.List(GamePlatformType)
+
+    developers = graphene.List(GameCompanyType)
+    publishers = graphene.List(GameCompanyType)
 
     def resolve_status(self, _info):
         return self.get_status_display()
@@ -97,6 +101,12 @@ class GameType(DjangoObjectType):
     
     def resolve_pegi_rating(self, _info):
         return self.get_pegi_rating_display()
+    
+    def resolve_prequel(self, _info):
+        return self.prev_game
+    
+    def resolve_sequels(self, _info):
+        return self.next_entries.all()
     
     def resolve_developers(self, _info):
         return self.developers.all()
