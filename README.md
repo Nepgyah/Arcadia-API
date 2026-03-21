@@ -42,7 +42,7 @@ Users do *not* directly create a Arcadia account, they instead create a *d2x* ac
 ## Database
 Inside the repo is a db_dump.json file holding sample data to showcase arcadia
 To run a dump for your db and to handle japanese letters and such run <br>
-python -Xutf8 manage.py dumpdata --natural-foreign --natural-primary -e admin.logentry -e auth -e contenttypes -e sessions --indent 4 -o arcadia_final.json
+python -Xutf8 manage.py dumpdata --natural-foreign --natural-primary -e admin.logentry -e auth -e contenttypes -e sessions --indent 4 -o db_dump.json
 
 To utilize the json <br>
 python -Xutf8 manage.py loaddata db_dump.json

@@ -3,6 +3,21 @@
 | ---------- | ------- |
 | Miru       | 0.3     |
 
+## Alpha v1.0 - 3/19/2026
+Dev note: After finalizing the base of miru and implementing a better way to input data through the help of Anilist API. The progress from this patch has been deemed big enough to jump from 0.6 to 1.0. Thank you to everyone involved through testing and suggestions - A.P
+
+- **Miru**
+    - **Models**
+        - Add anilist model to handle rank data from anilist
+    - **Admin**
+        - Add admin page to ease the process of adding anime entries
+    - **Other**
+        - Add multi part script to fetch and format Anilist api data into the Arcadia DB schema
+
+- **Talent**
+    - **Models**
+        - Adjusted several models to handle a image url
+
 ## Alpha v0.6 - 3/17/2026
 - **General**
     - Add github actions for the following
