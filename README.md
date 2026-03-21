@@ -3,20 +3,12 @@ Introducing the Arcadia API. The backend service that helps users view and track
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
-## Latest Release - Alpha v1.0 - X/XX/2026
-Dev note: After finalizing the base of miru and implementing a better way to input data through the help of Anilist API. The progress from this patch has been deemed big enough to jump from 0.6 to 1.0. Thank you to everyone involved through testing and suggestions - A.P
-
-- **Miru**
+## Latest Release - Alpha v1.1 - 3/20/2026
+- **Asobu**
     - **Models**
-        - Add anilist model to handle rank data from anilist
-    - **Admin**
-        - Add admin page to ease the process of adding anime entries
-    - **Other**
-        - Add multi part script to fetch and format Anilist api data into the Arcadia DB schema
-
-- **Talent**
-    - **Models**
-        - Adjusted several models to handle a image url
+        - Improve game relationship logic
+    -**Graphql API**
+        - Update schema to query game by id
 
 ## How it works
 Arcadia holds the backend logic for all the apps on one django server. When dealing with data for the Arcadia apps, frontends can communicate via a single graphql endpoint. For actions dealing with authentication/accounts, frontends call specific endpoints created via Django Rest Framework. The main reason for integrating 2 different types of apis is for practice and application.
