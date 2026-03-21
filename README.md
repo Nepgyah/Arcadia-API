@@ -35,13 +35,13 @@ Database: Postgresql
 1. Download the Arcadia api repository
 2. Install [Python](https://www.python.org/downloads/)
 3. Install [Django](https://www.djangoproject.com)
-'''
+```
 pip install django
-'''
+```
 4. Install the dependecies for Arcadia
-'''
+```
 pip install -r requirements.txt
-'''
+```
 5. Insert proper key values for the .env file
 
 ## Database / Sample Data
