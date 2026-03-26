@@ -38,11 +38,38 @@ Database: Postgresql
 ```
 pip install django
 ```
-4. Install the dependecies for Arcadia
+
+4. Create a a virtual enviornment
+```
+python -m venv .venv
+```
+
+5. Install the dependecies for Arcadia
 ```
 pip install -r requirements.txt
 ```
-5. Insert proper key values for the .env file
+
+6. Insert proper key values for the .env file
+
+### ENV Key Values
+```
+DJANGO_SECRET= Your django secret key
+
+DB_NAME= Name of the database
+DB_USER= Your db user username
+DB_PASSWORD= Your db user password
+DB_HOST= Domain of your db
+DB_PORT= Port number (default 5432)
+
+CLIENT_ID= Name for the arcadia app (used for communication with the d2x client)
+CLIENT_SECRET= Security password for the arcadia app (used for communication with the d2x client)
+
+COOKIE_SAME_SITE="None"
+COOKIE_SECURE="True"
+
+D2X_URL= URL to the d2x website
+
+```
 
 ## Database / Sample Data
 Inside the repo is a db_dump.json file holding sample data to showcase arcadia. If you every with to download the api for yourself and wish to skip manually entering some sample data. There is a db_dump.json file to jump start the database.<br>
