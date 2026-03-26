@@ -31,7 +31,8 @@ DEBUG = True
 # Who is allowed to communicate with the django server
 ALLOWED_HOSTS = [
     'clumsy-fidela-team-d2x-8009ada3.koyeb.app',
-    "localhost"
+    "localhost",
+    "127.0.0.1"
 ]
 
 # Who can call the API
@@ -64,6 +65,7 @@ INSTALLED_APPS = [
     'asobu',
     'corsheaders',
     'graphene_django',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
