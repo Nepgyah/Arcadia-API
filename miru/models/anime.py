@@ -82,3 +82,10 @@ class AniListData(models.Model):
 
     def __str__(self):
         return str(f"Anilist data for: {self.anime}")
+
+class MyAnimeListData(models.Model):
+
+    anime = models.OneToOneField(Anime, on_delete=models.CASCADE)
+    mal_id = models.IntegerField(null=False, blank=False, unique=True)
+    rank_score = models.SmallIntegerField(null=True, blank=True)
+    rank_popular = models.SmallIntegerField(null=True, blank=True)
