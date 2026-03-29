@@ -1,15 +1,10 @@
 import logging
 from django.db import transaction, IntegrityError
-from django.contrib import admin
-from base.anilist_scripts.syncGenres import SyncGenres
-from miru.anilist.syncAnimeCompanies import SyncAnimeCompanies
-from miru.anilist.fetchAnilistData import FetchAnilistData
-from miru.anilist.syncMainData import SyncMainData
-from miru.anilist.syncEpisodes import SyncEpisodes
-from miru.anilist.syncCharacters import SyncCharacters
+from django.contrib import admin, messages
 from .models.anime import (
     Anime,
-    AniListData
+    AniListData,
+    MyAnimeListData
 )
 from .models.relations import (
     AnimeCharacter,
@@ -19,7 +14,13 @@ from .models.relations import (
 from .forms import AniListForm
 from .models.misc import AnimeCompany
 from .models.list_entry import AnimeListEntry
-
+from base.anilist_scripts.syncGenres import SyncGenres
+from miru.anilist.syncAnimeCompanies import SyncAnimeCompanies
+from miru.anilist.fetchAnilistData import FetchAnilistData
+from miru.anilist.syncMainData import SyncMainData
+from miru.anilist.syncEpisodes import SyncEpisodes
+from miru.anilist.syncCharacters import SyncCharacters
+from miru.myanimelist.syncRankings import syncMALRankings
 
 # Register your models here.
 class AnimeCharacterInline(admin.TabularInline):
@@ -42,6 +43,22 @@ admin.site.register(AnimeCompany)
 admin.site.register(AnimeListEntry)
 admin.site.register(AnimeEpisode)
 
+@admin.register(MyAnimeListData)
+class MyAnimeListAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        mal_id = form.cleaned_data.get('mal_id')
+        try:
+            rank_by_score, rank_by_popularity = syncMALRankings(mal_id)
+            obj.rank_score = rank_by_score
+            obj.rank_popular = rank_by_popularity
+            super().save_model(request, obj, form, change)
+            self.message_user(request, "MyAnimeList data successfully updated.", messages.SUCCESS)
+
+        except Exception as e:
+            logging.error(f"MAL Admin Import Failed: {e}") 
+            self.message_user(request, f"Import Failed: {str(e)}", messages.ERROR)
+
+        
 @admin.register(AniListData)
 class AniListImporterAdmin(admin.ModelAdmin):
     form = AniListForm
