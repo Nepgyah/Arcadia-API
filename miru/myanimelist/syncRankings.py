@@ -28,7 +28,7 @@ def syncMALRankings(mal_id) -> int:
         rank_by_score = int(score_element)
         rank_by_popularity = int(popularity_element)
 
-        print(f"ID: {mal_id} Score: {rank_by_score} Popularity: {rank_by_popularity}")
+        # print(f"ID: {mal_id} Score: {rank_by_score} Popularity: {rank_by_popularity}")
         return rank_by_score, rank_by_popularity
     
     except (requests.RequestException, ValueError, AttributeError) as e:

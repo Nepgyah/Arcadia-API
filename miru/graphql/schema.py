@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-from miru.models.anime import Anime
+from miru.models.anime import Anime, AniListData, MyAnimeListData
 from miru.models.misc import AnimeCompany
 from miru.models.relations import (
     AnimeCharacter,
@@ -56,6 +56,18 @@ class AnimeNextFlowType(DjangoObjectType):
     def resolve_anime(self, _info):
         return self.to_anime
     
+class AniListDataType(DjangoObjectType):
+
+    class Meta:
+        model = AniListData
+        fields = "__all__"
+
+class MALDataType(DjangoObjectType):
+
+    class Meta:
+        model = MyAnimeListData
+        fields = "__all__"
+
 class AnimeType(DjangoObjectType):
     season = graphene.String()
     type = graphene.String()
@@ -71,9 +83,18 @@ class AnimeType(DjangoObjectType):
     prequel = graphene.Field(lambda: AnimeType)
     sequels = graphene.List(lambda: AnimeType)
 
+    anilist_data = graphene.Field(AniListDataType)
+    mal_data = graphene.Field(MALDataType)
+
     class Meta:
         model = Anime
         fields = "__all__"
+
+    def resolve_anilist_data(self, _info):
+        return AniListData.objects.get(anime_id=self.id)
+    
+    def resolve_mal_data(self, _info):
+        return MyAnimeListData.objects.get(anime_id=self.id)
 
     def resolve_season(self, _info):
         return self.season_string

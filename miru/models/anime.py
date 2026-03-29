@@ -89,3 +89,6 @@ class MyAnimeListData(models.Model):
     mal_id = models.IntegerField(null=False, blank=False, unique=True)
     rank_score = models.SmallIntegerField(null=True, blank=True)
     rank_popular = models.SmallIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return str(f"{self.mal_id} - {self.anime.title}")
