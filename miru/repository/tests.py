@@ -93,3 +93,37 @@ class TestRepository:
             user=user_fixture,
             status=0
         ).exists() == True
+
+    def test_delete_anime_list_entry_success(self, user_fixture, anime_fixture):
+        AnimeListEntry.objects.create(
+            anime=anime_fixture,
+            user=user_fixture,
+            status=0
+        )
+
+        MiruRepository.delete_anime_list_entry(
+            user=user_fixture,
+            anime=anime_fixture
+        )
+
+        assert AnimeListEntry.objects.filter(
+            user=user_fixture,
+            anime=anime_fixture
+        ).exists() == False
+
+    def test_delete_anime_list_entry_not_found(self, user_fixture, anime_fixture, anime_sequel_fixture):
+        AnimeListEntry.objects.create(
+            anime=anime_fixture,
+            user=user_fixture,
+            status=0
+        )
+
+        MiruRepository.delete_anime_list_entry(
+            user=user_fixture,
+            anime=anime_sequel_fixture
+        )
+
+        assert AnimeListEntry.objects.filter(
+            user=user_fixture,
+            anime=anime_fixture
+        ).exists() == True

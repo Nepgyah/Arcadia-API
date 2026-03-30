@@ -93,8 +93,11 @@ class MiruRepository:
         
     @staticmethod
     def delete_anime_list_entry(user: User, anime: Anime) -> None:
-        AnimeListEntry.objects.get(user=user, anime=anime).delete()
-
+        try:
+            AnimeListEntry.objects.get(user=user, anime=anime).delete()
+        except AnimeListEntry.DoesNotExist:
+            return
+        
     @staticmethod
     def get_anime_list_by_user_id(user: User) -> list[AnimeListEntry]:
         anime_list = AnimeListEntry.objects.filter(user=user)
