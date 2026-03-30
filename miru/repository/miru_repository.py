@@ -1,3 +1,5 @@
+from django.core.exceptions import ValidationError
+import logging
 from miru.models.anime import Anime
 from miru.models.relations import (
     AnimeCharacter,
@@ -60,11 +62,17 @@ class MiruRepository:
         if details.get('end_watch_date') is not None:
             animeEntry.end_watch_date = details.get('end_watch_date')
 
-        animeEntry.save()
+        try:
+            animeEntry.save()
+        except ValidationError:
+            return
 
     @staticmethod
     def update_anime_list_entry(user: User, anime: Anime, status: int, details: dict) -> None:
-        animeEntry = AnimeListEntry.objects.get(user=user, anime=anime)
+        try:
+            animeEntry = AnimeListEntry.objects.get(user=user, anime=anime)
+        except AnimeListEntry.DoesNotExist:
+            return None
         
         if status != animeEntry.status:
             animeEntry.status = status

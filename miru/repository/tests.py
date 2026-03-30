@@ -1,5 +1,6 @@
 import pytest
 from .miru_repository import MiruRepository
+from miru.models.list_entry import AnimeListEntry
 
 # Declares that the tests have database acccess
 @pytest.mark.django_db
@@ -20,3 +21,75 @@ class TestRepository:
     def test_get_characters_by_anime_returns_none(self, anime_fixture, bocchi_character_fixtures):
         characters = MiruRepository.get_characters_by_anime(0)
         assert characters == []
+
+    def test_create_anime_list_entry_success(self, anime_fixture, user_fixture):
+        test_details = {
+            'current_episode': 1,
+            'score': 9,
+        }
+        MiruRepository.create_anime_list_entry(
+            user=user_fixture,
+            anime=anime_fixture,
+            status=0,
+            details=test_details
+        )
+
+        assert AnimeListEntry.objects.filter(
+            user=user_fixture,
+            anime=anime_fixture,
+            status=0
+        ).exists() == True
+
+    def test_create_anime_list_entry_already_created(self, anime_fixture, user_fixture, anime_list_entry_fixture):
+        test_details = {
+            'current_episode': 1,
+            'score': 9,
+        }
+        MiruRepository.create_anime_list_entry(
+            user=user_fixture,
+            anime=anime_fixture,
+            status=2,
+            details=test_details
+        )
+
+        assert AnimeListEntry.objects.filter(anime=anime_fixture, user=user_fixture).count() == 1
+
+    def test_update_anime_list_success(self, user_fixture, anime_fixture):
+        AnimeListEntry.objects.create(
+            anime=anime_fixture,
+            user=user_fixture,
+            status=0
+        )
+
+        MiruRepository.update_anime_list_entry(
+            user=user_fixture,
+            anime=anime_fixture,
+            status=3,
+            details={}
+        )
+
+        assert AnimeListEntry.objects.filter(
+            user=user_fixture,
+            anime=anime_fixture,
+            status=3
+        ).exists()
+
+    def test_update_anime_list_not_found(self, user_fixture, anime_fixture, anime_sequel_fixture):
+        AnimeListEntry.objects.create(
+            anime=anime_fixture,
+            user=user_fixture,
+            status=0
+        )
+
+        MiruRepository.update_anime_list_entry(
+            user=user_fixture,
+            anime=anime_sequel_fixture,
+            status=3,
+            details={}
+        )
+
+        assert AnimeListEntry.objects.filter(
+            anime=anime_fixture,
+            user=user_fixture,
+            status=0
+        ).exists() == True
