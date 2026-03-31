@@ -127,3 +127,51 @@ class TestRepository:
             user=user_fixture,
             anime=anime_fixture
         ).exists() == True
+
+    def test_update_anime_list_entry_success(self, user_fixture, anime_fixture):
+        AnimeListEntry.objects.create(
+            anime=anime_fixture,
+            user=user_fixture,
+            status=0
+        )
+
+        test_details = {
+            'current_episode': 12,
+            'score': 10,
+            'start_watch_date': '2026-03-30',
+            'end_watch_date': '2026-04-20'
+        }
+
+        MiruRepository.update_anime_list_entry(
+            anime=anime_fixture,
+            user=user_fixture,
+            status=3,
+            details=test_details
+        )
+
+        assert AnimeListEntry.objects.filter(
+            user=user_fixture,
+            anime=anime_fixture,
+            status=3
+        ).exists() == True 
+
+    def test_update_anime_list_entry_not_found(self, user_fixture, anime_fixture, anime_sequel_fixture):
+        AnimeListEntry.objects.create(
+            anime=anime_fixture,
+            user=user_fixture,
+            status=0
+        )
+
+        test_details = {
+            'current_episode': 12,
+            'score': 10,
+            'start_watch_date': '2026-03-30',
+            'end_watch_date': '2026-04-20'
+        }
+
+        assert MiruRepository.update_anime_list_entry(
+            anime=anime_sequel_fixture,
+            user=user_fixture,
+            status=3,
+            details=test_details
+        ) == None
