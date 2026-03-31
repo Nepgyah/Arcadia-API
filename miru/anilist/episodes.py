@@ -1,7 +1,7 @@
 import logging
 from miru.models.relations import AnimeEpisode
 
-def SyncEpisodes(anime_obj, data):
+def sync_episodes(anime_obj, data):
     """
         Configures episode data for an anime
     """

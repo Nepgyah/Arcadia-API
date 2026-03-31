@@ -2,7 +2,7 @@ from miru.models.relations import AnimeCharacter
 from talent.models import Character
 from base.anilist_scripts.syncVoiceActor import SyncVoiceActor
 
-def SyncCharacters(anime_obj, data):
+def sync_characters(anime_obj, data):
 
     character_data = data.get("characters").get('edges')
     

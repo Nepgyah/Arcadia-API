@@ -15,12 +15,16 @@ from .forms import AniListForm
 from .models.misc import AnimeCompany
 from .models.list_entry import AnimeListEntry
 from base.anilist_scripts.syncGenres import SyncGenres
-from miru.anilist.syncAnimeCompanies import SyncAnimeCompanies
-from miru.anilist.fetchAnilistData import FetchAnilistData
-from miru.anilist.syncMainData import SyncMainData
-from miru.anilist.syncEpisodes import SyncEpisodes
-from miru.anilist.syncCharacters import SyncCharacters
+from miru.anilist import (
+    fetch_anilist_data,
+    sync_characters,
+    sync_companies,
+    sync_episodes,
+    sync_metadata
+)
 from miru.myanimelist.syncRankings import syncMALRankings
+
+logger = logging.getLogger(__name__)
 
 # Register your models here.
 class AnimeCharacterInline(admin.TabularInline):
@@ -68,27 +72,26 @@ class AniListImporterAdmin(admin.ModelAdmin):
 
         try:
             with transaction.atomic():
-                logging.basicConfig(level=logging.INFO)
                 anime_obj = Anime()
-                anilist_data = FetchAnilistData(anilist_id)
-                logging.info("Fetching anilist data: Success - Anilist ID: %s", anilist_id)
+                anilist_data = fetch_anilist_data(anilist_id)
+                logger.info("Fetching anilist data: Success - Anilist ID: %s", anilist_id)
 
-                SyncMainData(anime_obj, anilist_data)
+                sync_metadata(anime_obj, anilist_data)
                 anime_obj.save()
-                logging.info("Saving anime object: Success - ID: %s", anime_obj.id)
+                logger.info("Saving anime object: Success - ID: %s", anime_obj.id)
 
-                SyncAnimeCompanies(anime_obj, anilist_data)
-                logging.info('Syncing companies: Success')
+                sync_companies(anime_obj, anilist_data)
+                logger.info('Syncing companies: Success')
 
                 genre_list = SyncGenres(anilist_data)
                 anime_obj.genres.set(genre_list)
-                logging.info('Syncing genres: Success')
+                logger.info('Syncing genres: Success')
 
-                SyncEpisodes(anime_obj, anilist_data)
-                logging.info('Syncing episodes: Success')
+                sync_episodes(anime_obj, anilist_data)
+                logger.info('Syncing episodes: Success')
 
-                SyncCharacters(anime_obj, anilist_data)
-                logging.info('Syncing characters: Success')
+                sync_characters(anime_obj, anilist_data)
+                logger.info('Syncing characters: Success')
 
                 rank_score = None
                 rank_popular = None
@@ -100,16 +103,14 @@ class AniListImporterAdmin(admin.ModelAdmin):
                     if rank_item.get('type') == 'RATED' and bool(rank_item.get('allTime')):
                         rank_score = rank_item.get('rank')
                 
-                logging.info('Syncing anilist rankings: Success')
+                logger.info('Syncing anilist rankings: Success')
 
                 obj.anime = anime_obj
                 obj.anilist_id = anilist_id
                 obj.rank_score = rank_score
                 obj.rank_popular = rank_popular
-                
-                logging.basicConfig(level=logging.WARNING)
 
                 return super().save_model(request, obj, form, change)
             
         except Exception as e:
-            logging.error('Exception: %s', e)
+            logger.error('Exception: %s', e)

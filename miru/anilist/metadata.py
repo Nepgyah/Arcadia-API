@@ -8,7 +8,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent
 
-def SyncMainData(anime_obj, data) -> None:
+def sync_metadata(anime_obj, data) -> None:
     """
     Configures title fields for the anime
     """

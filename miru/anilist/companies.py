@@ -1,6 +1,6 @@
 from miru.models.misc import AnimeCompany
 
-def SyncAnimeCompanies(anime_obj, data):
+def sync_companies(anime_obj, data):
 
     # Anilist puts producers and studios under a single studio schema
     companies = data.get('studios').get('edges')
