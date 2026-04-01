@@ -6,7 +6,7 @@ from miru.models.relations import (
     AnimeEpisode
 )
 from miru.models.list_entry import AnimeListEntry
-from users.models import User
+from users.models import ArcadiaUser
 
 class MiruService:
     ''' Service layer to apply business logic to Miru '''
@@ -74,7 +74,7 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
 
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
         if anime is None or user is None:
@@ -96,7 +96,7 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
         
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
         if anime is None or user is None:
@@ -118,7 +118,7 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
 
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
         if anime is None or user is None:
@@ -133,7 +133,7 @@ class MiruService:
     
     @staticmethod
     def get_anime_list_by_user_id(user_id: int) -> list[AnimeListEntry]:
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         anime_list =  MiruRepository.get_anime_list_by_user_id(user)
         watching = anime_list.filter(status=0)
         completed = anime_list.filter(status=1)
@@ -144,7 +144,7 @@ class MiruService:
     
     @staticmethod
     def get_anime_list_entry(user_id, anime_id) -> AnimeListEntry:
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
         if anime is None or user is None:
             return None
