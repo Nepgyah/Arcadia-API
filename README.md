@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 6. Insert proper key values for the .env file
 
-### ENV Key Values
+## ENV Key Values
 ```
 DJANGO_SECRET= Your django secret key
 
@@ -83,6 +83,17 @@ To run a dump for your db and to handle japanese letters and such run<br>
 python -Xutf8 manage.py dumpdata --natural-foreign --natural-primary -e admin.logentry -e auth -e contenttypes -e sessions --indent 4 -o db_dump.json
 '''
 
+## Feature List
+- *Miru*
+    - Reviews / Comments
+
+- *Asobu*
+    - Reviews / Comments
+
+- *User*
+    - Achievement system
+    - Mailing system (Mailerlite)
+
 ## Others
 
 ### D2X
@@ -93,7 +104,3 @@ Users do *not* directly create a Arcadia account, they instead create a *d2x* ac
 
 1: I plan to have multiple projects that will deal with a user having a account, having a single/already built source will hopefully speed up the production<br>
 2: I was always curious on how auth processes like google worked so I would like to try my hand at creating/mimicking it for myself<br>
-
-### Future Plans
-1: If the arcadia apps become collectively big, I plan to split them up into microservices which is already in place with django's app system<br>
-2. Create other apps/use cases

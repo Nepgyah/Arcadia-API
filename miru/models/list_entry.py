@@ -1,6 +1,6 @@
 from django.db import models
-from users.models import User
 from .anime import Anime
+from users.models import ArcadiaUser
 
 class AnimeListEntry(models.Model):
 
@@ -10,7 +10,7 @@ class AnimeListEntry(models.Model):
         PLAN_TO = 2, 'Plan To Watch'
         ON_HOLD = 3, 'On Hold'
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(ArcadiaUser, on_delete=models.CASCADE)
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
     status = models.IntegerField(choices=StatusType, default=StatusType.WATCHING)
     current_episode = models.SmallIntegerField(default=0, blank=True)
@@ -23,7 +23,6 @@ class AnimeListEntry(models.Model):
     class Meta:
         ordering = ['-created_at']
         indexes = [
-            models.Index(fields=['user']),
             models.Index(fields=['anime']),
             models.Index(fields=['status']),
             models.Index(fields=["user", "status"]),
@@ -31,4 +30,4 @@ class AnimeListEntry(models.Model):
         unique_together = ('user', 'anime')
 
     def __str__(self):
-        return f'{self.user} - Anime: {self.anime.title} - Status: {self.get_status_display()}'
+        return f'Anime: {self.anime.title} - Status: {self.get_status_display()}'

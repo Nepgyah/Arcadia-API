@@ -1,5 +1,16 @@
 [
 {
+    "model": "users.arcadiauser",
+    "pk": 1,
+    "fields": {
+        "d2x_id": 1,
+        "admin_user": null,
+        "username": "Miporin",
+        "tag": null,
+        "picture_preset": 0
+    }
+},
+{
     "model": "talent.voiceactor",
     "pk": 1,
     "fields": {
@@ -4418,6 +4429,479 @@
     }
 },
 {
+    "model": "miru.anime",
+    "pk": 1,
+    "fields": {
+        "title": "Umamusume: Cinderella Gray",
+        "score": 0.0,
+        "users": 0,
+        "slug": "umamusume-cinderella-gray-2",
+        "summary": "Unbeknownst to those around her in the destitute countryside of Kasamatsu, the staggering potential of this ashen-haired \"Beast” will soon rock Japan with her feet and catapult her to the national stage—down the path of a legend. <br><br>\r\nFollow Oguri Cap and her insatiable appetite as the starting gates open on this Umamusume's hot-blooded Cinderella story! <br><br>\r\n\r\n(Source: It's Anime powered by REMOW, edited)",
+        "created_at": "2026-03-19T21:45:25.431Z",
+        "franchise": 4,
+        "title_native": "ウマ娘 シンデレラグレイ",
+        "title_romaji": "Uma Musume: Cinderella Gray",
+        "other_titles": [],
+        "season": 1,
+        "season_year": 2025,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 13,
+        "hashtag": "#シングレ #アニメウマ娘",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/180516-qxKVBsTW6Czx.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx180516-lebpoKLkw6E3.jpg",
+        "prev_anime": null,
+        "airing_start_date": "2025-04-06",
+        "airing_end_date": "2025-06-29",
+        "updated_at": "2026-03-20T04:34:01.651Z",
+        "genres": [
+            1,
+            2
+        ],
+        "producer": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "studio": [
+            1
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 2,
+    "fields": {
+        "title": "Umamusume: Cinderella Gray 2nd Cour",
+        "score": 0.0,
+        "users": 0,
+        "slug": "umamusume-cinderella-gray-2nd-cour-2",
+        "summary": "The second half of <i>Umamusume: Cinderella Gray</i>. <br><br>\r\n\r\nHailing from the humble countryside, Oguri Cap has turned the racing world on its head. Her rampage through the national race scene seemed unstoppable... until it wasn't. Tamamo Cross, the current peak of racing, has bested the Beast and declared Oguri Cap her rival. <br><br>\r\n\r\nBut Oguri Cap can't afford to keep her attention on Tamamo Cross alone. One by one, racers from all over the world arrive in Japan, ready to demonstrate their own prowess. Up against the best the world has to offer, our ashen racer will need to reach beyond her limits if she wants to stand a chance… Keep those eyes peeled—a Cinderella story full of twists and turns lies ahead!<br><br>\r\n\r\n(Source: It's Anime powered by REMOW)",
+        "created_at": "2026-03-19T21:46:41.661Z",
+        "franchise": null,
+        "title_native": null,
+        "title_romaji": "Uma Musume: Cinderella Gray Part 2",
+        "other_titles": [],
+        "season": 3,
+        "season_year": 2025,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 10,
+        "hashtag": "#シングレ #アニメウマ娘",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/195240-HcuZvXcdT5aX.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx195240-hKcmllV6YHQT.jpg",
+        "prev_anime": 1,
+        "airing_start_date": "2025-10-05",
+        "airing_end_date": "2025-12-21",
+        "updated_at": "2026-03-19T21:46:59.868Z",
+        "genres": [
+            1,
+            2
+        ],
+        "producer": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "studio": [
+            1
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 3,
+    "fields": {
+        "title": "Girls und Panzer",
+        "score": 0.0,
+        "users": 0,
+        "slug": "girls-und-panzer-2",
+        "summary": "You may have heard of kung fu, but the girls at Oarai High School practice gun-fu—really, really BIG 75mm gun-fu, in fact. It's called Sensha-do, and it's the martial art of operating armored tanks! They take it seriously too, and since winning the national Sensha-do championship is such a huge deal at Oarai, they sometimes go to extreme ends in order to get the best students from Panzer class to sign up. Which is how Miho Nishizumi, who HATES operating tanks, gets drafted to join doomsday-driven driver Mako, even-triggered gunner Hana, highly receptive radio operator Saori and combustible tank-fangirl and loader Yukari as the incomparable Anko Team. They may not be on the half-track to fame and fortune, and maybe a few of them would rather shop for tank tops than become tops in tanks, but once their focus is locked and loaded, they're absolutely driven.<br><br>\r\n(Source: Sentai Filmworks)",
+        "created_at": "2026-03-19T21:50:58.359Z",
+        "franchise": null,
+        "title_native": null,
+        "title_romaji": "Girls und Panzer",
+        "other_titles": [],
+        "season": 3,
+        "season_year": 2012,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 12,
+        "hashtag": "#garupan",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/14131-hF210i7NqX0k.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx14131-EP12xXteLTiF.jpg",
+        "prev_anime": null,
+        "airing_start_date": "2012-10-09",
+        "airing_end_date": "2013-03-25",
+        "updated_at": "2026-03-19T23:05:55.316Z",
+        "genres": [
+            2,
+            3
+        ],
+        "producer": [
+            8,
+            9,
+            7
+        ],
+        "studio": [
+            6
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 4,
+    "fields": {
+        "title": "BOCCHI THE ROCK!",
+        "score": 0.0,
+        "users": 0,
+        "slug": "bocchi-the-rock",
+        "summary": "Hitori Gotou, “Bocchi-chan,” is a girl who’s so introverted and shy around people that she’d always start her conversations with “Ah...”<br>\n<br>\nDuring her middle school years, she started playing the guitar, wanting to join a band because she thought it could be an opportunity for even someone shy like her to also shine. But because she had no friends, she ended up practicing guitar for six hours every day all by herself. After becoming a skilled guitar player, she uploaded videos of herself playing the guitar to the internet under the name “Guitar Hero” and fantasized about performing at her school’s cultural festival concert. But not only could she not find any bandmates, before she knew it, she was in high school and still wasn’t able to make a single friend!<br>\n<br>\nShe was really close to becoming a shut-in, but one day, Nijika Ijichi, the drummer in Kessoku Band, reached out to her. And because of that, her everyday life started to change little by little...<br>\n<br>\n(Source: Crunchyroll)",
+        "created_at": "2026-03-19T21:53:03.926Z",
+        "franchise": null,
+        "title_native": null,
+        "title_romaji": "Bocchi the Rock!",
+        "other_titles": [],
+        "season": 3,
+        "season_year": 2022,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 12,
+        "hashtag": "#ぼっち・ざ・ろっく",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/130003-FEBlngeJSTEm.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx130003-HTDmeL4RGeJ4.png",
+        "prev_anime": null,
+        "airing_start_date": "2022-10-09",
+        "airing_end_date": "2022-12-25",
+        "updated_at": "2026-03-19T21:53:03.926Z",
+        "genres": [
+            4,
+            5,
+            6
+        ],
+        "producer": [
+            11,
+            12
+        ],
+        "studio": [
+            10
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 5,
+    "fields": {
+        "title": "The Fragrant Flower Blooms With Dignity",
+        "score": 0.0,
+        "users": 0,
+        "slug": "the-fragrant-flower-blooms-with-dignity",
+        "summary": "Chidori High is a boys’ school that takes in the dregs of society with the lowest grades. Next door stands Kikyo Girls’ High, where the wealthy, high-class families send their precious daughters. Chidori second-year Rintarou, who has a fierce face but a gentle heart, is helping at his family’s patisserie when he meets a girl named Kaoruko. The two hit it off right away…but this blissful peace is quickly disturbed when Rintarou discovers that Kaoruko is actually a student at Kikyo. Worse, she doesn’t seem to realize what a huge problem this really is! Will these two be able to forge a path for themselves, and sidestep the traps (metaphorical and literal) laid by their classmates?\n<br><br>\n(Source: Kodansha USA)",
+        "created_at": "2026-03-19T21:53:29.587Z",
+        "franchise": null,
+        "title_native": null,
+        "title_romaji": "Kaoru Hana wa Rin to Saku",
+        "other_titles": [],
+        "season": 2,
+        "season_year": 2025,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 13,
+        "hashtag": "#薫る花 #薫る花は凛と咲く",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/181444-SBhwJNPxjHrr.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx181444-Ut9DDUZdfHwg.jpg",
+        "prev_anime": null,
+        "airing_start_date": "2025-07-06",
+        "airing_end_date": "2025-09-28",
+        "updated_at": "2026-03-19T21:53:29.587Z",
+        "genres": [
+            1,
+            4,
+            7
+        ],
+        "producer": [
+            8,
+            11,
+            13,
+            14,
+            15,
+            16
+        ],
+        "studio": [
+            10
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 6,
+    "fields": {
+        "title": "Sword Art Online",
+        "score": 0.0,
+        "users": 0,
+        "slug": "sword-art-online",
+        "summary": "In the near future, a Virtual Reality Massive Multiplayer Online Role-Playing Game (VRMMORPG) called Sword Art Online has been released where players control their avatars with their bodies using a piece of technology called Nerve Gear. One day, players discover they cannot log out, as the game creator is holding them captive unless they reach the 100th floor of the game's tower and defeat the final boss. However, if they die in the game, they die in real life. Their struggle for survival starts now...<br><br>\n(Source: Crunchyroll)",
+        "created_at": "2026-03-20T00:55:05.351Z",
+        "franchise": null,
+        "title_native": null,
+        "title_romaji": "Sword Art Online",
+        "other_titles": [],
+        "season": 2,
+        "season_year": 2012,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 25,
+        "hashtag": "#sao_anime",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11757-TlEEV9weG4Ag.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx11757-SxYDUzdr9rh2.jpg",
+        "prev_anime": null,
+        "airing_start_date": "2012-07-08",
+        "airing_end_date": "2012-12-23",
+        "updated_at": "2026-03-20T00:55:05.352Z",
+        "genres": [
+            3,
+            10,
+            11,
+            7
+        ],
+        "producer": [
+            11,
+            18,
+            19,
+            20,
+            21,
+            22
+        ],
+        "studio": [
+            17
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 7,
+    "fields": {
+        "title": "Sword Art Online II",
+        "score": 0.0,
+        "users": 0,
+        "slug": "sword-art-online-ii-2",
+        "summary": "One year after the SAO incident, Kirito is approached by Seijiro Kikuoka from Japan's Ministry of Internal Affairs and Communications Department \"VR Division\" with a rather peculiar request.\r\n\r\nThat was an investigation on the \"Death Gun\" incident that occurred in the gun and steel filled VRMMO called Gun Gale Online (GGO). \"Players who are shot by a mysterious avatar with a jet black gun lose their lives even in the real world...\" Failing to turn down Kikuoka's bizarre request, Kirito logs in to GGO even though he is not completely convinced that the virtual world could physically affect the real world.<br>\r\n<br>\r\nKirito wanders in an unfamiliar world in order to gain any clues about the \"Death Gun.\" Then, a female sniper named Sinon who owns a gigantic \"Hecate II\" rifle extends Kirito a helping hand. With Sinon's help, Kirito decides to enter the \"Bullet of Bullets,\" a large tournament to choose the most powerful gunner within the realm of GGO, in hopes to become the target of the \"Death Gun\" and make direct contact with the mysterious avatar.<br>\r\n<br>\r\n(Source: Crunchyroll)",
+        "created_at": "2026-03-20T00:55:23.709Z",
+        "franchise": null,
+        "title_native": null,
+        "title_romaji": "Sword Art Online II",
+        "other_titles": [],
+        "season": 2,
+        "season_year": 2014,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 24,
+        "hashtag": "#sao_anime",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20594-BZOLwqidcS1G.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx20594-FhRgZ1H9Istt.jpg",
+        "prev_anime": 6,
+        "airing_start_date": "2014-07-05",
+        "airing_end_date": "2014-12-20",
+        "updated_at": "2026-03-20T00:57:26.932Z",
+        "genres": [
+            3,
+            10,
+            11,
+            12
+        ],
+        "producer": [
+            11,
+            18,
+            19,
+            20,
+            21
+        ],
+        "studio": [
+            17
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 8,
+    "fields": {
+        "title": "Sword Art Online: Alicization",
+        "score": 0.0,
+        "users": 0,
+        "slug": "sword-art-online-alicization-2",
+        "summary": "Kirito awakens in a vast, fantastical forest filled with towering trees. In his search for clues to the truth of his surroundings, he encounters a young boy who seems to know him. He ought to be a simple NPC, but the depth of his emotions seem no different than a human. As they search for the boy's parents, Kirito finds a peculiar memory returning to him. A memory from his own childhood, of this boy and a girl, too, with golden hair, and a name he should have never forgotten - Alice.<br>\r\n<br>\r\n(Source: Yen Press)\r\n<br><br>\r\n<i>Note: The first episode aired with a runtime of ~48 minutes as opposed to the standard 24 minute long episode.</i>",
+        "created_at": "2026-03-20T00:55:54.813Z",
+        "franchise": null,
+        "title_native": null,
+        "title_romaji": "Sword Art Online: Alicization",
+        "other_titles": [],
+        "season": 3,
+        "season_year": 2018,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 24,
+        "hashtag": "#sao_anime",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100182-8iGTeJ2kYRDt.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx100182-KctPmCJ2smHQ.jpg",
+        "prev_anime": 7,
+        "airing_start_date": "2018-10-07",
+        "airing_end_date": "2019-03-31",
+        "updated_at": "2026-03-20T00:57:14.063Z",
+        "genres": [
+            3,
+            10,
+            11
+        ],
+        "producer": [
+            20
+        ],
+        "studio": [
+            17
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 9,
+    "fields": {
+        "title": "Sword Art Online: Alicization - War of Underworld",
+        "score": 0.0,
+        "users": 0,
+        "slug": "sword-art-online-alicization-war-of-underworld-2",
+        "summary": "Kirito, Eugeo, and Alice. Six months have passed since the two disciples and an Integrity Knight brought down the pontifex, Administrator. With the fighting over, Alice has been living in her hometown of Rulid Village. Beside her is Kirito, who has not only lost his arm and soul, but also his dear friend. As Alice devotes herself to looking after Kirito, she too has lost the will to fight she once had as a knight.<br>\r\n<br>\r\nNevertheless, the time for the final stress test – one which will engulf the entire Underworld with tragedy – draws relentlessly closer.<br>\r\n<br>\r\nMeanwhile, in the deepest areas of the Dark Territory, the Dark God Vecta has resurrected, as if to have waited for this very moment. Leading an army of dark forces, they begin their invasion into the human empire in hopes of attaining the Priestess of Light. The human empire force led by the Integrity Knight Bercouli prepares for a war of an unimaginable scale against the army of the Dark Territory. Even then, Alice is nowhere to be seen, nor the two heroes that saved the realm...<br>\r\n<br>\r\n(Source: Official Website)",
+        "created_at": "2026-03-20T00:56:11.112Z",
+        "franchise": null,
+        "title_native": null,
+        "title_romaji": "Sword Art Online: Alicization - War of Underworld",
+        "other_titles": [],
+        "season": 3,
+        "season_year": 2019,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 12,
+        "hashtag": "#sao_anime",
+        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108759-HGsEWBcisLmO.jpg",
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx108759-jcXbDf9BJTcb.jpg",
+        "prev_anime": 8,
+        "airing_start_date": "2019-10-13",
+        "airing_end_date": "2019-12-29",
+        "updated_at": "2026-03-20T00:56:56.967Z",
+        "genres": [
+            3,
+            10,
+            11
+        ],
+        "producer": [
+            11,
+            23
+        ],
+        "studio": [
+            17
+        ]
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 1,
+    "fields": {
+        "anime": 1,
+        "anilist_id": 180516,
+        "rank_score": 67,
+        "rank_popular": null
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 2,
+    "fields": {
+        "anime": 2,
+        "anilist_id": 195240,
+        "rank_score": 51,
+        "rank_popular": null
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 3,
+    "fields": {
+        "anime": 3,
+        "anilist_id": 14131,
+        "rank_score": null,
+        "rank_popular": null
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 4,
+    "fields": {
+        "anime": 4,
+        "anilist_id": 130003,
+        "rank_score": 34,
+        "rank_popular": 182
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 5,
+    "fields": {
+        "anime": 5,
+        "anilist_id": 181444,
+        "rank_score": 63,
+        "rank_popular": 333
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 6,
+    "fields": {
+        "anime": 6,
+        "anilist_id": 11757,
+        "rank_score": null,
+        "rank_popular": 13
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 7,
+    "fields": {
+        "anime": 7,
+        "anilist_id": 20594,
+        "rank_score": null,
+        "rank_popular": 59
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 8,
+    "fields": {
+        "anime": 8,
+        "anilist_id": 100182,
+        "rank_score": null,
+        "rank_popular": 142
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 9,
+    "fields": {
+        "anime": 9,
+        "anilist_id": 108759,
+        "rank_score": null,
+        "rank_popular": 227
+    }
+},
+{
     "model": "miru.animecharacter",
     "pk": 1,
     "fields": {
@@ -7649,479 +8133,6 @@
         "anime": 9,
         "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/0fd889d6f17341580d1dab13957516251432089600_full.jpg",
         "url": null
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 1,
-    "fields": {
-        "title": "Umamusume: Cinderella Gray",
-        "score": 0.0,
-        "users": 0,
-        "slug": "umamusume-cinderella-gray-2",
-        "summary": "Unbeknownst to those around her in the destitute countryside of Kasamatsu, the staggering potential of this ashen-haired \"Beast” will soon rock Japan with her feet and catapult her to the national stage—down the path of a legend. <br><br>\r\nFollow Oguri Cap and her insatiable appetite as the starting gates open on this Umamusume's hot-blooded Cinderella story! <br><br>\r\n\r\n(Source: It's Anime powered by REMOW, edited)",
-        "created_at": "2026-03-19T21:45:25.431Z",
-        "franchise": 4,
-        "title_native": "ウマ娘 シンデレラグレイ",
-        "title_romaji": "Uma Musume: Cinderella Gray",
-        "other_titles": [],
-        "season": 1,
-        "season_year": 2025,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 13,
-        "hashtag": "#シングレ #アニメウマ娘",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/180516-qxKVBsTW6Czx.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx180516-lebpoKLkw6E3.jpg",
-        "prev_anime": null,
-        "airing_start_date": "2025-04-06",
-        "airing_end_date": "2025-06-29",
-        "updated_at": "2026-03-20T04:34:01.651Z",
-        "genres": [
-            1,
-            2
-        ],
-        "producer": [
-            2,
-            3,
-            4,
-            5
-        ],
-        "studio": [
-            1
-        ]
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 2,
-    "fields": {
-        "title": "Umamusume: Cinderella Gray 2nd Cour",
-        "score": 0.0,
-        "users": 0,
-        "slug": "umamusume-cinderella-gray-2nd-cour-2",
-        "summary": "The second half of <i>Umamusume: Cinderella Gray</i>. <br><br>\r\n\r\nHailing from the humble countryside, Oguri Cap has turned the racing world on its head. Her rampage through the national race scene seemed unstoppable... until it wasn't. Tamamo Cross, the current peak of racing, has bested the Beast and declared Oguri Cap her rival. <br><br>\r\n\r\nBut Oguri Cap can't afford to keep her attention on Tamamo Cross alone. One by one, racers from all over the world arrive in Japan, ready to demonstrate their own prowess. Up against the best the world has to offer, our ashen racer will need to reach beyond her limits if she wants to stand a chance… Keep those eyes peeled—a Cinderella story full of twists and turns lies ahead!<br><br>\r\n\r\n(Source: It's Anime powered by REMOW)",
-        "created_at": "2026-03-19T21:46:41.661Z",
-        "franchise": null,
-        "title_native": null,
-        "title_romaji": "Uma Musume: Cinderella Gray Part 2",
-        "other_titles": [],
-        "season": 3,
-        "season_year": 2025,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 10,
-        "hashtag": "#シングレ #アニメウマ娘",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/195240-HcuZvXcdT5aX.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx195240-hKcmllV6YHQT.jpg",
-        "prev_anime": 1,
-        "airing_start_date": "2025-10-05",
-        "airing_end_date": "2025-12-21",
-        "updated_at": "2026-03-19T21:46:59.868Z",
-        "genres": [
-            1,
-            2
-        ],
-        "producer": [
-            2,
-            3,
-            4,
-            5
-        ],
-        "studio": [
-            1
-        ]
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 3,
-    "fields": {
-        "title": "Girls und Panzer",
-        "score": 0.0,
-        "users": 0,
-        "slug": "girls-und-panzer-2",
-        "summary": "You may have heard of kung fu, but the girls at Oarai High School practice gun-fu—really, really BIG 75mm gun-fu, in fact. It's called Sensha-do, and it's the martial art of operating armored tanks! They take it seriously too, and since winning the national Sensha-do championship is such a huge deal at Oarai, they sometimes go to extreme ends in order to get the best students from Panzer class to sign up. Which is how Miho Nishizumi, who HATES operating tanks, gets drafted to join doomsday-driven driver Mako, even-triggered gunner Hana, highly receptive radio operator Saori and combustible tank-fangirl and loader Yukari as the incomparable Anko Team. They may not be on the half-track to fame and fortune, and maybe a few of them would rather shop for tank tops than become tops in tanks, but once their focus is locked and loaded, they're absolutely driven.<br><br>\r\n(Source: Sentai Filmworks)",
-        "created_at": "2026-03-19T21:50:58.359Z",
-        "franchise": null,
-        "title_native": null,
-        "title_romaji": "Girls und Panzer",
-        "other_titles": [],
-        "season": 3,
-        "season_year": 2012,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 12,
-        "hashtag": "#garupan",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/14131-hF210i7NqX0k.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx14131-EP12xXteLTiF.jpg",
-        "prev_anime": null,
-        "airing_start_date": "2012-10-09",
-        "airing_end_date": "2013-03-25",
-        "updated_at": "2026-03-19T23:05:55.316Z",
-        "genres": [
-            2,
-            3
-        ],
-        "producer": [
-            8,
-            9,
-            7
-        ],
-        "studio": [
-            6
-        ]
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 4,
-    "fields": {
-        "title": "BOCCHI THE ROCK!",
-        "score": 0.0,
-        "users": 0,
-        "slug": "bocchi-the-rock",
-        "summary": "Hitori Gotou, “Bocchi-chan,” is a girl who’s so introverted and shy around people that she’d always start her conversations with “Ah...”<br>\n<br>\nDuring her middle school years, she started playing the guitar, wanting to join a band because she thought it could be an opportunity for even someone shy like her to also shine. But because she had no friends, she ended up practicing guitar for six hours every day all by herself. After becoming a skilled guitar player, she uploaded videos of herself playing the guitar to the internet under the name “Guitar Hero” and fantasized about performing at her school’s cultural festival concert. But not only could she not find any bandmates, before she knew it, she was in high school and still wasn’t able to make a single friend!<br>\n<br>\nShe was really close to becoming a shut-in, but one day, Nijika Ijichi, the drummer in Kessoku Band, reached out to her. And because of that, her everyday life started to change little by little...<br>\n<br>\n(Source: Crunchyroll)",
-        "created_at": "2026-03-19T21:53:03.926Z",
-        "franchise": null,
-        "title_native": null,
-        "title_romaji": "Bocchi the Rock!",
-        "other_titles": [],
-        "season": 3,
-        "season_year": 2022,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 12,
-        "hashtag": "#ぼっち・ざ・ろっく",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/130003-FEBlngeJSTEm.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx130003-HTDmeL4RGeJ4.png",
-        "prev_anime": null,
-        "airing_start_date": "2022-10-09",
-        "airing_end_date": "2022-12-25",
-        "updated_at": "2026-03-19T21:53:03.926Z",
-        "genres": [
-            4,
-            5,
-            6
-        ],
-        "producer": [
-            11,
-            12
-        ],
-        "studio": [
-            10
-        ]
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 5,
-    "fields": {
-        "title": "The Fragrant Flower Blooms With Dignity",
-        "score": 0.0,
-        "users": 0,
-        "slug": "the-fragrant-flower-blooms-with-dignity",
-        "summary": "Chidori High is a boys’ school that takes in the dregs of society with the lowest grades. Next door stands Kikyo Girls’ High, where the wealthy, high-class families send their precious daughters. Chidori second-year Rintarou, who has a fierce face but a gentle heart, is helping at his family’s patisserie when he meets a girl named Kaoruko. The two hit it off right away…but this blissful peace is quickly disturbed when Rintarou discovers that Kaoruko is actually a student at Kikyo. Worse, she doesn’t seem to realize what a huge problem this really is! Will these two be able to forge a path for themselves, and sidestep the traps (metaphorical and literal) laid by their classmates?\n<br><br>\n(Source: Kodansha USA)",
-        "created_at": "2026-03-19T21:53:29.587Z",
-        "franchise": null,
-        "title_native": null,
-        "title_romaji": "Kaoru Hana wa Rin to Saku",
-        "other_titles": [],
-        "season": 2,
-        "season_year": 2025,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 13,
-        "hashtag": "#薫る花 #薫る花は凛と咲く",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/181444-SBhwJNPxjHrr.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx181444-Ut9DDUZdfHwg.jpg",
-        "prev_anime": null,
-        "airing_start_date": "2025-07-06",
-        "airing_end_date": "2025-09-28",
-        "updated_at": "2026-03-19T21:53:29.587Z",
-        "genres": [
-            1,
-            4,
-            7
-        ],
-        "producer": [
-            8,
-            11,
-            13,
-            14,
-            15,
-            16
-        ],
-        "studio": [
-            10
-        ]
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 6,
-    "fields": {
-        "title": "Sword Art Online",
-        "score": 0.0,
-        "users": 0,
-        "slug": "sword-art-online",
-        "summary": "In the near future, a Virtual Reality Massive Multiplayer Online Role-Playing Game (VRMMORPG) called Sword Art Online has been released where players control their avatars with their bodies using a piece of technology called Nerve Gear. One day, players discover they cannot log out, as the game creator is holding them captive unless they reach the 100th floor of the game's tower and defeat the final boss. However, if they die in the game, they die in real life. Their struggle for survival starts now...<br><br>\n(Source: Crunchyroll)",
-        "created_at": "2026-03-20T00:55:05.351Z",
-        "franchise": null,
-        "title_native": null,
-        "title_romaji": "Sword Art Online",
-        "other_titles": [],
-        "season": 2,
-        "season_year": 2012,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 25,
-        "hashtag": "#sao_anime",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11757-TlEEV9weG4Ag.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx11757-SxYDUzdr9rh2.jpg",
-        "prev_anime": null,
-        "airing_start_date": "2012-07-08",
-        "airing_end_date": "2012-12-23",
-        "updated_at": "2026-03-20T00:55:05.352Z",
-        "genres": [
-            11,
-            10,
-            3,
-            7
-        ],
-        "producer": [
-            11,
-            18,
-            19,
-            20,
-            21,
-            22
-        ],
-        "studio": [
-            17
-        ]
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 7,
-    "fields": {
-        "title": "Sword Art Online II",
-        "score": 0.0,
-        "users": 0,
-        "slug": "sword-art-online-ii-2",
-        "summary": "One year after the SAO incident, Kirito is approached by Seijiro Kikuoka from Japan's Ministry of Internal Affairs and Communications Department \"VR Division\" with a rather peculiar request.\r\n\r\nThat was an investigation on the \"Death Gun\" incident that occurred in the gun and steel filled VRMMO called Gun Gale Online (GGO). \"Players who are shot by a mysterious avatar with a jet black gun lose their lives even in the real world...\" Failing to turn down Kikuoka's bizarre request, Kirito logs in to GGO even though he is not completely convinced that the virtual world could physically affect the real world.<br>\r\n<br>\r\nKirito wanders in an unfamiliar world in order to gain any clues about the \"Death Gun.\" Then, a female sniper named Sinon who owns a gigantic \"Hecate II\" rifle extends Kirito a helping hand. With Sinon's help, Kirito decides to enter the \"Bullet of Bullets,\" a large tournament to choose the most powerful gunner within the realm of GGO, in hopes to become the target of the \"Death Gun\" and make direct contact with the mysterious avatar.<br>\r\n<br>\r\n(Source: Crunchyroll)",
-        "created_at": "2026-03-20T00:55:23.709Z",
-        "franchise": null,
-        "title_native": null,
-        "title_romaji": "Sword Art Online II",
-        "other_titles": [],
-        "season": 2,
-        "season_year": 2014,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 24,
-        "hashtag": "#sao_anime",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20594-BZOLwqidcS1G.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx20594-FhRgZ1H9Istt.jpg",
-        "prev_anime": 6,
-        "airing_start_date": "2014-07-05",
-        "airing_end_date": "2014-12-20",
-        "updated_at": "2026-03-20T00:57:26.932Z",
-        "genres": [
-            11,
-            10,
-            3,
-            12
-        ],
-        "producer": [
-            11,
-            18,
-            19,
-            20,
-            21
-        ],
-        "studio": [
-            17
-        ]
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 8,
-    "fields": {
-        "title": "Sword Art Online: Alicization",
-        "score": 0.0,
-        "users": 0,
-        "slug": "sword-art-online-alicization-2",
-        "summary": "Kirito awakens in a vast, fantastical forest filled with towering trees. In his search for clues to the truth of his surroundings, he encounters a young boy who seems to know him. He ought to be a simple NPC, but the depth of his emotions seem no different than a human. As they search for the boy's parents, Kirito finds a peculiar memory returning to him. A memory from his own childhood, of this boy and a girl, too, with golden hair, and a name he should have never forgotten - Alice.<br>\r\n<br>\r\n(Source: Yen Press)\r\n<br><br>\r\n<i>Note: The first episode aired with a runtime of ~48 minutes as opposed to the standard 24 minute long episode.</i>",
-        "created_at": "2026-03-20T00:55:54.813Z",
-        "franchise": null,
-        "title_native": null,
-        "title_romaji": "Sword Art Online: Alicization",
-        "other_titles": [],
-        "season": 3,
-        "season_year": 2018,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 24,
-        "hashtag": "#sao_anime",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100182-8iGTeJ2kYRDt.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx100182-KctPmCJ2smHQ.jpg",
-        "prev_anime": 7,
-        "airing_start_date": "2018-10-07",
-        "airing_end_date": "2019-03-31",
-        "updated_at": "2026-03-20T00:57:14.063Z",
-        "genres": [
-            11,
-            10,
-            3
-        ],
-        "producer": [
-            20
-        ],
-        "studio": [
-            17
-        ]
-    }
-},
-{
-    "model": "miru.anime",
-    "pk": 9,
-    "fields": {
-        "title": "Sword Art Online: Alicization - War of Underworld",
-        "score": 0.0,
-        "users": 0,
-        "slug": "sword-art-online-alicization-war-of-underworld-2",
-        "summary": "Kirito, Eugeo, and Alice. Six months have passed since the two disciples and an Integrity Knight brought down the pontifex, Administrator. With the fighting over, Alice has been living in her hometown of Rulid Village. Beside her is Kirito, who has not only lost his arm and soul, but also his dear friend. As Alice devotes herself to looking after Kirito, she too has lost the will to fight she once had as a knight.<br>\r\n<br>\r\nNevertheless, the time for the final stress test – one which will engulf the entire Underworld with tragedy – draws relentlessly closer.<br>\r\n<br>\r\nMeanwhile, in the deepest areas of the Dark Territory, the Dark God Vecta has resurrected, as if to have waited for this very moment. Leading an army of dark forces, they begin their invasion into the human empire in hopes of attaining the Priestess of Light. The human empire force led by the Integrity Knight Bercouli prepares for a war of an unimaginable scale against the army of the Dark Territory. Even then, Alice is nowhere to be seen, nor the two heroes that saved the realm...<br>\r\n<br>\r\n(Source: Official Website)",
-        "created_at": "2026-03-20T00:56:11.112Z",
-        "franchise": null,
-        "title_native": null,
-        "title_romaji": "Sword Art Online: Alicization - War of Underworld",
-        "other_titles": [],
-        "season": 3,
-        "season_year": 2019,
-        "type": 0,
-        "status": 0,
-        "rating": 0,
-        "episode_count": 12,
-        "hashtag": "#sao_anime",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108759-HGsEWBcisLmO.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx108759-jcXbDf9BJTcb.jpg",
-        "prev_anime": 8,
-        "airing_start_date": "2019-10-13",
-        "airing_end_date": "2019-12-29",
-        "updated_at": "2026-03-20T00:56:56.967Z",
-        "genres": [
-            11,
-            10,
-            3
-        ],
-        "producer": [
-            11,
-            23
-        ],
-        "studio": [
-            17
-        ]
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 1,
-    "fields": {
-        "anime": 1,
-        "anilist_id": 180516,
-        "rank_score": 67,
-        "rank_popular": null
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 2,
-    "fields": {
-        "anime": 2,
-        "anilist_id": 195240,
-        "rank_score": 51,
-        "rank_popular": null
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 3,
-    "fields": {
-        "anime": 3,
-        "anilist_id": 14131,
-        "rank_score": null,
-        "rank_popular": null
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 4,
-    "fields": {
-        "anime": 4,
-        "anilist_id": 130003,
-        "rank_score": 34,
-        "rank_popular": 182
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 5,
-    "fields": {
-        "anime": 5,
-        "anilist_id": 181444,
-        "rank_score": 63,
-        "rank_popular": 333
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 6,
-    "fields": {
-        "anime": 6,
-        "anilist_id": 11757,
-        "rank_score": null,
-        "rank_popular": 13
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 7,
-    "fields": {
-        "anime": 7,
-        "anilist_id": 20594,
-        "rank_score": null,
-        "rank_popular": 59
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 8,
-    "fields": {
-        "anime": 8,
-        "anilist_id": 100182,
-        "rank_score": null,
-        "rank_popular": 142
-    }
-},
-{
-    "model": "miru.anilistdata",
-    "pk": 9,
-    "fields": {
-        "anime": 9,
-        "anilist_id": 108759,
-        "rank_score": null,
-        "rank_popular": 227
     }
 },
 {
