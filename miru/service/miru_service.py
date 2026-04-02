@@ -7,14 +7,18 @@ from miru.models.relations import (
 )
 from miru.models.list_entry import AnimeListEntry
 from users.models import ArcadiaUser
+from miru.exceptions import AnimeNotFoundError
 
 class MiruService:
     ''' Service layer to apply business logic to Miru '''
 
     @staticmethod
     def get_anime_by_id(anime_id: int) -> Anime:
-        return MiruRepository.get_anime_by_id(anime_id)
-    
+        try:
+            return MiruRepository.get_anime_by_id(anime_id)
+        except Anime.DoesNotExist:
+            raise AnimeNotFoundError(anime_id=anime_id)
+        
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
         return MiruRepository.get_characters_by_anime(anime_id)

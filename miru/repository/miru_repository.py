@@ -23,7 +23,7 @@ class MiruRepository:
             ).get(id=anime_id)
             return anime
         except Anime.DoesNotExist:
-            return None
+            raise
         
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
@@ -44,23 +44,16 @@ class MiruRepository:
         return Anime.objects.order_by(category)[:count]
     
     @staticmethod
-    def create_anime_list_entry(user: User, anime: Anime, status: int, details: dict) -> None:
+    def create_anime_list_entry(user: User, anime: Anime, status: int, **kwargs) -> None:
         animeEntry = AnimeListEntry(
             user = user,
             anime = anime,
-            status = status
+            status = status,
+            current_episode = kwargs.pop('current_episode', 0),
+            score = kwargs.pop('score', None),
+            start_watch_date = kwargs.pop('start_watch_date', None),
+            end_watch_date = kwargs.pop('end_watch_date', None)
         )
-        if details.get('current_episode')  is not None:
-            animeEntry.current_episode = details['current_episode']
-
-        if details.get('score')  is not None:
-            animeEntry.score = details.get('score')
-
-        if details.get('start_watch_date') is not None:
-            animeEntry.start_watch_date = details.get('start_watch_date')
-
-        if details.get('end_watch_date') is not None:
-            animeEntry.end_watch_date = details.get('end_watch_date')
 
         try:
             animeEntry.save()
