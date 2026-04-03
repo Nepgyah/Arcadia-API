@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError, FieldError
-from miru.exceptions import MiruError
+from miru.exceptions import MiruError, AnimeNotFoundError
 from miru.models.anime import Anime
 from miru.models.relations import (
     AnimeCharacter,
@@ -23,7 +23,7 @@ class MiruRepository:
             ).get(id=anime_id)
             return anime
         except Anime.DoesNotExist:
-            raise
+            raise AnimeNotFoundError(anime_id)
         
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
@@ -37,7 +37,7 @@ class MiruRepository:
             anime = Anime.objects.get(id=anime_id)
             return AnimeCharacter.objects.filter(anime=anime)
         except Anime.DoesNotExist:
-            raise
+            raise AnimeNotFoundError(anime_id)
         
     @staticmethod
     def get_anime_by_category(category: str, count: int) -> list[Anime]:

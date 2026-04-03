@@ -1,7 +1,8 @@
 import pytest
 from .miru_repository import MiruRepository
 from miru.models.list_entry import AnimeListEntry
-
+from miru.models.anime import Anime
+from miru.exceptions import AnimeNotFoundError
 # Declares that the tests have database acccess
 @pytest.mark.django_db
 class TestRepository:
@@ -11,16 +12,26 @@ class TestRepository:
         assert anime.slug == 'bocchi-the-rock'
 
     def test_get_anime_by_id_returns_none(self, anime_fixture):
-        anime = MiruRepository.get_anime_by_id(99)
-        assert anime is None
+        non_existent_id = 9999
+
+        with pytest.raises(AnimeNotFoundError) as exception:
+            MiruRepository.get_anime_by_id(non_existent_id)
+
+        assert exception.value.status_code == 404
+        assert str(non_existent_id) in str(exception.value.detail)
 
     def test_get_characters_by_anime(self, anime_fixture, bocchi_character_fixtures):
         characters = MiruRepository.get_characters_by_anime(anime_fixture.id)
         assert bocchi_character_fixtures[0] in characters
 
     def test_get_characters_by_anime_returns_none(self, anime_fixture, bocchi_character_fixtures):
-        characters = MiruRepository.get_characters_by_anime(0)
-        assert characters == []
+        non_existent_id = 9999
+
+        with pytest.raises(AnimeNotFoundError) as exception:
+            MiruRepository.get_characters_by_anime(non_existent_id)
+
+        assert exception.value.status_code == 404
+        assert str(non_existent_id) in str(exception.value.detail)
 
     def test_create_anime_list_entry_success(self, anime_fixture, user_fixture):
         test_details = {
