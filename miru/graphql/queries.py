@@ -51,8 +51,11 @@ class Query(graphene.ObjectType):
             raise e
     
     def resolve_characters_by_anime(self, _info, anime_id):
-        return MiruService.get_characters_by_anime(anime_id)
-    
+        try:
+            return MiruService.get_characters_by_anime(anime_id)
+        except AnimeNotFoundError as e:
+            raise e
+        
     def resolve_anime_by_category(self, _info, category, count):
         return MiruService.get_anime_by_category(f'-{category}', count)
     

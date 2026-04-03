@@ -1,5 +1,5 @@
-from django.core.exceptions import ValidationError
-import logging
+from django.core.exceptions import ValidationError, FieldError
+from miru.exceptions import MiruError
 from miru.models.anime import Anime
 from miru.models.relations import (
     AnimeCharacter,
@@ -37,12 +37,15 @@ class MiruRepository:
             anime = Anime.objects.get(id=anime_id)
             return AnimeCharacter.objects.filter(anime=anime)
         except Anime.DoesNotExist:
-            return []
+            raise
         
     @staticmethod
-    def get_anime_by_category(category: str, count: int) -> list[Anime]: 
-        return Anime.objects.order_by(category)[:count]
-    
+    def get_anime_by_category(category: str, count: int) -> list[Anime]:
+        try: 
+            return Anime.objects.order_by(category)[:count]
+        except FieldError:
+            raise MiruError(detail=f'Cannot sort anime by {category}')
+
     @staticmethod
     def create_anime_list_entry(user: User, anime: Anime, status: int, **kwargs) -> None:
         animeEntry = AnimeListEntry(

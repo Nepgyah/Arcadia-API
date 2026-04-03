@@ -1,22 +1,14 @@
-from rest_framework.exceptions import APIException
+from main.exceptions import ArcadiaException
 
-class MiruError(APIException):
+class MiruError(ArcadiaException):
     status_code = 400
-    detail = 'An internal error occured.'
-    default_code = 'internal_error'
-
-    def __init__(self, detail=None, code=None):
-        if detail:
-            self.detail = detail
-        if code:
-            self.code = code
-        super().__init__(self.detail, self.code)
+    default_detail = 'An internal error occured within the Miru service.'
+    default_code = 'miru_error'
 
 class AnimeNotFoundError(MiruError):
     status_code = 404
+    default_code = 'miru_anime_not_found'
 
     def __init__(self, anime_id: int):
-        super().__init__(
-            detail=f'Anime with ID: {anime_id} not found.',
-            code='anime_not_found'
-        )
+        self.detail = f'Anime with ID: {anime_id} not found.'
+        super().__init__(detail=self.detail)

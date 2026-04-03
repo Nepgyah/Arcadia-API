@@ -21,8 +21,11 @@ class MiruService:
         
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
-        return MiruRepository.get_characters_by_anime(anime_id)
-    
+        try:
+            return MiruRepository.get_characters_by_anime(anime_id)
+        except Anime.DoesNotExist:
+            raise AnimeNotFoundError(anime_id=anime_id)
+        
     @staticmethod
     def get_anime_by_category(category: str, count: int) -> list[Anime]:
         """
