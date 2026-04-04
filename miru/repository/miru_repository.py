@@ -37,7 +37,7 @@ class MiruRepository:
 
             Return None if no characters found
         """
-
+        print('repo')
         try:
             anime = Anime.objects.get(id=anime_id)
             return AnimeCharacter.objects.filter(anime=anime)

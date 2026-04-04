@@ -18,6 +18,7 @@ class MiruService:
         
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
+        print('service')
         return MiruRepository.get_characters_by_anime(anime_id)
         
     @staticmethod
