@@ -7,6 +7,7 @@ from miru.models.relations import (
 )
 from miru.models.list_entry import AnimeListEntry
 from users.models import ArcadiaUser
+from miru.exceptions import MiruError
 
 class MiruService:
     ''' Service layer to apply business logic to Miru '''
@@ -14,11 +15,12 @@ class MiruService:
     @staticmethod
     def get_anime_by_id(anime_id: int) -> Anime:
         return MiruRepository.get_anime_by_id(anime_id)
-    
+        
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
+        print('service')
         return MiruRepository.get_characters_by_anime(anime_id)
-    
+        
     @staticmethod
     def get_anime_by_category(category: str, count: int) -> list[Anime]:
         """
@@ -76,17 +78,8 @@ class MiruService:
 
         user = ArcadiaUser.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
-
-        if anime is None or user is None:
-            return False
-        try:
-            MiruRepository.create_anime_list_entry(user, anime, status, details)
-        except Exception:
-            # TODO: Handle errors such as uniqueness, etc
-            return False
+        return MiruRepository.create_anime_list_entry(user, anime, status, **details)
         
-        return True
-
     @staticmethod
     def update_anime_list_entry(user_id: int, anime_id: int, status: int, details: dict) -> bool:
         """

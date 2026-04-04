@@ -1,5 +1,10 @@
-from django.core.exceptions import ValidationError
-import logging
+from django.core.exceptions import ValidationError, FieldError
+from django.db import IntegrityError
+from miru.exceptions import (
+    MiruError, 
+    AnimeNotFoundError,
+    AnimeAndUserAlreadyCreatedError
+)
 from miru.models.anime import Anime
 from miru.models.relations import (
     AnimeCharacter,
@@ -23,7 +28,7 @@ class MiruRepository:
             ).get(id=anime_id)
             return anime
         except Anime.DoesNotExist:
-            return None
+            raise AnimeNotFoundError(anime_id)
         
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
@@ -32,40 +37,40 @@ class MiruRepository:
 
             Return None if no characters found
         """
-
+        print('repo')
         try:
             anime = Anime.objects.get(id=anime_id)
             return AnimeCharacter.objects.filter(anime=anime)
         except Anime.DoesNotExist:
-            return []
+            raise AnimeNotFoundError(anime_id)
         
     @staticmethod
-    def get_anime_by_category(category: str, count: int) -> list[Anime]: 
-        return Anime.objects.order_by(category)[:count]
-    
+    def get_anime_by_category(category: str, count: int) -> list[Anime]:
+        try: 
+            return Anime.objects.order_by(category)[:count]
+        except FieldError as e:
+            raise MiruError(detail=f'Cannot sort anime by {category}')
+        
     @staticmethod
-    def create_anime_list_entry(user: User, anime: Anime, status: int, details: dict) -> None:
-        animeEntry = AnimeListEntry(
+    def create_anime_list_entry(user: User, anime: Anime, status: int, **kwargs) -> None:
+        anime_entry = AnimeListEntry(
             user = user,
             anime = anime,
-            status = status
+            status = status,
+            current_episode = kwargs.pop('current_episode', 0),
+            score = kwargs.pop('score', None),
+            start_watch_date = kwargs.pop('start_watch_date', None),
+            end_watch_date = kwargs.pop('end_watch_date', None)
         )
-        if details.get('current_episode')  is not None:
-            animeEntry.current_episode = details['current_episode']
-
-        if details.get('score')  is not None:
-            animeEntry.score = details.get('score')
-
-        if details.get('start_watch_date') is not None:
-            animeEntry.start_watch_date = details.get('start_watch_date')
-
-        if details.get('end_watch_date') is not None:
-            animeEntry.end_watch_date = details.get('end_watch_date')
 
         try:
-            animeEntry.save()
-        except ValidationError:
-            return
+            anime_entry.save()
+            return anime_entry
+        except IntegrityError:
+            print('already created')
+            raise AnimeAndUserAlreadyCreatedError(anime_id=anime.id, user_id=user.id)
+        except ValidationError as e:
+            print(f'Validation error {e}')
 
     @staticmethod
     def update_anime_list_entry(user: User, anime: Anime, status: int, details: dict) -> None:

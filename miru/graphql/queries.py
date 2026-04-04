@@ -1,8 +1,8 @@
 import graphene
 
-from miru.service.miru_service import MiruService
+from miru.service import MiruService
 from users.models import User
-
+from miru.exceptions import AnimeNotFoundError
 from util.schema import (
     MediaSortInput,
     PaginationInput
@@ -45,11 +45,15 @@ class Query(graphene.ObjectType):
     get_anime_episodes = graphene.List(AnimeEpisodeType, anime_id=graphene.ID(required=True))
 
     def resolve_anime_by_id(self, _info, anime_id):
-        return MiruService.get_anime_by_id(anime_id)
+        try:
+            return MiruService.get_anime_by_id(anime_id)
+        except AnimeNotFoundError as e:
+            raise e
     
     def resolve_characters_by_anime(self, _info, anime_id):
+        print('api')
         return MiruService.get_characters_by_anime(anime_id)
-    
+        
     def resolve_anime_by_category(self, _info, category, count):
         return MiruService.get_anime_by_category(f'-{category}', count)
     

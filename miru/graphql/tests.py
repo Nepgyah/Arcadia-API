@@ -41,7 +41,7 @@ def test_anime_by_id_not_found(client_query, anime_fixture):
     )
     content = response.json()
 
-    assert 'errors' not in content
+    assert 'errors' in content
     assert content['data']['animeById'] is None
 
 @pytest.mark.django_db
@@ -74,5 +74,5 @@ def test_characters_by_anime_not_found(client_query, anime_fixture):
     )
     content = response.json()
 
-    assert 'errors' not in content
-    assert content['data']['charactersByAnime'] == []
+    assert 'errors' in content
+    assert content['data']['charactersByAnime'] == None

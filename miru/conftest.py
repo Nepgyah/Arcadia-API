@@ -3,14 +3,14 @@ from miru.models.anime import Anime
 from miru.models.list_entry import AnimeListEntry
 from miru.models.relations import AnimeCharacter
 from talent.models import Character
-from users.models import User
+from users.models import ArcadiaUser
 
 # Conftest allows you to declare fixtures and have every test below in the tree access them
 # Fixtures define steps and the data as part of the arrange phase of testing
 
 @pytest.fixture
 def user_fixture():
-    user = User.objects.create(
+    user = ArcadiaUser.objects.create(
         d2x_id = 1,
         username = 'TestUsername'
     )
