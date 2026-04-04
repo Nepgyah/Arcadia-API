@@ -1,15 +1,17 @@
 import graphene
-import talent.graphql.query
+import asobu.graphql.query
 import base.schema
 import miru.graphql.queries
 import miru.graphql.mutations
-import asobu.graphql.query
+import talent.graphql.query
+import users.graphql.queries
 
 class Query(
     asobu.graphql.query.Query,
+    base.schema.Query,
     miru.graphql.queries.Query,
     talent.graphql.query.Query,
-    base.schema.Query,
+    users.graphql.queries.Query,
     graphene.ObjectType
 ):
     pass
