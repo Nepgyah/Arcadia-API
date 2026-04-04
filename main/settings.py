@@ -173,3 +173,10 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=21),
     'ROTATE_REFRESH_TOKENS': True,
 }
+
+GRAPHENE = {
+    'SCHEMA': 'main.schema.schema',
+    'MIDDLEWARE': [
+        'main.middleware.GrapheneAuthMiddleware'
+    ]
+}

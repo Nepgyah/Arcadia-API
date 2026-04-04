@@ -12,3 +12,11 @@ class AnimeNotFoundError(MiruError):
     def __init__(self, anime_id: int):
         self.detail = f'Anime with ID: {anime_id} not found.'
         super().__init__(detail=self.detail)
+
+class AnimeAndUserAlreadyCreatedError(MiruError):
+    status_code = 400
+    default_code = 'anime_user_already_created'
+
+    def __init__(self, anime_id: int, user_id: int):
+        self.detail = f'Anime ID: {anime_id} with User ID: {user_id} already exists'
+        super().__init__(detail=self.detail)
