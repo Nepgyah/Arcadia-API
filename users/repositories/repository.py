@@ -1,4 +1,4 @@
-from .models import ArcadiaUser
+from users.models import ArcadiaUser
 
 class UserRepository:
 

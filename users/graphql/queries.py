@@ -1,6 +1,5 @@
 import graphene
-
-from users.service import UserService
+from users.services import UserService
 
 from .schema import (
     ArcadiaUserType

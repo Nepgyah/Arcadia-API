@@ -1,5 +1,6 @@
-from users.repository import UserRepository
-from .models import ArcadiaUser
+from users.repositories import UserRepository
+from users.models import ArcadiaUser
+
 class UserService:
 
     @staticmethod
