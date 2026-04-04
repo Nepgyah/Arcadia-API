@@ -78,3 +78,20 @@ class AdminLoginView(APIView):
             'refresh_token': refresh
         })
         return response
+
+class UserView(APIView):
+
+    def get(self, request):
+        try:
+            return Response(
+                status=200,
+                data={
+                    'detail': 'User found',
+                    'user': {
+                        'id': request.user.id,
+                        'username': request.user.username
+                    }
+                }
+            )
+        except ArcadiaUser.DoesNotExist:
+            return None
