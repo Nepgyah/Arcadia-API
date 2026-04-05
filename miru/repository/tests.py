@@ -8,7 +8,7 @@ from miru.exceptions import AnimeNotFoundError
 @pytest.mark.django_db
 class TestRepository:
 
-    def test_get_anime_by_id_returns_anime(self, anime_fixture):
+    def test_get_anime_by_id_returns_anime(_self, anime_fixture):
         anime = MiruRepository.get_anime_by_id(anime_fixture.id)
         assert anime.slug == 'bocchi-the-rock'
 
