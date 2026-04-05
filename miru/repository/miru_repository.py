@@ -67,10 +67,7 @@ class MiruRepository:
             anime_entry.save()
             return anime_entry
         except IntegrityError:
-            print('already created')
             raise AnimeAndUserAlreadyCreatedError(anime_id=anime.id, user_id=user.id)
-        except ValidationError as e:
-            print(f'Validation error {e}')
 
     @staticmethod
     def update_anime_list_entry(user: ArcadiaUser, anime: Anime, status: int, details: dict) -> None:

@@ -75,7 +75,7 @@ class AdminLoginView(APIView):
         }
         
         response = Response(status=200, data={
-            'detail':'Token refreshed',
+            'detail':'Login Successful',
             'access_token': access,
             'refresh_token': refresh
         })
