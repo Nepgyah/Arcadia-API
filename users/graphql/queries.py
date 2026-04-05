@@ -7,7 +7,7 @@ from .schema import (
 
 class Query(graphene.ObjectType):
 
-    User = graphene.Field(ArcadiaUserType, user_id=graphene.Int(required=True))
+    User = graphene.Field(ArcadiaUserType, user_id=graphene.ID(required=True))
 
     def resolve_User(_self, _info, user_id: int):
         return UserService.get_user_by_id(user_id)

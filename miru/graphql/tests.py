@@ -1,15 +1,8 @@
 import pytest
-from graphene_django.utils.testing import graphql_query
-
-@pytest.fixture
-def client_query(client):
-    def func(query, variables=None):
-        return graphql_query(query, variables=variables, client=client, graphql_url='/graphql/')
-    return func
 
 @pytest.mark.django_db
-def test_anime_by_id(client_query, anime_fixture):
-    response = client_query(
+def test_anime_by_id(graphql_client, anime_fixture):
+    response = graphql_client(
         query = '''
             query GetAnime($id: ID!) {
                 animeById(animeId: $id) {
@@ -26,8 +19,8 @@ def test_anime_by_id(client_query, anime_fixture):
     assert 'errors' not in content
 
 @pytest.mark.django_db
-def test_anime_by_id_not_found(client_query, anime_fixture):
-    response = client_query(
+def test_anime_by_id_not_found(graphql_client, anime_fixture):
+    response = graphql_client(
         query = '''
             query GetAnime($id: ID!) {
                 animeById(animeId: $id) {
@@ -45,8 +38,8 @@ def test_anime_by_id_not_found(client_query, anime_fixture):
     assert content['data']['animeById'] is None
 
 @pytest.mark.django_db
-def test_characters_by_anime(client_query, anime_fixture):
-    response = client_query(
+def test_characters_by_anime(graphql_client, anime_fixture):
+    response = graphql_client(
         query = '''
             query GetCharactersByAnime($id: ID!) {
                 charactersByAnime(animeId: $id) {
@@ -61,8 +54,8 @@ def test_characters_by_anime(client_query, anime_fixture):
     assert 'errors' not in content
 
 @pytest.mark.django_db
-def test_characters_by_anime_not_found(client_query, anime_fixture):
-    response = client_query(
+def test_characters_by_anime_not_found(graphql_client, anime_fixture):
+    response = graphql_client(
         query = '''
             query GetCharactersByAnime($id: ID!) {
                 charactersByAnime(animeId: $id) {

@@ -9,7 +9,6 @@ class GrapheneAuthMiddleware(object):
         raw_token = info.context.COOKIES.get('access_token', None)
 
         if raw_token:
-            print('Raw token')
             validated_token = auth.get_validated_token(raw_token)
             user_id = validated_token.get('user_id')
             if user_id:
