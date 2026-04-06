@@ -3,12 +3,25 @@ Introducing the Arcadia API. The backend service that helps users view and track
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
-## Latest Release - Alpha v1.1 - 3/20/2026
-- **Asobu**
+## Latest Release - Alpha v1.2 - 4/xx/2026
+- **Miru**
     - **Models**
-        - Improve game relationship logic
-    -**Graphql API**
-        - Update schema to query game by id
+        - Add anilist statistics
+        - Add myanimelist statistics
+    - **Other**
+        - Add script to update anilist and mal ratings
+        - Add custom exceptions for app
+        - Update unit layered unit tests
+
+- **Users**
+    - **Model**
+        - Add local arcadia user
+    - **Graphql**
+        - Add arcadia user detail query
+    - **Rest**
+        - Add admin login endpoint
+    - **Other**
+        - Add layering and unit testing
 
 ## How it works
 This repo holds the backend logic for all the apps on one django server. When dealing with data for the Arcadia apps, frontends can communicate via a single Graphql endpoint. For actions dealing with authentication/accounts, frontends call specific endpoints created via Django Rest Framework. The main reason for integrating 2 different types of apis is for practice and application.

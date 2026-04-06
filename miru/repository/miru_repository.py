@@ -11,7 +11,7 @@ from miru.models.relations import (
     AnimeEpisode
 )
 from miru.models.list_entry import AnimeListEntry
-from users.models import User
+from users.models import ArcadiaUser
 
 class MiruRepository:
     ''' Repository layer to work with Anime, AnimeCharacters, etc '''
@@ -52,7 +52,7 @@ class MiruRepository:
             raise MiruError(detail=f'Cannot sort anime by {category}')
         
     @staticmethod
-    def create_anime_list_entry(user: User, anime: Anime, status: int, **kwargs) -> None:
+    def create_anime_list_entry(user: ArcadiaUser, anime: Anime, status: int, **kwargs) -> None:
         anime_entry = AnimeListEntry(
             user = user,
             anime = anime,
@@ -67,13 +67,10 @@ class MiruRepository:
             anime_entry.save()
             return anime_entry
         except IntegrityError:
-            print('already created')
             raise AnimeAndUserAlreadyCreatedError(anime_id=anime.id, user_id=user.id)
-        except ValidationError as e:
-            print(f'Validation error {e}')
 
     @staticmethod
-    def update_anime_list_entry(user: User, anime: Anime, status: int, details: dict) -> None:
+    def update_anime_list_entry(user: ArcadiaUser, anime: Anime, status: int, details: dict) -> None:
         try:
             animeEntry = AnimeListEntry.objects.get(user=user, anime=anime)
         except AnimeListEntry.DoesNotExist:
@@ -97,19 +94,19 @@ class MiruRepository:
         animeEntry.save()
         
     @staticmethod
-    def delete_anime_list_entry(user: User, anime: Anime) -> None:
+    def delete_anime_list_entry(user: ArcadiaUser, anime: Anime) -> None:
         try:
             AnimeListEntry.objects.get(user=user, anime=anime).delete()
         except AnimeListEntry.DoesNotExist:
             return
         
     @staticmethod
-    def get_anime_list_by_user_id(user: User) -> list[AnimeListEntry]:
+    def get_anime_list_by_user_id(user: ArcadiaUser) -> list[AnimeListEntry]:
         anime_list = AnimeListEntry.objects.filter(user=user)
         return anime_list
     
     @staticmethod
-    def get_anime_list_entry(user: User, anime: Anime) -> AnimeListEntry:
+    def get_anime_list_entry(user: ArcadiaUser, anime: Anime) -> AnimeListEntry:
         try:
             return AnimeListEntry.objects.get(user=user, anime=anime)
         except AnimeListEntry.DoesNotExist:

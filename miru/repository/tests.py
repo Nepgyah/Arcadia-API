@@ -3,11 +3,12 @@ from .miru_repository import MiruRepository
 from miru.models.list_entry import AnimeListEntry
 from miru.models.anime import Anime
 from miru.exceptions import AnimeNotFoundError
+
 # Declares that the tests have database acccess
 @pytest.mark.django_db
 class TestRepository:
 
-    def test_get_anime_by_id_returns_anime(self, anime_fixture):
+    def test_get_anime_by_id_returns_anime(_self, anime_fixture):
         anime = MiruRepository.get_anime_by_id(anime_fixture.id)
         assert anime.slug == 'bocchi-the-rock'
 
@@ -33,13 +34,13 @@ class TestRepository:
         assert exception.value.status_code == 404
         assert str(non_existent_id) in str(exception.value.detail)
 
-    def test_create_anime_list_entry_success(self, anime_fixture, user_fixture):
+    def test_create_anime_list_entry_success(self, anime_fixture, arcadia_user_fixture):
         test_details = {
             'current_episode': 1,
             'score': 9,
         }
         MiruRepository.create_anime_list_entry(
-            user=user_fixture,
+            user=arcadia_user_fixture,
             anime=anime_fixture,
             status=0,
             details=test_details
