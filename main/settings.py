@@ -38,7 +38,8 @@ ALLOWED_HOSTS = [
 # Who can call the API
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:6767", #D2X Website local
-    "http://localhost:3000", #Arcadia Platform local
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
     "https://arcadia-platform.vercel.app"
 ]
 
