@@ -9,42 +9,49 @@ class AnimeListEntryMetaData(graphene.InputObjectType):
     end_watch_date = graphene.Date(required=False, default_value=None)
 
 class CreateAnimeListEntryMutation(graphene.Mutation):
+    detail = graphene.String()
     message = graphene.String()
     anime_entry = graphene.Field(AnimeListEntryType)
 
     # Define the arguements for the mutation
     class Arguments:
         anime_id = graphene.ID()
-        user_id = graphene.ID()
         status = graphene.Int()
         details = AnimeListEntryMetaData(required=False)
 
     # Define the for the mutation go here, use services, repo, etc
     @classmethod
-    def mutate(cls, _root, info, anime_id, user_id, status, details):
-        print(info.context.user_id)
+    def mutate(cls, _root, info, anime_id, status, details):
+        user_id = info.context.user_id
         anime_entry = MiruService.add_anime_list_entry(user_id, anime_id, status, details)
 
         # Return an instance, make sure to set the values of your returns
         return CreateAnimeListEntryMutation(
-            message = f'Entry list created with Anime ID: {anime_id}',
+            detail = f'Entry list created with Anime ID: {anime_id}',
+            message = 'Anime successfully added',
             anime_entry = anime_entry
         )
 
 class UpdateAnimeListMutation(graphene.Mutation):
-    ok = graphene.Boolean()
+    detail = graphene.String()
+    message = graphene.String()
+    anime_entry = graphene.Field(AnimeListEntryType)
 
     class Arguments:
         anime_id = graphene.ID()
-        user_id = graphene.ID()
         status = graphene.Int()
         details = AnimeListEntryMetaData(required=False)
 
     @staticmethod
-    def mutate(_root, _info, anime_id, user_id, status, details):
-        ok = MiruService.update_anime_list_entry(user_id, anime_id, status, details)
+    def mutate(_root, info, anime_id, status, details):
+        user_id = info.context.user_id
+        anime_entry = MiruService.update_anime_list_entry(user_id, anime_id, status, details)
 
-        return UpdateAnimeListMutation(ok=ok)
+        return UpdateAnimeListMutation(
+            detail = f'Entry list update with Anime ID: {anime_id}',
+            message = 'Anime list updated',
+            anime_entry = anime_entry,
+        )
 
 class DeleteAnimeListMutation(graphene.Mutation):
     ok = graphene.Boolean()
