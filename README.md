@@ -1,19 +1,25 @@
 # Arcadia API
-Introducing the Arcadia API. The backend service that helps users view and track anime, manga, games and music.
+Introducing the Arcadia API. This is the backend repository dedicated to assisting fans in the world of anime, manga, games and more.
+
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
-## Latest Release - Alpha v1.2 - 4/xx/2026
-- **Miru**
+## Latest Release - Alpha v2.0 - 4/xx/2026
+- **General**
+    - Add middleware to utilize jwt tokens for GraphQL authentication
+
+- **Miru v0.4**
     - **Models**
         - Add anilist statistics
         - Add myanimelist statistics
+    - **GraphQL**
+        - Adjust mutations to anime entry lists
     - **Other**
         - Add script to update anilist and mal ratings
         - Add custom exceptions for app
         - Update unit layered unit tests
 
-- **Users**
+- **Users v0.1**
     - **Model**
         - Add local arcadia user
     - **Graphql**
@@ -23,11 +29,16 @@ Visit Arcadia: https://arcadia-platform.vercel.app
     - **Other**
         - Add layering and unit testing
 
-## How it works
-This repo holds the backend logic for all the apps on one django server. When dealing with data for the Arcadia apps, frontends can communicate via a single Graphql endpoint. For actions dealing with authentication/accounts, frontends call specific endpoints created via Django Rest Framework. The main reason for integrating 2 different types of apis is for practice and application.
-
 ## Why I started Arcadia
-As an advid user of some of the apps that Arcadia tries to implement (MyAnimeList, AniList, Steam, Nexus Mods, Etc), I have wondered how the backend of these services could possibly be set up. And as a junior web developer, I wanted to work on something in my freetime that would function both as a way to reinforce what I have learned in the field so far as well as sorta learning 'playground' to try out new technologies and practices. So what better way to make the growth as a web developer fun than to work on a web platform based on my favorite hobbies: video games, anime and more.
+Advid fans of anime, manga, games and more would have to multiple web apps to maintain their hobbies. For example using AniList to track Anime, MyAnimeList to track Manga, Spotify to handle music, etc. Arcadia aims to solve this issue by combining all the sites into one multi app solution, unified by a single login/account. This would remove having to manage different accounts, having multiple tabs open while also having the opporitunity to connect different datasets into one. 
+
+One the other hand, as a early career web developer, I have become fascinated on how these solutions are designed and implemented. Arcadia gives me that opporitunity to hone in on my web dev skills and explore new technologies in a sandbox enviornemnt. Using the context of anime and games allows me to add a fun twist in learning as well.
+
+## Tech
+Languages: Python
+Frameworks: Django, Django Rest Framework, Graphene
+Authentication: JWT
+Database: Postgresql
 
 ## Features
 As Arcadia is planned to be a multi app platform, here are the apps and their inspirationed counterparts
@@ -37,12 +48,6 @@ As Arcadia is planned to be a multi app platform, here are the apps and their in
 **Asobu** - Game info, tracking and mod community (Steam + Nexus mods)<br>
 **Kiku** - Music and playlist (Spotify)<br>
 **Iku** - Event tracker (Google Events? lol)
-
-## Tech
-Languages: Python
-Frameworks: Django, Django Rest Framework, Graphene
-Authentication: JWT
-Database: Postgresql
 
 ## How to install - Onboarding
 1. Download the Arcadia api repository
@@ -95,17 +100,6 @@ To run a dump for your db and to handle japanese letters and such run<br>
 '''
 python -Xutf8 manage.py dumpdata --natural-foreign --natural-primary -e admin.logentry -e auth -e contenttypes -e sessions --indent 4 -o db_dump.json
 '''
-
-## Feature List
-- *Miru*
-    - Reviews / Comments
-
-- *Asobu*
-    - Reviews / Comments
-
-- *User*
-    - Achievement system
-    - Mailing system (Mailerlite)
 
 ## Others
 

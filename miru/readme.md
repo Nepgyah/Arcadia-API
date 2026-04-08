@@ -18,7 +18,7 @@ From this diagram, there were 3 major hurdles to overcome.<br>
 To view the anime model, view [models/anime.py](models/anime.py)
 
 ## Data
-For the sake of obtaining accurate and pleantiful data, enough to properly showcase the Miru app in its full capacity, Arcadia connects with the Anilist Graphql API. As the structure for anime details differs between Arcadia and Anilist, I developed a script to convert the anilist json repsonse into the appropriate Arcadia models and create the relations. You can view the script and its modules [here](anilist)
+For the sake of obtaining accurate and pleantiful data, Arcadia connects with the Anilist Graphql API. As the structure for anime details differs between Arcadia and Anilist, I developed a script to convert the anilist json repsonse into the appropriate Arcadia models and create the relations. You can view the script and its modules [here](anilist). Per anilist guidelines, Arcadia adheres to the terms of use by being simply a passion project and utilizing a small amount of anime entries, enought to showcase the Miru app and its features.
 
 ## API
 The Miru app mainly utilizes graphql for its ability to specificly request what information the platform needs of an anime.

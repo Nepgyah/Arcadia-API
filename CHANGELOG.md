@@ -1,9 +1,10 @@
 ## App Version Tracker
 | App        | Version |
 | ---------- | ------- |
-| Miru       | 0.3     |
+| Miru       | 0.4     |
+| Users      | 0.1     |
 
-## Alpha v1.2 - 3/20/2026
+## Alpha v1.1 - 3/20/2026
 - **Asobu**
     - **Models**
         - Improve game relationship logic
