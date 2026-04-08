@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from users.services import UserService
 from miru.repository.miru_repository import MiruRepository
 from miru.models.anime import Anime
 from miru.models.relations import (
@@ -18,7 +19,6 @@ class MiruService:
         
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
-        print('service')
         return MiruRepository.get_characters_by_anime(anime_id)
         
     @staticmethod
@@ -76,7 +76,7 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
 
-        user = ArcadiaUser.objects.get(id=user_id)
+        user = UserService.get_user_by_id(user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
         return MiruRepository.create_anime_list_entry(user, anime, status, **details)
         
@@ -89,18 +89,13 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
         
-        user = ArcadiaUser.objects.get(id=user_id)
+        user = UserService.get_user_by_id(user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
-        if anime is None or user is None:
-            return False
         try:
-            MiruRepository.update_anime_list_entry(user, anime, status, details)
+            return MiruRepository.update_anime_list_entry(user, anime, status, details)
         except Exception:
-            # TODO: Handle errors such as uniqueness, etc
-            return False
-        
-        return True
+            raise MiruError
 
     @staticmethod
     def delete_anime_list_entry(user_id: int, anime_id: int) -> bool:
