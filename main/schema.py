@@ -1,5 +1,6 @@
 import graphene
 import asobu.graphql.query
+import authorization.graphql.mutations
 import base.schema
 import miru.graphql.queries
 import miru.graphql.mutations
@@ -17,7 +18,8 @@ class Query(
     pass
 
 class Mutation(
-    miru.graphql.mutations.Mutation
+    miru.graphql.mutations.Mutation,
+    authorization.graphql.mutations.Mutation
 ):
     pass
 

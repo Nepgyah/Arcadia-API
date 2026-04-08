@@ -59,6 +59,7 @@ CSRF_COOKIE_SAMESITE = "None"
 # Application definition
 
 INSTALLED_APPS = [
+    'authorization',
     'users',
     'talent',
     'base',
