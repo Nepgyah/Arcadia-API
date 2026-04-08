@@ -1,7 +1,15 @@
 ## App Version Tracker
 | App        | Version |
 | ---------- | ------- |
-| Miru       | 0.3     |
+| Miru       | 0.4     |
+| Users      | 0.1     |
+
+## Alpha v1.1 - 3/20/2026
+- **Asobu**
+    - **Models**
+        - Improve game relationship logic
+    -**Graphql API**
+        - Update schema to query game by id
 
 ## Alpha v1.0 - 3/19/2026
 Dev note: After finalizing the base of miru and implementing a better way to input data through the help of Anilist API. The progress from this patch has been deemed big enough to jump from 0.6 to 1.0. Thank you to everyone involved through testing and suggestions - A.P

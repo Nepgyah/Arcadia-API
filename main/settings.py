@@ -31,13 +31,15 @@ DEBUG = True
 # Who is allowed to communicate with the django server
 ALLOWED_HOSTS = [
     'clumsy-fidela-team-d2x-8009ada3.koyeb.app',
-    "localhost"
+    "localhost",
+    "127.0.0.1"
 ]
 
 # Who can call the API
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:6767", #D2X Website local
-    "http://localhost:3000", #Arcadia Platform local
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
     "https://arcadia-platform.vercel.app"
 ]
 
@@ -64,6 +66,7 @@ INSTALLED_APPS = [
     'asobu',
     'corsheaders',
     'graphene_django',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -170,4 +173,11 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=21),
     'ROTATE_REFRESH_TOKENS': True,
+}
+
+GRAPHENE = {
+    'SCHEMA': 'main.schema.schema',
+    'MIDDLEWARE': [
+        'main.middleware.GrapheneAuthMiddleware'
+    ]
 }

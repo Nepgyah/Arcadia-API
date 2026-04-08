@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from users.services import UserService
 from miru.repository.miru_repository import MiruRepository
 from miru.models.anime import Anime
 from miru.models.relations import (
@@ -6,7 +7,8 @@ from miru.models.relations import (
     AnimeEpisode
 )
 from miru.models.list_entry import AnimeListEntry
-from users.models import User
+from users.models import ArcadiaUser
+from miru.exceptions import MiruError
 
 class MiruService:
     ''' Service layer to apply business logic to Miru '''
@@ -14,11 +16,11 @@ class MiruService:
     @staticmethod
     def get_anime_by_id(anime_id: int) -> Anime:
         return MiruRepository.get_anime_by_id(anime_id)
-    
+        
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
         return MiruRepository.get_characters_by_anime(anime_id)
-    
+        
     @staticmethod
     def get_anime_by_category(category: str, count: int) -> list[Anime]:
         """
@@ -74,19 +76,10 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
 
-        user = User.objects.get(id=user_id)
+        user = UserService.get_user_by_id(user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
-
-        if anime is None or user is None:
-            return False
-        try:
-            MiruRepository.create_anime_list_entry(user, anime, status, details)
-        except Exception:
-            # TODO: Handle errors such as uniqueness, etc
-            return False
+        return MiruRepository.create_anime_list_entry(user, anime, status, **details)
         
-        return True
-
     @staticmethod
     def update_anime_list_entry(user_id: int, anime_id: int, status: int, details: dict) -> bool:
         """
@@ -96,18 +89,13 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
         
-        user = User.objects.get(id=user_id)
+        user = UserService.get_user_by_id(user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
-        if anime is None or user is None:
-            return False
         try:
-            MiruRepository.update_anime_list_entry(user, anime, status, details)
+            return MiruRepository.update_anime_list_entry(user, anime, status, details)
         except Exception:
-            # TODO: Handle errors such as uniqueness, etc
-            return False
-        
-        return True
+            raise MiruError
 
     @staticmethod
     def delete_anime_list_entry(user_id: int, anime_id: int) -> bool:
@@ -118,7 +106,7 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
 
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
 
         if anime is None or user is None:
@@ -133,7 +121,7 @@ class MiruService:
     
     @staticmethod
     def get_anime_list_by_user_id(user_id: int) -> list[AnimeListEntry]:
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         anime_list =  MiruRepository.get_anime_list_by_user_id(user)
         watching = anime_list.filter(status=0)
         completed = anime_list.filter(status=1)
@@ -144,7 +132,7 @@ class MiruService:
     
     @staticmethod
     def get_anime_list_entry(user_id, anime_id) -> AnimeListEntry:
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
         if anime is None or user is None:
             return None

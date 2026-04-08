@@ -40,7 +40,7 @@ class Anime(Media):
 
     title_native = models.CharField(max_length=255, null=True, blank=True, help_text='The origin way to write the anime')
     title_romaji = models.CharField(max_length=255, null=True, blank=True, help_text='How to pronounce the name with the english alphabet')
-    other_titles = models.JSONField(default=[], null=True, blank=True, help_text='Ways to call the anime part from Japanese and English')
+    other_titles = models.JSONField(default=list, null=True, blank=True, help_text='Ways to call the anime part from Japanese and English')
     season = models.IntegerField(choices=Season.choices, default=None, null=True, blank=True)
     season_year = models.SmallIntegerField(null=True, blank=True)
     type = models.IntegerField(choices=MediaType, default=MediaType.TV)
@@ -54,8 +54,8 @@ class Anime(Media):
 
     characters = models.ManyToManyField(Character, through='AnimeCharacter', related_name='animes', blank=True)
 
-    producer = models.ManyToManyField(AnimeCompany, related_name='produced_animes', null=True)
-    studio = models.ManyToManyField(AnimeCompany, related_name='studio_animes', null=True)
+    producer = models.ManyToManyField(AnimeCompany, related_name='produced_animes', blank=True)
+    studio = models.ManyToManyField(AnimeCompany, related_name='studio_animes', blank=True)
 
     prev_anime = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='next_entries')
     related_anime = models.ManyToManyField('self', through='RelatedAnime', symmetrical=False, related_name='related_to_anime', blank=True)
@@ -82,3 +82,13 @@ class AniListData(models.Model):
 
     def __str__(self):
         return str(f"Anilist data for: {self.anime}")
+
+class MyAnimeListData(models.Model):
+
+    anime = models.OneToOneField(Anime, on_delete=models.CASCADE)
+    mal_id = models.IntegerField(null=False, blank=False, unique=True)
+    rank_score = models.SmallIntegerField(null=True, blank=True)
+    rank_popular = models.SmallIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return str(f"{self.mal_id} - {self.anime.title}")

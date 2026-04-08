@@ -1,19 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
-class User(models.Model):
-    '''
-        Pseudo user class, serves as a in between for 
-        arcadia account related models and main d2x accounts.
-    '''
+class ArcadiaUser(models.Model):
+    d2x_id = models.IntegerField(unique=True, null=True, blank=True)
+    admin_user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
+    username = models.CharField(max_length=50)
+    tag = models.IntegerField(null=True, blank=True)
+    picture_preset = models.IntegerField(default=0, null=True, blank=True)
 
-    d2x_id = models.IntegerField(null=False, blank=False, unique=True)
-    username = models.TextField(null=False, blank=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    
     def __str__(self):
-        return f"D2X User ID: {self.d2x_id}"
-    
-    @property
-    def is_authenticated(self):
-        return True
+        return f'{self.username}#{self.tag}' if self.tag else self.username

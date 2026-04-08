@@ -1,74 +1,112 @@
 import os
-from django.conf import settings
+from main import settings
+from dotenv import load_dotenv
+from django.utils import timezone
+from django.contrib.auth import authenticate
 
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from dotenv import load_dotenv
 
-from users.models import User
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from users.models import ArcadiaUser
+from users.serializers import UserSerializer
 
 load_dotenv()
 
-class DemoLoginView(APIView):
-    """
-    Temp view: Simulates login and use of jwt token for auth
-    """
+class AdminLoginView(APIView):
 
     def post(self, request):
-        user = User.objects.first()
+        username = request.data.get('username', None)
+        password = request.data.get('password', None)
 
-        refresh = RefreshToken.for_user(user)
+        if username is None:
+            return Response(status=400, data={
+                'detail': 'Missing username field'
+            }) 
+        
+        if password is None:
+            return Response(status=400, data={
+                'detail': 'Missing password field'
+            }) 
+        
+        admin_user = authenticate(username=username, password=password)
 
-        refresh["arcadia_id"] = user.id
-        refresh["username"] = "Demo Arcadia"
-        refresh["provider"] = "local_dev"
+        if admin_user is None:
+            return Response(status=400, data={
+                'detail': 'Invalid login credentials'
+            }) 
+        
+        try:
+            arcadia_user = ArcadiaUser.objects.get(admin_user=admin_user)
+        except ArcadiaUser.DoesNotExist:
+            return Response(
+                status=404,
+                data={'detail': 'Admin test user not found'}
+            )
 
+
+        refresh = RefreshToken.for_user(arcadia_user)
+        refresh['username'] = arcadia_user.username
+        
         access_token = str(refresh.access_token)
         refresh_token = str(refresh)
 
-        response = Response({"detail": "Login successful"})
+        access_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
+        access = {
+            'key': 'access_token',
+            'value': access_token,
+            'httponly': True,
+            'secure': bool(os.environ.get("COOKIE_SECURE")),
+            'samesite': os.environ.get("COOKIE_SAME_SITE"),
+            'expires': access_expiry,
+            'path': '/',
+        }
 
-        response.set_cookie(
-            key="access_token",
-            value=access_token,
-            httponly=True,
-            secure=bool(os.environ.get("COOKIE_SECURE")),
-            samesite=os.environ.get("COOKIE_SAME_SITE"),
-        )
-
-        response.set_cookie(
-            key="refresh_token",
-            value=refresh_token,
-            httponly=True,
-            secure=bool(os.environ.get("COOKIE_SECURE")),
-            samesite=os.environ.get("COOKIE_SAME_SITE"),
-        )
-
+        refresh_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
+        refresh = {
+            'key': 'refresh_token',
+            'value': refresh_token,
+            'httponly': True,
+            'secure': bool(os.environ.get("COOKIE_SECURE")),
+            'samesite': os.environ.get("COOKIE_SAME_SITE"),
+            'expires': refresh_expiry,
+            'path': '/',
+        }
+        
+        response = Response(status=200, data={
+            'detail':'Login Successful',
+            'access_token': access,
+            'refresh_token': refresh
+        })
         return response
-    
+
 class UserView(APIView):
+
+    def get(self, request):
+        try:
+            return Response(
+                status=200,
+                data={
+                    'detail': 'User found',
+                    'user': {
+                        'id': request.user.id,
+                        'username': request.user.username,
+                        'picturePreset': request.user.picture_preset
+                    }
+                }
+            )
+        except ArcadiaUser.DoesNotExist:
+            return None
+        
+class UserDetailView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        user_data = UserSerializer(request.user).data
         return Response(
-            data= { 
-                'user': {
-                    'id': request.user.id,
-                    'username': request.user.username,
-                    'picturePreset': 1
-                }
-            }, status=200)
-    
-class UpdateUser(APIView):
-    permission_classes = [AllowAny]
-
-    def post (self, request, id):
-        try:
-            arcadia_user = User.objects.get(d2x_id=id)
-            arcadia_user.username = request.data.get('username')
-            arcadia_user.save()
-            return Response(status=200, data={'detail':'Arcadia username updated'})
-        except User.DoesNotExist:
-            return Response(status=400, data={'detail':'Invalid user id.'})
+            status=200,
+            data={
+                'user', user_data
+            }
+        )

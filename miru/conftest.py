@@ -1,10 +1,22 @@
 import pytest
 from miru.models.anime import Anime
+from miru.models.list_entry import AnimeListEntry
 from miru.models.relations import AnimeCharacter
 from talent.models import Character
+from users.models import ArcadiaUser
 
 # Conftest allows you to declare fixtures and have every test below in the tree access them
 # Fixtures define steps and the data as part of the arrange phase of testing
+
+@pytest.fixture
+def user_fixture():
+    user = ArcadiaUser.objects.create(
+        d2x_id = 1,
+        username = 'TestUsername'
+    )
+
+    return user
+
 @pytest.fixture
 def anime_fixture():
     anime = Anime.objects.create(
@@ -45,3 +57,13 @@ def bocchi_character_fixtures(anime_fixture):
 
     animeCharacters = AnimeCharacter.objects.bulk_create(bulk_anime_characters)
     return animeCharacters
+
+@pytest.fixture
+def anime_list_entry_fixture(anime_fixture, user_fixture):
+    list_entry = AnimeListEntry(
+        user=user_fixture,
+        anime=anime_fixture,
+        status=0
+    )
+
+    return list_entry

@@ -1,13 +1,18 @@
-import os
-from pathlib import Path
 import requests
+import os
+import logging
+from pathlib import Path
+
+# Provides the name of the py module as a dotted path
+logger = logging.getLogger(__name__)
+
 BASE_DIR = Path(__file__).resolve().parent
 
-def FetchAnilistData(anilist_id):
+def fetch_anilist_data(anilist_id):
     anilist_api_url = os.environ.get('ANILIST_API')
 
     if anilist_api_url is None:
-        print('ANILIST_API env key not found')
+        logger.critical('Anilist api url not found in .env file')
         return None
     
     query = '''
@@ -96,18 +101,16 @@ def FetchAnilistData(anilist_id):
     variables = {'mediaId': anilist_id, 'language': "JAPANESE"}
 
     try:
-        print(f"Attempting to call anilist api for media id: {anilist_id}")
         response = requests.post(
             anilist_api_url,
             json={'query': query, 'variables': variables },
             timeout=20
         )
         if response.status_code != 200:
-            print('Error from anilist api')
+            logger.warning('Anilist api returned a non 200 code')
 
         data = response.json().get('data').get('Media')
         return data
 
     except requests.Timeout:
-        print('Error: Anilist API timed out')
         return None
