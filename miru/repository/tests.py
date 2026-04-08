@@ -34,37 +34,37 @@ class TestRepository:
         assert exception.value.status_code == 404
         assert str(non_existent_id) in str(exception.value.detail)
 
-    def test_create_anime_list_entry_success(self, anime_fixture, arcadia_user_fixture):
+    def test_create_anime_list_entry_success(self, anime_sequel_fixture, arcadia_user_fixture):
         test_details = {
             'current_episode': 1,
             'score': 9,
         }
         MiruRepository.create_anime_list_entry(
             user=arcadia_user_fixture,
-            anime=anime_fixture,
+            anime=anime_sequel_fixture,
             status=0,
             details=test_details
         )
 
         assert AnimeListEntry.objects.filter(
-            user=user_fixture,
-            anime=anime_fixture,
+            user=arcadia_user_fixture,
+            anime=anime_sequel_fixture,
             status=0
         ).exists() == True
 
-    def test_create_anime_list_entry_already_created(self, anime_fixture, user_fixture, anime_list_entry_fixture):
+    def test_create_anime_list_entry_already_created(self, anime_fixture, anime_list_entry_fixture):
         test_details = {
             'current_episode': 1,
             'score': 9,
         }
         MiruRepository.create_anime_list_entry(
-            user=user_fixture,
+            user=anime_list_entry_fixture.user,
             anime=anime_fixture,
             status=2,
             details=test_details
         )
 
-        assert AnimeListEntry.objects.filter(anime=anime_fixture, user=user_fixture).count() == 1
+        assert AnimeListEntry.objects.filter(anime=anime_fixture, user=anime_list_entry_fixture.user).count() == 1
 
     def test_update_anime_list_success(self, user_fixture, anime_fixture):
         AnimeListEntry.objects.create(
