@@ -7,4 +7,4 @@ With the current graphql set up, the only specification to why a url failed is t
 response['errors']['messages'][0]
 ```
 
-We are currently looking up how to edit the errors and append the response code and detail. But until further notice, **frontends will have the responsibility to verify whether or not the jwt token has expired and fresh via our fresh endpoints**. A invalid token simply results in the data of that specific resolver to be None or Null.
+We are currently looking up how to edit the errors and append the response code and detail. But until further notice, **frontends will have the responsibility to verify whether or not the jwt token has expired and fresh via our fresh endpoints. Endpoints will provide the token value and expire date to assist in this matter**. A invalid token simply results in the data of that specific resolver to be None or Null.

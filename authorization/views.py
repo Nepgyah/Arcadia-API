@@ -1,5 +1,9 @@
-from rest_framework_simplejwt.tokens import RefreshToken
+from main import settings
+
 from django.contrib.auth import authenticate
+from django.utils import timezone
+
+from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -40,12 +44,21 @@ class AdminLoginView(APIView):
         refresh['username'] = arcadia_user.username
         
         access_token = str(refresh.access_token)
+        access_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
+        
         refresh_token = str(refresh)
+        refresh_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
         
         response = Response(status=200, data={
             'detail':'Login Successful',
-            'access_token': access_token,
-            'refresh_token': refresh_token
+            'access_token': {
+                'value': access_token,
+                'expiry': access_expiry
+            },
+            'refresh_token': {
+                'value': refresh_token,
+                'expiry': refresh_expiry
+            },
         })
 
         return response
@@ -62,14 +75,24 @@ class RefreshTokenView(APIView):
         
         try:
             refreshed_data = RefreshToken(refresh_token)
+
             new_access_token = str(refreshed_data.access_token)
+            access_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
+
             new_refresh_token = str(refreshed_data)
+            refresh_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
 
             return Response(
                 status=200,
                 data={
-                    'access_token': new_access_token,
-                    'refresh_token': new_refresh_token,
+                    'access_token': {
+                        'value': new_access_token,
+                        'expiry': access_expiry
+                    },
+                    'refresh_token': {
+                        'value': new_refresh_token,
+                        'expiry': refresh_expiry
+                    },
                     'message': 'Tokens successfully refreshed'
                 },
             )
