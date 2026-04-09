@@ -51,6 +51,7 @@ class AdminLoginView(APIView):
         
         response = Response(status=200, data={
             'detail':'Login Successful',
+            'message': 'Login successful',
             'access_token': {
                 'value': access_token,
                 'expiry': access_expiry
