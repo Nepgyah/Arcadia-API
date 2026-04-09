@@ -78,7 +78,7 @@ class TestMiruGraphqlQueries:
 class TestMiruGraphqlMutations:
 
     @staticmethod
-    def test_create_anime_list_entry_created(graphql_client, arcadia_user_fixture, anime_fixture):
+    def test_create_anime_list_entry_success(graphql_client, arcadia_user_fixture, anime_fixture):
         query =  '''
         mutation AddAnimeEntry($animeId: ID!, $status: Int!, $details: AnimeListEntryMetaData! ){
             addAnimeListEntry(animeId: $animeId, status: $status, details: $details) {

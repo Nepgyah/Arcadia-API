@@ -1,7 +1,11 @@
 import logging
+from django.utils.functional import SimpleLazyObject
+
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken, ExpiredTokenError
 from authorization.exceptions import AuthorizationError
+
+from users.repositories import UserRepository
 
 logger = logging.getLogger(__name__)
 
@@ -11,6 +15,7 @@ class GrapheneAuthMiddleware(object):
 
     def resolve(self, next, root, info, **args):
         auth_header = info.context.META.get('HTTP_AUTHORIZATION', None)
+        
         if auth_header:
             try:
                 parts = auth_header.split()
@@ -30,6 +35,6 @@ class GrapheneAuthMiddleware(object):
                 raise AuthorizationError()
             
             if user_id:
-                info.context.user_id = user_id
+                info.context.user = SimpleLazyObject(lambda: UserRepository.get_user_by_id(user_id))
 
         return next(root, info, **args)

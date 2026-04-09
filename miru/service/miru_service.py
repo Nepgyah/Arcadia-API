@@ -68,7 +68,7 @@ class MiruService:
         return results, page_count, pagination['current_page'], total
     
     @staticmethod
-    def add_anime_list_entry(user_id: int, anime_id: int, status: int, details: dict) -> bool:
+    def add_anime_list_entry(user: ArcadiaUser, anime_id: int, status: int, details: dict) -> bool:
         """
         Creates an anime list entry based on user_id and anime_id combination
 
@@ -76,20 +76,18 @@ class MiruService:
         - Boolean status (ok) of the operation
         """
 
-        user = UserService.get_user_by_id(user_id)
         anime = MiruRepository.get_anime_by_id(anime_id)
         return MiruRepository.create_anime_list_entry(user, anime, status, **details)
         
     @staticmethod
-    def update_anime_list_entry(user_id: int, anime_id: int, status: int, details: dict) -> bool:
+    def update_anime_list_entry(user: ArcadiaUser, anime_id: int, status: int, details: dict) -> bool:
         """
         Updates a current anime list entry based on user_id and anime_id combination
 
         Returns:
         - Boolean status (ok) of the operation
         """
-        
-        user = UserService.get_user_by_id(user_id)
+
         anime = MiruRepository.get_anime_by_id(anime_id)
 
         try:

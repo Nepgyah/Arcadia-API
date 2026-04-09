@@ -14,9 +14,17 @@ def arcadia_user_fixture():
 @pytest.fixture
 def graphql_client(client):
     def func(query, variables=None, user=None):
+        headers = {}
         if user:
             refresh_token = RefreshToken.for_user(user)
-            client.cookies['access_token'] = str(refresh_token.access_token)
+            headers['Authorization'] = f'Bearer {str(refresh_token.access_token)}'
                 
-        return graphql_query(query, variables=variables, client=client, graphql_url='/graphql/')
+        return graphql_query(
+            query, 
+            variables=variables, 
+            client=client, 
+            graphql_url='/graphql/',
+            headers=headers
+            )
+    
     return func
