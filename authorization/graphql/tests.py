@@ -1,7 +1,7 @@
 import pytest
 
 @pytest.mark.django_db
-class TestGraphqlMutations:
+class TestAuthGraphqlMutations:
 
     @staticmethod
     def test_admin_login_success(graphql_client, arcadia_user_fixture):

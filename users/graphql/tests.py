@@ -1,7 +1,7 @@
 import pytest
 
 @pytest.mark.django_db
-class TestUsersAppGraphql:
+class TestUserGraphqlQueries:
 
     def test_user_query(_self, graphql_client, arcadia_user_fixture):
         response = graphql_client(

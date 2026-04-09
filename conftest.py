@@ -1,8 +1,12 @@
 import pytest
+from django.contrib.auth.models import User
+
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 from graphene_django.utils.testing import graphql_query
+
 from users.models import ArcadiaUser
-from django.contrib.auth.models import User
 
 @pytest.fixture
 def admin_user_fixture():
@@ -20,6 +24,14 @@ def arcadia_user_fixture(admin_user_fixture):
         admin_user = admin_user_fixture
     )
     return arcadia_user
+
+@pytest.fixture
+def rest_client(arcadia_user_fixture):
+    client = APIClient()
+    refresh_token = RefreshToken.for_user(arcadia_user_fixture)
+    client.credentials(HTTP_AUTHORIZATION='Bearer ' + str(refresh_token.access_token))
+    
+    return client
 
 @pytest.fixture
 def graphql_client(client):
