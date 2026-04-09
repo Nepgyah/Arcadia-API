@@ -3,7 +3,7 @@ import os
 from main import settings
 
 from django.utils import timezone
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.middleware.csrf import get_token
 from django.http import JsonResponse
 from dotenv import load_dotenv
 
@@ -16,9 +16,17 @@ from users.models import User
 
 load_dotenv()
 
-@ensure_csrf_cookie
-def ObtainCSRFToken(request):
-    return JsonResponse({"detail":'CSRF token sent'})
+class CSRFTokenView(APIView):
+    
+    def get(self, request):
+        csrf_token = get_token(request)
+        return Response(
+            status=200,
+            data={
+                'message': 'CSRF token generated',
+                'token': csrf_token
+            }
+        )
 
 class HealthCheckView(APIView):
     
