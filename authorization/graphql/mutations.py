@@ -41,32 +41,10 @@ class AdminLoginMutation(graphene.Mutation):
         refresh = RefreshToken.for_user(arcadia_user)
         access_token = str(refresh.access_token)
         refresh_token = str(refresh)
-
-        access_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
-        access_data = {
-            'key': 'access_token',
-            'value': access_token,
-            'httponly': True,
-            'secure': bool(os.environ.get("COOKIE_SECURE")),
-            'samesite': os.environ.get("COOKIE_SAME_SITE"),
-            'expires': access_expiry,
-            'path': '/',
-        }
-
-        refresh_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
-        refresh_data = {
-            'key': 'refresh_token',
-            'value': refresh_token,
-            'httponly': True,
-            'secure': bool(os.environ.get("COOKIE_SECURE")),
-            'samesite': os.environ.get("COOKIE_SAME_SITE"),
-            'expires': refresh_expiry,
-            'path': '/',
-        }
         
         return AdminLoginMutation(
-            access_token = access_data,
-            refresh_token = refresh_data
+            access_token = access_token,
+            refresh_token = refresh_token
         )
         
 class Mutation(graphene.ObjectType):
