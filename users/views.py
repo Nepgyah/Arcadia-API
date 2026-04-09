@@ -18,14 +18,16 @@ class UserView(APIView):
 
     def get(self, request):
         try:
+            user = ArcadiaUser.objects.get(id=request.user.id)
+
             return Response(
                 status=200,
                 data={
-                    'detail': 'User found',
+                    'detail': 'User data successfully sent',
                     'user': {
-                        'id': request.user.id,
-                        'username': request.user.username,
-                        'picturePreset': request.user.picture_preset
+                        'id': user.id,
+                        'username': user.username,
+                        'picturePreset': user.picture_preset
                     }
                 }
             )

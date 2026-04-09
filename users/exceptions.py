@@ -9,6 +9,10 @@ class UserNotFoundError(UsersError):
     status_code = 404
     default_code = 'user_not_found'
 
-    def __init__(self, user_id: int):
-        self.detail = f'User with ID: {user_id} not found.'
+    def __init__(self, user_id=None):
+        if user_id:
+            self.detail = f'User with ID: {user_id} not found.'
+        else:
+            self.detail = 'User not found'
+            
         super().__init__(detail=self.detail)
