@@ -15,7 +15,7 @@ class GrapheneAuthMiddleware(object):
 
     def resolve(self, next, root, info, **args):
         auth_header = info.context.META.get('HTTP_AUTHORIZATION', None)
-        
+
         if auth_header:
             try:
                 parts = auth_header.split()

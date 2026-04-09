@@ -2,12 +2,22 @@ import pytest
 from rest_framework_simplejwt.tokens import RefreshToken
 from graphene_django.utils.testing import graphql_query
 from users.models import ArcadiaUser
+from django.contrib.auth.models import User
 
 @pytest.fixture
-def arcadia_user_fixture():
+def admin_user_fixture():
+    admin_user = User.objects.create_superuser(
+        username='Admin',
+        password='TestPassword123'
+    )
+    return admin_user
+
+@pytest.fixture
+def arcadia_user_fixture(admin_user_fixture):
     arcadia_user = ArcadiaUser.objects.create(
         d2x_id = 1,
-        username = 'TestUser'
+        username = 'TestUser',
+        admin_user = admin_user_fixture
     )
     return arcadia_user
 

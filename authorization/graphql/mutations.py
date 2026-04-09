@@ -10,12 +10,13 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from users.models import ArcadiaUser
 from authorization.graphql.schema import TokenType
+from authorization.exceptions import AuthorizationError
 
 load_dotenv()
 
 class AdminLoginMutation(graphene.Mutation):
-    refresh_token = graphene.Field(TokenType)
-    access_token = graphene.Field(TokenType)
+    refresh_token = graphene.String()
+    access_token = graphene.String()
 
     class Arguments:
         username = graphene.String()
@@ -31,7 +32,7 @@ class AdminLoginMutation(graphene.Mutation):
         admin_user = authenticate(username=username, password=password)
 
         if admin_user is None:
-            raise Exception('Admin user not found')
+            raise AuthorizationError('Invalid credentials', code='auth_error_invalid_credentials')
         
         try:
             arcadia_user = ArcadiaUser.objects.get(admin_user=admin_user)
