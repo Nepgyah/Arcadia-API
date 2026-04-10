@@ -16,26 +16,6 @@ from users.models import User
 
 load_dotenv()
 
-class CSRFTokenView(APIView):
-    
-    def get(self, request):
-        csrf_token = get_token(request)
-        return Response(
-            status=200,
-            data={
-                'message': 'CSRF token generated',
-                'token': csrf_token
-            }
-        )
-
-class HealthCheckView(APIView):
-    
-    def get(self, request):
-        return Response(status=200, data={"detail":'Testing GET successful'})
-    
-    def post(self, request):
-        return Response(status=200, data={"detail":'Testing POST successful'})
-    
 class ObtainD2XAuthorization(APIView):
 
     def post(self, request):
@@ -119,69 +99,3 @@ class ObtainD2XAuthorization(APIView):
 
         return response
         # return response
-    
-class TokenRefreshView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        refresh_token = request.COOKIES.get('refresh_token')
-
-        if not refresh_token:
-            return Response(status=401, data={'detail':'Refresh token not found'})
-
-        try:
-            token = RefreshToken(refresh_token)
-            new_access_token = str(token.access_token)
-            new_refresh_token = str(token)
-        except Exception as e:
-            return Response(status=400, data={'detail':'Error refreshing token'})
-        
-        access_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
-        access = {
-            'key': 'access_token',
-            'value': new_access_token,
-            'httponly': True,
-            'secure': bool(os.environ.get("COOKIE_SECURE")),
-            'samesite': os.environ.get("COOKIE_SAME_SITE"),
-            'expires': access_expiry,
-            'path': '/',
-        }
-
-        refresh_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
-        refresh = {
-            'key': 'refresh_token',
-            'value': new_refresh_token,
-            'httponly': True,
-            'secure': bool(os.environ.get("COOKIE_SECURE")),
-            'samesite': os.environ.get("COOKIE_SAME_SITE"),
-            'expires': refresh_expiry,
-            'path': '/',
-        }
-        
-        response = Response(status=200, data={
-            'detail':'Token refreshed',
-            'access_token': access,
-            'refresh_token': refresh
-        })
-
-        # response.set_cookie(
-        #     key='access_token',
-        #     value=new_access_token,
-        #     httponly=True,
-        #     secure=bool(os.environ.get("COOKIE_SECURE")),
-        #     samesite=os.environ.get("COOKIE_SAME_SITE"),
-        #     expires = access_expiry,
-        #     path='/',
-        # )
-
-        # response.set_cookie(
-        #     key='refresh_token',
-        #     value=new_refresh_token,
-        #     httponly=True,
-        #     secure=bool(os.environ.get("COOKIE_SECURE")),
-        #     samesite=os.environ.get("COOKIE_SAME_SITE"),
-        #     expires = refresh_expiry,
-        #     path='/',
-        # )
-        
-        return response
