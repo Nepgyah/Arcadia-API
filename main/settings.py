@@ -174,6 +174,7 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=21),
     'ROTATE_REFRESH_TOKENS': True,
+    "LEEWAY": 30
 }
 
 GRAPHENE = {
