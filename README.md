@@ -4,8 +4,9 @@ Introducing the Arcadia API. This is the backend repository dedicated to assisti
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
-## Latest Release - Alpha v2.0 - 4/xx/2026
+## Latest Release - Alpha v2.0 - 4/10/2026
 - **General**
+    - Convert token based auth to bearer authentication
     - Add middleware to utilize jwt tokens for GraphQL authentication
 
 - **Miru v0.4**
