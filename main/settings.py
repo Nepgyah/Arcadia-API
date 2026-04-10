@@ -59,6 +59,7 @@ CSRF_COOKIE_SAMESITE = "None"
 # Application definition
 
 INSTALLED_APPS = [
+    'authorization',
     'users',
     'talent',
     'base',
@@ -165,7 +166,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'util.auth.CookieJWTAuthentication',
+        'main.rest_middleware.RESTAuthMiddleware',
     )
 }
 
@@ -173,11 +174,12 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=21),
     'ROTATE_REFRESH_TOKENS': True,
+    "LEEWAY": 30
 }
 
 GRAPHENE = {
     'SCHEMA': 'main.schema.schema',
     'MIDDLEWARE': [
-        'main.middleware.GrapheneAuthMiddleware'
+        'main.graphql_middleware.GrapheneAuthMiddleware'
     ]
 }

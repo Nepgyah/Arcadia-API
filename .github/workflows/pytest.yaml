@@ -51,3 +51,6 @@ jobs:
 
       - name: Test the Users app
         run: pytest users/
+
+      - name: Test the auth app
+        run: pytest authorization/
