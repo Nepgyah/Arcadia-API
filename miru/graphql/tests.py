@@ -5,7 +5,7 @@ from miru.models.list_entry import AnimeListEntry
 class TestMiruGraphqlQueries:
     
     @staticmethod
-    def test_anime_by_id(graphql_client, anime_fixture):
+    def AnimeByID_ValidID_Should_ReturnAnimeObject(graphql_client, anime_fixture):
         response = graphql_client(
             query = '''
                 query GetAnime($id: ID!) {
@@ -23,7 +23,7 @@ class TestMiruGraphqlQueries:
         assert 'errors' not in content
 
     @staticmethod
-    def test_anime_by_id_not_found(graphql_client, anime_fixture):
+    def AnimeByID_InvalidID_Should_ReturnNone(graphql_client, anime_fixture):
         response = graphql_client(
             query = '''
                 query GetAnime($id: ID!) {
@@ -42,7 +42,7 @@ class TestMiruGraphqlQueries:
         assert content['data']['animeById'] is None
 
     @staticmethod
-    def test_characters_by_anime(graphql_client, anime_fixture):
+    def CharsByAnime_ValidAnime_Should_ReturnAnimeCharList(graphql_client, anime_fixture):
         response = graphql_client(
             query = '''
                 query GetCharactersByAnime($id: ID!) {
@@ -58,7 +58,7 @@ class TestMiruGraphqlQueries:
         assert 'errors' not in content
 
     @staticmethod
-    def test_characters_by_anime_not_found(graphql_client, anime_fixture):
+    def CharsByAnime_InvalidAnime_Should_ReturnNone(graphql_client, anime_fixture):
         response = graphql_client(
             query = '''
                 query GetCharactersByAnime($id: ID!) {
@@ -78,7 +78,7 @@ class TestMiruGraphqlQueries:
 class TestMiruGraphqlMutations:
 
     @staticmethod
-    def test_create_anime_list_entry_success(graphql_client, arcadia_user_fixture, anime_fixture):
+    def CreateListEntry_ValidData_Should_CreateEntry(graphql_client, arcadia_user_fixture, anime_fixture):
         query =  '''
         mutation AddAnimeEntry($animeId: ID!, $status: Int!, $details: AnimeListEntryMetaData! ){
             addAnimeListEntry(animeId: $animeId, status: $status, details: $details) {
@@ -111,7 +111,7 @@ class TestMiruGraphqlMutations:
         assert content['data']['addAnimeListEntry']['animeEntry']['anime']['id'] == str(anime_fixture.id)
 
     @staticmethod
-    def test_create_anime_list_entry_no_anime(graphql_client, arcadia_user_fixture, anime_fixture):
+    def CreateListEntry_InvalidAnime_Should_ReturnNone(graphql_client, arcadia_user_fixture, anime_fixture):
         query =  '''
         mutation AddAnimeEntry($animeId: ID!, $status: Int!, $details: AnimeListEntryMetaData! ){
             addAnimeListEntry(animeId: $animeId, status: $status, details: $details) {
@@ -144,7 +144,7 @@ class TestMiruGraphqlMutations:
         assert content['data']['addAnimeListEntry'] is None
 
     @staticmethod
-    def test_create_anime_list_entry_no_user(graphql_client, arcadia_user_fixture, anime_fixture):
+    def CreateListEntry_NoUser_Should_ReturnNone(graphql_client, arcadia_user_fixture, anime_fixture):
         query =  '''
         mutation AddAnimeEntry($animeId: ID!, $status: Int!, $details: AnimeListEntryMetaData! ){
             addAnimeListEntry(animeId: $animeId, status: $status, details: $details) {
@@ -176,7 +176,7 @@ class TestMiruGraphqlMutations:
         assert content['data']['addAnimeListEntry'] is None
 
     @staticmethod
-    def test_update_anime_list_entry_success(graphql_client, arcadia_user_fixture, anime_fixture):
+    def UpdateListEntry_ValidData_Should_ReturnEntryData(graphql_client, arcadia_user_fixture, anime_fixture):
         AnimeListEntry.objects.create(
             user=arcadia_user_fixture,
             anime=anime_fixture,
@@ -221,7 +221,7 @@ class TestMiruGraphqlMutations:
         assert update_fixture.status == 1
 
     @staticmethod
-    def test_update_anime_list_entry_no_user(graphql_client, arcadia_user_fixture, anime_fixture):
+    def UpdateListEntry_NoUser_Should_ReturnNone(graphql_client, arcadia_user_fixture, anime_fixture):
         AnimeListEntry.objects.create(
             user=arcadia_user_fixture,
             anime=anime_fixture,
@@ -259,7 +259,7 @@ class TestMiruGraphqlMutations:
         assert 'errors' in content
 
     @staticmethod
-    def test_update_anime_list_entry_no_anime(graphql_client, arcadia_user_fixture, anime_fixture):
+    def UpdateListEntry_NoAnime_Should_ReturnNone(graphql_client, arcadia_user_fixture, anime_fixture):
         AnimeListEntry.objects.create(
             user=arcadia_user_fixture,
             anime=anime_fixture,

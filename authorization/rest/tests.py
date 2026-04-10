@@ -5,7 +5,7 @@ from django.urls import reverse
 class TestAuthRestEndpoints:
 
     @staticmethod
-    def AdminLogin_OnSuccess_Should_ReturnTokens(rest_client):
+    def test_adminLogin_onSuccess_should_returnTokens(rest_client):
         response = rest_client.post(
             reverse('auth-admin-login'),
             {
@@ -21,7 +21,7 @@ class TestAuthRestEndpoints:
         assert content['refresh_token'] is not None
 
     @staticmethod
-    def AdminLogin_InvalidCredentials_Should_ReturnError(rest_client):
+    def test_adminLogin_invalidCredentials_should_returnError(rest_client):
         response = rest_client.post(
             reverse('auth-admin-login'),
             {
@@ -34,7 +34,7 @@ class TestAuthRestEndpoints:
         assert response.status_code == 400
 
     @staticmethod
-    def AdminLogin_MissingPasswordField_Should_ReturnError(rest_client):
+    def test_adminLogin_missingPassword_should_returnError(rest_client):
         response = rest_client.post(
             reverse('auth-admin-login'),
             {
