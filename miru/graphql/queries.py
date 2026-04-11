@@ -77,8 +77,8 @@ class Query(graphene.ObjectType):
         )
     
     def resolve_get_anime_list_entry(self, info, anime_id):
-        user_id = info.context.user_id
-        return MiruService.get_anime_list_entry(user_id, anime_id)
+        user = info.context.user
+        return MiruService.get_anime_list_entry(user, anime_id)
     
     def resolve_get_anime_episodes(self, _info, anime_id):
         return MiruService.episodes_by_anime_id(anime_id)

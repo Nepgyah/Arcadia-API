@@ -1,3 +1,5 @@
+import logging
+
 from django.core.paginator import Paginator
 from users.services import UserService
 from miru.repository.miru_repository import MiruRepository
@@ -9,6 +11,8 @@ from miru.models.relations import (
 from miru.models.list_entry import AnimeListEntry
 from users.models import ArcadiaUser
 from miru.exceptions import MiruError
+
+logger = logging.getLogger(__name__)
 
 class MiruService:
     ''' Service layer to apply business logic to Miru '''
@@ -129,8 +133,7 @@ class MiruService:
         return watching, completed, plan_to, on_hold
     
     @staticmethod
-    def get_anime_list_entry(user_id, anime_id) -> AnimeListEntry:
-        user = ArcadiaUser.objects.get(id=user_id)
+    def get_anime_list_entry(user: ArcadiaUser, anime_id) -> AnimeListEntry:
         anime = MiruRepository.get_anime_by_id(anime_id)
         if anime is None or user is None:
             return None
