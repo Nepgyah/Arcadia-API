@@ -91,11 +91,17 @@ class AnimeType(DjangoObjectType):
         fields = "__all__"
 
     def resolve_anilist_data(self, _info):
-        return AniListData.objects.get(anime_id=self.id)
-    
+        try:
+            return AniListData.objects.get(anime_id=self.id)
+        except AniListData.DoesNotExist:
+            return None
+        
     def resolve_mal_data(self, _info):
-        return MyAnimeListData.objects.get(anime_id=self.id)
-
+        try:
+            return MyAnimeListData.objects.get(anime_id=self.id)
+        except MyAnimeListData.DoesNotExist:
+            return None
+        
     def resolve_season(self, _info):
         return self.season_string
 

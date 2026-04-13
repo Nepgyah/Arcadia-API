@@ -1,3 +1,5 @@
+import logging
+
 from django.core.exceptions import ValidationError, FieldError
 from django.db import IntegrityError
 from miru.exceptions import (
@@ -13,6 +15,8 @@ from miru.models.relations import (
 from miru.models.list_entry import AnimeListEntry
 from users.models import ArcadiaUser
 
+logger = logging.getLogger(__name__)
+
 class MiruRepository:
     ''' Repository layer to work with Anime, AnimeCharacters, etc '''
 
@@ -21,13 +25,14 @@ class MiruRepository:
         try:
             anime = Anime.objects.select_related(
                 'prev_anime',
-                'franchise'
+                'franchise',
             ).prefetch_related(
                 'genres',
                 'next_entries'
             ).get(id=anime_id)
             return anime
         except Anime.DoesNotExist:
+            logger.warning(f'Anime with id: {anime_id} does not exist')
             raise AnimeNotFoundError(anime_id)
         
     @staticmethod
@@ -73,7 +78,7 @@ class MiruRepository:
         try:
             animeEntry = AnimeListEntry.objects.get(user=user, anime=anime)
         except AnimeListEntry.DoesNotExist:
-            return None
+            raise AnimeNotFoundError
         
         if status != animeEntry.status:
             animeEntry.status = status
