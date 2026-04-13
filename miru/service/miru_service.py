@@ -93,11 +93,8 @@ class MiruService:
         """
 
         anime = MiruRepository.get_anime_by_id(anime_id)
+        return MiruRepository.update_anime_list_entry(user, anime, status, details)
 
-        try:
-            return MiruRepository.update_anime_list_entry(user, anime, status, details)
-        except Exception:
-            raise MiruError
 
     @staticmethod
     def delete_anime_list_entry(user_id: int, anime_id: int) -> bool:

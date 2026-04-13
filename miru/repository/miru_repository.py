@@ -78,7 +78,7 @@ class MiruRepository:
         try:
             animeEntry = AnimeListEntry.objects.get(user=user, anime=anime)
         except AnimeListEntry.DoesNotExist:
-            return None
+            raise AnimeNotFoundError
         
         if status != animeEntry.status:
             animeEntry.status = status
