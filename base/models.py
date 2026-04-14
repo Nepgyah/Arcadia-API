@@ -1,5 +1,5 @@
 from django.db import models
-from util.helpers import unique_slugify
+from util import unique_slugify
 
 class Company(models.Model):
     name=models.CharField(max_length=150, null=False, blank=False)

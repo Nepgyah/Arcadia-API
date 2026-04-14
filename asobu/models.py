@@ -2,7 +2,7 @@ from django.db import models
 
 from base.models import Company, Media, Genre
 from talent.models import Character
-from util.helpers import unique_slugify
+from util import unique_slugify
 
 class GameCompany(Company):
 

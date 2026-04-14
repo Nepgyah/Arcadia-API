@@ -1,13 +1,15 @@
-from graphene import (
-    InputObjectType,
-    String,
-    Int
-)
+import graphene
+
 # Define a set of inputs for graphene
-class MediaSortInput(InputObjectType):
-    category = String()
-    direction = String()
+class MediaSortInput(graphene.InputObjectType):
+    category = graphene.String()
+    direction = graphene.String()
 
 class PaginationInput(InputObjectType):
-    per_page = Int()
-    current_page = Int()
+    per_page = graphene.Int()
+    current_page = graphene.Int()
+
+class PaginationResultType(graphene.ObjectType):
+    per_page = graphene.Int()
+    total_pages = graphene.Int()
+    total_items = graphene.Int()

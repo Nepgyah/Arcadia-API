@@ -1,6 +1,6 @@
 from django.db import models
 
-from util.helpers import unique_slugify
+from util import unique_slugify
 
 class Talent(models.Model):
     """
