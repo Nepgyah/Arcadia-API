@@ -6,6 +6,7 @@ import miru.graphql.queries
 import miru.graphql.mutations
 import talent.graphql.query
 import users.graphql.queries
+import util.graphql.queries
 
 class Query(
     asobu.graphql.query.Query,
@@ -13,6 +14,7 @@ class Query(
     miru.graphql.queries.Query,
     talent.graphql.query.Query,
     users.graphql.queries.Query,
+    util.graphql.queries.Query,
     graphene.ObjectType
 ):
     pass
