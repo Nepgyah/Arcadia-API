@@ -5,11 +5,11 @@ class MediaSortInput(graphene.InputObjectType):
     category = graphene.String()
     direction = graphene.String()
 
-class PaginationInput(InputObjectType):
+class PaginationInput(graphene.InputObjectType):
     per_page = graphene.Int()
-    current_page = graphene.Int()
+    target_page = graphene.Int()
 
-class PaginationResultType(graphene.ObjectType):
+class PaginationResults(graphene.ObjectType):
     per_page = graphene.Int()
     total_pages = graphene.Int()
     total_items = graphene.Int()
