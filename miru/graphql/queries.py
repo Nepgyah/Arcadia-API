@@ -1,7 +1,7 @@
 import graphene
 
 from miru.service import MiruService
-from users.models import User
+from users.models import ArcadiaUser
 from miru.exceptions import AnimeNotFoundError
 from util.schema import (
     MediaSortInput,
@@ -66,7 +66,7 @@ class Query(graphene.ObjectType):
         )
 
     def resolve_get_anime_list(self, _info, user_id):
-        user = User.objects.get(id=user_id)
+        user = ArcadiaUser.objects.get(id=user_id)
         watching, completed, plan_to, on_hold = MiruService.get_anime_list_by_user_id(user_id)
         return AnimeEntryListResults (
             username = user.username,
