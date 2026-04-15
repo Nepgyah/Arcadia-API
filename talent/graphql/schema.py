@@ -10,6 +10,7 @@ from talent.service.voice_actor import VoiceActorService
 class VoiceActorType(DjangoObjectType):
     characters = graphene.List(lambda: CharacterType)
     socials = GenericScalar()
+    display_name = graphene.String()
 
     class Meta:
         model = VoiceActor
@@ -18,6 +19,9 @@ class VoiceActorType(DjangoObjectType):
     def resolve_characters(self, _info):
         return self.characters.all()
 
+    def resolve_display_name(self, _info):
+        return self.display_name
+    
 class CharacterType(DjangoObjectType):
     voice_actor = graphene.Field(VoiceActorType)
     full_name = graphene.String()

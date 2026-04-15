@@ -2,7 +2,34 @@
 | App        | Version |
 | ---------- | ------- |
 | Miru       | 0.4     |
+| Asobu      | 0.1     |
 | Users      | 0.1     |
+
+## Alpha v2.0 - 4/10/2026
+- **General**
+    - Convert token based auth to bearer authentication
+    - Add middleware to utilize jwt tokens for GraphQL authentication
+
+- **Miru v0.4**
+    - **Models**
+        - Add anilist statistics
+        - Add myanimelist statistics
+    - **GraphQL**
+        - Adjust mutations to anime entry lists
+    - **Other**
+        - Add script to update anilist and mal ratings
+        - Add custom exceptions for app
+        - Update unit layered unit tests
+
+- **Users v0.1**
+    - **Model**
+        - Add local arcadia user
+    - **Graphql**
+        - Add arcadia user detail query
+    - **Rest**
+        - Add admin login endpoint
+    - **Other**
+        - Add layering and unit testing
 
 ## Alpha v1.1 - 3/20/2026
 - **Asobu**

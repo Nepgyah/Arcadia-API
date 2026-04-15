@@ -1,6 +1,6 @@
 from django.db import models
 
-from util.helpers import unique_slugify
+from util import unique_slugify
 
 class Talent(models.Model):
     """
@@ -33,7 +33,7 @@ class VoiceActor(Talent):
 
     @property
     def display_name(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name or ''}"
         
 class Character(models.Model):
     first_name=models.CharField(max_length=150, blank=False)

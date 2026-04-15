@@ -1,6 +1,7 @@
 import logging
 
 from django.core.paginator import Paginator
+
 from users.services import UserService
 from miru.repository.miru_repository import MiruRepository
 from miru.models.anime import Anime
@@ -36,7 +37,7 @@ class MiruService:
         return MiruRepository.get_anime_by_category(category, count)
     
     @staticmethod
-    def search_anime(filters: dict, sort: dict, pagination: dict):
+    def search_anime(filters: dict, sort: dict, pagination_input: dict):
         """
         Searches anime with optional filters and sorts.
         Filters are ignored with -1 input.
@@ -49,7 +50,7 @@ class MiruService:
         """
 
         queryset = Anime.objects.all()
-
+        
         if filters:
             if filters['type'] != -1:
                 queryset = queryset.filter(type=filters['type'])
@@ -64,12 +65,15 @@ class MiruService:
             if sort['category'] != "":
                 queryset = queryset.order_by(f'{direction}{sort['category']}')
 
-        paginator = Paginator(queryset, per_page=pagination['per_page'])
-        results = paginator.get_page(pagination['current_page']).object_list
-        page_count = paginator.num_pages
-        total = paginator.count
+        paginator = Paginator(queryset, per_page=pagination_input['per_page'])
+        results = paginator.get_page(pagination_input['target_page']).object_list
+        pagination_results = {
+            'per_page': pagination_input['per_page'],
+            'total_pages': paginator.num_pages,
+            'total_items': paginator.count,
+        }
 
-        return results, page_count, pagination['current_page'], total
+        return results, pagination_results
     
     @staticmethod
     def add_anime_list_entry(user: ArcadiaUser, anime_id: int, status: int, details: dict) -> bool:
@@ -120,7 +124,7 @@ class MiruService:
     
     @staticmethod
     def get_anime_list_by_user_id(user_id: int) -> list[AnimeListEntry]:
-        user = ArcadiaUser.objects.get(id=user_id)
+        user = UserService.get_user_by_id(user_id)
         anime_list =  MiruRepository.get_anime_list_by_user_id(user)
         watching = anime_list.filter(status=0)
         completed = anime_list.filter(status=1)
@@ -140,3 +144,7 @@ class MiruService:
     @staticmethod
     def episodes_by_anime_id(anime_id: int) -> AnimeEpisode:
         return MiruRepository.episodes_by_anime_id(anime_id)
+    
+    @staticmethod
+    def total_anime_count() -> int:
+        return Anime.objects.all().count()
