@@ -144,3 +144,7 @@ class MiruService:
     @staticmethod
     def episodes_by_anime_id(anime_id: int) -> AnimeEpisode:
         return MiruRepository.episodes_by_anime_id(anime_id)
+    
+    @staticmethod
+    def total_anime_count() -> int:
+        return Anime.objects.all().count()
