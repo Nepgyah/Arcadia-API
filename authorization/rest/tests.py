@@ -9,7 +9,7 @@ class TestAuthRestEndpoints:
         response = rest_client.post(
             reverse('auth-admin-login'),
             {
-                'username': 'Admin',
+                'email': 'admin@d2x.org',
                 'password': 'TestPassword123'
             },
             format='json'
@@ -25,7 +25,7 @@ class TestAuthRestEndpoints:
         response = rest_client.post(
             reverse('auth-admin-login'),
             {
-                'username': 'Admin',
+                'email': 'admin@d2x.org',
                 'password': 'Invalid'
             },
             format='json'
@@ -38,7 +38,7 @@ class TestAuthRestEndpoints:
         response = rest_client.post(
             reverse('auth-admin-login'),
             {
-                'username': 'Admin',
+                'email': 'admin@d2x.org',
             },
             format='json'
         )
