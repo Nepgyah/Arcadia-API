@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from game import Game
+from asobu.models import Game
 from users.models import ArcadiaUser
 
 class AsobuListEntry(models.Model):
