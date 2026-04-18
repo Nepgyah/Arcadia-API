@@ -1,13 +1,13 @@
 from django.contrib import admin
 from .models import (
-    GameCompany,
     Platform,
-    Tag,
-    Game,
-    DLC,
-    GamePlatform,
+    GameCompany,
+    GameCharacter,
     GameRelation,
-    GameCharacter
+    GamePlatform,
+    Game,
+    Tag,
+    DLC
 )
 
 @admin.register(Platform)
