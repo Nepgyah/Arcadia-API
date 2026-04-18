@@ -23,7 +23,6 @@ class AnimeListEntry(models.Model):
     class Meta:
         ordering = ['-created_at']
         indexes = [
-            models.Index(fields=['anime']),
             models.Index(fields=['status']),
             models.Index(fields=["user", "status"]),
         ]
