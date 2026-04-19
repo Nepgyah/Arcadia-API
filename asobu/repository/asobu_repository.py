@@ -2,7 +2,7 @@ import logging
 
 from talent.models import Character
 from users.models import ArcadiaUser
-from asobu.models import Game, AsobuListEntry, GameCharacter, DLC
+from asobu.models import Game, GameListEntry, GameCharacter, DLC
 from asobu.exceptions import AsobuError, GameNotFoundError
 
 logger = logging.getLogger(__name__)
@@ -25,9 +25,9 @@ class AsobuRepository:
         return GameCharacter.objects.filter(game_id=game_id)
 
     @staticmethod
-    def create_asobu_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> AsobuListEntry:
+    def create_asobu_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
         try:
-            return AsobuListEntry.objects.create(
+            return GameListEntry.objects.create(
                 user=user,
                 game=game,
                 status=status,

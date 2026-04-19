@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from asobu.models import Game
 from users.models import ArcadiaUser
 
-class AsobuListEntry(models.Model):
+class GameListEntry(models.Model):
         
     class StatusType(models.IntegerChoices):
         PLAYING = 0, 'Playing'
