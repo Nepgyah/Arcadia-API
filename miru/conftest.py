@@ -9,15 +9,6 @@ from users.models import ArcadiaUser
 # Fixtures define steps and the data as part of the arrange phase of testing
 
 @pytest.fixture
-def user_fixture():
-    user = ArcadiaUser.objects.create(
-        d2x_id = 1,
-        username = 'TestUsername'
-    )
-
-    return user
-
-@pytest.fixture
 def anime_fixture():
     anime = Anime.objects.create(
         title='Bocchi the rock',

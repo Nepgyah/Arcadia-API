@@ -1,1 +1,1 @@
-from asobu_repository import AsobuRepository
+from .asobu_repository import AsobuRepository

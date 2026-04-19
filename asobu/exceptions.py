@@ -10,7 +10,7 @@ class GameNotFoundError(AsobuError):
     default_code = 'asobu_gane_not_found_error'
 
     def __init__(self, game_id: int):
-        if game_id:
+        if not game_id:
             self.detail = 'Game not found'
         else:
             self.detail = f'Game with id f{game_id} not found.'
