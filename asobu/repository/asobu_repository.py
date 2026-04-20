@@ -1,6 +1,7 @@
 import logging
 
 from django.db import IntegrityError
+import graphene_django_optimizer as gql_optimizer
 
 from talent.models import Character
 from users.models import ArcadiaUser
@@ -27,9 +28,17 @@ class AsobuRepository:
         return GameCharacter.objects.filter(game_id=game_id)
 
     @staticmethod
-    def get_game_list_entry(user: ArcadiaUser, game_id: int):
+    def get_game_list_entry(user: ArcadiaUser, game_id: int, graphql_info):
+            
         try:
-            return GameListEntry.objects.get(user=user, game_id=game_id)
+            if graphql_info:
+                query = gql_optimizer.query(
+                    GameListEntry.objects.filter(user=user, game_id=game_id),
+                    graphql_info
+                )
+                return query.get()
+            else:
+                return GameListEntry.objects.get(user=user, game_id=game_id)
         except GameListEntry.DoesNotExist:
             raise AsobuNotFound('Entry not found')
         

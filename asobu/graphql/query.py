@@ -31,4 +31,4 @@ class Query(graphene.ObjectType):
     
     def resolve_game_list_entry(self, info, game_id):
         user = info.context.user
-        return AsobuRepository.get_game_list_entry(user, game_id)
+        return AsobuRepository.get_game_list_entry(user, game_id, info)
