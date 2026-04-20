@@ -7,7 +7,8 @@ from asobu.models import (
     Game,
     GameCharacter,
     GamePlatform,
-    DLC
+    DLC,
+    GameListEntry
 )
 from base.schema import GenreType
 from talent.graphql.schema import CharacterType
@@ -130,4 +131,9 @@ class DLCType(DjangoObjectType):
 
     def resolve_game(self, _info):
         return Game.objects.get(id=self.game.id)
-    
+
+class GameListEntryType(DjangoObjectType):
+
+    class Meta:
+        model = GameListEntry
+        fields = '__all__'

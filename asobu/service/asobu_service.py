@@ -11,7 +11,7 @@ class AsobuService:
     @staticmethod
     def create_game_list_entry(user: ArcadiaUser, game_id: Game, status: int, details: dict) -> GameListEntry:
         game = AsobuRepository.get_game_by_id(game_id)
-        return AsobuRepository.create_asobu_list_entry(user, game, status, **details)
+        return AsobuRepository.create_game_list_entry(user, game, status, **details)
 
     @staticmethod
     def total_game_count() -> int:
