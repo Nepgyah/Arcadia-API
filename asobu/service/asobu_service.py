@@ -14,6 +14,10 @@ class AsobuService:
         return AsobuRepository.create_game_list_entry(user, game, status, **details)
 
     @staticmethod
+    def get_game_list_entry(user: ArcadiaUser, game_id: Game) -> GameListEntry:
+        return AsobuRepository.get_game_list_entry(user, game_id)
+    
+    @staticmethod
     def update_game_list_entry(user: ArcadiaUser, game_id: Game, status: int, details: dict) -> GameListEntry:
         game = AsobuRepository.get_game_by_id(game_id)
         return AsobuRepository.update_game_list_entry(user, game, status, **details)

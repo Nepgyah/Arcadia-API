@@ -27,6 +27,13 @@ class AsobuRepository:
         return GameCharacter.objects.filter(game_id=game_id)
 
     @staticmethod
+    def get_game_list_entry(user: ArcadiaUser, game_id: int):
+        try:
+            return GameListEntry.objects.get(user=user, game_id=game_id)
+        except GameListEntry.DoesNotExist:
+            raise AsobuNotFound('Entry not found')
+        
+    @staticmethod
     def create_game_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
         try:
             return GameListEntry.objects.create(
@@ -44,6 +51,7 @@ class AsobuRepository:
             logger.warning(e)
             raise AsobuError
         
+    @staticmethod
     def update_game_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
         try:
             entry = GameListEntry.objects.get(
