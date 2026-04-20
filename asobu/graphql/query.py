@@ -2,6 +2,7 @@ import graphene
 import graphene_django_optimizer as gql_optimizer
 from asobu.models import GameCharacter, Game, DLC
 from asobu.graphql.schema import GameCharacterType, GameType, DLCType
+from asobu.repository import AsobuRepository
 
 class Query(graphene.ObjectType):
 
@@ -22,8 +23,7 @@ class Query(graphene.ObjectType):
         return gql_optimizer.query(Game.objects.all().order_by(category)[:count], info)
     
     def resolve_characters_by_game(self, _info, game_id):
-        characters = GameCharacter.objects.filter(game_id=game_id)
-        return characters
+        return AsobuRepository.get_characters_by_game(game_id)
     
     def resolve_dlc_by_game(self, _info, game_id):
-        return DLC.objects.filter(game_id=game_id)
+        return AsobuRepository.get_dlc_by_game(game_id)

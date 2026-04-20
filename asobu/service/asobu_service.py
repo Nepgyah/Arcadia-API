@@ -1,5 +1,5 @@
 from users.models import ArcadiaUser
-from asobu.models import Game, AsobuListEntry
+from asobu.models import Game, GameListEntry
 from asobu.repository import AsobuRepository
 
 class AsobuService:
@@ -9,7 +9,7 @@ class AsobuService:
         return AsobuRepository.get_game_by_id(game_id=game_id)
 
     @staticmethod
-    def create_game_list_entry(user: ArcadiaUser, game_id: Game, status: int, details: dict) -> AsobuListEntry:
+    def create_game_list_entry(user: ArcadiaUser, game_id: Game, status: int, details: dict) -> GameListEntry:
         game = AsobuRepository.get_game_by_id(game_id)
         return AsobuRepository.create_asobu_list_entry(user, game, status, **details)
 

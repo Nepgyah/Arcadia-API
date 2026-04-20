@@ -25,7 +25,7 @@ class AsobuRepository:
         return GameCharacter.objects.filter(game_id=game_id)
 
     @staticmethod
-    def create_asobu_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
+    def create_game_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
         try:
             return GameListEntry.objects.create(
                 user=user,
