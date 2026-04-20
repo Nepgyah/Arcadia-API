@@ -1,9 +1,11 @@
 import logging
 
+from django.db import IntegrityError
+
 from talent.models import Character
 from users.models import ArcadiaUser
 from asobu.models import Game, GameListEntry, GameCharacter, DLC
-from asobu.exceptions import AsobuError, GameNotFoundError
+from asobu.exceptions import AsobuError, GameNotFoundError, AsobuNotFound
 
 logger = logging.getLogger(__name__)
 
@@ -41,4 +43,27 @@ class AsobuRepository:
         except Exception as e:
             logger.warning(e)
             raise AsobuError
-    
+        
+    def update_game_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
+        try:
+            entry = GameListEntry.objects.get(
+                user=user,
+                game=game
+            )
+            if status != entry.status:
+                entry.status = status
+
+            score = kwargs.pop('score', None)
+            if score != entry.score:
+                entry.score = score
+
+            entry.save() 
+            return entry
+        except GameListEntry.DoesNotExist:
+            raise AsobuNotFound('Entry not found')
+        except IntegrityError as e:
+            logger.error(e)
+            raise AsobuError('An error occured updating the entry.')
+        except Exception as e:
+            print(e)
+            raise AsobuError

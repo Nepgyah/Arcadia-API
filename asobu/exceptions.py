@@ -5,6 +5,10 @@ class AsobuError(ArcadiaException):
     default_detail = 'An internal error occured within the Asobu service.'
     default_code = 'asobu_error'
 
+class AsobuNotFound(AsobuError):
+    status_code = 404
+    pass
+
 class GameNotFoundError(AsobuError):
     status_code = 404
     default_code = 'asobu_gane_not_found_error'
