@@ -84,3 +84,7 @@ class AsobuRepository:
         except Exception as e:
             print(e)
             raise AsobuError
+        
+    @staticmethod
+    def get_game_list_by_user(user: ArcadiaUser):
+        return GameListEntry.objects.filter(user=user)

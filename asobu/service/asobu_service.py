@@ -25,3 +25,20 @@ class AsobuService:
     @staticmethod
     def total_game_count() -> int:
         return Game.objects.all().count()
+    
+    @staticmethod
+    def get_game_list_by_user(user: ArcadiaUser):
+        gamelist_entries = AsobuRepository.get_game_list_by_user(user)
+        playing = gamelist_entries.filter(status=0)
+        completed = gamelist_entries.filter(status=1)
+        plan_to  = gamelist_entries.filter(status=2)
+        on_hold = gamelist_entries.filter(status=3)
+        replaying = gamelist_entries.filter(status=4)
+
+        return {
+            'playing': playing,
+            'completed': completed,
+            'plan_to': plan_to,
+            'on_hold': on_hold,
+            'replaying': replaying 
+        }
