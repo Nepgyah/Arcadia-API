@@ -46,7 +46,7 @@ class Query(graphene.ObjectType):
     
     def resolve_user_game_list(self, info, user_id=None):
         if user_id:
-            user = UserRepository.get_user_by_id(id=user_id)
+            user = UserRepository.get_user_by_id(user_id=user_id)
         else:
             user = info.context.user
         list_data = AsobuService.get_game_list_by_user(user)

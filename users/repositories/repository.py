@@ -9,7 +9,7 @@ class UserRepository:
         try:
             return ArcadiaUser.objects.get(id=user_id)
         except ArcadiaUser.DoesNotExist:
-            raise UserNotFoundError(f'Cannot find user with id: {user_id}')
+            raise UserNotFoundError()
         
     @staticmethod
     def get_user_list_stat(user_id: ArcadiaUser) -> dict:
