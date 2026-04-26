@@ -133,7 +133,12 @@ class DLCType(DjangoObjectType):
         return Game.objects.get(id=self.game.id)
 
 class GameListEntryType(DjangoObjectType):
-
+    
     class Meta:
         model = GameListEntry
         fields = '__all__'
+
+    status = graphene.Int()
+
+    def resolve(self, _info):
+        return self.status    

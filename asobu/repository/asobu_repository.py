@@ -40,7 +40,7 @@ class AsobuRepository:
             else:
                 return GameListEntry.objects.get(user=user, game_id=game_id)
         except GameListEntry.DoesNotExist:
-            raise AsobuNotFound('Entry not found')
+            return None
         
     @staticmethod
     def create_game_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
