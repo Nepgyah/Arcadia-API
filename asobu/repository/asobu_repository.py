@@ -80,10 +80,18 @@ class AsobuRepository:
             raise AsobuNotFound('Entry not found')
         except IntegrityError as e:
             logger.error(e)
-            raise AsobuError('An error occured updating the entry.')
+            raise AsobuError('An error occured updating the entry')
         except Exception as e:
-            print(e)
+            logging.error(e)
             raise AsobuError
+        
+    @staticmethod
+    def delete_game_list_entry(user: ArcadiaUser, game_id: int) -> None:
+        try:
+            GameListEntry.objects.get(user=user, game_id= game_id).delete()
+        except Exception as e:
+            logging.error(e)
+            raise AsobuError('An error occured deleting the entry')
         
     @staticmethod
     def get_game_list_by_user(user: ArcadiaUser):
