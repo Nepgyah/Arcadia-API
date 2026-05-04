@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'base',
     'miru',
     'asobu',
+    'iku',
     'corsheaders',
     'graphene_django',
     'django_extensions',
