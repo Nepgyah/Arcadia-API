@@ -58,15 +58,15 @@ class UpdateGameListEntry(graphene.Mutation):
 class DeleteGameListEntry(graphene.Mutation):
 
     class Arguments:
-        game_id = graphene.ID()
+        entry_id = graphene.ID()
 
     message = graphene.String()
     detail = graphene.String()
     
     @classmethod
-    def mutate(cls, _root, info, game_id):
+    def mutate(cls, _root, info, entry_id):
         user = info.context.user
-        AsobuRepository.delete_game_list_entry(user, game_id)
+        AsobuRepository.delete_game_list_entry(user, entry_id)
         return DeleteGameListEntry(
             message = 'Entry deleted',
             detail = f'Game entry deleted for user f{user.id}'

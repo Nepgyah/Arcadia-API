@@ -86,9 +86,11 @@ class AsobuRepository:
             raise AsobuError
         
     @staticmethod
-    def delete_game_list_entry(user: ArcadiaUser, game_id: int) -> None:
+    def delete_game_list_entry(user: ArcadiaUser, entry_id: int) -> None:
         try:
-            GameListEntry.objects.get(user=user, game_id= game_id).delete()
+            GameListEntry.objects.get(id=entry_id, user=user,).delete()
+        except GameListEntry.DoesNotExist:
+            raise AsobuNotFound('Cannot find game entry')
         except Exception as e:
             logging.error(e)
             raise AsobuError('An error occured deleting the entry')
