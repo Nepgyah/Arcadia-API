@@ -77,14 +77,14 @@ class AdminLoginView(APIView):
 class RefreshTokenView(APIView):
     
     def post(self, request):
-        refresh_token = request.data.get('refresh_token', None)
-
-        if refresh_token is None:
-            return Response(status=400, data={
-                'detail': 'Missing username field'
-            }) 
-        
         try:
+            refresh_token = request.data.get('refresh_token', None)
+            print(refresh_token)
+            if refresh_token is None:
+                return Response(status=400, data={
+                    'detail': 'Missing username field'
+                }) 
+            
             refreshed_data = RefreshToken(refresh_token)
 
             new_access_token = str(refreshed_data.access_token)
@@ -108,4 +108,5 @@ class RefreshTokenView(APIView):
                 },
             )
         except Exception as e:
+            print(e)
             return Response(status=400, data={'detail':'Error refreshing token'})
