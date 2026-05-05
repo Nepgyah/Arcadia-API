@@ -77,12 +77,6 @@ class MiruService:
     
     @staticmethod
     def add_anime_list_entry(user: ArcadiaUser, anime_id: int, status: int, details: dict) -> bool:
-        """
-        Creates an anime list entry based on user_id and anime_id combination
-
-        Returns:
-        - Boolean status (ok) of the operation
-        """
 
         anime = MiruRepository.get_anime_by_id(anime_id)
         return MiruRepository.create_anime_list_entry(user, anime, status, **details)

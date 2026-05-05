@@ -1,13 +1,14 @@
 from django.contrib import admin
 from .models import (
-    GameCompany,
     Platform,
-    Tag,
-    Game,
-    DLC,
-    GamePlatform,
+    GameCompany,
+    GameCharacter,
     GameRelation,
-    GameCharacter
+    GamePlatform,
+    Game,
+    Tag,
+    DLC,
+    GameListEntry
 )
 
 @admin.register(Platform)
@@ -41,4 +42,5 @@ class GameAdmin(admin.ModelAdmin):
     
 admin.site.register(Tag)
 admin.site.register(DLC)
+admin.site.register(GameListEntry)
 

@@ -1,29 +1,10 @@
 from django.db import models
-
-from base.models import Company, Media, Genre
-from talent.models import Character
 from util import unique_slugify
+from base.models import Media, Genre
+from talent.models import Character
 
-class GameCompany(Company):
+from .misc import Tag, GameCompany, Platform
 
-    def __str__(self):
-        return f"{self.name}"
-    
-class Platform(models.Model):
-
-    name=models.CharField(max_length=150)
-
-    def __str__(self):
-        return f"{self.name}"
-    
-    
-class Tag(models.Model):
-
-    name=models.CharField(max_length=150)
-
-    def __str__(self):
-        return str(self.name)
-    
 class Game(Media):
     
     class Status(models.IntegerChoices):
