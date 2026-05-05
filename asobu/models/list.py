@@ -21,11 +21,12 @@ class GameListEntry(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     note = models.CharField(null=True, blank=True, max_length=256)
-    review = models.TextField(null=True, blank=True)
     start_play_date = models.DateField(null=True, blank=True)
     end_play_date = models.DateField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    review = models.TextField(null=True, blank=True)
+    review_update_at = models.DateTimeField(auto_now_add=True)
     is_private = models.BooleanField(default=True, blank=True)
 
     class Meta:
