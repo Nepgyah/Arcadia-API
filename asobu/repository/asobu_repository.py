@@ -3,7 +3,6 @@ import logging
 from django.db import IntegrityError
 import graphene_django_optimizer as gql_optimizer
 
-from talent.models import Character
 from users.models import ArcadiaUser
 from asobu.models import Game, GameListEntry, GameCharacter, DLC
 from asobu.exceptions import AsobuError, GameNotFoundError, AsobuNotFound
@@ -17,7 +16,7 @@ class AsobuRepository:
         try:
             return Game.objects.get(id=game_id)
         except Game.DoesNotExist:
-            raise GameNotFoundError(game_id=game_id)
+            raise GameNotFoundError(game_id=game_id) from None
     
     @staticmethod
     def get_dlc_by_game(game_id: int) -> list:
@@ -58,7 +57,7 @@ class AsobuRepository:
 
         except Exception as e:
             logger.warning(e)
-            raise AsobuError
+            raise AsobuError from e
         
     @staticmethod
     def update_game_list_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
@@ -77,23 +76,23 @@ class AsobuRepository:
             entry.save() 
             return entry
         except GameListEntry.DoesNotExist:
-            raise AsobuNotFound('Entry not found')
+            raise AsobuNotFound('Entry not found') from None
         except IntegrityError as e:
             logger.error(e)
-            raise AsobuError('An error occured updating the entry')
+            raise AsobuError('An error occured updating the entry') from e
         except Exception as e:
             logging.error(e)
-            raise AsobuError
+            raise AsobuError from e
         
     @staticmethod
     def delete_game_list_entry(user: ArcadiaUser, entry_id: int) -> None:
         try:
             GameListEntry.objects.get(id=entry_id, user=user,).delete()
         except GameListEntry.DoesNotExist:
-            raise AsobuNotFound('Cannot find game entry')
+            raise AsobuNotFound('Cannot find game entry') from None
         except Exception as e:
             logging.error(e)
-            raise AsobuError('An error occured deleting the entry')
+            raise AsobuError('An error occured deleting the entry') from e
         
     @staticmethod
     def get_game_list_by_user(user: ArcadiaUser):

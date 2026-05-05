@@ -3,7 +3,6 @@ import graphene
 from asobu.graphql.schema import GameListEntryType
 from asobu.service import AsobuService
 from asobu.repository import AsobuRepository
-from asobu.exceptions import AsobuNotFound
 
 class GameListEntryMetadata(graphene.InputObjectType):
     score = graphene.Int()
