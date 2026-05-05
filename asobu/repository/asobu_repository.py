@@ -27,6 +27,13 @@ class AsobuRepository:
         return GameCharacter.objects.filter(game_id=game_id)
 
     @staticmethod
+    def get_reviews_by_game(game_id: int) -> list:
+        return GameListEntry.objects.filter(
+            game_id=game_id,
+            is_private=False
+        )
+
+    @staticmethod
     def get_game_list_entry(user: ArcadiaUser, game_id: int, graphql_info):
             
         try:

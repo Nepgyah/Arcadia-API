@@ -26,6 +26,7 @@ class GameListEntry(models.Model):
     end_play_date = models.DateField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_private = models.BooleanField(default=True, blank=True)
 
     class Meta:
         ordering = ['-updated_at']
