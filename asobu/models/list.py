@@ -26,7 +26,7 @@ class GameListEntry(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
     review = models.TextField(null=True, blank=True)
-    review_update_at = models.DateTimeField(auto_now_add=True)
+    review_updated_at = models.DateTimeField(auto_now_add=True)
     is_private = models.BooleanField(default=True, blank=True)
 
     class Meta:
