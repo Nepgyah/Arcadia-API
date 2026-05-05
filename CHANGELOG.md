@@ -2,8 +2,18 @@
 | App        | Version |
 | ---------- | ------- |
 | Miru       | 0.4     |
-| Asobu      | 0.1     |
+| Asobu      | 0.2     |
 | Users      | 0.1     |
+
+## Alpha v2.1 - 4/15/2026
+- **General**
+    - Update test db contents
+
+- **Utils**
+    - Remove unused files
+    
+    - **Graphql**
+        - Add arcadia general search
 
 ## Alpha v2.0 - 4/10/2026
 - **General**
