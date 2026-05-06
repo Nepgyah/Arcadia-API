@@ -141,4 +141,15 @@ class GameListEntryType(DjangoObjectType):
     status = graphene.Int()
 
     def resolve(self, _info):
-        return self.status    
+        return self.status
+    
+class GameReviewType(DjangoObjectType):
+
+    class Meta:
+        model = GameListEntry
+        fields = [
+            'user',
+            'score',
+            'review',
+            'review_updated_at'
+        ]
