@@ -9,6 +9,8 @@ from asobu.exceptions import AsobuError, GameNotFoundError, AsobuNotFound
 
 logger = logging.getLogger(__name__)
 
+# class GameRepository:
+
 class AsobuRepository:
 
     @staticmethod
@@ -34,7 +36,7 @@ class AsobuRepository:
         )
 
     @staticmethod
-    def get_game_list_entry(user: ArcadiaUser, game_id: int, graphql_info):
+    def get_game_list_entry(user: ArcadiaUser, game_id: int, graphql_info: dict):
             
         try:
             if graphql_info:
