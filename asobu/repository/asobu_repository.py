@@ -3,7 +3,7 @@ import logging
 import graphene_django_optimizer as gql_optimizer
 
 from users.models import ArcadiaUser
-from asobu.models import Game, GameListEntry, GameCharacter, DLC
+from asobu.models import Game, GameListEntry, GameCharacter, DLC, Review
 from asobu.exceptions import AsobuError, GameNotFoundError, AsobuNotFound
 
 logger = logging.getLogger(__name__)
@@ -101,24 +101,47 @@ class GameListEntryRepository:
 class ReviewRepository:
 
     @staticmethod
-    def get_review(entry_id: int) -> GameListEntry:
+    def create_review(user: ArcadiaUser, game: Game, **fields: dict) -> Review:
+        review_text = fields.pop('text', None)
+
+        if not review_text:
+            raise AsobuError('A review cannot be empty')
+        
+        review = Review(
+            user=user,
+            game=game,
+            text=fields.pop('text')
+        ) 
+        review.objects.create()
+        return review
+
+    @staticmethod
+    def get_review(review_id: int) -> Review:
         try:
-            return GameListEntry.objects.get(is_private=False, id=entry_id)
-        except GameListEntry.DoesNotExist as e:
+            return GameListEntry.objects.get(id=review_id)
+        except Review.DoesNotExist as e:
             raise AsobuNotFound('Review not found') from e
         
     @staticmethod
-    def update_review(entry_id: int, user_id: int, **kwargs) -> GameListEntry:
+    def update_review(review_id: int, user_id: int, **kwargs) -> Review:
         try:
-            entry = GameListEntry.objects.get(id=entry_id, user_id=user_id)
-            entry.review = kwargs.pop('review', None)
-            entry.score = kwargs.pop('score', None)
-            entry.save()
-            return entry
+            review = Review.objects.get(id=review_id, user_id=user_id)
+            review.text = kwargs.pop('review', None)
+            review.save()
+
+            return review
         
         except GameListEntry.DoesNotExist as e:
             raise AsobuNotFound('Review not found') from e
 
+    @staticmethod
+    def delete_review(review_id: int, user_id: int) -> None:
+        try:
+            review = Review.objects.get(id=review_id, user_id=user_id)
+            review.delete()
+        except Review.DoesNotExist as e:
+            raise AsobuNotFound('Cannot find review') from e
+        
 class AsobuRepository:
 
     game = GameRepository()

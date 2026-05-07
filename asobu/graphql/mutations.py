@@ -1,6 +1,6 @@
 import graphene
 
-from asobu.graphql.schema import GameListEntryType, GameReviewType
+from asobu.graphql.schema import GameListEntryType, ReviewType
 from asobu.service import AsobuService
 from asobu.repository import AsobuRepository
 
@@ -82,7 +82,7 @@ class CreateGameReview(graphene.Mutation):
 
     message = graphene.String()
     detail = graphene.String()
-    review = GameReviewType()
+    review = ReviewType()
 
     @classmethod
     def mutate(cls, _root, info, entry_id, review_input):

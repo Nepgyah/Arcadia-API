@@ -40,7 +40,7 @@ class Review(models.Model):
 
     user = models.ForeignKey(ArcadiaUser, on_delete=models.CASCADE, related_name='game_reviews')
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    review = models.TextField(null=True, blank=True)
+    text = models.TextField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
     funny_count = models.PositiveIntegerField(default=0, blank=True)
