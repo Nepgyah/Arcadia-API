@@ -8,7 +8,8 @@ from asobu.models import (
     GameCharacter,
     GamePlatform,
     DLC,
-    GameListEntry
+    GameListEntry,
+    Review
 )
 from base.schema import GenreType
 from talent.graphql.schema import CharacterType
@@ -143,15 +144,8 @@ class GameListEntryType(DjangoObjectType):
     def resolve(self, _info):
         return self.status
     
-class GameReviewType(DjangoObjectType):
+class ReviewType(DjangoObjectType):
 
     class Meta:
-        model = GameListEntry
-        fields = [
-            'id',
-            'game',
-            'user',
-            'score',
-            'review',
-            'review_updated_at'
-        ]
+        model = Review
+        fields = '__all__'
