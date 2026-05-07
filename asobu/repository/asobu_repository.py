@@ -1,6 +1,5 @@
 import logging
 
-from django.db import IntegrityError
 import graphene_django_optimizer as gql_optimizer
 
 from users.models import ArcadiaUser
@@ -99,7 +98,7 @@ class GameListEntryRepository:
     def get_user_list(user_id: int) -> list:
         return GameListEntry.objects.filter(user_id=user_id)
     
-class GameReviewRepository:
+class ReviewRepository:
 
     @staticmethod
     def get_review(entry_id: int) -> GameListEntry:
@@ -124,4 +123,4 @@ class AsobuRepository:
 
     game = GameRepository()
     list_entry = GameListEntryRepository()
-    review = GameReviewRepository()
+    review = ReviewRepository()
