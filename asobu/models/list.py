@@ -25,9 +25,6 @@ class GameListEntry(models.Model):
     end_play_date = models.DateField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    review = models.TextField(null=True, blank=True)
-    review_updated_at = models.DateTimeField(auto_now_add=True)
-    is_private = models.BooleanField(default=True, blank=True)
 
     class Meta:
         ordering = ['-updated_at']
@@ -38,3 +35,17 @@ class GameListEntry(models.Model):
 
     def __str__(self):
         return f'User: {self.user.username} - Game: {self.game.title} - Status: {self.get_status_display()}'
+    
+class Review(models.Model):
+
+    user = models.ForeignKey(ArcadiaUser, on_delete=models.CASCADE, related_name='game_reviews')
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    review = models.TextField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    funny_count = models.PositiveIntegerField(default=0, blank=True)
+    helpful_count = models.PositiveIntegerField(default=0, blank=True)
+    nice_count = models.PositiveIntegerField(default=0, blank=True)
+
+    class Meta:
+        unique_together = ['user', 'game']
