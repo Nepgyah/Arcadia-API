@@ -28,7 +28,7 @@ class AsobuService:
     
     @staticmethod
     def get_game_list_by_user(user: ArcadiaUser):
-        gamelist_entries = AsobuRepository.get_game_list_by_user(user)
+        gamelist_entries = AsobuRepository.list_entry.get_user_list(user.id)
         playing = gamelist_entries.filter(status=0)
         completed = gamelist_entries.filter(status=1)
         plan_to  = gamelist_entries.filter(status=2)

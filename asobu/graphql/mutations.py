@@ -1,6 +1,6 @@
 import graphene
 
-from asobu.graphql.schema import GameListEntryType
+from asobu.graphql.schema import GameListEntryType, GameReviewType
 from asobu.service import AsobuService
 from asobu.repository import AsobuRepository
 
@@ -71,6 +71,25 @@ class DeleteGameListEntry(graphene.Mutation):
             detail = f'Game entry deleted for user f{user.id}'
         )
     
+class GameReviewInput(graphene.InputObjectType):
+    review = graphene.String()
+    score = graphene.String()
+
+class CreateGameReview(graphene.Mutation):
+    class Arguments:
+        entry_id = graphene.ID()
+        review_input = GameReviewInput()
+
+    message = graphene.String()
+    detail = graphene.String()
+    review = GameReviewType()
+
+    @classmethod
+    def mutate(cls, _root, info, entry_id, review_input):
+        user = info.context.user
+        return AsobuRepository.review.update_review(entry_id, user.id, **review_input)
+
+
 class Mutation(graphene.ObjectType):
     create_game_list_entry = CreateGameListMutation.Field()
     update_game_list_entry = UpdateGameListEntry.Field()

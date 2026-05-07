@@ -148,6 +148,8 @@ class GameReviewType(DjangoObjectType):
     class Meta:
         model = GameListEntry
         fields = [
+            'id',
+            'game',
             'user',
             'score',
             'review',
