@@ -27,10 +27,7 @@ class GameRepository:
 
     @staticmethod
     def get_reviews(game_id: int) -> list:
-        return GameListEntry.objects.filter(
-            game_id=game_id,
-            is_private=False
-        )
+        return Review.objects.filter(game_id=game_id)
 
 class GameListEntryRepository:
 
@@ -43,13 +40,12 @@ class GameListEntryRepository:
                 status=status,
                 score=kwargs.pop('score', None),
                 note=kwargs.pop('note', None),
-                review=kwargs.pop('review', None),
                 start_play_date=kwargs.pop('start_play_date', None),
                 end_play_date=kwargs.pop('end_play_date', None)
             )  
 
         except Exception as e:
-            logger.warning(e)
+            logger.exception(e)
             raise AsobuError from e
         
     @staticmethod

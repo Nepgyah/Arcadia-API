@@ -19,7 +19,7 @@ class Query(graphene.ObjectType):
     game_by_id = graphene.Field(GameType, game_id=graphene.ID(required=True))
     games_by_category = graphene.List(GameType, category=graphene.String(required=False), count=graphene.Int(required=False))
     characters_by_game = graphene.List(GameCharacterType, game_id=graphene.ID(required=True))
-    asobu_game_reviews = graphene.List(ReviewType, game_id=graphene.ID())
+    game_reviews = graphene.List(ReviewType, game_id=graphene.ID())
     dlc_by_game = graphene.List(DLCType, game_id=graphene.ID(required=True))
     game_list_entry = graphene.Field(GameListEntryType, game_id=graphene.ID())
     user_game_list = graphene.Field(GameList, user_id=graphene.ID())
@@ -39,7 +39,7 @@ class Query(graphene.ObjectType):
     def resolve_characters_by_game(self, _info, game_id):
         return AsobuRepository.game.get_characters(game_id)
     
-    def resolve_asobu_game_reviews(self, _info, game_id):
+    def resolve_game_reviews(self, _info, game_id):
         return AsobuRepository.game.get_reviews(game_id)
 
     def resolve_dlc_by_game(self, _info, game_id):
