@@ -24,6 +24,7 @@ class Query(graphene.ObjectType):
     game_list_entry = graphene.Field(GameListEntryType, game_id=graphene.ID())
     user_game_list = graphene.Field(GameList, user_id=graphene.ID())
     game_review = graphene.Field(ReviewType, entry_id=graphene.ID())
+    user_game_review = graphene.Field(ReviewType, game_id=graphene.ID())
 
     def resolve_game_by_id(self, _info, game_id):
         return AsobuRepository.game.get_game(game_id)
@@ -67,3 +68,7 @@ class Query(graphene.ObjectType):
     
     def resolve_game_review(self, _info, entry_id):
         return AsobuRepository.review.get_review(entry_id)
+    
+    def resolve_user_game_review(self, info, game_id):
+        user = info.context.user
+        return AsobuRepository.review.get_review_by_user(user.id, game_id)

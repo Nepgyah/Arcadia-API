@@ -112,9 +112,16 @@ class ReviewRepository:
         return review
 
     @staticmethod
+    def get_review_by_user(user_id: int, game_id: int) -> Review:
+        try:
+            return Review.objects.get(user_id=user_id, game_id=game_id)
+        except Review.DoesNotExist as e:
+            raise AsobuNotFound('Review not found') from e
+
+    @staticmethod
     def get_review(review_id: int) -> Review:
         try:
-            return GameListEntry.objects.get(id=review_id)
+            return Review.objects.get(id=review_id)
         except Review.DoesNotExist as e:
             raise AsobuNotFound('Review not found') from e
         
