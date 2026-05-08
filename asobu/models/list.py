@@ -21,7 +21,6 @@ class GameListEntry(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     note = models.CharField(null=True, blank=True, max_length=256)
-    review = models.TextField(null=True, blank=True)
     start_play_date = models.DateField(null=True, blank=True)
     end_play_date = models.DateField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -36,3 +35,17 @@ class GameListEntry(models.Model):
 
     def __str__(self):
         return f'User: {self.user.username} - Game: {self.game.title} - Status: {self.get_status_display()}'
+    
+class Review(models.Model):
+
+    user = models.ForeignKey(ArcadiaUser, on_delete=models.CASCADE, related_name='game_reviews')
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    text = models.TextField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    funny_count = models.PositiveIntegerField(default=0, blank=True)
+    helpful_count = models.PositiveIntegerField(default=0, blank=True)
+    nice_count = models.PositiveIntegerField(default=0, blank=True)
+
+    class Meta:
+        unique_together = ['user', 'game']

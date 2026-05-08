@@ -1,8 +1,8 @@
 import graphene
 import graphene_django_optimizer as gql_optimizer
 from users.repositories import UserRepository
-from asobu.models import GameCharacter, Game, DLC
-from asobu.graphql.schema import GameCharacterType, GameType, DLCType, GameListEntryType
+from asobu.models import Game
+from asobu.graphql.schema import GameCharacterType, GameType, DLCType, GameListEntryType, ReviewType
 from asobu.repository import AsobuRepository
 from asobu.service import AsobuService
 
@@ -19,12 +19,15 @@ class Query(graphene.ObjectType):
     game_by_id = graphene.Field(GameType, game_id=graphene.ID(required=True))
     games_by_category = graphene.List(GameType, category=graphene.String(required=False), count=graphene.Int(required=False))
     characters_by_game = graphene.List(GameCharacterType, game_id=graphene.ID(required=True))
+    game_reviews = graphene.List(ReviewType, game_id=graphene.ID())
     dlc_by_game = graphene.List(DLCType, game_id=graphene.ID(required=True))
     game_list_entry = graphene.Field(GameListEntryType, game_id=graphene.ID())
     user_game_list = graphene.Field(GameList, user_id=graphene.ID())
+    game_review = graphene.Field(ReviewType, entry_id=graphene.ID())
+    user_game_review = graphene.Field(ReviewType, game_id=graphene.ID())
 
-    def resolve_game_by_id(self, info, game_id):
-        return gql_optimizer.query(Game.objects.get(id=game_id), info)
+    def resolve_game_by_id(self, _info, game_id):
+        return AsobuRepository.game.get_game(game_id)
     
     def resolve_games_by_category(self, info, category, count):
         if category is None:
@@ -35,14 +38,17 @@ class Query(graphene.ObjectType):
         return gql_optimizer.query(Game.objects.all().order_by(category)[:count], info)
     
     def resolve_characters_by_game(self, _info, game_id):
-        return AsobuRepository.get_characters_by_game(game_id)
+        return AsobuRepository.game.get_characters(game_id)
     
+    def resolve_game_reviews(self, _info, game_id):
+        return AsobuRepository.game.get_reviews(game_id)
+
     def resolve_dlc_by_game(self, _info, game_id):
-        return AsobuRepository.get_dlc_by_game(game_id)
+        return AsobuRepository.game.get_dlc(game_id)
     
     def resolve_game_list_entry(self, info, game_id):
         user = info.context.user
-        return AsobuRepository.get_game_list_entry(user, game_id, info)
+        return AsobuRepository.list_entry.get_entry(user, game_id, None)
     
     def resolve_user_game_list(self, info, user_id=None):
         if user_id:
@@ -59,3 +65,10 @@ class Query(graphene.ObjectType):
             on_hold = list_data['on_hold'],
             replaying = list_data['replaying']
         )
+    
+    def resolve_game_review(self, _info, entry_id):
+        return AsobuRepository.review.get_review(entry_id)
+    
+    def resolve_user_game_review(self, info, game_id):
+        user = info.context.user
+        return AsobuRepository.review.get_review_by_user(user.id, game_id)

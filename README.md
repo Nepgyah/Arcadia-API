@@ -11,10 +11,10 @@ Visit Arcadia: https://arcadia-platform.vercel.app
 - **Asobu v0.2**
     - **Models**
         - Create gamelist entry model
+        - Create game review model
     - **Graphql**
-        - Add create gamelist entry mutation
-        - Add update gamelist entry mutation
-        - Add delete gamelist entry mutation
+        - Add crud operations for gamelist entries
+        - Add crud operations for game reviews
     - **REST**
         - Add json export endpoint
         - Add gamelist entry serializer

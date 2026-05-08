@@ -8,7 +8,8 @@ from asobu.models import (
     GameCharacter,
     GamePlatform,
     DLC,
-    GameListEntry
+    GameListEntry,
+    Review
 )
 from base.schema import GenreType
 from talent.graphql.schema import CharacterType
@@ -141,4 +142,10 @@ class GameListEntryType(DjangoObjectType):
     status = graphene.Int()
 
     def resolve(self, _info):
-        return self.status    
+        return self.status
+    
+class ReviewType(DjangoObjectType):
+
+    class Meta:
+        model = Review
+        fields = '__all__'

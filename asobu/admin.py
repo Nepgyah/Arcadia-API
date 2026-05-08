@@ -8,7 +8,8 @@ from .models import (
     Game,
     Tag,
     DLC,
-    GameListEntry
+    GameListEntry,
+    Review
 )
 
 @admin.register(Platform)
@@ -43,4 +44,4 @@ class GameAdmin(admin.ModelAdmin):
 admin.site.register(Tag)
 admin.site.register(DLC)
 admin.site.register(GameListEntry)
-
+admin.site.register(Review)
