@@ -65,17 +65,15 @@ class GameListEntryRepository:
     @staticmethod
     def update_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
         try:
-            return GameListEntry.objects.create(
-                user=user,
-                game=game,
-                status=status,
-                score=kwargs.pop('score', None),
-                note=kwargs.pop('note', None),
-                review=kwargs.pop('review', None),
-                start_play_date=kwargs.pop('start_play_date', None),
-                end_play_date=kwargs.pop('end_play_date', None)
-            )  
-
+            entry = GameListEntry.objects.get(user=user, game=game)
+            entry.status = status
+            entry.score = kwargs.pop('score', None)
+            entry.note = kwargs.pop('note', None)
+            entry.start_play_date = kwargs.pop('start_play_date', None)
+            entry.end_play_date = kwargs.pop('end_play_date', None)
+            entry.save()
+            return entry
+        
         except Exception as e:
             logger.exception(e)
             raise AsobuError from e
