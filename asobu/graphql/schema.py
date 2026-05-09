@@ -89,6 +89,8 @@ class GameType(DjangoObjectType):
     developers = graphene.List(GameCompanyType)
     publishers = graphene.List(GameCompanyType)
 
+    bg_url = graphene.String()
+
     def resolve_status(self, _info):
         return self.get_status_display()
     
@@ -121,6 +123,9 @@ class GameType(DjangoObjectType):
     
     def resolve_platforms(self, _info):
         return self.gameplatform_set.all()
+    
+    def resolve_bg_url(self, _info):
+        return self.bg_url
     
 class DLCType(DjangoObjectType):
 

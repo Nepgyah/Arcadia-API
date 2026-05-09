@@ -7,6 +7,7 @@ Visit Arcadia: https://arcadia-platform.vercel.app
 ## Latest Release - Alpha v2.2 - 5/xx/xx
 - **General**
     - Change admin to use email field instead of username
+    - Add background CDNs for media
 
 - **Asobu v0.2**
     - **Models**
@@ -66,19 +67,21 @@ pip install -r requirements.txt
 ```
 DJANGO_SECRET= Your django secret key
 
-DB_NAME= Name of the database
-DB_USER= Your db user username
-DB_PASSWORD= Your db user password
-DB_HOST= Domain of your db
-DB_PORT= Port number (default 5432)
+DB_NAME = Name of the database
+DB_USER = Your db user username
+DB_PASSWORD = Your db user password
+DB_HOST = Domain of your db
+DB_PORT = Port number (default 5432)
 
-CLIENT_ID= Name for the arcadia app (used for communication with the d2x client)
-CLIENT_SECRET= Security password for the arcadia app (used for communication with the d2x client)
+CLIENT_ID = Name for the arcadia app (used for communication with the d2x client)
+CLIENT_SECRET = Security password for the arcadia app (used for communication with the d2x client)
 
 COOKIE_SAME_SITE="None"
 COOKIE_SECURE="True"
 
-D2X_URL= URL to the d2x website
+BG_CDN_BASE = Base url for the cdn service
+
+D2X_URL = URL to the d2x website
 
 ```
 
