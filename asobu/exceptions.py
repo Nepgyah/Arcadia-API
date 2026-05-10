@@ -7,7 +7,6 @@ class AsobuError(ArcadiaException):
 
 class AsobuNotFound(AsobuError):
     status_code = 404
-    pass
 
 class GameNotFoundError(AsobuError):
     status_code = 404
