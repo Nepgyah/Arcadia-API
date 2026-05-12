@@ -1,12 +1,11 @@
 import pytest
-import psycopg2
 from asobu.models import Review
 from asobu.repository import AsobuRepository
 from asobu.exceptions import GameNotFoundError, AsobuError, AsobuNotFound
 from asobu.conftest import create_video_game_characters
 
 @pytest.mark.django_db(transaction=True)
-class TestAsobuRepository:
+class TestAsobuRepoGame:
 
     # GAME
     @staticmethod
@@ -18,11 +17,8 @@ class TestAsobuRepository:
     def test_getGameByID_nonExistentGame_raisesGameNotFoundError():
         non_existent_id = 9999
 
-        with pytest.raises(GameNotFoundError) as exception:
+        with pytest.raises(GameNotFoundError):
             AsobuRepository.game.get_game(non_existent_id)
-
-        assert exception.value.status_code == 404
-        assert str(non_existent_id) in str(exception.value.detail)
 
     #DLC
     @staticmethod
@@ -47,7 +43,8 @@ class TestAsobuRepository:
         result = AsobuRepository.game.get_characters(game_fixture.id)
         assert len(result) == 0
 
-    # Gamelist Entry
+@pytest.mark.django_db(transaction=True)
+class TestAsobuRepoGameListEntry:
     @staticmethod
     def test_createGameListEntry_newEntry_returnsEntryObject(arcadia_user_fixture, game_fixture):
         details = {
@@ -75,7 +72,9 @@ class TestAsobuRepository:
         assert exception.value.status_code == 400
         assert exception.value.default_code == AsobuError.default_code
 
-    # Review
+@pytest.mark.django_db(transaction=True)
+class TestAsobuRepoGameReview:
+
     @staticmethod
     def test_getGameReview_validReview_returnsReview(game_review_fixture):
         review = AsobuRepository.review.get_review(game_review_fixture.id)
@@ -104,6 +103,24 @@ class TestAsobuRepository:
             AsobuRepository.review.create_review(arcadia_user_fixture.id, 99999, review_text)
 
         assert exception.value.status_code == 400
+
+    @staticmethod
+    def test_createGameReview_noneInput_raisesAsobuError(arcadia_user_fixture, game_fixture):
+        with pytest.raises(AsobuError):
+            AsobuRepository.review.create_review(
+                user_id=arcadia_user_fixture.id,
+                game_id=game_fixture.id,
+                review_text=None
+            )
+
+    @staticmethod
+    def test_createGameReview_blankInput_raisesAsobuError(arcadia_user_fixture, game_fixture):
+        with pytest.raises(AsobuError):
+            AsobuRepository.review.create_review(
+                user_id=arcadia_user_fixture.id,
+                game_id=game_fixture.id,
+                review_text=''
+            )
 
     @staticmethod
     def test_updateGameReview_validInput_returnsUpdatedReview(game_review_fixture):

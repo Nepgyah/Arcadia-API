@@ -97,7 +97,7 @@ class ReviewRepository:
     @staticmethod
     def create_review(user_id: int, game_id: int, review_text: str) -> Review:
 
-        if not review_text:
+        if not review_text or review_text == '':
             raise AsobuError('A review cannot be empty')
         try:
             with transaction.atomic():
