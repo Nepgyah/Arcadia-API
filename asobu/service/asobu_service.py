@@ -47,6 +47,10 @@ class AsobuServiceDeprecate:
 class GameService:
 
     @staticmethod
+    def get_game(game_id: int) -> Game:
+        return AsobuRepository.game.get_game(game_id)
+
+    @staticmethod
     def get_cast(game_id: int) -> list:
         character_relations = AsobuRepository.game.get_character_relations(game_id)
         char_ids = [rel.character_id for rel in character_relations]

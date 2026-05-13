@@ -1,30 +1,12 @@
-import graphene
-import asobu.graphql.query
-import asobu.graphql.mutations
-import authorization.graphql.mutations
-import base.schema
-import miru.graphql.queries
-import miru.graphql.mutations
-import talent.graphql.query
-import users.graphql.queries
-import util.graphql.queries
+import strawberry
+from asobu.graphql.query import AsobuQuery
 
-class Query(
-    asobu.graphql.query.Query,
-    base.schema.Query,
-    miru.graphql.queries.Query,
-    talent.graphql.query.Query,
-    users.graphql.queries.Query,
-    util.graphql.queries.Query,
-    graphene.ObjectType
-):
-    pass
+@strawberry.type
+class Query:
 
-class Mutation(
-    asobu.graphql.mutations.Mutation,
-    miru.graphql.mutations.Mutation,
-    authorization.graphql.mutations.Mutation
-):
-    pass
+    @strawberry.field
+    def asobu(self) -> AsobuQuery:
+        return AsobuQuery()
+    
 
-schema = graphene.Schema(query=Query, mutation=Mutation)
+schema = strawberry.Schema(query=Query)
