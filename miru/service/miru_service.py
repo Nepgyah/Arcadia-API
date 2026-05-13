@@ -13,6 +13,8 @@ from miru.models.list_entry import AnimeListEntry
 from users.models import ArcadiaUser
 from miru.exceptions import MiruError
 
+from talent.service.character import CharacterService
+
 logger = logging.getLogger(__name__)
 
 class MiruService:
@@ -22,6 +24,7 @@ class MiruService:
     def get_anime_by_id(anime_id: int) -> Anime:
         return MiruRepository.get_anime_by_id(anime_id)
         
+    # SOON TO DEPRECATE
     @staticmethod
     def get_characters_by_anime(anime_id: int) -> list[AnimeCharacter]:
         return MiruRepository.get_characters_by_anime(anime_id)
@@ -142,3 +145,14 @@ class MiruService:
     @staticmethod
     def total_anime_count() -> int:
         return Anime.objects.all().count()
+    
+class AnimeService:
+
+    @staticmethod
+    def get_cast(anime_id: int) -> list:
+        anime_characters = AnimeCharacter.objects.filter(anime=anime_id)
+
+
+class MiruService:
+
+    anime = AnimeService()

@@ -22,6 +22,10 @@ class GameRepository:
         return GameCharacter.objects.filter(game_id=game_id)
     
     @staticmethod
+    def get_character_relations(game_id):
+        return GameCharacter.objects.filter(game_id=game_id)
+
+    @staticmethod
     def get_dlc(game_id: int) -> list:
         return DLC.objects.filter(game_id=game_id)
 

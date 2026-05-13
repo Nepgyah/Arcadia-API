@@ -1,8 +1,9 @@
 from users.models import ArcadiaUser
 from asobu.models import Game, GameListEntry
 from asobu.repository import AsobuRepository
+from talent.service.character import CharacterService
 
-class AsobuService:
+class AsobuServiceDeprecate:
 
     @staticmethod
     def get_game_by_id(game_id: int) -> Game:
@@ -42,3 +43,24 @@ class AsobuService:
             'on_hold': on_hold,
             'replaying': replaying 
         }
+
+class GameService:
+
+    @staticmethod
+    def get_cast(game_id: int) -> list:
+        character_relations = AsobuRepository.game.get_character_relations(game_id)
+        char_ids = [rel.character_id for rel in character_relations]
+
+        character_map = CharacterService.get_characters_by_id(
+            char_ids, 
+            get_va_data=True
+        )
+
+        for relation in character_relations:
+            relation.character_info = character_map.get(relation.character_id)
+
+        return character_relations
+
+class AsobuService:
+
+    game = GameService()
