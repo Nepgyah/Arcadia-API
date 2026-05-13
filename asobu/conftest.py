@@ -1,6 +1,6 @@
 import pytest
 from talent.models import Character
-from asobu.models import Game, GameListEntry, GameCharacter
+from asobu.models import Game, GameListEntry, GameCharacter, DLC, Review
 
 @pytest.fixture
 def game_fixture():
@@ -32,6 +32,15 @@ def create_video_game_characters(game_obj):
 
     return GameCharacter.objects.bulk_create(bluk_create_game_characters)
 
+@pytest.fixture
+def game_dlc_fixture(game_fixture):
+    dlc = DLC.objects.create(
+        game=game_fixture,
+        title='Arc De Triumph Story',
+        type=0
+    )
+    return dlc
+
 @pytest.fixture 
 def game_list_entry_fixture(arcadia_user_fixture, game_fixture):
     game_entry = GameListEntry.objects.create(
@@ -40,9 +49,18 @@ def game_list_entry_fixture(arcadia_user_fixture, game_fixture):
         status=1,
         score=10,
         note='Umazing',
-        review='If you get boxed, you get boxed',
         start_play_date='2024-4-20',
         end_play_date=None
     )
 
     return game_entry
+
+@pytest.fixture
+def game_review_fixture(arcadia_user_fixture, game_fixture):
+    review = Review.objects.create(
+        game=game_fixture,
+        user=arcadia_user_fixture,
+        text='Absolutely umazing'
+    )
+
+    return review

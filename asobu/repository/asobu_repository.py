@@ -1,6 +1,6 @@
 import logging
-from django.db import IntegrityError
-from psycopg2 import errors
+from django.db import IntegrityError, transaction
+import psycopg2
 import graphene_django_optimizer as gql_optimizer
 from users.models import ArcadiaUser
 from asobu.models import Game, GameListEntry, GameCharacter, DLC, Review
@@ -97,19 +97,26 @@ class ReviewRepository:
     @staticmethod
     def create_review(user_id: int, game_id: int, review_text: str) -> Review:
 
-        if not review_text:
+        if not review_text or review_text == '':
             raise AsobuError('A review cannot be empty')
         try:
-            review = Review.objects.create(
-                user_id=user_id,
-                game_id=game_id,
-                text=review_text
-            )
-            return review
+            with transaction.atomic():
+                return Review.objects.create(
+                    user_id=user_id,
+                    game_id=game_id,
+                    text=review_text
+                )
+            
+        except psycopg2.errors.ForeignKeyViolation as e:
+            raise AsobuError(code=404, detail='Game not found') from e
+        
         except IntegrityError as e:
-            if isinstance(e.__cause__, errors.UniqueViolation):
+            error_str = str(e).lower()
+            
+            if 'unique constraint' in error_str:
                 raise AsobuError(code=409, detail='Review already exists') from e
-            raise AsobuError() from e
+            
+            raise AsobuError(code=500, detail='Unexpected error creating game') from e
 
     @staticmethod
     def get_review_by_user(user_id: int, game_id: int) -> Review:
@@ -127,6 +134,8 @@ class ReviewRepository:
         
     @staticmethod
     def update_review(user_id: int, game_id: int, review_text: str) -> Review:
+        if review_text is None or review_text == '':
+            raise AsobuError('Review text cannot be empty')
         try:
             review = Review.objects.get(game_id=game_id, user_id=user_id)
             review.text = review_text
@@ -134,8 +143,8 @@ class ReviewRepository:
 
             return review
         
-        except GameListEntry.DoesNotExist as e:
-            raise AsobuNotFound('Review not found') from e
+        except Review.DoesNotExist as e:
+            raise AsobuNotFound('Cannot find review to update') from e
 
     @staticmethod
     def delete_review(user_id: int, game_id: int) -> None:
