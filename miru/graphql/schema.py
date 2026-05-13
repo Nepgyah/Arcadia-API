@@ -86,6 +86,8 @@ class AnimeType(DjangoObjectType):
     anilist_data = graphene.Field(AniListDataType)
     mal_data = graphene.Field(MALDataType)
 
+    bg_url = graphene.String()
+
     class Meta:
         model = Anime
         fields = "__all__"
@@ -131,6 +133,9 @@ class AnimeType(DjangoObjectType):
     
     def resolve_sequels(self, _info):
         return self.next_entries.all()
+    
+    def resolve_bg_url(self, _info):
+        return self.bg_url
     
 class AnimeListEntryType(DjangoObjectType):
     status = graphene.Int()

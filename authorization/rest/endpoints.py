@@ -1,6 +1,7 @@
 from main import settings
 
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -8,16 +9,17 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from users.models import ArcadiaUser
+from users.exceptions import UserNotFoundError
 
 class AdminLoginView(APIView):
 
     def post(self, request):
-        username = request.data.get('username', None)
+        email = request.data.get('email', None)
         password = request.data.get('password', None)
 
-        if username is None:
+        if email is None:
             return Response(status=400, data={
-                'detail': 'Missing username field'
+                'detail': 'Missing email field'
             }) 
         
         if password is None:
@@ -25,7 +27,15 @@ class AdminLoginView(APIView):
                 'detail': 'Missing password field'
             }) 
         
-        admin_user = authenticate(username=username, password=password)
+        try:
+            target_user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response(
+                status=404,
+                data={'detail': 'Invalid login credentials'}
+            )
+        
+        admin_user = authenticate(username=target_user.username, password=password)
 
         if admin_user is None:
             return Response(status=400, data={
@@ -67,14 +77,14 @@ class AdminLoginView(APIView):
 class RefreshTokenView(APIView):
     
     def post(self, request):
-        refresh_token = request.data.get('refresh_token', None)
-
-        if refresh_token is None:
-            return Response(status=400, data={
-                'detail': 'Missing username field'
-            }) 
-        
         try:
+            refresh_token = request.data.get('refresh_token', None)
+            print(refresh_token)
+            if refresh_token is None:
+                return Response(status=400, data={
+                    'detail': 'Missing username field'
+                }) 
+            
             refreshed_data = RefreshToken(refresh_token)
 
             new_access_token = str(refreshed_data.access_token)
@@ -98,4 +108,5 @@ class RefreshTokenView(APIView):
                 },
             )
         except Exception as e:
+            print(e)
             return Response(status=400, data={'detail':'Error refreshing token'})

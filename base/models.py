@@ -1,5 +1,9 @@
+import os
+from dotenv import load_dotenv
 from django.db import models
 from util import unique_slugify
+
+load_dotenv()
 
 class Company(models.Model):
     name=models.CharField(max_length=150, null=False, blank=False)
@@ -47,11 +51,18 @@ class Media(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     franchise=models.ForeignKey(Franchise, on_delete=models.SET_NULL, null=True, blank=True)
+    bg_image_path = models.CharField(max_length=500, blank=True, null=True)
 
     class Meta:
         abstract = True
         ordering = ['-score']
-        
+    
+    @property
+    def bg_url(self):
+        if self.bg_image_path is not None:
+            return f'{os.environ.get('BG_CDN_BASE')}/{self.bg_image_path}'
+        return None
+    
     def __str__(self):
         return str(self.title)
     

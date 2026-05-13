@@ -12,6 +12,7 @@ from users.models import ArcadiaUser
 def admin_user_fixture():
     admin_user = User.objects.create_superuser(
         username='Admin',
+        email='admin@d2x.org',
         password='TestPassword123'
     )
     return admin_user

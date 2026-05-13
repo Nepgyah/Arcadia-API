@@ -4,15 +4,24 @@ Introducing the Arcadia API. This is the backend repository dedicated to assisti
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
-## Latest Release - Alpha v2.1 - 4/15/2026
+## Latest Release - Alpha v2.2 - 5/xx/xx
 - **General**
-    - Update test db contents
+    - Change admin to use email field instead of username
+    - Add background CDNs for media
 
-- **Utils**
-    - Remove unused files
-    
+- **Asobu v0.2**
+    - **Models**
+        - Create gamelist entry model
+        - Create game review model
     - **Graphql**
-        - Add arcadia general search
+        - Add crud operations for gamelist entries
+        - Add crud operations for game reviews
+    - **REST**
+        - Add json export endpoint
+        - Add gamelist entry serializer
+    - **Other**
+        - Improve exception chaining
+        - Add test for repo layer
 
 ## Why I started Arcadia
 Advid fans of anime, manga, games and more would have to multiple web apps to maintain their hobbies. For example using AniList to track Anime, MyAnimeList to track Manga, Spotify to handle music, etc. Arcadia aims to solve this issue by combining all the sites into one multi app solution, unified by a single login/account. This would remove having to manage different accounts, having multiple tabs open while also having the opporitunity to connect different datasets into one. 
@@ -58,19 +67,21 @@ pip install -r requirements.txt
 ```
 DJANGO_SECRET= Your django secret key
 
-DB_NAME= Name of the database
-DB_USER= Your db user username
-DB_PASSWORD= Your db user password
-DB_HOST= Domain of your db
-DB_PORT= Port number (default 5432)
+DB_NAME = Name of the database
+DB_USER = Your db user username
+DB_PASSWORD = Your db user password
+DB_HOST = Domain of your db
+DB_PORT = Port number (default 5432)
 
-CLIENT_ID= Name for the arcadia app (used for communication with the d2x client)
-CLIENT_SECRET= Security password for the arcadia app (used for communication with the d2x client)
+CLIENT_ID = Name for the arcadia app (used for communication with the d2x client)
+CLIENT_SECRET = Security password for the arcadia app (used for communication with the d2x client)
 
 COOKIE_SAME_SITE="None"
 COOKIE_SECURE="True"
 
-D2X_URL= URL to the d2x website
+BG_CDN_BASE = Base url for the cdn service
+
+D2X_URL = URL to the d2x website
 
 ```
 

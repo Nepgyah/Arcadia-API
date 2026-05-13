@@ -7,7 +7,9 @@ from asobu.models import (
     Game,
     GameCharacter,
     GamePlatform,
-    DLC
+    DLC,
+    GameListEntry,
+    Review
 )
 from base.schema import GenreType
 from talent.graphql.schema import CharacterType
@@ -87,6 +89,8 @@ class GameType(DjangoObjectType):
     developers = graphene.List(GameCompanyType)
     publishers = graphene.List(GameCompanyType)
 
+    bg_url = graphene.String()
+
     def resolve_status(self, _info):
         return self.get_status_display()
     
@@ -120,6 +124,9 @@ class GameType(DjangoObjectType):
     def resolve_platforms(self, _info):
         return self.gameplatform_set.all()
     
+    def resolve_bg_url(self, _info):
+        return self.bg_url
+    
 class DLCType(DjangoObjectType):
 
     class Meta:
@@ -130,4 +137,20 @@ class DLCType(DjangoObjectType):
 
     def resolve_game(self, _info):
         return Game.objects.get(id=self.game.id)
+
+class GameListEntryType(DjangoObjectType):
     
+    class Meta:
+        model = GameListEntry
+        fields = '__all__'
+
+    status = graphene.Int()
+
+    def resolve(self, _info):
+        return self.status
+    
+class ReviewType(DjangoObjectType):
+
+    class Meta:
+        model = Review
+        fields = '__all__'
