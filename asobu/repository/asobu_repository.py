@@ -18,6 +18,11 @@ class GameRepository:
             raise GameNotFoundError(game_id=game_id) from e
 
     @staticmethod
+    def check_game_exists(game_id):
+        if Game.objects.filter(id=game_id).exists() is not True:
+            raise AsobuNotFound('Game not found')
+
+    @staticmethod
     def get_characters(game_id):
         return GameCharacter.objects.filter(game_id=game_id)
     
@@ -36,16 +41,16 @@ class GameRepository:
 class GameListEntryRepository:
 
     @staticmethod
-    def create_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
+    def create_entry(user_id: int, game_id: int, **details) -> GameListEntry:
         try:
             return GameListEntry.objects.create(
-                user=user,
-                game=game,
-                status=status,
-                score=kwargs.pop('score', None),
-                note=kwargs.pop('note', None),
-                start_play_date=kwargs.pop('start_play_date', None),
-                end_play_date=kwargs.pop('end_play_date', None)
+                user_id=user_id,
+                game_id=game_id,
+                status=details.pop('status', 0),
+                score=details.pop('score', None),
+                note=details.pop('note', None),
+                start_play_date=details.pop('start_play_date', None),
+                end_play_date=details.pop('end_play_date', None)
             )  
 
         except Exception as e:
@@ -161,5 +166,5 @@ class ReviewRepository:
 class AsobuRepository:
 
     game = GameRepository()
-    list_entry = GameListEntryRepository()
+    list = GameListEntryRepository()
     review = ReviewRepository()

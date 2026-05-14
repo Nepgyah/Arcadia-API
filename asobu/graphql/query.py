@@ -8,5 +8,4 @@ class AsobuQuery:
 
     @strawberry_django.field
     def game(self, info: strawberry.Info, pk: int) -> GameType:
-        print(info.context.get("user_id"))
         return AsobuService.game.get_game(game_id=pk)

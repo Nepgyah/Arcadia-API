@@ -2,6 +2,7 @@ from users.models import ArcadiaUser
 from asobu.models import Game, GameListEntry, DLC
 from asobu.repository import AsobuRepository
 from talent.service.character import CharacterService
+from asobu.exceptions import AsobuNotFound
 
 class GameService:
 
@@ -42,6 +43,18 @@ class GameService:
     @staticmethod
     def get_dlc(game_id: int) -> list[DLC]:
         return AsobuRepository.game.get_dlc(game_id)
+
+class ListService:
+
+    @staticmethod
+    def create_list(user_id: int, game_id: int, details: dict) -> GameListEntry:
+        
+        AsobuRepository.game.check_game_exists(game_id)
+        AsobuRepository.list.create_entry(
+            user_id=user_id,
+            game_id=game_id,
+            **details
+        )
 
 class AsobuService:
 
