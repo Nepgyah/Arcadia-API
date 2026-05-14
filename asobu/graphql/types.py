@@ -10,6 +10,10 @@ from talent.graphql.types import CharacterType, VoiceActorType
 from asobu.models import Game, DLC, Tag, Platform, GameCompany, GamePlatform
 from asobu.service import AsobuService
 
+@strawberry_django.type(GameCompany, fields="__all__")
+class GameCompanyType:
+    pass
+
 @strawberry_django.type(Tag, fields="__all__")
 class TagType:
     pass
@@ -46,7 +50,17 @@ class GameType:
     status: strawberry.auto
     prev_game: Optional['GameType']
     tags: list[TagType]
+    developers: list[GameCompanyType]
+    publishers: list[GameCompanyType]
 
+    @strawberry_django.field
+    def esrb_rating(self) -> str:
+        return self.get_esrb_rating_display()
+    
+    @strawberry_django.field
+    def pegi_rating(self) -> str:
+        return self.get_pegi_rating_display()
+    
     @strawberry_django.field
     def genres(self) -> list[GenreType]:
         return self.genres.all()
