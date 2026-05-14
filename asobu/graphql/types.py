@@ -6,7 +6,7 @@ from base.service import BaseService
 from base.graphql.types import FranchiseType
 from talent.graphql.types import CharacterType, VoiceActorType
 
-from asobu.models import Game
+from asobu.models import Game, DLC
 from asobu.service import AsobuService
 
 @strawberry.type
@@ -14,6 +14,10 @@ class GameCharacterType:
     character: CharacterType
     role: str
     voice_actor: VoiceActorType
+
+@strawberry_django.type(DLC, fields="__all__", description="Add on content to a video game")
+class DLCType:
+    pass
 
 @strawberry_django.type(Game, description="Video games from the asobu app")
 class GameType:
@@ -42,3 +46,7 @@ class GameType:
             )
             for character in characters
         ]
+
+    @strawberry_django.field
+    def dlc(self) -> list[DLCType]:
+        return AsobuService.game.get_dlc(self.id)
