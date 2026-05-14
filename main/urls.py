@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import path, include
-from strawberry.django.views import GraphQLView
+# from strawberry.django.views import GraphQLView
 from util.views import ObtainD2XAuthorization
 from main.schema import schema
+from main.graphql_middleware import JWTGraphQLView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', include('users.urls')),
@@ -29,5 +31,5 @@ urlpatterns = [
     path('api/asobu/', include('asobu.rest.urls')),
     path('api/oauth/exchange/', ObtainD2XAuthorization.as_view(), name="oauth-obtain-d2x-auth"),
     
-    path('graphql/', csrf_exempt(GraphQLView.as_view(schema=schema)))
+    path('graphql/', csrf_exempt(JWTGraphQLView.as_view(schema=schema)))
 ]

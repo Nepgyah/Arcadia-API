@@ -1,4 +1,5 @@
 import logging
+from strawberry.django.views import GraphQLView
 from django.utils.functional import SimpleLazyObject
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -11,39 +12,34 @@ logger = logging.getLogger(__name__)
 
 authenticator = JWTAuthentication()
 
-class GrapheneAuthMiddleware(object):
+class JWTGraphQLView(GraphQLView):
 
-    def resolve(self, next, root, info, **args):
-        try:
-            auth_header = info.context.META.get('HTTP_AUTHORIZATION', None)
+    def get_context(self, request, response):
+        context = super().get_context(request, response)
 
-            if auth_header:
-                try:
-                    parts = auth_header.split()
-                    if len(parts) != 2 or parts[0].lower() != 'bearer':
-                        raise AuthorizationError('Invalid access token')
-                    
-                    validated_token = authenticator.get_validated_token(parts[1])
-                    user_id = validated_token.get('user_id')
+        request.user = getattr(request, 'user', None)
 
-                except ExpiredTokenError as e:
-                    raise AuthorizationError('The access token has expired', code='auth_error_access_expired') from e
-                except InvalidToken as e:
-                    logger.warning(e)
-                    raise AuthorizationError() from e
-                
-                if user_id:
-                    info.context.user = SimpleLazyObject(lambda: UserRepository.get_user_by_id(user_id))
+        auth_header = request.headers.get('Authorization', None)
 
-            return next(root, info, **args)
-        
-        except ArcadiaException:
-            # Contains errors from each app domain
-            raise
+        if auth_header:
+            try:
+                parts = auth_header.split()
+                if len(parts) != 2 or parts[0].lower() != 'bearer':
+                    raise AuthorizationError("Invalid authorization header")
 
-        except AuthorizationError:
-            raise
+                validated_token = authenticator.get_validated_token(parts[1])
+                user_id = validated_token.get('user_id')
 
-        except Exception as e:
-            logger.exception(e)
-            raise
+            except ExpiredTokenError as e:
+                raise AuthorizationError('The access token has expired', code='auth_error_access_expired') from e
+            except InvalidToken as e:
+                logger.warning(e)
+                raise AuthorizationError() from e
+            except Exception as e:
+                logger.exception(e)
+                raise ArcadiaException('An unexpected error occured reading the auth header') from e
+            if user_id:
+                context.user_id = user_id
+                context.user = SimpleLazyObject(lambda: UserRepository.get_user_by_id(user_id))
+
+        return context
