@@ -1,13 +1,27 @@
+from typing import Optional
 import strawberry
 import strawberry_django
 from strawberry import auto
 
 from base.service import BaseService
-from base.graphql.types import FranchiseType
+from base.graphql.types import FranchiseType, GenreType
 from talent.graphql.types import CharacterType, VoiceActorType
 
-from asobu.models import Game, DLC
+from asobu.models import Game, DLC, Tag, Platform, GameCompany, GamePlatform
 from asobu.service import AsobuService
+
+@strawberry_django.type(Tag, fields="__all__")
+class TagType:
+    pass
+
+@strawberry_django.type(Platform, fields="__all__")
+class PlatformType:
+    pass
+
+@strawberry.type
+class PlatformReleaseType:
+    platform: PlatformType
+    release_date: str
 
 @strawberry.type
 class GameCharacterType:
@@ -30,6 +44,12 @@ class GameType:
     updated_at: auto
     bg_image_path: auto
     status: strawberry.auto
+    prev_game: Optional['GameType']
+    tags: list[TagType]
+
+    @strawberry_django.field
+    def genres(self) -> list[GenreType]:
+        return self.genres.all()
 
     @strawberry_django.field
     def franchise(self) -> FranchiseType:
@@ -50,3 +70,14 @@ class GameType:
     @strawberry_django.field
     def dlc(self) -> list[DLCType]:
         return AsobuService.game.get_dlc(self.id)
+    
+    @strawberry_django.field
+    def release(self) -> list[PlatformReleaseType]:
+        platform_releases = GamePlatform.objects.filter(game=self)
+        return [
+            PlatformReleaseType(
+                platform=entry.platform,
+                release_date=entry.release_date
+            )
+            for entry in platform_releases
+        ]
