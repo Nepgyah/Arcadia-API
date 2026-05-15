@@ -47,15 +47,31 @@ class GameService:
 class ListService:
 
     @staticmethod
-    def create_list(user_id: int, game_id: int, details: dict) -> GameListEntry:
+    def create_entry(user_id: int, game_id: int, details: dict = None) -> GameListEntry:
         
         AsobuRepository.game.check_game_exists(game_id)
-        AsobuRepository.list.create_entry(
+        return AsobuRepository.list.create_entry(
             user_id=user_id,
             game_id=game_id,
             **details
         )
 
+    @staticmethod
+    def get_entry(user_id: int, game_id: int) -> GameListEntry:
+        return AsobuRepository.list.get_entry(user_id, game_id)
+
+    @staticmethod
+    def update_entry(user_id: int, game_id: int, details: dict = None) -> GameListEntry:
+
+        entry = AsobuRepository.list.get_entry(user_id, game_id)
+        return AsobuRepository.list.update_entry(entry, **details)
+
+    @staticmethod
+    def delete_entry(user_id: int, game_id: int) -> None:
+        entry = AsobuRepository.list.get_entry(user_id, game_id)
+        AsobuRepository.list.delete_entry(entry)
+
 class AsobuService:
 
     game = GameService()
+    list = ListService()

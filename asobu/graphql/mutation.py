@@ -1,18 +1,33 @@
 import strawberry
-import strawberry_django
-# from .types import GameListEntryType
+from main.graphql.types import MutationResponseType
+from asobu.service import AsobuService
+from asobu.graphql.types import GameListEntryType
 
 @strawberry.input
 class GameListDetails:
-    status: int | None
-    score: int | None
-    note: str | None
-    start_play_date: str | None
-    end_play_date: str | None
+    status: int | None = 1
+    score: int | None = None
+    note: str | None = None
+    start_play_date: str | None = None
+    end_play_date: str | None = None
+
+@strawberry.type
+class GameListResponseType(MutationResponseType):
+    entry: GameListEntryType
 
 @strawberry.type
 class AsobuMutation:
 
     @strawberry.mutation
-    def add_to_game_list(self, info: strawberry.Info, game_id: int, details: GameListDetails | None = None) -> str:
-        return str(info.context.request.user)
+    def add_to_game_list(self, info: strawberry.Info, game_id: int, details: GameListDetails | None = None) -> GameListResponseType:
+        details_dict = strawberry.asdict(details)
+        entry = AsobuService.list.create_entry(
+            info.context.user_id,
+            game_id=game_id,
+            details=details_dict
+        )
+        return GameListResponseType(
+            message="Game entry added",
+            detail="asobu_game_entry_created",
+            entry=entry
+        )

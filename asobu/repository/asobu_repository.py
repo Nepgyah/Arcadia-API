@@ -1,10 +1,12 @@
 import logging
 from django.db import IntegrityError, transaction
 import psycopg2
-import graphene_django_optimizer as gql_optimizer
+
 from users.models import ArcadiaUser
 from asobu.models import Game, GameListEntry, GameCharacter, DLC, Review
 from asobu.exceptions import AsobuError, GameNotFoundError, AsobuNotFound
+
+from asobu.serializers import GameListEntrySerializer
 
 logger = logging.getLogger(__name__)
 
@@ -42,60 +44,39 @@ class GameListEntryRepository:
 
     @staticmethod
     def create_entry(user_id: int, game_id: int, **details) -> GameListEntry:
+        data = {
+            'user': user_id,
+            'game': game_id,
+            **details
+        }
+
+        serializer = GameListEntrySerializer(data=data)
+
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+        
+    @staticmethod
+    def get_entry(user_id: int, game_id: int) -> GameListEntry:
         try:
-            return GameListEntry.objects.create(
+            return GameListEntry.objects.get(
                 user_id=user_id,
-                game_id=game_id,
-                status=details.pop('status', 0),
-                score=details.pop('score', None),
-                note=details.pop('note', None),
-                start_play_date=details.pop('start_play_date', None),
-                end_play_date=details.pop('end_play_date', None)
-            )  
-
-        except Exception as e:
-            logger.exception(e)
-            raise AsobuError from e
+                game_id=game_id
+            )
+        except GameListEntry.DoesNotExist as e:
+            raise AsobuNotFound('Entry not found') from e
         
     @staticmethod
-    def get_entry(user: ArcadiaUser, game_id: int, graphql_info: dict) -> GameListEntry:
-        try:
-            if graphql_info:
-                query = gql_optimizer.query(
-                    GameListEntry.objects.filter(user=user, game_id=game_id),
-                    graphql_info
-                )
-                return query.get()
-            return GameListEntry.objects.get(user=user, game_id=game_id)
-        
-        except GameListEntry.DoesNotExist:
-            return None
-
-    @staticmethod
-    def update_entry(user: ArcadiaUser, game: Game, status: int, **kwargs) -> GameListEntry:
-        try:
-            entry = GameListEntry.objects.get(user=user, game=game)
-            entry.status = status
-            entry.score = kwargs.pop('score', None)
-            entry.note = kwargs.pop('note', None)
-            entry.start_play_date = kwargs.pop('start_play_date', None)
-            entry.end_play_date = kwargs.pop('end_play_date', None)
-            entry.save()
-            return entry
-        
-        except Exception as e:
-            logger.exception(e)
-            raise AsobuError from e
+    def update_entry(entry: GameListEntry, **details) -> GameListEntry:
+        serializer = GameListEntrySerializer(entry, **details)
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
     
     @staticmethod
-    def delete_game_list_entry(user: ArcadiaUser, entry_id: int) -> None:
+    def delete_entry(entry: GameListEntry) -> None:
         try:
-            GameListEntry.objects.get(id=entry_id, user=user,).delete()
-        except GameListEntry.DoesNotExist:
-            raise AsobuNotFound('Cannot find game entry') from None
+            entry.delete()
         except Exception as e:
-            logging.error(e)
-            raise AsobuError('An error occured deleting the entry') from e
+            raise AsobuError('Error deleting list entry') from e
         
     @staticmethod
     def get_user_list(user_id: int) -> list:
