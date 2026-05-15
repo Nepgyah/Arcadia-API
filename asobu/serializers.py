@@ -21,9 +21,9 @@ class GameListEntrySerializer(AsobuSerializer):
         model = GameListEntry
         fields = "__all__"
 
-    def validate(self, attrs):
-        if attrs['start_play_date'] is not None and attrs['end_play_date'] is not None:
-            if attrs['start_play_date'] > attrs['end_play_date']:
-                raise serializers.ValidationError('End date must occur after start')
+    # def validate(self, attrs):
+    #     if attrs['start_play_date'] is not None and attrs['end_play_date'] is not None:
+    #         if attrs['start_play_date'] > attrs['end_play_date']:
+    #             raise serializers.ValidationError('End date must occur after start')
         
-        return attrs
+    #     return attrs
