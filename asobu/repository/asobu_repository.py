@@ -67,7 +67,7 @@ class GameListEntryRepository:
         
     @staticmethod
     def update_entry(entry: GameListEntry, **details) -> GameListEntry:
-        serializer = GameListEntrySerializer(entry, **details)
+        serializer = GameListEntrySerializer(entry, data=details, partial=True)
         serializer.is_valid(raise_exception=True)
         return serializer.save()
     
