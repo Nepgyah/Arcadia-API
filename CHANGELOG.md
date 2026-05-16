@@ -5,6 +5,25 @@
 | Asobu      | 0.2     |
 | Users      | 0.1     |
 
+## Alpha v2.2 - 5/14/2026
+- **General**
+    - Change admin to use email field instead of username
+    - Add background CDNs for media
+
+- **Asobu v0.2**
+    - **Models**
+        - Create gamelist entry model
+        - Create game review model
+    - **Graphql**
+        - Add crud operations for gamelist entries
+        - Add crud operations for game reviews
+    - **REST**
+        - Add json export endpoint
+        - Add gamelist entry serializer
+    - **Other**
+        - Improve exception chaining
+        - Add test for repo layer
+
 ## Alpha v2.1 - 4/15/2026
 - **General**
     - Update test db contents
