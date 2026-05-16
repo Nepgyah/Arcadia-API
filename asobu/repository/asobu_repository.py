@@ -77,7 +77,7 @@ class GameListEntryRepository:
             raise AsobuError('Error deleting list entry') from e
         
     @staticmethod
-    def get_user_list(user_id: int) -> list:
+    def get_user_list(user_id: int) -> list[GameListEntry]:
         return GameListEntry.objects.filter(user_id=user_id)
     
 class ReviewRepository:

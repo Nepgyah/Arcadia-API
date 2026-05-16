@@ -1,5 +1,6 @@
 import strawberry
 from main.graphql.types import MutationResponseType
+from main.graphql.permissions import IsAuthenticated
 from asobu.service import AsobuService
 from asobu.graphql.types import GameListEntryType, GameReviewType
 
@@ -22,7 +23,7 @@ class GameReviewResponseType(MutationResponseType):
 @strawberry.type
 class AsobuMutation:
 
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def add_game_list_entry(self, info: strawberry.Info, game_id: int, details: GameListDetails | None = None) -> GameListResponseType:
         if details is None:
             details_dict = {}
@@ -40,7 +41,7 @@ class AsobuMutation:
             entry=entry
         )
     
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def update_game_list_entry(self, info: strawberry.Info, game_id: int, details: GameListDetails | None = None) -> GameListResponseType:
         if details is None:
             details_dict = {}
@@ -58,7 +59,7 @@ class AsobuMutation:
             entry=entry
         )
 
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def delete_game_list_entry(self, info: strawberry.Info, game_id: int) -> GameListResponseType:
         AsobuService.list.delete_entry(
             user_id=info.context.user_id,
@@ -70,7 +71,7 @@ class AsobuMutation:
             entry=None
         )
     
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def create_game_review(self, info: strawberry.Info, game_id: int, text: str) -> GameReviewResponseType:
         review = AsobuService.review.create_review(
             info.context.user_id,
@@ -84,7 +85,7 @@ class AsobuMutation:
             review=review
         )
     
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def update_game_review(self, info: strawberry.Info, game_id: int, text: str) -> GameReviewResponseType:
         review = AsobuService.review.update_review(
             info.context.user_id,
@@ -98,7 +99,7 @@ class AsobuMutation:
             review=review
         )
     
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def delete_game_review(self, info: strawberry.Info, game_id: int) -> None:
         AsobuService.review.delete_review(
             info.context.user_id,

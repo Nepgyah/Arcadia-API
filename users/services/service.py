@@ -4,5 +4,9 @@ from users.models import ArcadiaUser
 class UserService:
 
     @staticmethod
+    def get_user(user_id: int) -> ArcadiaUser:
+        return UserRepository.get_user(user_id)
+
+    @staticmethod
     def get_user_by_id(user_id: int) -> ArcadiaUser:
         return UserRepository.get_user_by_id(user_id)

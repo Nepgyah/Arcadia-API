@@ -1,10 +1,12 @@
 import strawberry
 from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
 from main.graphql.permissions import IsAuthenticated
+from users.graphql.types import ArcadiaUserType
 from asobu.graphql.types import (
     GameType,
     DLCType,
-    GameReviewType
+    GameReviewType,
+    GameListEntryType
 )
 from asobu.service.asobu_service import AsobuService
 
@@ -18,6 +20,15 @@ class GameFilterInput:
 class SearchGamesResult:
     results: list[GameType]
     pagination: PaginationResultsType
+
+@strawberry.type
+class UserGameListResult:
+    user: ArcadiaUserType
+    playing: list[GameListEntryType]
+    completed: list[GameListEntryType]
+    plan_to: list[GameListEntryType]
+    on_hold: list[GameListEntryType]
+    replaying: list[GameListEntryType]
 
 @strawberry.type
 class AsobuQuery:
@@ -63,4 +74,16 @@ class AsobuQuery:
         return AsobuService.review.get_review(
             info.context.user_id,
             game_id
+        )
+    
+    @strawberry.field
+    def user_game_list(self, user_id: int) -> UserGameListResult:
+        user, game_list = AsobuService.list.get_user_list(user_id)
+        return UserGameListResult(
+            user=user,
+            playing=game_list['playing'],
+            completed=game_list['completed'],
+            plan_to=game_list['plan_to'],
+            on_hold=game_list['on_hold'],
+            replaying=game_list['replaying']
         )

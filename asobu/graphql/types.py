@@ -10,14 +10,6 @@ from talent.graphql.types import CharacterType, VoiceActorType
 from asobu.models import Game, DLC, Tag, Platform, GameCompany, GamePlatform, GameListEntry, Review
 from asobu.service import AsobuService
 
-@strawberry_django.type(Review, fields="__all__")
-class GameReviewType:
-    pass
-
-@strawberry_django.type(GameListEntry, fields="__all__")
-class GameListEntryType:
-    pass
-
 @strawberry_django.type(GameCompany, fields="__all__")
 class GameCompanyType:
     pass
@@ -103,3 +95,11 @@ class GameType:
             )
             for entry in platform_releases
         ]
+    
+@strawberry_django.type(Review, fields="__all__")
+class GameReviewType:
+    game: GameType
+
+@strawberry_django.type(GameListEntry, fields="__all__")
+class GameListEntryType:
+    game: GameType
