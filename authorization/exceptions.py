@@ -7,7 +7,7 @@ class AuthorizationError(APIException):
 
 class NotLoggedInError(AuthorizationError):
     status_code = 401
-    default_detail = 'You must be logged in'
+    default_detail = 'You must be logged in to use this feature'
     default_code = 'auth_error_not_logged_in'
 
 class UserPermissionError(AuthorizationError):

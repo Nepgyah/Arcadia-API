@@ -5,7 +5,7 @@ from django.utils.functional import SimpleLazyObject
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken, ExpiredTokenError
 from users.repositories import UserRepository
-from authorization.exceptions import AuthorizationError
+from authorization.exceptions import AuthorizationError, NotLoggedInError
 from .exceptions import ArcadiaException
 
 logger = logging.getLogger(__name__)
@@ -41,5 +41,7 @@ class JWTGraphQLView(GraphQLView):
             if user_id:
                 context.user_id = user_id
                 context.user = SimpleLazyObject(lambda: UserRepository.get_user_by_id(user_id))
+            else:
+                context.user_id = None
 
         return context

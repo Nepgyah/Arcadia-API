@@ -1,5 +1,6 @@
 import strawberry
 from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
+from main.graphql.permissions import IsAuthenticated
 from asobu.graphql.types import (
     GameType,
     DLCType,
@@ -57,7 +58,7 @@ class AsobuQuery:
     def dlcs(self, game_pk: int) -> list[DLCType]:
         return AsobuService.game.get_dlc(game_id=game_pk)
     
-    @strawberry.field
+    @strawberry.field(permission_classes=[IsAuthenticated])
     def game_review(self, info: strawberry.Info, game_id: int) -> GameReviewType:
         return AsobuService.review.get_review(
             info.context.user_id,
