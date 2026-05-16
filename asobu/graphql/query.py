@@ -1,6 +1,9 @@
 import strawberry
 from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
-from asobu.graphql.types import GameType
+from asobu.graphql.types import (
+    GameType,
+    DLCType
+)
 from asobu.service.asobu_service import AsobuService
 
 @strawberry.input
@@ -48,3 +51,7 @@ class AsobuQuery:
             results=games,
             pagination=pagination_results
         )
+    
+    @strawberry.field
+    def dlcs(self, game_pk: int) -> list[DLCType]:
+        return AsobuService.game.get_dlc(game_id=game_pk)

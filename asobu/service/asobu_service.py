@@ -41,6 +41,7 @@ class GameService:
 
     @staticmethod
     def get_dlc(game_id: int) -> list[DLC]:
+        AsobuRepository.game.check_game_exists(game_id)
         return AsobuRepository.game.get_dlc(game_id)
 
     @staticmethod
