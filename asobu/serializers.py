@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .exceptions import AsobuError
-from .models import GameListEntry
+from .models import GameListEntry, Review
 
 class AsobuSerializer(serializers.ModelSerializer):
 
@@ -15,15 +15,14 @@ class AsobuSerializer(serializers.ModelSerializer):
 
             raise AsobuError(f'{field_name}: {error_message}')
         
+class GameReviewSerializer(AsobuSerializer):
+
+    class Meta:
+        model = Review
+        fields = "__all__"
+        
 class GameListEntrySerializer(AsobuSerializer):
 
     class Meta:
         model = GameListEntry
         fields = "__all__"
-
-    # def validate(self, attrs):
-    #     if attrs['start_play_date'] is not None and attrs['end_play_date'] is not None:
-    #         if attrs['start_play_date'] > attrs['end_play_date']:
-    #             raise serializers.ValidationError('End date must occur after start')
-        
-    #     return attrs

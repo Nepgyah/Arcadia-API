@@ -1,7 +1,7 @@
 import strawberry
 from main.graphql.types import MutationResponseType
 from asobu.service import AsobuService
-from asobu.graphql.types import GameListEntryType
+from asobu.graphql.types import GameListEntryType, GameReviewType
 
 @strawberry.input
 class GameListDetails:
@@ -14,6 +14,10 @@ class GameListDetails:
 @strawberry.type
 class GameListResponseType(MutationResponseType):
     entry: GameListEntryType | None
+
+@strawberry.type
+class GameReviewResponseType(MutationResponseType):
+    review: GameReviewType | None
 
 @strawberry.type
 class AsobuMutation:
@@ -64,4 +68,45 @@ class AsobuMutation:
             message="Game entry deleted",
             detail="asobu_game_entry_deleted",
             entry=None
+        )
+    
+    @strawberry.mutation
+    def create_game_review(self, info: strawberry.Info, game_id: int, text: str) -> GameReviewResponseType:
+        review = AsobuService.review.create_review(
+            info.context.user_id,
+            game_id,
+            text
+        )
+
+        return GameReviewResponseType(
+            message="Review created",
+            detail="asobu_game_review_created",
+            review=review
+        )
+    
+    @strawberry.mutation
+    def update_game_review(self, info: strawberry.Info, game_id: int, text: str) -> GameReviewResponseType:
+        review = AsobuService.review.update_review(
+            info.context.user_id,
+            game_id,
+            text
+        )
+        
+        return GameReviewResponseType(
+            message="Review updated",
+            detail="asobu_game_review_update",
+            review=review
+        )
+    
+    @strawberry.mutation
+    def delete_game_review(self, info: strawberry.Info, game_id: int) -> None:
+        AsobuService.review.delete_review(
+            info.context.user_id,
+            game_id,
+        )
+
+        return GameReviewResponseType(
+            message="Review deleted",
+            detail="asobu_game_review_deleted",
+            review=None
         )

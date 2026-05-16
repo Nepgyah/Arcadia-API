@@ -7,9 +7,12 @@ from base.service import BaseService
 from base.graphql.types import FranchiseType, GenreType
 from talent.graphql.types import CharacterType, VoiceActorType
 
-from asobu.models import Game, DLC, Tag, Platform, GameCompany, GamePlatform, GameListEntry
+from asobu.models import Game, DLC, Tag, Platform, GameCompany, GamePlatform, GameListEntry, Review
 from asobu.service import AsobuService
 
+@strawberry_django.type(Review, fields="__all__")
+class GameReviewType:
+    pass
 
 @strawberry_django.type(GameListEntry, fields="__all__")
 class GameListEntryType:

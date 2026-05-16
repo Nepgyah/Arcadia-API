@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
-from asobu.models import Game, GameListEntry, DLC
+from asobu.models import Game, GameListEntry, DLC, Review
+from asobu.exceptions import AsobuError, AsobuNotFound
 from asobu.repository import AsobuRepository
 from talent.service.character import CharacterService
 
@@ -96,7 +97,38 @@ class ListService:
         entry = AsobuRepository.list.get_entry(user_id, game_id)
         AsobuRepository.list.delete_entry(entry)
 
+class ReviewService:
+
+    @staticmethod
+    def create_review(user_id: int, game_id: int, text: str = None) -> Review:
+        if text is None or text == '':
+            raise AsobuError('Review text cannot be empty')
+
+        return AsobuRepository.review.create_review(
+            user_id=user_id,
+            game_id=game_id,
+            text=text
+        )
+    
+    @staticmethod
+    def get_review(user_id: int, game_id: int) -> Review:
+        return AsobuRepository.review.get_review(user_id, game_id)
+
+    @staticmethod
+    def update_review(user_id: int, game_id: int, text: str = None) -> Review:
+        if text is None or text == '':
+            raise AsobuError('Review text cannot be empty')
+        
+        review = AsobuRepository.review.get_review(user_id, game_id)
+        return AsobuRepository.review.update_review(review, text)
+    
+    @staticmethod
+    def delete_review(user_id: int, game_id: int) -> None:
+        review = AsobuRepository.review.get_review(user_id, game_id)
+        return AsobuRepository.review.delete_review(review)
+
 class AsobuService:
 
     game = GameService()
     list = ListService()
+    review = ReviewService()
