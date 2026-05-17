@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from users.services import UserService
 from asobu.models import Game, GameListEntry, DLC, Review
-from asobu.exceptions import AsobuError, AsobuNotFound
+from asobu.exceptions import AsobuError
 from asobu.repository import AsobuRepository
 from talent.service.character import CharacterService
 
@@ -45,6 +45,11 @@ class GameService:
     def get_dlc(game_id: int) -> list[DLC]:
         AsobuRepository.game.check_game_exists(game_id)
         return AsobuRepository.game.get_dlc(game_id)
+
+    @staticmethod
+    def get_reviews(game_id: int) -> list[Review]:
+        AsobuRepository.game.check_game_exists(game_id)
+        return AsobuRepository.game.get_reviews(game_id)
 
     @staticmethod
     def search_games(filters: dict, sort: dict, pagination: dict):

@@ -70,7 +70,7 @@ class AsobuQuery:
         return AsobuService.game.get_dlc(game_id=game_pk)
     
     @strawberry.field(permission_classes=[IsAuthenticated])
-    def game_review(self, info: strawberry.Info, game_id: int) -> GameReviewType:
+    def user_game_review(self, info: strawberry.Info, game_id: int) -> GameReviewType:
         return AsobuService.review.get_review(
             info.context.user_id,
             game_id
@@ -87,3 +87,4 @@ class AsobuQuery:
             on_hold=game_list['on_hold'],
             replaying=game_list['replaying']
         )
+    

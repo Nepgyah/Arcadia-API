@@ -8,14 +8,7 @@ class AsobuError(ArcadiaException):
 class AsobuNotFound(AsobuError):
     status_code = 404
 
-class GameNotFoundError(AsobuError):
-    status_code = 404
-    default_code = 'asobu_gane_not_found_error'
-
-    def __init__(self, game_id: int):
-        if not game_id:
-            self.detail = 'Game not found'
-        else:
-            self.detail = f'Game with id f{game_id} not found.'
-        super().__init__(detail=self.detail)
+class AsobuServerError(AsobuError):
+    status_code = 500
+    default_detail = 'An unexpected error occured with the Asobu API'
 

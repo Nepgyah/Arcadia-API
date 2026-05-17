@@ -1,9 +1,7 @@
 import logging
-from django.db import IntegrityError, transaction
-import psycopg2
 
 from asobu.models import Game, GameListEntry, GameCharacter, DLC, Review
-from asobu.exceptions import AsobuError, GameNotFoundError, AsobuNotFound
+from asobu.exceptions import AsobuError, AsobuNotFound
 from asobu.serializers import GameListEntrySerializer
 
 logger = logging.getLogger(__name__)
@@ -15,7 +13,7 @@ class GameRepository:
         try:
             return Game.objects.get(id=game_id)
         except Game.DoesNotExist as e:
-            raise GameNotFoundError(game_id=game_id) from e
+            raise AsobuNotFound(f"Unable to find game with id: {game_id}") from e
 
     @staticmethod
     def check_game_exists(game_id):
