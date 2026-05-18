@@ -24,7 +24,7 @@ class GameReviewResponseType(MutationResponseType):
 class AsobuMutation:
 
     @strawberry.mutation(permission_classes=[IsAuthenticated])
-    def add_game_list_entry(self, info: strawberry.Info, game_id: int, details: GameListDetails | None = None) -> GameListResponseType:
+    def create_game_list_entry(self, info: strawberry.Info, game_id: int, details: GameListDetails | None = None) -> GameListResponseType:
         if details is None:
             details_dict = {}
         else:

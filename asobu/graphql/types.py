@@ -3,7 +3,7 @@ import strawberry
 import strawberry_django
 from strawberry import auto
 
-from base.service import BaseService
+from base.service import FranchiseService, GenreService
 from base.graphql.types import FranchiseType, GenreType
 from talent.graphql.types import CharacterType, VoiceActorType
 
@@ -72,7 +72,7 @@ class GameType:
 
     @strawberry_django.field
     def franchise(self) -> FranchiseType:
-        return BaseService.franchise.get_franchise(self.franchise.id)
+        return FranchiseService.get_franchise(self.franchise.id)
     
     @strawberry_django.field
     def cast(self) -> list[GameCharacterType]:

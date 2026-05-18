@@ -1,1 +1,1 @@
-from .base_service import BaseService
+from .service import FranchiseService, GenreService

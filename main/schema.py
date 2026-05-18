@@ -1,6 +1,7 @@
 import strawberry
 from asobu.graphql.query import AsobuQuery
 from asobu.graphql.mutation import AsobuMutation
+from base.graphql.query import BaseQuery
 
 @strawberry.type
 class ArcadiaMutation(AsobuMutation):
@@ -13,5 +14,8 @@ class ArcadiaQuery:
     def asobu(self) -> AsobuQuery:
         return AsobuQuery()
     
-
+    @strawberry.field
+    def base(self) -> BaseQuery:
+        return BaseQuery()
+    
 schema = strawberry.Schema(query=ArcadiaQuery, mutation=ArcadiaMutation)
