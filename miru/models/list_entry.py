@@ -1,6 +1,6 @@
 from django.db import models
-from .anime import Anime
 from users.models import ArcadiaUser
+from .anime import Anime
 
 class AnimeListEntry(models.Model):
 

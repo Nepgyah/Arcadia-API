@@ -166,7 +166,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'main.rest_middleware.RESTAuthMiddleware',
+        'main.rest.middleware.RESTAuthMiddleware',
     )
 }
 
