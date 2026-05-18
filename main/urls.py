@@ -20,7 +20,7 @@ from django.urls import path, include
 # from strawberry.django.views import GraphQLView
 from util.views import ObtainD2XAuthorization
 from main.schema import schema
-from main.graphql_middleware import JWTGraphQLView
+from main.graphql.middleware import JWTGraphQLView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
