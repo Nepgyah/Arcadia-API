@@ -4,9 +4,11 @@ from miru.models import (
     AniListData,
     MyAnimeListData,
     AnimeEpisode,
-    AnimeCompany
+    AnimeCompany,
+    AnimeListEntry
 )
-from miru.exceptions import MiruNotFound
+from miru.exceptions import MiruNotFound, MiruError
+from miru.serializers import AnimeListEntrySerializer
 
 class AnimeRepository:
     
@@ -88,7 +90,51 @@ class CompanyRepository:
     def get_studios() -> list[AnimeCharacter]:
         return AnimeCompany.objects.filter(studio_animes__isnull=False).distinct()
     
+class AnimeListEntryRepository:
+
+    @staticmethod
+    def create_entry(user_id: int, anime_id: int, **details: dict) -> AnimeListEntry:
+        data = {
+            'user': user_id,
+            'anime': anime_id,
+            **details
+        }
+
+        serializer = AnimeListEntrySerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+    
+    @staticmethod
+    def get_entry(user_id: int, anime_id: int) -> AnimeListEntry:
+        try:
+            AnimeListEntry.objects.get(user_id=user_id, anime_id=anime_id)
+        except AnimeListEntry.DoesNotExist:
+            raise MiruNotFound(
+                detail="Cannot find requested anime list entry",
+                code="miru_anime_list_entry_not_found"
+            ) from None
+        
+    @staticmethod
+    def update_entry(entry: AnimeListEntry, **data: dict) -> AnimeListEntry:
+        serializer = AnimeListEntrySerializer(
+            entry, 
+            data=data,
+            partial=True
+        )
+
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+    
+    @staticmethod
+    def delete_entry(entry: AnimeListEntry) -> AnimeListEntry:
+        try:
+            entry.delete()
+        except Exception as e:
+            raise MiruError() from e
+
+
 class MiruRepository:
 
     anime = AnimeRepository()
     episode = EpisodeRepository()
+    company = CompanyRepository()
