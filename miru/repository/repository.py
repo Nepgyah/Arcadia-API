@@ -3,7 +3,8 @@ from miru.models import (
     AnimeCharacter,
     AniListData,
     MyAnimeListData,
-    AnimeEpisode
+    AnimeEpisode,
+    AnimeCompany
 )
 from miru.exceptions import MiruNotFound
 
@@ -63,6 +64,30 @@ class EpisodeRepository:
                 code="miru_episode_not_found"
             ) from None
 
+class CompanyRepository:
+
+    @staticmethod
+    def get_company(company_id: int) -> AnimeCompany:
+        try:
+            AnimeCompany.objects.get(id=company_id)
+        except AnimeCompany.DoesNotExist:
+            raise MiruNotFound(
+                detail="Cannot find requested anime company",
+                code="miru_anime_company_not_found"
+            ) from None
+
+    @staticmethod
+    def get_companies(company_id_list: list[int]) -> list[AnimeCompany]:
+        return AnimeCompany.objects.filter(id__in=company_id_list)
+
+    @staticmethod
+    def get_producers() -> list[AnimeCompany]:
+        return AnimeCompany.objects.filter(produced_animes__isnull=False).distinct()
+    
+    @staticmethod
+    def get_studios() -> list[AnimeCharacter]:
+        return AnimeCompany.objects.filter(studio_animes__isnull=False).distinct()
+    
 class MiruRepository:
 
     anime = AnimeRepository()
