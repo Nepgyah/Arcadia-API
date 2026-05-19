@@ -20,8 +20,13 @@ class AnimeListEntryType:
 class AnimeCompanyType:
     pass
 
-@strawberry.type
+@strawberry.type()
 class AnimeCharacterType:
+    """
+        Custom type based of of animecharacter model, 
+        raises the voice actor to top level instead of underneath character
+    """
+
     character: CharacterType
     role: str
     voice_actor: VoiceActorType | None
@@ -29,7 +34,7 @@ class AnimeCharacterType:
 @strawberry_django.type(
     Anime, 
     exclude=['characters'],
-    description="アニメ"
+    description="Animation media for the Miru app"
 )
 class AnimeType:
     franchise : FranchiseType | None

@@ -8,18 +8,18 @@ from miru.graphql.query import MiruQuery
 class ArcadiaMutation(AsobuMutation):
     pass
 
-@strawberry.type
+@strawberry.type(description="Overall namespace for the Arcadia graphql queries")
 class ArcadiaQuery:
 
-    @strawberry.field
+    @strawberry.field(description="Namespace for queries related to the Asobu app")
     def asobu(self) -> AsobuQuery:
         return AsobuQuery()
     
-    @strawberry.field
+    @strawberry.field(description="Namespace for queries related to general media (Franchise, Genres)")
     def base(self) -> BaseQuery:
         return BaseQuery()
     
-    @strawberry.field
+    @strawberry.field(description="Namespace for queries related to the Miru app")
     def miru(self) -> MiruQuery:
         return MiruQuery()
     
