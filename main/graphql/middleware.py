@@ -17,8 +17,6 @@ class JWTGraphQLView(GraphQLView):
     def get_context(self, request, response):
         context = super().get_context(request, response)
 
-        request.user = getattr(request, 'user', None)
-
         auth_header = request.headers.get('Authorization', None)
 
         if auth_header:
@@ -43,5 +41,6 @@ class JWTGraphQLView(GraphQLView):
                 context.user = SimpleLazyObject(lambda: UserRepository.get_user_by_id(user_id))
             else:
                 context.user_id = None
+                context.user = None
 
         return context
