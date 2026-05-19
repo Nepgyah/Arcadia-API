@@ -27,7 +27,7 @@ class AnimeRepository:
         return Anime.objects.filter(id=anime_id).exists()
 
     @staticmethod
-    def get_character(anime_id: int) -> list[AnimeCharacter]:
+    def get_characters(anime_id: int) -> list[AnimeCharacter]:
         return AnimeCharacter.objects.filter(anime_id=anime_id)
     
     @staticmethod
@@ -132,7 +132,10 @@ class AnimeListEntryRepository:
         except Exception as e:
             raise MiruError() from e
 
-
+    @staticmethod
+    def get_user_list(user_id: int) -> list[AnimeListEntry]:
+        return AnimeListEntry.objects.filter(user_id=user_id)
+    
 class MiruRepository:
 
     anime = AnimeRepository()
