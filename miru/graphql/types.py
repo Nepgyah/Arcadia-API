@@ -52,3 +52,4 @@ class AnimeType:
             )
             for character in characters
         ]
+    

@@ -3,9 +3,13 @@ from asobu.graphql.query import AsobuQuery
 from asobu.graphql.mutation import AsobuMutation
 from base.graphql.query import BaseQuery
 from miru.graphql.query import MiruQuery
+from miru.graphql.mutation import MiruMutation
 
 @strawberry.type
-class ArcadiaMutation(AsobuMutation):
+class ArcadiaMutation(
+    AsobuMutation,
+    MiruMutation
+):
     pass
 
 @strawberry.type(description="Overall namespace for the Arcadia graphql queries")

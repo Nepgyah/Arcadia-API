@@ -107,7 +107,7 @@ class AnimeListEntryRepository:
     @staticmethod
     def get_entry(user_id: int, anime_id: int) -> AnimeListEntry:
         try:
-            AnimeListEntry.objects.get(user_id=user_id, anime_id=anime_id)
+            return AnimeListEntry.objects.get(user_id=user_id, anime_id=anime_id)
         except AnimeListEntry.DoesNotExist:
             raise MiruNotFound(
                 detail="Cannot find requested anime list entry",

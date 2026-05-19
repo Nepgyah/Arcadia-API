@@ -1,5 +1,5 @@
 from users.services import UserService
-from miru.models import Anime, AnimeCompany
+from miru.models import Anime, AnimeCompany, AnimeListEntry
 from miru.repository import MiruRepository
 from talent.service.character import CharacterService
 
@@ -37,6 +37,32 @@ class CompanyService:
         return MiruRepository.company.get_companies(company_id_list)
     
 class ListService:
+
+    @staticmethod
+    def create_entry(user_id: int, anime_id: int, details: dict = None) -> AnimeListEntry:
+        MiruRepository.anime.does_anime_exist(anime_id)
+        return MiruRepository.list.create_entry(
+            user_id,
+            anime_id,
+            **details
+        )
+
+    @staticmethod
+    def get_entry(user_id: int, anime_id: int) -> AnimeListEntry:
+        return MiruRepository.list.get_entry(user_id, anime_id)
+
+    @staticmethod
+    def update_entry(user_id: int, anime_id: int, details: dict = None) -> AnimeListEntry:
+        entry = MiruRepository.list.get_entry(user_id, anime_id)
+        return MiruRepository.list.update_entry(
+            entry,
+            **details
+        )
+    
+    @staticmethod
+    def delete_entry(user_id: int, anime_id: int) -> None:
+        entry = MiruRepository.list.get_entry(user_id, anime_id)
+        MiruRepository.list.delete_entry(entry)
 
     @staticmethod
     def get_user_list(user_id: int) -> dict:

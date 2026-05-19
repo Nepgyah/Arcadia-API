@@ -6,7 +6,7 @@ from asobu.graphql.types import GameListEntryType, GameReviewType
 
 @strawberry.input
 class GameListDetails:
-    status: int | None = 1
+    status: int | None = 0
     score: int | None = None
     note: str | None = None
     start_play_date: str | None = None
