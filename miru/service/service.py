@@ -1,3 +1,4 @@
+from users.services import UserService
 from miru.models import Anime, AnimeCompany
 from miru.repository import MiruRepository
 from talent.service.character import CharacterService
@@ -35,6 +36,22 @@ class CompanyService:
     def get_producers(company_id_list: list[int]) -> list[AnimeCompany]:
         return MiruRepository.company.get_companies(company_id_list)
     
+class ListService:
+
+    @staticmethod
+    def get_user_list(user_id: int) -> dict:
+
+        user = UserService.get_user(user_id)
+        list_entries = MiruRepository.list.get_user_list(user_id)
+        user_anime_list = {
+            'watching': list_entries.filter(status=0),
+            'completed': list_entries.filter(status=1),
+            'plan_to': list_entries.filter(status=2),
+            'on_hold': list_entries.filter(status=3),
+        }
+        return user, user_anime_list
+    
 class MiruService:
     
     anime = AnimeService()
+    list = ListService()

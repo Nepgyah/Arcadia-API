@@ -1,11 +1,17 @@
 import strawberry
 import strawberry_django
-from base.service import FranchiseService
 from base.graphql.types import FranchiseType
 from talent.graphql.types import CharacterType, VoiceActorType
 
-from miru.models import Anime, AnimeCompany, AnimeCharacter
+from miru.models import Anime, AnimeCompany, AnimeListEntry
 from miru.service import MiruService
+
+@strawberry_django.type(
+    AnimeListEntry,
+    fields="__all__"
+)
+class AnimeListEntryType:
+    anime: "AnimeType"
 
 @strawberry_django.type(
     AnimeCompany,

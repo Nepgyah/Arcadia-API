@@ -141,3 +141,4 @@ class MiruRepository:
     anime = AnimeRepository()
     episode = EpisodeRepository()
     company = CompanyRepository()
+    list = AnimeListEntryRepository()
