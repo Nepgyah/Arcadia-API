@@ -3,6 +3,7 @@ import strawberry_django
 from strawberry_django.optimizer import optimize
 from users.graphql.types import ArcadiaUserType
 from miru.models import Anime
+from miru.exceptions import MiruNotFound
 from miru.service import MiruService
 from .types import AnimeType, AnimeListEntryType
 
@@ -21,7 +22,13 @@ class MiruQuery:
     def anime(self, info: strawberry.Info, pk: int) -> AnimeType:
         qs = Anime.objects.filter(id=pk)
         qs = optimize(qs, info)
-        return qs.get()
+        try:
+            return qs.get()
+        except Anime.DoesNotExist as e:
+            raise MiruNotFound(
+                detail="Cannot find requested anime",
+                code="miru_anime_not_found"
+            ) from e
     
     @strawberry_django.field
     def user_anime_list(self, user_id: int) -> UserAnimeListResult:
