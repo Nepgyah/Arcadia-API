@@ -7,7 +7,7 @@ from miru.models import (
     AnimeCompany,
     AnimeListEntry
 )
-from miru.exceptions import MiruNotFound, MiruError
+from miru.exceptions import MiruNotFoundError, MiruError
 from miru.serializers import AnimeListEntrySerializer
 
 class AnimeRepository:
@@ -17,7 +17,7 @@ class AnimeRepository:
         try:
             return Anime.objects.get(id=anime_id)
         except Anime.DoesNotExist:
-            raise MiruNotFound(
+            raise MiruNotFoundError(
                 detail="Cannot find requested anime",
                 code="miru_anime_not_found"
             ) from None
@@ -35,7 +35,7 @@ class AnimeRepository:
         try:
             return AniListData.objects.get(anime_id=anime_id)
         except AniListData.DoesNotExist:
-            raise MiruNotFound(
+            raise MiruNotFoundError(
                 detail="Cannot find requested anilist data",
                 code="miru_anilist_data_not_found"
             ) from None
@@ -45,7 +45,7 @@ class AnimeRepository:
         try:
             return MyAnimeListData.objects.get(anime_id=anime_id)
         except MyAnimeListData.DoesNotExist:
-            raise MiruNotFound(
+            raise MiruNotFoundError(
                 detail="Cannot find requested MAL data",
                 code="miru_mal_data_not_found"
             ) from None
@@ -61,7 +61,7 @@ class EpisodeRepository:
         try:
             return AnimeEpisode.objects.get(id=episode_id)
         except AnimeEpisode.DoesNotExist:
-            raise MiruNotFound(
+            raise MiruNotFoundError(
                 detail="Cannot find requested anime episode",
                 code="miru_episode_not_found"
             ) from None
@@ -73,7 +73,7 @@ class CompanyRepository:
         try:
             AnimeCompany.objects.get(id=company_id)
         except AnimeCompany.DoesNotExist:
-            raise MiruNotFound(
+            raise MiruNotFoundError(
                 detail="Cannot find requested anime company",
                 code="miru_anime_company_not_found"
             ) from None
@@ -109,7 +109,7 @@ class AnimeListEntryRepository:
         try:
             return AnimeListEntry.objects.get(user_id=user_id, anime_id=anime_id)
         except AnimeListEntry.DoesNotExist:
-            raise MiruNotFound(
+            raise MiruNotFoundError(
                 detail="Cannot find requested anime list entry",
                 code="miru_anime_list_entry_not_found"
             ) from None

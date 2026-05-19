@@ -1,6 +1,6 @@
-from main.exceptions import ArcadiaException
+from main.exceptions import ArcadiaAppError
 
-class UsersError(ArcadiaException):
+class UsersError(ArcadiaAppError):
     status_code = 400
     default_detail = 'An internal error occured within the Users service'
     default_code = 'users_error'

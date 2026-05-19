@@ -6,7 +6,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken, ExpiredTokenError
 from users.repositories import UserRepository
 from authorization.exceptions import AuthorizationError
-from main.exceptions import ArcadiaException
+from main.exceptions import ArcadiaAppError
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +37,7 @@ class JWTGraphQLView(GraphQLView):
                 raise AuthorizationError() from e
             except Exception as e:
                 logger.exception(e)
-                raise ArcadiaException('An unexpected error occured reading the auth header') from e
+                raise ArcadiaAppError('An unexpected error occured reading the auth header') from e
             if user_id:
                 context.user_id = user_id
                 context.user = SimpleLazyObject(lambda: UserRepository.get_user_by_id(user_id))
