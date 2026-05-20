@@ -52,29 +52,33 @@ class GameService:
         return AsobuRepository.game.get_reviews(game_id)
 
     @staticmethod
-    def search_games(filters: dict, sort: dict, pagination: dict):
+    def search_games(filters: dict = None, sort: dict = None, pagination: dict = None):
         queryset = Game.objects.all()
 
-        if filters['type'] != -1:
-            queryset = queryset.filter(type=filters['type'])
-        if filters['status'] != -1:
-            queryset = queryset.filter(status=filters['status'])
-        if filters['title'] != '':
-            queryset = queryset.filter(title__icontains=filters['title'])
+        if filters:
+            if filters['type'] != -1:
+                queryset = queryset.filter(type=filters['type'])
+            if filters['status'] != -1:
+                queryset = queryset.filter(status=filters['status'])
+            if filters['title'] != '':
+                queryset = queryset.filter(title__icontains=filters['title'])
 
-        direction = '' if sort['direction'] == 'asc' else '-'
-        if sort['category'] != '':
-            queryset = queryset.order_by(f'{direction}{sort["category"]}')
+        if sort:
+            direction = '' if sort['direction'] == 'asc' else '-'
+            if sort['category'] != '':
+                queryset = queryset.order_by(f'{direction}{sort["category"]}')
 
-        paginator = Paginator(queryset, per_page=pagination['per_page'])
-        results = paginator.get_page(pagination['target_page']).object_list
-        pagination_results = {
-            'per_page': pagination['per_page'],
-            'total_pages': paginator.num_pages,
-            'total_items': paginator.count
-        }
-
-        return results, pagination_results
+        if pagination:
+            paginator = Paginator(queryset, per_page=pagination['per_page'])
+            results = paginator.get_page(pagination['target_page']).object_list
+            pagination_results = {
+                'per_page': pagination['per_page'],
+                'total_pages': paginator.num_pages,
+                'total_items': paginator.count
+            }
+            return results, pagination_results
+        
+        return queryset, None
     
 class ListService:
 

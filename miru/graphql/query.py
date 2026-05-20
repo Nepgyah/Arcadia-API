@@ -1,12 +1,24 @@
 import strawberry
 import strawberry_django
 from strawberry_django.optimizer import optimize
+from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
 from users.graphql.types import ArcadiaUserType
 from miru.models import Anime
 from miru.exceptions import MiruNotFoundError
 from miru.service import MiruService
 from miru.repository import MiruRepository
 from .types import AnimeType, AnimeListEntryType
+
+@strawberry.input
+class AnimeFilterInput:
+    title: str = ""
+    type: int = -1
+    status: int = -1
+
+@strawberry.type
+class SearchAnimeResult:
+    results: list[AnimeType]
+    pagination: PaginationResultsType | None
 
 @strawberry.type
 class UserAnimeListResult:
@@ -30,6 +42,34 @@ class MiruQuery:
                 detail="Cannot find requested anime",
                 code="miru_anime_not_found"
             ) from e
+    
+    @strawberry_django.field
+    def animes(
+        self,
+        filters: AnimeFilterInput | None = None,
+        sort: SortInput | None = None,
+        pagination: PaginationInput | None = None
+    ) -> SearchAnimeResult:
+        
+        if filters is not None:
+            filters = strawberry.asdict(filters)
+
+        if sort is not None:
+            sort = strawberry.asdict(sort)
+
+        if pagination is not None:
+            pagination = strawberry.asdict(pagination)
+
+        anime, pagination = MiruService.anime.search_anime(
+            filters,
+            sort,
+            pagination
+        )
+
+        return SearchAnimeResult(
+            results=anime,
+            pagination=pagination
+        )
     
     @strawberry_django.field
     def anime_count(self) -> int:

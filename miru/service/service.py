@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from users.services import UserService
 from miru.models import Anime, AnimeCompany, AnimeListEntry
 from miru.repository import MiruRepository
@@ -9,6 +10,36 @@ class AnimeService:
     def get_anime(anime_id: int) -> Anime:
         return MiruRepository.anime.get_anime(anime_id)
     
+    @staticmethod
+    def search_anime(filters: dict = None, sort: dict = None, pagination: dict = None) -> list[Anime]:
+        queryset = Anime.objects.all()
+
+        if filters:
+            if filters['type'] != -1:
+                queryset = queryset.filter(type=filters['type'])
+            if filters['status'] != -1:
+                queryset = queryset.filter(status=filters['status'])
+            if filters['title'] != '':
+                queryset = queryset.filter(title__icontains=filters['title'])
+
+        if sort:
+            direction = '' if sort['direction'] == 'asc' else '-'
+            if sort['category'] != '':
+                queryset = queryset.order_by(f'{direction}{sort["category"]}')
+
+        if pagination:
+            paginator = Paginator(queryset, per_page=pagination['per_page'])
+            results = paginator.get_page(pagination['target_page']).object_list
+            pagination_results = {
+                'per_page': pagination['per_page'],
+                'total_pages': paginator.num_pages,
+                'total_items': paginator.count
+            }
+
+            return results, pagination_results
+        
+        return queryset, None
+
     @staticmethod
     def get_cast(anime_id: int) -> list:
         character_relations = MiruRepository.anime.get_characters(anime_id)
