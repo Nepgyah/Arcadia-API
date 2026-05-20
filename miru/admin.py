@@ -1,5 +1,5 @@
 import logging
-from django.db import transaction, IntegrityError
+from django.db import transaction
 from django.contrib import admin, messages
 from .models.anime import (
     Anime,
