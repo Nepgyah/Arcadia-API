@@ -24,10 +24,10 @@ from main.graphql.middleware import JWTGraphQLView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/user/', include('users.urls')),
+    # path('api/user/', include('users.urls')),
 
     path('api/util/', include('util.rest.urls')),
-    path('api/auth/', include('authorization.rest.urls')),
+    # path('api/auth/', include('authorization.rest.urls')),
     path('api/asobu/', include('asobu.rest.urls')),
     path('api/oauth/exchange/', ObtainD2XAuthorization.as_view(), name="oauth-obtain-d2x-auth"),
     

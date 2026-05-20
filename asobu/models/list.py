@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from asobu.models import Game
-from users.models import ArcadiaUser
 
 class GameListEntry(models.Model):
         
@@ -12,7 +11,7 @@ class GameListEntry(models.Model):
         ON_HOLD = 3, 'On Hold'
         REPLAYING = 4, 'Replaying'
     
-    user = models.ForeignKey(ArcadiaUser, on_delete=models.CASCADE, related_name='game_list')
+    profile_id = models.IntegerField(null=False, blank=False, db_index=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     status = models.IntegerField(choices=StatusType, default=StatusType.PLAYING)
     score = models.SmallIntegerField(
@@ -31,14 +30,14 @@ class GameListEntry(models.Model):
         indexes = [
             models.Index(fields=['status']),
         ]
-        unique_together = ['user', 'game']
+        unique_together = ['profile_id', 'game']
 
     def __str__(self):
         return f'User: {self.user.username} - Game: {self.game.title} - Status: {self.get_status_display()}'
     
 class Review(models.Model):
 
-    user = models.ForeignKey(ArcadiaUser, on_delete=models.CASCADE, related_name='game_reviews')
+    profile_id = models.IntegerField(null=False, blank=False, db_index=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     text = models.TextField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -48,4 +47,4 @@ class Review(models.Model):
     nice_count = models.PositiveIntegerField(default=0, blank=True)
 
     class Meta:
-        unique_together = ['user', 'game']
+        unique_together = ['profile_id', 'game']

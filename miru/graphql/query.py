@@ -2,7 +2,7 @@ import strawberry
 import strawberry_django
 from strawberry_django.optimizer import optimize
 from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
-from users.graphql.types import ArcadiaUserType
+
 from miru.models import Anime
 from miru.exceptions import MiruNotFoundError
 from miru.service import MiruService
@@ -22,7 +22,7 @@ class SearchAnimeResult:
 
 @strawberry.type
 class UserAnimeListResult:
-    user: ArcadiaUserType
+    user: str
     watching: list[AnimeListEntryType]
     completed: list[AnimeListEntryType]
     plan_to: list[AnimeListEntryType]

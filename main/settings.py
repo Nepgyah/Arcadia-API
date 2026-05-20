@@ -59,12 +59,11 @@ CSRF_COOKIE_SAMESITE = "None"
 # Application definition
 
 INSTALLED_APPS = [
-    'authorization',
-    'users',
-    'talent',
+    'accounts',
+    'asobu',
     'base',
     'miru',
-    'asobu',
+    'talent',
     'corsheaders',
     'graphene_django',
     'django_extensions',

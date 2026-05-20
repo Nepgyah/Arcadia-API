@@ -4,9 +4,8 @@ from django.contrib.auth.models import AnonymousUser
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken, ExpiredTokenError
-from authorization.exceptions import AuthorizationError
 
-from users.repositories.repository import UserRepository
+
 
 logger = logging.getLogger(__name__)
 
@@ -23,16 +22,18 @@ class RESTAuthMiddleware(JWTAuthentication):
                 
                 validated_token = self.get_validated_token(parts[1])
                 user_id = validated_token.get('user_id')
-                user = SimpleLazyObject(lambda: UserRepository.get_user_by_id(user_id))
-                return (user, validated_token)
+                # user = SimpleLazyObject(lambda: UserRepository.get_user_by_id(user_id))
+                return (None, validated_token)
             
-            except ExpiredTokenError:
-                raise AuthorizationError('The access token has expired', code='auth_error_access_expired')
-            except InvalidToken as e:
-                logger.warning(e)
-                raise AuthorizationError()
             except Exception as e:
-                logger.warning(f'Unexpected auth error: {e}')
-                raise AuthorizationError()
+                print(e)
+            # except ExpiredTokenError:
+            #     raise AuthorizationError('The access token has expired', code='auth_error_access_expired')
+            # except InvalidToken as e:
+            #     logger.warning(e)
+            #     raise AuthorizationError()
+            # except Exception as e:
+            #     logger.warning(f'Unexpected auth error: {e}')
+            #     raise AuthorizationError()
         
         return (AnonymousUser, None)

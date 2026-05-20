@@ -1,5 +1,4 @@
 from django.core.paginator import Paginator
-from users.services import UserService
 from miru.models import Anime, AnimeCompany, AnimeListEntry
 from miru.repository import MiruRepository
 from talent.service.character import CharacterService
@@ -98,7 +97,7 @@ class ListService:
     @staticmethod
     def get_user_list(user_id: int) -> dict:
 
-        user = UserService.get_user(user_id)
+        # user = UserService.get_user(user_id)
         list_entries = MiruRepository.list.get_user_list(user_id)
         user_anime_list = {
             'watching': list_entries.filter(status=0),
@@ -106,7 +105,7 @@ class ListService:
             'plan_to': list_entries.filter(status=2),
             'on_hold': list_entries.filter(status=3),
         }
-        return user, user_anime_list
+        return None, user_anime_list
     
 class MiruService:
     

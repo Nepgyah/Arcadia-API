@@ -1,7 +1,6 @@
 import strawberry
 from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
 from main.graphql.permissions import IsAuthenticated
-from users.graphql.types import ArcadiaUserType
 from asobu.graphql.types import (
     GameType,
     DLCType,
@@ -24,7 +23,7 @@ class SearchGamesResult:
 
 @strawberry.type
 class UserGameListResult:
-    user: ArcadiaUserType
+    user: str
     playing: list[GameListEntryType]
     completed: list[GameListEntryType]
     plan_to: list[GameListEntryType]

@@ -1,6 +1,6 @@
 import pytest
 from .miru_repository import MiruRepository
-from miru.models.list_entry import AnimeListEntry
+from miru.models.list import AnimeListEntry
 from miru.models.anime import Anime
 from miru.exceptions import AnimeNotFoundError
 

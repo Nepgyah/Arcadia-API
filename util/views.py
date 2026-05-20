@@ -12,7 +12,6 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 
-from users.models import User
 
 load_dotenv()
 
@@ -54,17 +53,17 @@ class ObtainD2XAuthorization(APIView):
                 status=500,
                 data={'detail':'D2X API Error'}
             )
-        try:
-            user = User.objects.get(d2x_id=d2x_id)
-        except User.DoesNotExist:
-            user = User.objects.create(
-                d2x_id=data.get('d2x_id'),
-                username=data.get('d2x_username')
-            )
+        # try:
+        #     user = User.objects.get(d2x_id=d2x_id)
+        # except User.DoesNotExist:
+        #     user = User.objects.create(
+        #         d2x_id=data.get('d2x_id'),
+        #         username=data.get('d2x_username')
+        #     )
 
-        refresh = RefreshToken.for_user(user)
+        refresh = RefreshToken.for_user(None)
 
-        refresh["username"] = user.username
+        # refresh["username"] = user.username
 
         access_token = str(refresh.access_token)
         refresh_token = str(refresh)

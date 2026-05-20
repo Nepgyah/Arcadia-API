@@ -1,6 +1,6 @@
 import pytest
 from miru.models.anime import Anime
-from miru.models.list_entry import AnimeListEntry
+from miru.models.list import AnimeListEntry
 from miru.models.relations import AnimeCharacter
 from talent.models import Character
 from users.models import ArcadiaUser

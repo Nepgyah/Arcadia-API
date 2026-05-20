@@ -13,7 +13,7 @@ from .models.relations import (
 )
 from .forms import AniListForm
 from .models.misc import AnimeCompany
-from .models.list_entry import AnimeListEntry
+from .models.list import AnimeListEntry
 from base.anilist_scripts.syncGenres import SyncGenres
 from miru.anilist import (
     fetch_anilist_data,

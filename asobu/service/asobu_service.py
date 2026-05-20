@@ -1,5 +1,4 @@
 from django.core.paginator import Paginator
-from users.services import UserService
 from asobu.models import Game, GameListEntry, DLC, Review
 from asobu.exceptions import AsobuError
 from asobu.repository import AsobuRepository
@@ -113,7 +112,7 @@ class ListService:
             Returns the user and a dict of filtered list entires by status
         """
         
-        user = UserService.get_user(user_id)
+        # user = UserService.get_user(user_id)
         list_entries = AsobuRepository.list.get_user_list(user_id)
         user_game_list = {
             'playing': list_entries.filter(status=0),
@@ -122,7 +121,7 @@ class ListService:
             'on_hold': list_entries.filter(status=3),
             'replaying': list_entries.filter(status=4) 
         }
-        return user, user_game_list
+        return None, user_game_list
         
 class ReviewService:
 
