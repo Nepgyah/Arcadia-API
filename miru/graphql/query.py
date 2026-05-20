@@ -5,6 +5,7 @@ from users.graphql.types import ArcadiaUserType
 from miru.models import Anime
 from miru.exceptions import MiruNotFoundError
 from miru.service import MiruService
+from miru.repository import MiruRepository
 from .types import AnimeType, AnimeListEntryType
 
 @strawberry.type
@@ -30,6 +31,10 @@ class MiruQuery:
                 code="miru_anime_not_found"
             ) from e
     
+    @strawberry_django.field
+    def anime_count(self) -> int:
+        return MiruRepository.anime.get_anime_count()
+
     @strawberry_django.field
     def user_anime_list(self, user_id: int) -> UserAnimeListResult:
         user, anime_list = MiruService.list.get_user_list(user_id)

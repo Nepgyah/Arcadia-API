@@ -9,6 +9,7 @@ from asobu.graphql.types import (
     GameListEntryType
 )
 from asobu.service.asobu_service import AsobuService
+from asobu.repository import AsobuRepository
 
 @strawberry.input
 class GameFilterInput:
@@ -64,6 +65,10 @@ class AsobuQuery:
             results=games,
             pagination=pagination_results
         )
+    
+    @strawberry.field
+    def game_count(self) -> int:
+        return AsobuRepository.game.get_game_count()
     
     @strawberry.field
     def dlcs(self, game_pk: int) -> list[DLCType]:

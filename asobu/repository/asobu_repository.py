@@ -9,6 +9,10 @@ logger = logging.getLogger(__name__)
 class GameRepository:
 
     @staticmethod
+    def get_game_count() -> int:
+        return Game.objects.count()
+
+    @staticmethod
     def get_game(game_id):
         try:
             return Game.objects.get(id=game_id)

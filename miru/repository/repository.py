@@ -13,6 +13,10 @@ from miru.serializers import AnimeListEntrySerializer
 class AnimeRepository:
     
     @staticmethod
+    def get_anime_count() -> int:
+        return Anime.objects.count()
+
+    @staticmethod
     def get_anime(anime_id: int) -> Anime:
         try:
             return Anime.objects.get(id=anime_id)
