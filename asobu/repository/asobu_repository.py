@@ -20,9 +20,8 @@ class GameRepository:
             raise AsobuNotFound(f"Unable to find game with id: {game_id}") from e
 
     @staticmethod
-    def check_game_exists(game_id):
-        if Game.objects.filter(id=game_id).exists() is not True:
-            raise AsobuNotFound('Game not found')
+    def does_game_exist(game_id):
+        return Game.objects.filter(id=game_id).exists()
 
     @staticmethod
     def get_characters(game_id):
