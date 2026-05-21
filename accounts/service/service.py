@@ -1,8 +1,9 @@
-from django.contrib.auth import authenticate
+from main import settings
+from django.utils import timezone
 from rest_framework_simplejwt.tokens import RefreshToken
 from accounts.models import ArcadiaProfile
 from accounts.repository import AccountsRepository
-from accounts.exceptions import AccountsValidationError
+from accounts.exceptions import AccountsValidationError, AccountsAppError
 
 class ArcadiaProfileService:
 
@@ -34,6 +35,32 @@ class AuthenticationService:
         refresh_token = str(refresh)
 
         return access_token, refresh_token
+
+    @staticmethod
+    def refresh_token(refresh_token: str | None) -> dict:
+        if refresh_token is None:
+            raise AccountsValidationError("You must provide a refresh token")
+        
+        try:
+            new_refresh = RefreshToken(refresh_token)
+            new_refresh_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
+
+            new_access = str(new_refresh.access_token)
+            new_access_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
+
+            return {
+                "access": {
+                    "value": str(new_access),
+                    "expiry": new_access_expiry
+                },
+                "refresh": {
+                    "value": str(new_refresh),
+                    "expiry": new_refresh_expiry
+                },
+            }
+        except Exception as e:
+            raise AccountsAppError("Unexpected error occured while refreshing the token") from e
+
 
 class AccountsService:
 
