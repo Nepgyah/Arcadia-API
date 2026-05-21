@@ -42,9 +42,9 @@ def game_dlc_fixture(game_fixture):
     return dlc
 
 @pytest.fixture 
-def game_list_entry_fixture(arcadia_user_fixture, game_fixture):
+def game_list_entry_fixture(game_fixture):
     game_entry = GameListEntry.objects.create(
-        user=arcadia_user_fixture,
+        profile_id=1,
         game=game_fixture,
         status=1,
         score=10,
@@ -56,10 +56,10 @@ def game_list_entry_fixture(arcadia_user_fixture, game_fixture):
     return game_entry
 
 @pytest.fixture
-def game_review_fixture(arcadia_user_fixture, game_fixture):
+def game_review_fixture(game_fixture):
     review = Review.objects.create(
         game=game_fixture,
-        user=arcadia_user_fixture,
+        profile_id=1,
         text='Absolutely umazing'
     )
 

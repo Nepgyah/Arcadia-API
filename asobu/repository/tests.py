@@ -53,7 +53,7 @@ from asobu.conftest import create_video_game_characters
 class TestAsobuRepoList:
     
     @staticmethod
-    def test_createEntry_valid_createsEntry(game_fixture, arcadia_user_fixture):
+    def test_createEntry_valid_createsEntry(game_fixture):
         details = {
             "score": 10,
             "status": 0,
@@ -63,28 +63,28 @@ class TestAsobuRepoList:
         }
 
         entry = AsobuRepository.list.create_entry(
-            arcadia_user_fixture.id,
+            1,
             game_fixture.id,
             **details
         )
 
         assert entry.game == game_fixture
-        assert entry.user == arcadia_user_fixture
+        assert entry.profile_id == 1
 
     @staticmethod
     def test_getEntry_valid_returnsEntry(game_list_entry_fixture):
         entry = AsobuRepository.list.get_entry(
-            game_list_entry_fixture.user.id,
+            game_list_entry_fixture.profile_id,
             game_list_entry_fixture.game.id
         )
 
         assert entry == game_list_entry_fixture
 
     @staticmethod
-    def test_getEntry_invalidID_raisesAsobuNotFound(arcadia_user_fixture):
+    def test_getEntry_invalidID_raisesAsobuNotFound(arcadia_profile_fixture):
         with pytest.raises(AsobuNotFound):
             AsobuRepository.list.get_entry(
-                arcadia_user_fixture.id,
+                arcadia_profile_fixture.id,
                 99999
             )
 
@@ -111,6 +111,6 @@ class TestAsobuRepoList:
         AsobuRepository.list.delete_entry(game_list_entry_fixture)
 
         assert GameListEntry.objects.filter(
-            user=game_list_entry_fixture.user,
+            profile_id=game_list_entry_fixture.profile_id,
             game=game_list_entry_fixture.game
         ).exists() is False

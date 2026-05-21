@@ -42,9 +42,9 @@ class GameRepository:
 class GameListEntryRepository:
 
     @staticmethod
-    def create_entry(user_id: int, game_id: int, **details) -> GameListEntry:
+    def create_entry(profile_id: int, game_id: int, **details) -> GameListEntry:
         data = {
-            'user': user_id,
+            'profile_id': profile_id,
             'game': game_id,
             **details
         }
@@ -55,10 +55,10 @@ class GameListEntryRepository:
         return serializer.save()
         
     @staticmethod
-    def get_entry(user_id: int, game_id: int) -> GameListEntry:
+    def get_entry(profile_id: int, game_id: int) -> GameListEntry:
         try:
             return GameListEntry.objects.get(
-                user_id=user_id,
+                profile_id=profile_id,
                 game_id=game_id
             )
         except GameListEntry.DoesNotExist as e:
@@ -78,24 +78,24 @@ class GameListEntryRepository:
             raise AsobuError('Error deleting list entry') from e
         
     @staticmethod
-    def get_user_list(user_id: int) -> list[GameListEntry]:
-        return GameListEntry.objects.filter(user_id=user_id)
+    def get_user_list(profile_id: int) -> list[GameListEntry]:
+        return GameListEntry.objects.filter(profile_id=profile_id)
     
 class ReviewRepository:
 
     @staticmethod
-    def create_review(user_id: int, game_id, text: str) -> Review:
+    def create_review(profile_id: int, game_id, text: str) -> Review:
         return Review.objects.create(
-            user_id=user_id,
+            profile_id=profile_id,
             game_id=game_id,
             text=text
         )
 
     @staticmethod
-    def get_review(user_id: int, game_id: int) -> Review:
+    def get_review(profile_id: int, game_id: int) -> Review:
         try:
             return Review.objects.get(
-                user_id=user_id,
+                profile_id=profile_id,
                 game_id=game_id
             )
         except Review.DoesNotExist as e:
