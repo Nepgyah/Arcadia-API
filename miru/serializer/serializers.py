@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+from accounts.service import AccountsService
 from miru.models import AnimeListEntry
 from miru.exceptions import MiruValidationError
 
@@ -8,6 +9,12 @@ class AnimeListEntrySerializer(ModelSerializer):
         model = AnimeListEntry
         fields = "__all__"
 
+    def validate_profile_id(self, value):
+
+        if AccountsService.profile.does_profile_exist(value) is False:
+            raise MiruValidationError('Arcadia profile does not exist')
+        return value
+    
     def validate(self, attrs):
        
         start_date = attrs['start_watch_date']
