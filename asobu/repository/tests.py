@@ -1,10 +1,7 @@
 import pytest
-from rest_framework.exceptions import ValidationError
-
-from asobu.models import Review, GameListEntry
+from asobu.models import GameListEntry
 from asobu.repository import AsobuRepository
-from asobu.exceptions import AsobuError, AsobuNotFound, AsobuValidationError
-from asobu.conftest import create_video_game_characters
+from asobu.exceptions import AsobuNotFound
 
 @pytest.mark.django_db
 class TestAsobuRepoGame:

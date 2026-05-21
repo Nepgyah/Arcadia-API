@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .exceptions import AsobuError, AsobuValidationError
+from accounts.service import AccountsService
+from .exceptions import AsobuValidationError
 from .models import GameListEntry, Review
 
 class AsobuSerializer(serializers.ModelSerializer):
@@ -26,6 +27,12 @@ class GameListEntrySerializer(AsobuSerializer):
         model = GameListEntry
         fields = "__all__"
         
+    def validate_profile_id(self, value):
+
+        if AccountsService.profile.does_profile_exist(value) is False:
+            raise AsobuValidationError('Arcadia profile does not exist')
+        return value
+    
     def validate(self, attrs):
         start_date = attrs.get('start_play_date', None)
         end_date = attrs.get('end_play_date', None)
