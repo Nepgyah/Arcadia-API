@@ -34,5 +34,5 @@ class TestGameListEntrySerializer:
         }
         
         serializer = GameListEntrySerializer(data=data)
-        with pytest.raises(AsobuValidationError) as e:
+        with pytest.raises(AsobuValidationError):
             serializer.is_valid(raise_exception=True)

@@ -1,9 +1,8 @@
 import pytest
-from miru.models.anime import Anime
+from miru.models.anime import Anime, MyAnimeListData, AniListData
 from miru.models.list import AnimeListEntry
-from miru.models.relations import AnimeCharacter
+from miru.models.relations import AnimeCharacter, AnimeEpisode
 from talent.models import Character
-from users.models import ArcadiaUser
 
 # Conftest allows you to declare fixtures and have every test below in the tree access them
 # Fixtures define steps and the data as part of the arrange phase of testing
@@ -30,7 +29,11 @@ def anime_sequel_fixture(anime_fixture):
     return anime
 
 @pytest.fixture
-def bocchi_character_fixtures(anime_fixture):
+def bocchi_character_fixture(anime_fixture):
+    """
+        Returns both the list of characters and the original anime object
+    """
+
     characters = [
         Character(first_name='Hitori', last_name='Gotoh',slug='hitori-gotoh'),
         Character(first_name='Ikuyo', last_name='Kita', slug='ikuyo-kita'),
@@ -47,14 +50,42 @@ def bocchi_character_fixtures(anime_fixture):
     ]
 
     animeCharacters = AnimeCharacter.objects.bulk_create(bulk_anime_characters)
-    return animeCharacters
+    return animeCharacters, anime_fixture
 
 @pytest.fixture
-def anime_list_entry_fixture(anime_fixture, user_fixture):
-    list_entry = AnimeListEntry(
-        user=user_fixture,
+def anime_list_entry_fixture(anime_fixture, arcadia_profile_fixture):
+    list_entry = AnimeListEntry.objects.create(
+        profile_id=arcadia_profile_fixture.id,
         anime=anime_fixture,
         status=0
     )
 
     return list_entry
+
+@pytest.fixture
+def anime_mal_data_fixture(anime_fixture):
+
+    return MyAnimeListData.objects.create(
+        anime=anime_fixture,
+        mal_id=1,
+        rank_score=1,
+        rank_popular=2
+    )
+
+@pytest.fixture
+def anime_anilist_data_fixture(anime_fixture):
+
+    return AniListData.objects.create(
+        anime=anime_fixture,
+        anilist_id=1,
+        rank_score=1,
+        rank_popular=2
+    )
+
+@pytest.fixture
+def anime_episode_fixture(anime_fixture):
+    return AnimeEpisode.objects.create(
+        number=1,
+        title="Lonely Rolling Bocchi",
+        anime=anime_fixture
+    )

@@ -15,3 +15,5 @@ class AnimeListEntrySerializer(ModelSerializer):
         if start_date and end_date:
             if start_date > end_date:
                 raise MiruValidationError("Start date cannot be past end date")
+            
+        return attrs

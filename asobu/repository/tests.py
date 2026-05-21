@@ -50,7 +50,7 @@ class TestAsobuRepoGame:
 class TestAsobuRepoList:
     
     @staticmethod
-    def test_createEntry_valid_createsEntry(game_fixture):
+    def test_createEntry_valid_createsEntry(game_fixture, arcadia_profile_fixture):
         details = {
             "score": 10,
             "status": 0,

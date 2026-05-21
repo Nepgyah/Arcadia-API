@@ -8,7 +8,7 @@ from miru.models import (
     AnimeListEntry
 )
 from miru.exceptions import MiruNotFoundError, MiruError
-from miru.serializers import AnimeListEntrySerializer
+from miru.serializer.serializers import AnimeListEntrySerializer
 
 class AnimeRepository:
     
@@ -97,9 +97,9 @@ class CompanyRepository:
 class AnimeListEntryRepository:
 
     @staticmethod
-    def create_entry(user_id: int, anime_id: int, **details: dict) -> AnimeListEntry:
+    def create_entry(profile_id: int, anime_id: int, **details: dict) -> AnimeListEntry:
         data = {
-            'user': user_id,
+            'profile_id': profile_id,
             'anime': anime_id,
             **details
         }
@@ -109,9 +109,9 @@ class AnimeListEntryRepository:
         return serializer.save()
     
     @staticmethod
-    def get_entry(user_id: int, anime_id: int) -> AnimeListEntry:
+    def get_entry(profile_id: int, anime_id: int) -> AnimeListEntry:
         try:
-            return AnimeListEntry.objects.get(user_id=user_id, anime_id=anime_id)
+            return AnimeListEntry.objects.get(profile_id=profile_id, anime_id=anime_id)
         except AnimeListEntry.DoesNotExist:
             raise MiruNotFoundError(
                 detail="Cannot find requested anime list entry",
@@ -137,8 +137,8 @@ class AnimeListEntryRepository:
             raise MiruError() from e
 
     @staticmethod
-    def get_user_list(user_id: int) -> list[AnimeListEntry]:
-        return AnimeListEntry.objects.filter(user_id=user_id)
+    def get_user_list(profile_id: int) -> list[AnimeListEntry]:
+        return AnimeListEntry.objects.filter(profile_id=profile_id)
     
 class MiruRepository:
 
