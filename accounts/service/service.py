@@ -32,9 +32,21 @@ class AuthenticationService:
 
         refresh = RefreshToken.for_user(arcadia_profile)
         access_token = str(refresh.access_token)
+        access_token_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
+        
         refresh_token = str(refresh)
+        refresh_token_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
 
-        return access_token, refresh_token
+        return {
+            "access": {
+                "value": str(access_token),
+                "expiry": access_token_expiry
+            },
+            "refresh": {
+                "value": str(refresh_token),
+                "expiry": refresh_token_expiry
+            },
+        }
 
     @staticmethod
     def refresh_token(refresh_token: str | None) -> dict:
