@@ -3,7 +3,7 @@
 | ---------- | ------- |
 | Miru       | 0.4     |
 | Asobu      | 0.2     |
-| Users      | 0.1     |
+| Accounts   | 0.1     |
 
 ## Alpha v2.2 - 5/14/2026
 - **General**

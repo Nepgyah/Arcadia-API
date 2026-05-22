@@ -8,6 +8,7 @@ Visit Arcadia: https://arcadia-platform.vercel.app
 - **General**
     - Replaced graphene django with strawberry as main GraphQL module
     - Improve quality of repo and service layers
+    - Improve interaction between apps via service layers
     
 - **Asobu v0.3**
 
