@@ -65,7 +65,6 @@ INSTALLED_APPS = [
     'miru',
     'talent',
     'corsheaders',
-    'graphene_django',
     'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',

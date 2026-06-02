@@ -30,7 +30,7 @@ class Franchise(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
     socials = models.JSONField(null=True, blank=True)
-    
+
     def __str__(self):
         return str(self.name)
     
@@ -38,6 +38,10 @@ class Franchise(models.Model):
         self.slug = unique_slugify(instance=self, value=self.name)
         super().save(*args, **kwargs)
 
+    @property
+    def cover_image_url(self):
+        return f'{os.environ.get('BG_CDN_BASE')}/franchise/{self.slug}.jpg'
+    
 class Media(models.Model):
     """
     Used as the base for Miru, Yomu, and Asobu

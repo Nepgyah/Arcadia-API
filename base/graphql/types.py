@@ -9,6 +9,10 @@ class FranchiseType:
     slug: auto
     socials: auto
 
+    @strawberry_django.field
+    def cover_image(self) -> str:
+        return self.cover_image_url
+
 @strawberry_django.type(Genre)
 class GenreType:
     id: ID
