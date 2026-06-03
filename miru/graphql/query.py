@@ -65,10 +65,14 @@ class MiruQuery:
             sort,
             pagination
         )
-
+        pagination_result = PaginationResultsType(
+            per_page=pagination['per_page'],
+            total_pages=pagination['total_pages'],
+            total_items=pagination['total_items']
+        )
         return SearchAnimeResult(
             results=anime,
-            pagination=pagination
+            pagination=pagination_result
         )
     
     @strawberry_django.field
