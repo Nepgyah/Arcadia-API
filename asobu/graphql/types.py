@@ -32,7 +32,7 @@ class PlatformReleaseType:
 class GameCharacterType:
     character: CharacterType
     role: str
-    voice_actor: VoiceActorType
+    voice_actor: VoiceActorType | None
 
 @strawberry_django.type(DLC, fields="__all__", description="Add on content to a video game")
 class DLCType:
@@ -42,22 +42,21 @@ class DLCType:
 class GameReviewType:
     pass
 
-@strawberry_django.type(Game, description="Video games from the asobu app")
+@strawberry_django.type(
+    Game, 
+    description="Video games from the asobu app",
+    exclude=["esrb_rating", "pegi_rating", "status", "franchise"]
+)
 class GameType:
-    id: auto
-    title: auto
-    score: auto
-    users: auto
-    slug: auto
-    created_at: auto
-    updated_at: auto
-    bg_image_path: auto
-    status: strawberry.auto
-    prev_game: Optional['GameType']
+    prequel: Optional["GameType"] = strawberry_django.field(field_name="prev_game")
     tags: list[TagType]
     developers: list[GameCompanyType]
     publishers: list[GameCompanyType]
 
+    @strawberry_django.field
+    def status(self) -> str:
+        return self.get_status_display()
+    
     @strawberry_django.field
     def esrb_rating(self) -> str:
         return self.get_esrb_rating_display()
@@ -69,7 +68,7 @@ class GameType:
     @strawberry_django.field
     def genres(self) -> list[GenreType]:
         return self.genres.all()
-
+    
     @strawberry_django.field
     def franchise(self) -> FranchiseType:
         return FranchiseService.get_franchise(self.franchise.id)
@@ -91,6 +90,10 @@ class GameType:
         return AsobuService.game.get_dlc(self.id)
     
     @strawberry_django.field
+    def sequels(self) -> list["GameType"]:
+        return self.next_entries.all()
+    
+    @strawberry_django.field
     def release(self) -> list[PlatformReleaseType]:
         platform_releases = GamePlatform.objects.filter(game=self)
         return [
@@ -104,6 +107,18 @@ class GameType:
     @strawberry_django.field
     def reviews(self) -> list[GameReviewType]:
         return AsobuRepository.game.get_reviews(self.id)
+    
+    @strawberry_django.field
+    def banner_image_url(self) -> str:
+        return self.banner_image_url
+    
+    @strawberry_django.field
+    def cover_image_url(self) -> str:
+        return self.cover_image_url
+    
+    @strawberry_django.field
+    def bg_image_url(self) -> str:
+        return self.bg_image_url
     
 @strawberry_django.type(GameListEntry, fields="__all__")
 class GameListEntryType:

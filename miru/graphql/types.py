@@ -100,10 +100,6 @@ class AnimeType:
     @strawberry_django.field
     def genres(self) -> list[GenreType]:
         return self.genres.all()
-    
-    # @strawberry_django.field
-    # def prequel(self) -> "AnimeType" | None:
-    #     return self.prev_anime
 
     @strawberry_django.field
     def sequels(self) -> list["AnimeType"]:

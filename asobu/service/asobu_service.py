@@ -42,12 +42,12 @@ class GameService:
 
     @staticmethod
     def get_dlc(game_id: int) -> list[DLC]:
-        AsobuRepository.game.check_game_exists(game_id)
+        AsobuRepository.game.does_game_exist(game_id)
         return AsobuRepository.game.get_dlc(game_id)
 
     @staticmethod
     def get_reviews(game_id: int) -> list[Review]:
-        AsobuRepository.game.check_game_exists(game_id)
+        AsobuRepository.game.does_game_exist(game_id)
         return AsobuRepository.game.get_reviews(game_id)
 
     @staticmethod
@@ -131,7 +131,7 @@ class ReviewService:
             raise AsobuError('Review text cannot be empty')
 
         return AsobuRepository.review.create_review(
-            user_id=user_id,
+            profile_id=user_id,
             game_id=game_id,
             text=text
         )
