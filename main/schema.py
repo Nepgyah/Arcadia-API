@@ -1,4 +1,6 @@
 import strawberry
+from strawberry.extensions import QueryDepthLimiter
+
 from accounts.graphql.query import AccountsQuery
 from accounts.graphql.mutation import AccountMutation
 from asobu.graphql.query import AsobuQuery
@@ -6,6 +8,7 @@ from asobu.graphql.mutation import AsobuMutation
 from base.graphql.query import BaseQuery
 from miru.graphql.query import MiruQuery
 from miru.graphql.mutation import MiruMutation
+from talent.graphql.query import TalentQuery
 
 @strawberry.type
 class ArcadiaMutation(
@@ -34,4 +37,14 @@ class ArcadiaQuery:
     def miru(self) -> MiruQuery:
         return MiruQuery()
     
-schema = strawberry.Schema(query=ArcadiaQuery, mutation=ArcadiaMutation)
+    @strawberry.field(description="Namespace for queries related to voice actors and characters")
+    def talent(self) -> TalentQuery:
+        return TalentQuery()
+    
+schema = strawberry.Schema(
+    query=ArcadiaQuery, 
+    mutation=ArcadiaMutation,
+    extensions=[
+        QueryDepthLimiter(max_depth=3)
+    ]
+)
