@@ -45,6 +45,6 @@ schema = strawberry.Schema(
     query=ArcadiaQuery, 
     mutation=ArcadiaMutation,
     extensions=[
-        QueryDepthLimiter(max_depth=3)
+        QueryDepthLimiter(max_depth=5)
     ]
 )

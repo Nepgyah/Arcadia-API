@@ -69,30 +69,32 @@ class AniListImporterAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         anilist_id = form.cleaned_data.get('anilist_id')
-
+        print('Check one')
         try:
             with transaction.atomic():
                 anime_obj = Anime()
+                print('Check two')
                 anilist_data = fetch_anilist_data(anilist_id)
+                print('Check three')
                 logger.info("Fetching anilist data: Success - Anilist ID: %s", anilist_id)
 
                 sync_metadata(anime_obj, anilist_data)
                 anime_obj.save()
                 logger.info("Saving anime object: Success - ID: %s", anime_obj.id)
-
+                print('Check four')
                 sync_companies(anime_obj, anilist_data)
                 logger.info('Syncing companies: Success')
 
                 genre_list = SyncGenres(anilist_data)
                 anime_obj.genres.set(genre_list)
                 logger.info('Syncing genres: Success')
-
+                print('Check five')
                 sync_episodes(anime_obj, anilist_data)
                 logger.info('Syncing episodes: Success')
-
+                print('Check six')
                 sync_characters(anime_obj, anilist_data)
                 logger.info('Syncing characters: Success')
-
+                print('Check seven')
                 rank_score = None
                 rank_popular = None
 
@@ -104,7 +106,7 @@ class AniListImporterAdmin(admin.ModelAdmin):
                         rank_score = rank_item.get('rank')
                 
                 logger.info('Syncing anilist rankings: Success')
-
+                print('Pre')
                 obj.anime = anime_obj
                 obj.anilist_id = anilist_id
                 obj.rank_score = rank_score
@@ -113,4 +115,5 @@ class AniListImporterAdmin(admin.ModelAdmin):
                 return super().save_model(request, obj, form, change)
             
         except Exception as e:
-            logger.error('Exception: %s', e)
+            print(e)
+            logger.error(e)

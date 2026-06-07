@@ -7,7 +7,7 @@ from miru.models import Anime
 from miru.exceptions import MiruNotFoundError
 from miru.service import MiruService
 from miru.repository import MiruRepository
-from .types import AnimeType, AnimeListEntryType
+from .types import AnimeType, AnimeListEntryType, CharacterAppearanceType, AppearanceType
 
 @strawberry.input
 class AnimeFilterInput:
@@ -89,4 +89,20 @@ class MiruQuery:
             plan_to=anime_list['plan_to'],
             on_hold=anime_list['on_hold'],
         )
+    
+    @strawberry_django.field
+    def anime_roles(self, voice_actor_id: int) -> list[CharacterAppearanceType]:
+        anime_roles = MiruService.character.get_anime_roles(voice_actor_id)
+        
+        return [
+            CharacterAppearanceType(
+                character=entry['character'],
+                appearances=[
+                    AppearanceType(
+                        role=appearance['role'],
+                        anime=appearance['anime']
+                    ) for appearance in entry['appearances']
+                ]
+            ) for entry in anime_roles
+        ]
     

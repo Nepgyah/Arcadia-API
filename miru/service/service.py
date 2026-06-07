@@ -1,7 +1,8 @@
 from django.core.paginator import Paginator
 from miru.models import Anime, AnimeCompany, AnimeListEntry
+from miru.models.relations import AnimeCharacter
 from miru.repository import MiruRepository
-from talent.service.character import CharacterService
+from talent.service import CharacterService, VoiceActorService
 
 class AnimeService:
 
@@ -107,7 +108,30 @@ class ListService:
         }
         return None, user_anime_list
     
+class Character:
+
+    @staticmethod
+    def get_anime_roles(voice_actor_id: str):
+        characters = VoiceActorService.get_voice_actor_roles(voice_actor_id)
+        anime_roles = []
+        for character in characters:
+            character_appearances = AnimeCharacter.objects.filter(character=character).select_related('anime')
+            appearance_json = [
+                {
+                    "role": appearance.get_role_display(),
+                    "anime": appearance.anime
+                } for appearance in character_appearances
+            ]
+            temp = {
+                "character": character,
+                "appearances": appearance_json
+            }
+            anime_roles.append(temp)
+
+        return anime_roles
+
 class MiruService:
     
     anime = AnimeService()
     list = ListService()
+    character = Character()

@@ -110,6 +110,7 @@ def fetch_anilist_data(anilist_id):
             logger.warning('Anilist api returned a non 200 code')
 
         data = response.json().get('data').get('Media')
+        print(data)
         return data
 
     except requests.Timeout:

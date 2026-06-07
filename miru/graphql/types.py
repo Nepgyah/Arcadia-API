@@ -4,7 +4,7 @@ from typing import Optional
 from base.graphql.types import FranchiseType, GenreType
 from talent.graphql.types import CharacterType, VoiceActorType
 
-from miru.models import Anime, AnimeCompany, AnimeListEntry, MyAnimeListData, AniListData, AnimeEpisode
+from miru.models import Anime, AnimeCompany, AnimeListEntry, MyAnimeListData, AnimeCharacter, AniListData, AnimeEpisode
 from miru.service import MiruService
 from miru.repository import MiruRepository
 
@@ -123,3 +123,12 @@ class AnimeType:
     def episodes(self) -> list[EpisodeType]:
         return MiruRepository.anime.get_episodes(self.id)
         
+@strawberry.type
+class AppearanceType:
+    role: str
+    anime: AnimeType
+    
+@strawberry.type
+class CharacterAppearanceType:
+    character: CharacterType
+    appearances: list[AppearanceType]
