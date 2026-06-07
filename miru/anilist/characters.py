@@ -5,11 +5,9 @@ from base.anilist_scripts.syncVoiceActor import SyncVoiceActor
 def sync_characters(anime_obj, data):
     try:
         character_data = data.get("characters").get('edges')
-        
         anime_characters_list = []
         for character in character_data:
             va_data = character.get('voiceActors')
-
             if va_data:
                 va_object = SyncVoiceActor(va_data[0])
             else:
@@ -52,5 +50,3 @@ def sync_characters(anime_obj, data):
     except Exception as e:
         print(e)
         
-
-

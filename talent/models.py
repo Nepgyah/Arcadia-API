@@ -35,6 +35,10 @@ class VoiceActor(Talent):
     def full_name(self):
         return f"{self.first_name} {self.last_name or ''}"
         
+    @property
+    def display_name(self):
+        return f"{self.first_name} {self.last_name or ''}"
+    
 class Character(models.Model):
     first_name=models.CharField(max_length=150, blank=False)
     last_name=models.CharField(max_length=150, null=True, blank=True)
