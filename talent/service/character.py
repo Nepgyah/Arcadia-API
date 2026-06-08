@@ -20,12 +20,12 @@ class CharacterService:
         Filters and returns character map with ID/Key acccess
         """
         if get_va_data is True:
-            characters = CharacterRepository.get_character(
+            characters = CharacterRepository.get_characters_with_va(
                 character_ids = character_ids,
                 get_va_data=True
             )
         else:
-            characters = CharacterRepository.get_character(
+            characters = CharacterRepository.get_characters_with_va(
                 character_ids = character_ids,
                 get_va_data=False
             )
