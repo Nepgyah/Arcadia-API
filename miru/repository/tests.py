@@ -1,149 +1,139 @@
 import pytest
-from .miru_repository import MiruRepository
-from miru.models.list_entry import AnimeListEntry
-from miru.models.anime import Anime
-from miru.exceptions import AnimeNotFoundError
+from miru.repository import MiruRepository
+from miru.models import AnimeListEntry
+from miru.exceptions import MiruNotFoundError, MiruError
 
-# Declares that the tests have database acccess
 @pytest.mark.django_db
-class TestRepository:
+class TestMiruAnimeRepository:
 
-    def test_getAnimeByID_existingAnime_returnAnime(_self, anime_fixture):
-        anime = MiruRepository.get_anime_by_id(anime_fixture.id)
-        assert anime.slug == 'bocchi-the-rock'
+    @staticmethod
+    def test_animeCount_returnsCount(anime_fixture):
+        assert MiruRepository.anime.get_anime_count() == 1
 
-    def test_getAnimeByID_nonExistentAnime_raiseAnimeNotFoundError(self, anime_fixture):
-        non_existent_id = 9999
+    @staticmethod
+    def test_getAnime_validID_returnsAnime(anime_fixture):
+        assert MiruRepository.anime.get_anime(anime_fixture.id) == anime_fixture
 
-        with pytest.raises(AnimeNotFoundError) as exception:
-            MiruRepository.get_anime_by_id(non_existent_id)
+    @staticmethod
+    def test_getAnime_invalidID_raisesMiruNotFound():
+        with pytest.raises(MiruNotFoundError):
+            MiruRepository.anime.get_anime(9999)
 
-        assert exception.value.status_code == 404
-        assert str(non_existent_id) in str(exception.value.detail)
+    @staticmethod
+    def test_doesAnimeExist_validID_returnsTrue(anime_fixture):
+        assert MiruRepository.anime.does_anime_exist(anime_fixture.id) is True
 
-    def test_getCharactersByAnime_existingAnime_returnCharacterList(self, anime_fixture, bocchi_character_fixtures):
-        characters = MiruRepository.get_characters_by_anime(anime_fixture.id)
-        assert bocchi_character_fixtures[0] in characters
+    @staticmethod
+    def test_doesAnimeExist_invalidID_returnsFalse():
+        assert MiruRepository.anime.does_anime_exist(9999) is False
 
-    def test_getCharactersByAnime_nonExistentAnime_raiseAnimeNotFoundError(self, anime_fixture, bocchi_character_fixtures):
-        non_existent_id = 9999
+    @staticmethod
+    def test_getCharacters_hasCharacters_returnsCharacterList(bocchi_character_fixture):
+        characters, anime = bocchi_character_fixture
+        assert len(MiruRepository.anime.get_characters(anime.id)) == len(characters)
 
-        with pytest.raises(AnimeNotFoundError) as exception:
-            MiruRepository.get_characters_by_anime(non_existent_id)
+    @staticmethod
+    def test_getCharacters_noCharacters_returnsEmptyList(anime_fixture):
+        assert len(MiruRepository.anime.get_characters(anime_fixture.id)) == 0
 
-        assert exception.value.status_code == 404
-        assert str(non_existent_id) in str(exception.value.detail)
+    @staticmethod
+    def test_getAnilistData_validID_returnsMalData(anime_anilist_data_fixture):
+        assert MiruRepository.anime.get_anilist_data(anime_anilist_data_fixture.anime.id) == anime_anilist_data_fixture
 
-    def test_createAnimeListEntry_validData_createListEntry(self, anime_sequel_fixture, arcadia_user_fixture):
-        test_details = {
-            'current_episode': 1,
-            'score': 9,
+    @staticmethod
+    def test_getAnilistData_invalidID_raiseMiruNotFound():
+        with pytest.raises(MiruNotFoundError):
+            MiruRepository.anime.get_anilist_data(9999)
+
+    @staticmethod
+    def test_getMALData_validID_returnsMalData(anime_mal_data_fixture):
+        assert MiruRepository.anime.get_mal_data(anime_mal_data_fixture.anime.id) == anime_mal_data_fixture
+
+    @staticmethod
+    def test_getMALData_invalidID_raiseMiruNotFound():
+        with pytest.raises(MiruNotFoundError):
+            MiruRepository.anime.get_mal_data(9999)
+
+@pytest.mark.django_db
+class TestMiruEpisodeRepository:
+
+    @staticmethod
+    def test_getEpisode_validID_returnsEpisode(anime_episode_fixture):
+        assert MiruRepository.episode.get_episode(anime_episode_fixture.id) == anime_episode_fixture
+
+    @staticmethod
+    def test_getEpisode_invalidID_raisesMiruNotFound():
+        with pytest.raises(MiruNotFoundError):
+            MiruRepository.episode.get_episode(1)
+            
+@pytest.mark.django_db
+class TestListRepository:
+
+    @staticmethod
+    def test_createEntry_validData_returnsEntry(anime_fixture, arcadia_profile_fixture):
+        data = {
+            "status": 1,
+            "score": 10,
+            "note": "",
+            "current_episode": 1,
+            "start_watch_date": None,
+            "end_watch_date": None
         }
-        MiruRepository.create_anime_list_entry(
-            user=arcadia_user_fixture,
-            anime=anime_sequel_fixture,
-            status=0,
-            details=test_details
+        entry = MiruRepository.list.create_entry(
+            profile_id=arcadia_profile_fixture.id,
+            anime_id=anime_fixture.id,
+            **data
         )
 
-        assert AnimeListEntry.objects.filter(
-            user=arcadia_user_fixture,
-            anime=anime_sequel_fixture,
-            status=0
-        ).exists() == True
+        assert AnimeListEntry.objects.filter(id=entry.id).exists() is True
 
-    def test_createAnimeListEntry_duplicateAttempt_raiseDuplicateError(self, anime_fixture, anime_list_entry_fixture):
-        test_details = {
-            'current_episode': 1,
-            'score': 9,
-        }
-        MiruRepository.create_anime_list_entry(
-            user=anime_list_entry_fixture.user,
-            anime=anime_fixture,
-            status=2,
-            details=test_details
-        )
+    @staticmethod
+    def test_getEntry_validID_returnsEntry(anime_list_entry_fixture):
+        assert MiruRepository.list.get_entry(
+            anime_list_entry_fixture.profile_id, 
+            anime_list_entry_fixture.anime.id
+        ) == anime_list_entry_fixture
 
-        assert AnimeListEntry.objects.filter(anime=anime_fixture, user=anime_list_entry_fixture.user).count() == 1
+    @staticmethod
+    def test_getEntry_invalidID_raisesNotFound():
+        with pytest.raises(MiruNotFoundError):
+            MiruRepository.list.get_entry(1,1)
 
-    def test_updateAnimeListEntry_validData_updateEntry(self, user_fixture, anime_fixture):
-        AnimeListEntry.objects.create(
-            anime=anime_fixture,
-            user=user_fixture,
-            status=0
-        )
-
-        MiruRepository.update_anime_list_entry(
-            user=user_fixture,
-            anime=anime_fixture,
-            status=3,
-            details={}
-        )
-
-        assert AnimeListEntry.objects.filter(
-            user=user_fixture,
-            anime=anime_fixture,
-            status=3
-        ).exists()
-
-    def test_delete_anime_list_entry_success(self, user_fixture, anime_fixture):
-        AnimeListEntry.objects.create(
-            anime=anime_fixture,
-            user=user_fixture,
-            status=0
-        )
-
-        MiruRepository.delete_anime_list_entry(
-            user=user_fixture,
-            anime=anime_fixture
-        )
-
-        assert AnimeListEntry.objects.filter(
-            user=user_fixture,
-            anime=anime_fixture
-        ).exists() == False
-
-    def test_delete_anime_list_entry_not_found(self, user_fixture, anime_fixture, anime_sequel_fixture):
-        AnimeListEntry.objects.create(
-            anime=anime_fixture,
-            user=user_fixture,
-            status=0
-        )
-
-        MiruRepository.delete_anime_list_entry(
-            user=user_fixture,
-            anime=anime_sequel_fixture
-        )
-
-        assert AnimeListEntry.objects.filter(
-            user=user_fixture,
-            anime=anime_fixture
-        ).exists() == True
-
-    def test_update_anime_list_entry_success(self, user_fixture, anime_fixture):
-        AnimeListEntry.objects.create(
-            anime=anime_fixture,
-            user=user_fixture,
-            status=0
-        )
-
-        test_details = {
-            'current_episode': 12,
-            'score': 10,
-            'start_watch_date': '2026-03-30',
-            'end_watch_date': '2026-04-20'
+    @staticmethod
+    def test_updateEntry_validData_returnsEntry(anime_list_entry_fixture):
+        data = {
+            "status": 1,
+            "score": 10,
+            "note": "",
+            "current_episode": 1,
+            "start_watch_date": None,
+            "end_watch_date": None
         }
 
-        MiruRepository.update_anime_list_entry(
-            anime=anime_fixture,
-            user=user_fixture,
-            status=3,
-            details=test_details
+        updated_entry = MiruRepository.list.update_entry(
+            anime_list_entry_fixture,
+            **data
         )
 
-        assert AnimeListEntry.objects.filter(
-            user=user_fixture,
-            anime=anime_fixture,
-            status=3
-        ).exists() == True 
+        assert updated_entry.score == 10
+        assert updated_entry.status == 1
+
+    @staticmethod
+    def test_deleteEntry_validEntry_deletesEntry(anime_list_entry_fixture):
+        MiruRepository.list.delete_entry(anime_list_entry_fixture)
+
+        assert AnimeListEntry.objects.filter(id=anime_list_entry_fixture.id).exists() is False
+
+    @staticmethod
+    def test_deleteEntry_errorOccurs_raisesMiruError():
+        with pytest.raises(MiruError):
+            MiruRepository.list.delete_entry(None)
         
+    @staticmethod
+    def test_getUserList_hasList_returnsList(anime_list_entry_fixture):
+        assert len(MiruRepository.list.get_user_list(anime_list_entry_fixture.profile_id)) == 1
+
+    @staticmethod
+    def test_getUserList_noList_returnsEmpty():
+        assert len(MiruRepository.list.get_user_list(1)) == 0
+

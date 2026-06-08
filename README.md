@@ -4,24 +4,13 @@ Introducing the Arcadia API. This is the backend repository dedicated to assisti
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
-## Latest Release - Alpha v2.2 - 5/xx/xx
+## Latest Release - Alpha v3.0 - x/xx/2026
 - **General**
-    - Change admin to use email field instead of username
-    - Add background CDNs for media
-
-- **Asobu v0.2**
-    - **Models**
-        - Create gamelist entry model
-        - Create game review model
-    - **Graphql**
-        - Add crud operations for gamelist entries
-        - Add crud operations for game reviews
-    - **REST**
-        - Add json export endpoint
-        - Add gamelist entry serializer
-    - **Other**
-        - Improve exception chaining
-        - Add test for repo layer
+    - Replaced graphene django with strawberry as main GraphQL module
+    - Improve quality of repo and service layers
+    - Improve interaction between apps via service layers
+    
+- **Asobu v0.3**
 
 ## Why I started Arcadia
 Advid fans of anime, manga, games and more would have to multiple web apps to maintain their hobbies. For example using AniList to track Anime, MyAnimeList to track Manga, Spotify to handle music, etc. Arcadia aims to solve this issue by combining all the sites into one multi app solution, unified by a single login/account. This would remove having to manage different accounts, having multiple tabs open while also having the opporitunity to connect different datasets into one. 

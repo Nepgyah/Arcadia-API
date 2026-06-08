@@ -1,74 +1,111 @@
-import graphene
-import graphene_django_optimizer as gql_optimizer
-from users.repositories import UserRepository
-from asobu.models import Game
-from asobu.graphql.schema import GameCharacterType, GameType, DLCType, GameListEntryType, ReviewType
+import strawberry
+from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
+from main.graphql.permissions import IsAuthenticated
+from asobu.graphql.types import (
+    GameType,
+    DLCType,
+    GameReviewType,
+    GameListEntryType,
+    GameVaRoleType,
+    GameAppearanceDetailType
+)
+from asobu.service.asobu_service import AsobuService
 from asobu.repository import AsobuRepository
-from asobu.service import AsobuService
 
-class GameList(graphene.ObjectType):
-    username = graphene.String()
-    playing = graphene.List(GameListEntryType)
-    completed = graphene.List(GameListEntryType)  
-    plan_to = graphene.List(GameListEntryType)
-    on_hold = graphene.List(GameListEntryType)
-    replaying = graphene.List(GameListEntryType)
+@strawberry.input
+class GameFilterInput:
+    title: str | None = ""
+    type: int | None = -1
+    status: int | None = -1
 
-class Query(graphene.ObjectType):
+@strawberry.type
+class SearchGamesResult:
+    results: list[GameType]
+    pagination: PaginationResultsType
 
-    game_by_id = graphene.Field(GameType, game_id=graphene.ID(required=True))
-    games_by_category = graphene.List(GameType, category=graphene.String(required=False), count=graphene.Int(required=False))
-    characters_by_game = graphene.List(GameCharacterType, game_id=graphene.ID(required=True))
-    game_reviews = graphene.List(ReviewType, game_id=graphene.ID())
-    dlc_by_game = graphene.List(DLCType, game_id=graphene.ID(required=True))
-    game_list_entry = graphene.Field(GameListEntryType, game_id=graphene.ID())
-    user_game_list = graphene.Field(GameList, user_id=graphene.ID())
-    game_review = graphene.Field(ReviewType, entry_id=graphene.ID())
-    user_game_review = graphene.Field(ReviewType, game_id=graphene.ID())
+@strawberry.type
+class UserGameListResult:
+    user: str
+    playing: list[GameListEntryType]
+    completed: list[GameListEntryType]
+    plan_to: list[GameListEntryType]
+    on_hold: list[GameListEntryType]
+    replaying: list[GameListEntryType]
 
-    def resolve_game_by_id(self, _info, game_id):
-        return AsobuRepository.game.get_game(game_id)
+@strawberry.type
+class AsobuQuery:
+
+    @strawberry.field
+    def game(self, pk: int) -> GameType:
+        return AsobuService.game.get_game(game_id=pk)
     
-    def resolve_games_by_category(self, info, category, count):
-        if category is None:
-            category = '-score'
-        if count is None:
-            count = 5
-
-        return gql_optimizer.query(Game.objects.all().order_by(category)[:count], info)
-    
-    def resolve_characters_by_game(self, _info, game_id):
-        return AsobuRepository.game.get_characters(game_id)
-    
-    def resolve_game_reviews(self, _info, game_id):
-        return AsobuRepository.game.get_reviews(game_id)
-
-    def resolve_dlc_by_game(self, _info, game_id):
-        return AsobuRepository.game.get_dlc(game_id)
-    
-    def resolve_game_list_entry(self, info, game_id):
-        user = info.context.user
-        return AsobuRepository.list_entry.get_entry(user, game_id, None)
-    
-    def resolve_user_game_list(self, info, user_id=None):
-        if user_id:
-            user = UserRepository.get_user_by_id(user_id=user_id)
-        else:
-            user = info.context.user
-        list_data = AsobuService.get_game_list_by_user(user)
+    @strawberry.field
+    def games(
+        self, 
+        filters: GameFilterInput | None = None, 
+        sort: SortInput | None = None, 
+        pagination: PaginationInput | None = None
+    ) -> SearchGamesResult:
         
-        return GameList(
-            username = user.username,
-            playing = list_data['playing'],
-            completed = list_data['completed'],
-            plan_to = list_data['plan_to'],
-            on_hold = list_data['on_hold'],
-            replaying = list_data['replaying']
+        if filters is not None:
+            filters = strawberry.asdict(filters)
+        
+        if sort is not None:
+            sort = strawberry.asdict(sort)
+
+        if pagination is not None:
+            pagination = strawberry.asdict(pagination)
+
+        games, pagination_results = AsobuService.game.search_games(
+            filters,
+            sort,
+            pagination
+        )
+
+        return SearchGamesResult(
+            results=games,
+            pagination=pagination_results
         )
     
-    def resolve_game_review(self, _info, entry_id):
-        return AsobuRepository.review.get_review(entry_id)
+    @strawberry.field
+    def game_count(self) -> int:
+        return AsobuRepository.game.get_game_count()
     
-    def resolve_user_game_review(self, info, game_id):
-        user = info.context.user
-        return AsobuRepository.review.get_review_by_user(user.id, game_id)
+    @strawberry.field
+    def dlcs(self, game_pk: int) -> list[DLCType]:
+        return AsobuService.game.get_dlc(game_id=game_pk)
+    
+    @strawberry.field(permission_classes=[IsAuthenticated])
+    def user_game_review(self, info: strawberry.Info, game_id: int) -> GameReviewType:
+        return AsobuService.review.get_review(
+            info.context.user_id,
+            game_id
+        )
+    
+    @strawberry.field
+    def user_game_list(self, user_id: int) -> UserGameListResult:
+        user, game_list = AsobuService.list.get_user_list(user_id)
+        return UserGameListResult(
+            user=user,
+            playing=game_list['playing'],
+            completed=game_list['completed'],
+            plan_to=game_list['plan_to'],
+            on_hold=game_list['on_hold'],
+            replaying=game_list['replaying']
+        )
+    
+    @strawberry.field
+    def game_roles(self, voice_actor_id: int) -> list[GameVaRoleType]:
+        game_roles = AsobuService.character.get_game_roles(voice_actor_id)
+        
+        return [
+            GameVaRoleType(
+                character=entry['character'],
+                appearances=[
+                    GameAppearanceDetailType(
+                        role=appearance['role'],
+                        game=appearance['game']
+                    ) for appearance in entry['appearances']
+                ]
+            ) for entry in game_roles
+        ]

@@ -1,1 +1,1 @@
-from .miru_service import MiruService
+from .service import MiruService

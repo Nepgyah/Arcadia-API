@@ -1,177 +1,113 @@
 import pytest
-from asobu.models import Review
+from asobu.models import GameListEntry
 from asobu.repository import AsobuRepository
-from asobu.exceptions import GameNotFoundError, AsobuError, AsobuNotFound
-from asobu.conftest import create_video_game_characters
+from asobu.exceptions import AsobuNotFound
 
-@pytest.mark.django_db(transaction=True)
+@pytest.mark.django_db
 class TestAsobuRepoGame:
 
-    # GAME
     @staticmethod
-    def test_getGameByID_existingGame_returnGame(game_fixture):
-        game = AsobuRepository.game.get_game(game_fixture.id)
-        assert game.id == game_fixture.id
+    def test_getGameCount_returnsCount(game_fixture):
+        assert AsobuRepository.game.get_game_count() == 1
 
     @staticmethod
-    def test_getGameByID_nonExistentGame_raisesGameNotFoundError():
-        non_existent_id = 9999
+    def test_getGame_validID_returnsGameObject(game_fixture):
+        result = AsobuRepository.game.get_game(game_fixture.id)
+        assert result == game_fixture
 
-        with pytest.raises(GameNotFoundError):
-            AsobuRepository.game.get_game(non_existent_id)
-
-    #DLC
     @staticmethod
-    def test_getDLCByGameID_existingGame_returnsDLCList(game_dlc_fixture):
-        dlcs = AsobuRepository.game.get_dlc(game_dlc_fixture.game.id)
-        assert len(dlcs) != 0
+    def test_getGame_invalidID_raisesNotFound():
+        with pytest.raises(AsobuNotFound):
+            AsobuRepository.game.get_game(99999)
+
+    @staticmethod
+    def test_checkGameExists_valid_returnsTrue(game_fixture):
+        assert AsobuRepository.game.does_game_exist(game_fixture.id) is True
+
+    @staticmethod
+    def test_checkGameExists_invalidID_returnsFalse():
+        assert AsobuRepository.game.does_game_exist(9999) is False
+
+    @staticmethod
+    def test_getDLC_valid_returnsDLC(game_dlc_fixture):
+        dlc = AsobuRepository.game.get_dlc(game_dlc_fixture.game.id)
+        assert dlc.first() == game_dlc_fixture
+
+    @staticmethod
+    def test_getDLC_invalidGame_returnsEmpty():
+        assert len(AsobuRepository.game.get_dlc(9999)) == 0
+
+    @staticmethod
+    def test_getReviews_valid_returnsReviews(game_review_fixture):
+        reviews = AsobuRepository.game.get_reviews(game_review_fixture.game.id)
+        assert reviews.first() == game_review_fixture
+
+    @staticmethod
+    def test_getReviews_invalidGame_returnsEmpty():
+        assert len(AsobuRepository.game.get_reviews(9999)) == 0
+
+@pytest.mark.django_db
+class TestAsobuRepoList:
     
     @staticmethod
-    def test_getDLCByGameID_nonExistentGame_returnsEmptyList():
-        dlcs = AsobuRepository.game.get_dlc(-1)
-        assert len(dlcs) == 0
-
-    # Characters
-    @staticmethod
-    def test_getCharactersByGame_existingCharacters_returnsCharacterList(game_fixture):
-        create_video_game_characters(game_fixture)
-        result = AsobuRepository.game.get_characters(game_fixture.id)
-        assert result[0].game.id == game_fixture.id
-
-    @staticmethod
-    def test_getCharactersByGame_nonExistingGame_returnsEmptyList(game_fixture):
-        result = AsobuRepository.game.get_characters(game_fixture.id)
-        assert len(result) == 0
-
-@pytest.mark.django_db(transaction=True)
-class TestAsobuRepoGameListEntry:
-    @staticmethod
-    def test_createGameListEntry_newEntry_returnsEntryObject(arcadia_user_fixture, game_fixture):
+    def test_createEntry_valid_createsEntry(game_fixture, arcadia_profile_fixture):
         details = {
-            'score': 10,
-            'note': 'Umazing',
-            'review': 'If you get boxed, you get boxed',
-            'start_play_date': '2024-4-20'
+            "score": 10,
+            "status": 0,
+            "note": "Umazing",
+            "start_play_date": None,
+            "end_play_date": None
         }
 
-        entry = AsobuRepository.list_entry.create_entry(arcadia_user_fixture, game_fixture, 10, **details)
-        assert entry.user == arcadia_user_fixture
+        entry = AsobuRepository.list.create_entry(
+            1,
+            game_fixture.id,
+            **details
+        )
+
         assert entry.game == game_fixture
-        assert entry.score == 10
-        assert entry.note == 'Umazing'
+        assert entry.profile_id == 1
 
     @staticmethod
-    def test_createGameListEntry_alreadyExists_raisesError(arcadia_user_fixture, game_list_entry_fixture):
-        with pytest.raises(AsobuError) as exception:
-            AsobuRepository.list_entry.create_entry(
-                user=arcadia_user_fixture,
-                game=game_list_entry_fixture.game,
-                status=10
-            )
-
-        assert exception.value.status_code == 400
-        assert exception.value.default_code == AsobuError.default_code
-
-@pytest.mark.django_db(transaction=True)
-class TestAsobuRepoGameReview:
-
-    @staticmethod
-    def test_getGameReview_validReview_returnsReview(game_review_fixture):
-        review = AsobuRepository.review.get_review(game_review_fixture.id)
-        assert review.id == game_review_fixture.id
-
-    @staticmethod
-    def test_getGameReview_invalidID_returnsNone():
-        review = AsobuRepository.review.get_review(0)
-        assert review is None
-        
-    @staticmethod
-    def test_getUserGameReview_validID_returnsReview(game_review_fixture):
-        review = AsobuRepository.review.get_review_by_user(game_review_fixture.user.id, game_review_fixture.game.id)
-        assert review == game_review_fixture
-
-    @staticmethod
-    def test_createGameReview_validInput_returnsNewReview(arcadia_user_fixture, game_fixture):
-        review_text = 'Umazing'
-        review = AsobuRepository.review.create_review(arcadia_user_fixture.id, game_fixture.id, review_text)
-        assert isinstance(review, Review) is True
-
-    @staticmethod
-    def test_createGameReview_invalidGameID_raiseAsobuError(arcadia_user_fixture):
-        review_text = 'Umazing'
-        with pytest.raises(AsobuError) as exception:
-            AsobuRepository.review.create_review(arcadia_user_fixture.id, 99999, review_text)
-
-        assert exception.value.status_code == 400
-
-    @staticmethod
-    def test_createGameReview_noneInput_raisesAsobuError(arcadia_user_fixture, game_fixture):
-        with pytest.raises(AsobuError):
-            AsobuRepository.review.create_review(
-                user_id=arcadia_user_fixture.id,
-                game_id=game_fixture.id,
-                review_text=None
-            )
-
-    @staticmethod
-    def test_createGameReview_blankInput_raisesAsobuError(arcadia_user_fixture, game_fixture):
-        with pytest.raises(AsobuError):
-            AsobuRepository.review.create_review(
-                user_id=arcadia_user_fixture.id,
-                game_id=game_fixture.id,
-                review_text=''
-            )
-
-    @staticmethod
-    def test_updateGameReview_validInput_returnsUpdatedReview(game_review_fixture):
-        new_text = 'Tazuna is a uma but i cant prove it'
-        updated_review = AsobuRepository.review.update_review(
-            game_review_fixture.user.id,
-            game_review_fixture.game.id,
-            new_text
-        )
-        
-        assert updated_review.text == new_text
-
-    @staticmethod
-    def test_updateGameReview_reviewNotFound_raisesAsobuNotFoundError(game_review_fixture):
-        new_text = 'Random text go'
-        with pytest.raises(AsobuNotFound) as exception:
-            AsobuRepository.review.update_review(
-                game_review_fixture.user.id,
-                999,
-                new_text
-            )
-
-        assert exception.value.status_code == 404
-
-    @staticmethod
-    def test_updateGameReview_invalidText_raisesAsobuError(game_review_fixture):
-        with pytest.raises(AsobuError) as exception:
-            AsobuRepository.review.update_review(
-                game_review_fixture.user.id,
-                game_review_fixture.game.id,
-                None
-            )
-
-        assert exception.value.status_code == 400
-
-    @staticmethod
-    def test_deleteGameReivew_validInput_deletesReview(game_review_fixture):
-        AsobuRepository.review.delete_review(
-            game_review_fixture.user.id,
-            game_review_fixture.game.id
+    def test_getEntry_valid_returnsEntry(game_list_entry_fixture):
+        entry = AsobuRepository.list.get_entry(
+            game_list_entry_fixture.profile_id,
+            game_list_entry_fixture.game.id
         )
 
-        review = AsobuRepository.review.get_review(game_review_fixture.id)
-        assert review is None
+        assert entry == game_list_entry_fixture
 
     @staticmethod
-    def test_deleteGameReview_invalidInput_raisesAsobuNotFound(game_review_fixture):
-        with pytest.raises(AsobuNotFound) as exception:
-            AsobuRepository.review.delete_review(
-                game_review_fixture.user.id,
-                -1
+    def test_getEntry_invalidID_raisesAsobuNotFound(arcadia_profile_fixture):
+        with pytest.raises(AsobuNotFound):
+            AsobuRepository.list.get_entry(
+                arcadia_profile_fixture.id,
+                99999
             )
 
-        assert exception.value.status_code == 404
+    @staticmethod
+    def test_updateEntry_validInfo_updatesEntry(game_list_entry_fixture):
+        details = {
+            "score": 5,
+            "status": 2,
+            "note": "Umazing",
+            "start_play_date": None,
+            "end_play_date": None
+        }
+
+        entry = AsobuRepository.list.update_entry(
+            game_list_entry_fixture,
+            **details
+        )
+
+        assert entry.score == 5
+        assert entry.status == 2
+
+    @staticmethod
+    def test_deleteEntry_valid_deletesEntry(game_list_entry_fixture):
+        AsobuRepository.list.delete_entry(game_list_entry_fixture)
+
+        assert GameListEntry.objects.filter(
+            profile_id=game_list_entry_fixture.profile_id,
+            game=game_list_entry_fixture.game
+        ).exists() is False

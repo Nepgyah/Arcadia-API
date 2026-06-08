@@ -1,5 +1,5 @@
 import logging
-from django.db import transaction, IntegrityError
+from django.db import transaction
 from django.contrib import admin, messages
 from .models.anime import (
     Anime,
@@ -13,7 +13,7 @@ from .models.relations import (
 )
 from .forms import AniListForm
 from .models.misc import AnimeCompany
-from .models.list_entry import AnimeListEntry
+from .models.list import AnimeListEntry
 from base.anilist_scripts.syncGenres import SyncGenres
 from miru.anilist import (
     fetch_anilist_data,
@@ -69,7 +69,7 @@ class AniListImporterAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         anilist_id = form.cleaned_data.get('anilist_id')
-
+        print('Check one')
         try:
             with transaction.atomic():
                 anime_obj = Anime()
@@ -79,20 +79,16 @@ class AniListImporterAdmin(admin.ModelAdmin):
                 sync_metadata(anime_obj, anilist_data)
                 anime_obj.save()
                 logger.info("Saving anime object: Success - ID: %s", anime_obj.id)
-
                 sync_companies(anime_obj, anilist_data)
                 logger.info('Syncing companies: Success')
 
                 genre_list = SyncGenres(anilist_data)
                 anime_obj.genres.set(genre_list)
                 logger.info('Syncing genres: Success')
-
                 sync_episodes(anime_obj, anilist_data)
                 logger.info('Syncing episodes: Success')
-
                 sync_characters(anime_obj, anilist_data)
                 logger.info('Syncing characters: Success')
-
                 rank_score = None
                 rank_popular = None
 
@@ -104,7 +100,6 @@ class AniListImporterAdmin(admin.ModelAdmin):
                         rank_score = rank_item.get('rank')
                 
                 logger.info('Syncing anilist rankings: Success')
-
                 obj.anime = anime_obj
                 obj.anilist_id = anilist_id
                 obj.rank_score = rank_score
@@ -113,4 +108,5 @@ class AniListImporterAdmin(admin.ModelAdmin):
                 return super().save_model(request, obj, form, change)
             
         except Exception as e:
-            logger.error('Exception: %s', e)
+            print(e)
+            logger.error(e)

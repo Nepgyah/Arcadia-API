@@ -1,45 +1,16 @@
 from django.db.models import Prefetch
 from asobu.models import GameCharacter
-from talent.repository.voice_actor_repository import VoiceActorRepository
+from talent.repository.voice_actor import VoiceActorRepository
 from talent.models import VoiceActor, Character
 from miru.models.relations import AnimeCharacter
 
 class VoiceActorService:
 
     @staticmethod
-    def get_voice_actor_by_id(va_id, withCharDetails = False):
-        if not withCharDetails:
-            voice_actor = VoiceActorRepository.get_voice_actor_by_id(va_id)
-            return voice_actor
-        
-        voice_actor = VoiceActor.objects.prefetch_related(
-            Prefetch(
-                'characters',
-                queryset=Character.objects.prefetch_related(
-                    Prefetch(
-                        'animecharacter_set', 
-                        queryset=AnimeCharacter.objects.select_related('anime')
-                    ),
-                    Prefetch(
-                        'gamecharacter_set',
-                        queryset=GameCharacter.objects.select_related('game')
-                    )
-                ),
-            )
-        ).get(id=va_id)
-        anime_details = []
-        game_details = []
+    def get_voice_actor(voice_actor_id: int) -> VoiceActor:
+        return VoiceActorRepository.get_voice_actor(voice_actor_id)
 
-        for character in voice_actor.characters.all():
-            for animeLink in character.animecharacter_set.all():
-                anime_details.append(animeLink)
-
-            for gameLink in character.gamecharacter_set.all():
-                game_details.append(gameLink)
-
-        character_details = {
-            'animes': anime_details,
-            'games': game_details
-        }
-
-        return voice_actor, character_details
+    @staticmethod
+    def get_voice_actor_roles(voice_actor_id: int):
+        voice_actor = VoiceActorRepository.get_voice_actor(voice_actor_id)
+        return VoiceActorRepository.get_voice_actor_roles(voice_actor)

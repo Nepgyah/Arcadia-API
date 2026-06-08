@@ -1,9 +1,13 @@
+import os
+from dotenv import load_dotenv
 from django.db import models
 from util import unique_slugify
 from base.models import Media, Genre
 from talent.models import Character
 
 from .misc import Tag, GameCompany, Platform
+
+load_dotenv()
 
 class Game(Media):
     
@@ -53,6 +57,18 @@ class Game(Media):
     def __str__(self):
         return str(self.title)
 
+    @property
+    def banner_image_url(self):
+        return f'{os.environ.get('BG_CDN_BASE')}/asobu/{self.slug}/banner.jpg'
+    
+    @property
+    def cover_image_url(self):
+        return f'{os.environ.get('BG_CDN_BASE')}/asobu/{self.slug}/cover.jpg'
+    
+    @property
+    def bg_image_url(self):
+        return f'{os.environ.get('BG_CDN_BASE')}/asobu/{self.slug}/bg.jpg'
+    
 class DLC(models.Model):
 
     class DLCType(models.IntegerChoices):

@@ -3,10 +3,9 @@ from django.contrib.auth.models import User
 
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.test import APIClient
-from rest_framework_simplejwt.tokens import RefreshToken
 from graphene_django.utils.testing import graphql_query
 
-from users.models import ArcadiaUser
+from accounts.models import ArcadiaProfile
 
 @pytest.fixture
 def admin_user_fixture():
@@ -18,11 +17,11 @@ def admin_user_fixture():
     return admin_user
 
 @pytest.fixture
-def arcadia_user_fixture(admin_user_fixture):
-    arcadia_user = ArcadiaUser.objects.create(
+def arcadia_profile_fixture(admin_user_fixture):
+    arcadia_user = ArcadiaProfile.objects.create(
         d2x_id = 1,
         username = 'TestUser',
-        admin_user = admin_user_fixture
+        admin_account = admin_user_fixture
     )
     return arcadia_user
 

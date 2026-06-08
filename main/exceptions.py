@@ -1,13 +1,11 @@
-from rest_framework.exceptions import APIException
+from rest_framework.exceptions import APIException, ValidationError, NotFound
 
-class ArcadiaException(APIException):
-    status_code = 400
+class ArcadiaAppError(APIException):
     default_detail = 'An internal error occured'
     default_code = 'arcadia_error'
 
-class InvalidDataInputField(ArcadiaException):
-    status_code = 400
-    default_code = 'invalid_data_input_field'
+class ArcadiaValidationError(ValidationError):
+    default_code = "arcadia_invalid_input"
 
-    def __init__(self, ):
-        super().__init__(detail, code)
+class ArcadiaNotFoundError(NotFound):
+    default_code = "arcadia_not_found"

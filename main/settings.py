@@ -59,14 +59,12 @@ CSRF_COOKIE_SAMESITE = "None"
 # Application definition
 
 INSTALLED_APPS = [
-    'authorization',
-    'users',
-    'talent',
+    'accounts',
+    'asobu',
     'base',
     'miru',
-    'asobu',
+    'talent',
     'corsheaders',
-    'graphene_django',
     'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -166,7 +164,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'main.rest_middleware.RESTAuthMiddleware',
+        'main.rest.middleware.RESTAuthMiddleware',
     )
 }
 
@@ -177,9 +175,9 @@ SIMPLE_JWT = {
     "LEEWAY": 30
 }
 
-GRAPHENE = {
-    'SCHEMA': 'main.schema.schema',
-    'MIDDLEWARE': [
-        'main.graphql_middleware.GrapheneAuthMiddleware'
-    ]
-}
+# GRAPHENE = {
+#     'SCHEMA': 'main.schema.schema',
+#     'MIDDLEWARE': [
+#         'main.graphql_middleware.GrapheneAuthMiddleware'
+#     ]
+# }
