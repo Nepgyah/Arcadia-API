@@ -22,6 +22,253 @@
     }
 },
 {
+    "model": "asobu.gamecompany",
+    "pk": 1,
+    "fields": {
+        "name": "CyGames",
+        "slug": "cygames"
+    }
+},
+{
+    "model": "asobu.gamecompany",
+    "pk": 2,
+    "fields": {
+        "name": "NEXON Games",
+        "slug": "nexon-games"
+    }
+},
+{
+    "model": "asobu.gamecompany",
+    "pk": 3,
+    "fields": {
+        "name": "Hoyoverse",
+        "slug": "hoyoverse"
+    }
+},
+{
+    "model": "asobu.gamecompany",
+    "pk": 4,
+    "fields": {
+        "name": "Hypergryph",
+        "slug": "hypergryph"
+    }
+},
+{
+    "model": "asobu.gamecompany",
+    "pk": 5,
+    "fields": {
+        "name": "Gryphline",
+        "slug": "gryphline"
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 1,
+    "fields": {
+        "title": "Uma Musume: Pretty Derby",
+        "score": 9.5,
+        "users": 0,
+        "slug": "uma-musume-pretty-derby",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-05-29T04:59:51.476Z",
+        "updated_at": "2026-06-07T22:38:21.169Z",
+        "franchise": 1,
+        "bg_image_path": null,
+        "status": 2,
+        "esrb_rating": 5,
+        "pegi_rating": 5,
+        "prev_game": null,
+        "trailer_url": null,
+        "steam_id": null,
+        "tags": [],
+        "genres": [],
+        "developers": [
+            1
+        ],
+        "publishers": [
+            1
+        ]
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 2,
+    "fields": {
+        "title": "Blue Archive",
+        "score": 8.9,
+        "users": 0,
+        "slug": "blue-archive",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-05-29T05:01:45.691Z",
+        "updated_at": "2026-06-07T22:39:04.966Z",
+        "franchise": null,
+        "bg_image_path": null,
+        "status": 0,
+        "esrb_rating": 2,
+        "pegi_rating": 3,
+        "prev_game": null,
+        "trailer_url": null,
+        "steam_id": null,
+        "tags": [],
+        "genres": [
+            2,
+            3
+        ],
+        "developers": [
+            2
+        ],
+        "publishers": [
+            2
+        ]
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 3,
+    "fields": {
+        "title": "Honkai Star Rail",
+        "score": 9.7,
+        "users": 0,
+        "slug": "honkai-star-rail",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-05-29T05:02:44.385Z",
+        "updated_at": "2026-06-04T21:14:45.782Z",
+        "franchise": 2,
+        "bg_image_path": "",
+        "status": 2,
+        "esrb_rating": 5,
+        "pegi_rating": 5,
+        "prev_game": null,
+        "trailer_url": "https://www.youtube.com/embed/Ye4qk1SW9TE?si=WOmWEjmV6CsbL3Ye",
+        "steam_id": null,
+        "tags": [],
+        "genres": [],
+        "developers": [
+            3
+        ],
+        "publishers": [
+            3
+        ]
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 4,
+    "fields": {
+        "title": "Genshin Impact",
+        "score": 8.6,
+        "users": 0,
+        "slug": "genshin-impact",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-05-29T05:03:00.842Z",
+        "updated_at": "2026-05-29T05:03:00.842Z",
+        "franchise": 2,
+        "bg_image_path": null,
+        "status": 0,
+        "esrb_rating": 5,
+        "pegi_rating": 5,
+        "prev_game": null,
+        "trailer_url": null,
+        "steam_id": null,
+        "tags": [],
+        "genres": [],
+        "developers": [
+            3
+        ],
+        "publishers": [
+            3
+        ]
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 5,
+    "fields": {
+        "title": "Zenless Zone Zero",
+        "score": 8.4,
+        "users": 0,
+        "slug": "zenless-zone-zero",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-05-29T05:03:26.460Z",
+        "updated_at": "2026-05-29T05:03:26.460Z",
+        "franchise": 2,
+        "bg_image_path": null,
+        "status": 0,
+        "esrb_rating": 5,
+        "pegi_rating": 5,
+        "prev_game": null,
+        "trailer_url": null,
+        "steam_id": null,
+        "tags": [],
+        "genres": [],
+        "developers": [
+            3
+        ],
+        "publishers": [
+            3
+        ]
+    }
+},
+{
+    "model": "asobu.game",
+    "pk": 6,
+    "fields": {
+        "title": "Arknights Endfield",
+        "score": 8.8,
+        "users": 0,
+        "slug": "arknights-endfield",
+        "summary": "A synopsis will be written later.",
+        "created_at": "2026-05-29T05:04:30.647Z",
+        "updated_at": "2026-05-29T05:04:30.647Z",
+        "franchise": null,
+        "bg_image_path": null,
+        "status": 0,
+        "esrb_rating": 5,
+        "pegi_rating": 5,
+        "prev_game": null,
+        "trailer_url": null,
+        "steam_id": null,
+        "tags": [],
+        "genres": [],
+        "developers": [
+            4
+        ],
+        "publishers": [
+            5
+        ]
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 1,
+    "fields": {
+        "game": 3,
+        "character": 72,
+        "is_playable": true,
+        "role": 0
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 2,
+    "fields": {
+        "game": 1,
+        "character": 12,
+        "is_playable": true,
+        "role": 1
+    }
+},
+{
+    "model": "asobu.gamecharacter",
+    "pk": 3,
+    "fields": {
+        "game": 2,
+        "character": 148,
+        "is_playable": true,
+        "role": 0
+    }
+},
+{
     "model": "base.genre",
     "pk": 1,
     "fields": {
@@ -43,12 +290,54 @@
     }
 },
 {
+    "model": "base.genre",
+    "pk": 18,
+    "fields": {
+        "name": "Comedy"
+    }
+},
+{
+    "model": "base.genre",
+    "pk": 19,
+    "fields": {
+        "name": "Music"
+    }
+},
+{
+    "model": "base.genre",
+    "pk": 20,
+    "fields": {
+        "name": "Action"
+    }
+},
+{
     "model": "base.franchise",
     "pk": 1,
     "fields": {
         "name": "Uma Musume",
         "slug": "uma-musume",
-        "socials": {}
+        "socials": {
+            "reddit": {
+                "url": "https://www.reddit.com/r/UmaMusume/",
+                "handle": "r/UmaMusume"
+            },
+            "twitter": {
+                "url": "https://x.com/umamusume_eng?lang=en",
+                "handle": "@umamusume_eng"
+            },
+            "website": {
+                "url": "https://umamusume.com",
+                "handle": "Umamusume.com"
+            },
+            "youtube": {
+                "url": "https://www.youtube.com/@umamusume_eng",
+                "handle": "Umamusume: Pretty Derby"
+            },
+            "instagram": {
+                "url": "https://www.instagram.com/cygames_eng/?hl=en",
+                "handle": "cygames_eng"
+            }
+        }
     }
 },
 {
@@ -157,29 +446,101 @@
     }
 },
 {
+    "model": "miru.animecompany",
+    "pk": 34,
+    "fields": {
+        "name": "CloverWorks",
+        "slug": "cloverworks"
+    }
+},
+{
+    "model": "miru.animecompany",
+    "pk": 35,
+    "fields": {
+        "name": "Aniplex",
+        "slug": "aniplex"
+    }
+},
+{
+    "model": "miru.animecompany",
+    "pk": 36,
+    "fields": {
+        "name": "Houbunsha",
+        "slug": "houbunsha"
+    }
+},
+{
+    "model": "miru.animecompany",
+    "pk": 37,
+    "fields": {
+        "name": "Production IMS",
+        "slug": "production-ims"
+    }
+},
+{
+    "model": "miru.animecompany",
+    "pk": 38,
+    "fields": {
+        "name": "Half H.P Studio",
+        "slug": "half-hp-studio"
+    }
+},
+{
+    "model": "miru.animecompany",
+    "pk": 39,
+    "fields": {
+        "name": "Asmik Ace",
+        "slug": "asmik-ace"
+    }
+},
+{
+    "model": "miru.animecompany",
+    "pk": 40,
+    "fields": {
+        "name": "Contents Seed",
+        "slug": "contents-seed"
+    }
+},
+{
+    "model": "miru.animecompany",
+    "pk": 41,
+    "fields": {
+        "name": "Nippon BS Broadcasting",
+        "slug": "nippon-bs-broadcasting"
+    }
+},
+{
+    "model": "miru.animecompany",
+    "pk": 42,
+    "fields": {
+        "name": "KADOKAWA",
+        "slug": "kadokawa"
+    }
+},
+{
     "model": "miru.anime",
     "pk": 1,
     "fields": {
         "title": "Umamusume: Pretty Derby",
-        "score": 0.0,
-        "users": 0,
+        "score": 8.1,
+        "users": 71238,
         "slug": "umamusume-pretty-derby",
         "summary": "In a world very much like our own, great race horses of the past have a chance to be reborn as \"horse girls\"—girls with the ears and tails of horses as well as their speed and endurance. The best of these horse girls go to train at Tokyo's Tracen Academy, hopefully moving on to fame and fortune as both racers and idols.<br><br>\nSpecial Week, a high school horse girl from the countryside, has just transferred to Tracen, and she's determined to fulfill her promise to her mother to become the best horse girl in Japan. On her way to school, she takes a pit stop at the race track and instantly falls in love with Silence Suzuka's style, becoming determined to race on the same team as her.<br><br>\n(Source: Anime News Network) ",
         "created_at": "2026-05-20T20:07:54.749Z",
-        "franchise": null,
+        "franchise": 1,
         "bg_image_path": null,
-        "title_native": null,
+        "title_native": "ウマ娘 プリティーダービー",
         "title_romaji": "Uma Musume: Pretty Derby",
         "other_titles": [],
         "season": 1,
         "season_year": 2018,
         "type": 0,
-        "status": 0,
+        "status": 2,
         "rating": 0,
         "episode_count": 13,
         "hashtag": "#アニメウマ娘 #ウマ娘",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98514-0uYzay4a1iiL.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx98514-mEh3Gl58AWgc.jpg",
+        "banner_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98514-0uYzay4a1iiL.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx98514-mEh3Gl58AWgc.jpg",
         "prev_anime": null,
         "airing_start_date": "2018-04-02",
         "airing_end_date": "2018-06-18",
@@ -204,25 +565,25 @@
     "pk": 2,
     "fields": {
         "title": "Umamusume: Pretty Derby Season 2",
-        "score": 0.0,
-        "users": 0,
-        "slug": "umamusume-pretty-derby-season-2-2",
+        "score": 9.3,
+        "users": 654327,
+        "slug": "umamusume-pretty-derby-season-2",
         "summary": "The second season of <i>Uma Musume: Pretty Derby</i>.\r\n<br><br>\r\nAll eyes are on Toukai Teiou as she takes on the Japanese Derby, ready to gallop in Symboli Rudolf's footsteps and become an undefeated Triple Crown Horse Girl. The stands are full. The track is set. It's time to see which horse girl fortune favors!<br>\r\n<br>\r\n(Source: Crunchyroll, edited)",
         "created_at": "2026-05-20T20:08:20.954Z",
-        "franchise": null,
+        "franchise": 1,
         "bg_image_path": null,
-        "title_native": null,
+        "title_native": "ウマ娘 プリティーダービー Season 2",
         "title_romaji": "Uma Musume: Pretty Derby Season 2",
         "other_titles": [],
         "season": 0,
         "season_year": 2021,
         "type": 0,
-        "status": 0,
+        "status": 1,
         "rating": 0,
         "episode_count": 13,
         "hashtag": "#アニメウマ娘 #ウマ娘",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/124223-BY20WcVyVHEA.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx124223-XMOEUPopjtrI.png",
+        "banner_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/124223-BY20WcVyVHEA.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx124223-XMOEUPopjtrI.png",
         "prev_anime": 1,
         "airing_start_date": "2021-01-05",
         "airing_end_date": "2021-03-30",
@@ -248,14 +609,14 @@
     "pk": 3,
     "fields": {
         "title": "Umamusume: Pretty Derby Season 3",
-        "score": 0.0,
-        "users": 0,
-        "slug": "umamusume-pretty-derby-season-3-2",
+        "score": 8.7,
+        "users": 512367,
+        "slug": "umamusume-pretty-derby-season-3",
         "summary": "The third season of <i>Uma Musume: Pretty Derby</i>.",
         "created_at": "2026-05-20T20:08:39.182Z",
-        "franchise": null,
+        "franchise": 1,
         "bg_image_path": null,
-        "title_native": null,
+        "title_native": "ウマ娘 プリティーダービー Season 3",
         "title_romaji": "Uma Musume: Pretty Derby Season 3",
         "other_titles": [],
         "season": 3,
@@ -265,8 +626,8 @@
         "rating": 0,
         "episode_count": 13,
         "hashtag": "#アニメウマ娘 #ウマ娘3期",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/156632-VZdtKjhrnn4m.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx156632-QnKMOaso3n2y.jpg",
+        "banner_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/156632-VZdtKjhrnn4m.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx156632-QnKMOaso3n2y.jpg",
         "prev_anime": 2,
         "airing_start_date": "2023-10-05",
         "airing_end_date": "2023-12-28",
@@ -277,10 +638,10 @@
             3
         ],
         "producer": [
-            8,
-            9,
             3,
-            6
+            6,
+            8,
+            9
         ],
         "studio": [
             5
@@ -292,12 +653,12 @@
     "pk": 4,
     "fields": {
         "title": "Umamusume: Cinderella Gray",
-        "score": 0.0,
-        "users": 0,
+        "score": 9.5,
+        "users": 345613,
         "slug": "umamusume-cinderella-gray",
         "summary": "Unbeknownst to those around her in the destitute countryside of Kasamatsu, the staggering potential of this ashen-haired \"Beast” will soon rock Japan with her feet and catapult her to the national stage—down the path of a legend. <br><br>\nFollow Oguri Cap and her insatiable appetite as the starting gates open on this Umamusume's hot-blooded Cinderella story! <br><br>\n\n(Source: It's Anime powered by REMOW, edited)",
         "created_at": "2026-05-20T20:09:19.646Z",
-        "franchise": null,
+        "franchise": 1,
         "bg_image_path": null,
         "title_native": null,
         "title_romaji": "Uma Musume: Cinderella Gray",
@@ -305,12 +666,12 @@
         "season": 1,
         "season_year": 2025,
         "type": 0,
-        "status": 0,
+        "status": 2,
         "rating": 0,
         "episode_count": 13,
         "hashtag": "#シングレ #アニメウマ娘",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/180516-qxKVBsTW6Czx.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx180516-lebpoKLkw6E3.jpg",
+        "banner_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/180516-qxKVBsTW6Czx.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx180516-lebpoKLkw6E3.jpg",
         "prev_anime": null,
         "airing_start_date": "2025-04-06",
         "airing_end_date": "2025-06-29",
@@ -320,9 +681,9 @@
             3
         ],
         "producer": [
-            11,
-            10,
             3,
+            10,
+            11,
             12
         ],
         "studio": [
@@ -335,12 +696,12 @@
     "pk": 5,
     "fields": {
         "title": "Umamusume: Cinderella Gray 2nd Cour",
-        "score": 0.0,
-        "users": 0,
-        "slug": "umamusume-cinderella-gray-2nd-cour-2",
+        "score": 9.8,
+        "users": 564261,
+        "slug": "umamusume-cinderella-gray-2nd-cour",
         "summary": "The second half of <i>Umamusume: Cinderella Gray</i>. <br><br>\r\n\r\nHailing from the humble countryside, Oguri Cap has turned the racing world on its head. Her rampage through the national race scene seemed unstoppable... until it wasn't. Tamamo Cross, the current peak of racing, has bested the Beast and declared Oguri Cap her rival. <br><br>\r\n\r\nBut Oguri Cap can't afford to keep her attention on Tamamo Cross alone. One by one, racers from all over the world arrive in Japan, ready to demonstrate their own prowess. Up against the best the world has to offer, our ashen racer will need to reach beyond her limits if she wants to stand a chance… Keep those eyes peeled—a Cinderella story full of twists and turns lies ahead!<br><br>\r\n\r\n(Source: It's Anime powered by REMOW)",
         "created_at": "2026-05-20T20:09:28.647Z",
-        "franchise": null,
+        "franchise": 1,
         "bg_image_path": null,
         "title_native": null,
         "title_romaji": "Uma Musume: Cinderella Gray Part 2",
@@ -348,12 +709,12 @@
         "season": 3,
         "season_year": 2025,
         "type": 0,
-        "status": 0,
+        "status": 1,
         "rating": 0,
         "episode_count": 10,
         "hashtag": "#シングレ #アニメウマ娘",
-        "banner_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/195240-HcuZvXcdT5aX.jpg",
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx195240-hKcmllV6YHQT.jpg",
+        "banner_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/195240-HcuZvXcdT5aX.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx195240-hKcmllV6YHQT.jpg",
         "prev_anime": 4,
         "airing_start_date": "2025-10-05",
         "airing_end_date": "2025-12-21",
@@ -363,13 +724,101 @@
             3
         ],
         "producer": [
-            11,
-            10,
             3,
+            10,
+            11,
             12
         ],
         "studio": [
             4
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 20,
+    "fields": {
+        "title": "BOCCHI THE ROCK!",
+        "score": 0.0,
+        "users": 0,
+        "slug": "bocchi-the-rock",
+        "summary": "Hitori Gotou, “Bocchi-chan,” is a girl who’s so introverted and shy around people that she’d always start her conversations with “Ah...”<br>\n<br>\nDuring her middle school years, she started playing the guitar, wanting to join a band because she thought it could be an opportunity for even someone shy like her to also shine. But because she had no friends, she ended up practicing guitar for six hours every day all by herself. After becoming a skilled guitar player, she uploaded videos of herself playing the guitar to the internet under the name “Guitar Hero” and fantasized about performing at her school’s cultural festival concert. But not only could she not find any bandmates, before she knew it, she was in high school and still wasn’t able to make a single friend!<br>\n<br>\nShe was really close to becoming a shut-in, but one day, Nijika Ijichi, the drummer in Kessoku Band, reached out to her. And because of that, her everyday life started to change little by little...<br>\n<br>\n(Source: Crunchyroll)",
+        "created_at": "2026-06-07T03:31:04.910Z",
+        "franchise": null,
+        "bg_image_path": null,
+        "title_native": null,
+        "title_romaji": "Bocchi the Rock!",
+        "other_titles": [],
+        "season": 3,
+        "season_year": 2022,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 12,
+        "hashtag": "#ぼっち・ざ・ろっく",
+        "banner_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/130003-5F90a7BtsPQN.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx130003-HTDmeL4RGeJ4.png",
+        "prev_anime": null,
+        "airing_start_date": "2022-10-09",
+        "airing_end_date": "2022-12-25",
+        "updated_at": "2026-06-07T03:31:04.910Z",
+        "genres": [
+            2,
+            18,
+            19
+        ],
+        "producer": [
+            35,
+            36
+        ],
+        "studio": [
+            34
+        ]
+    }
+},
+{
+    "model": "miru.anime",
+    "pk": 22,
+    "fields": {
+        "title": "High School Fleet",
+        "score": 0.0,
+        "users": 0,
+        "slug": "high-school-fleet",
+        "summary": "A hundred years after catastrophic shifts in tectonic plates caused most of its area to submerge, Japan now thrives as a maritime nation. High functioning cities line the coasts of Japan, and well developed sea routes are defended by specialized naval ships. The marine industry is flourishing, and young girls are eager to join the Blue Mermaids—highly skilled women who devote their lives to protecting the seas.<br>\n<br>\nAfter some time apart, childhood friends Akeno Misaki and Moeka China are reunited at Yokosuka Girls' Marine High School. Here they are joined by others who share their dream of becoming Blue Mermaids. Soon, training exercises commence, with Akeno and Moeka being put in charge of their own ships and crew. Everything is progressing smoothly for Akeno as she settles into her role as captain and builds camaraderie between her fellow crew members aboard the Harekaze, a destroyer ship. However, unexpected engine and navigation failures soon leave their ship stranded and the crew in danger.<br>\n<br>\n<i>High School Fleet</i> follows the Harekaze's valiant crew as they navigate treacherous waters and other obstacles on their quest to become fully-fledged Blue Mermaids.<br>\n<br>\n(Source: MAL Rewrite)",
+        "created_at": "2026-06-07T04:48:08.240Z",
+        "franchise": null,
+        "bg_image_path": null,
+        "title_native": null,
+        "title_romaji": "High School Fleet",
+        "other_titles": [],
+        "season": 1,
+        "season_year": 2016,
+        "type": 0,
+        "status": 0,
+        "rating": 0,
+        "episode_count": 12,
+        "hashtag": "#はいふり",
+        "banner_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n21316-A8EQwfJrmvUl.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21316-pqjWmGuDRxwL.jpg",
+        "prev_anime": null,
+        "airing_start_date": "2016-04-10",
+        "airing_end_date": "2016-06-26",
+        "updated_at": "2026-06-07T04:48:08.240Z",
+        "genres": [
+            18,
+            2,
+            20
+        ],
+        "producer": [
+            35,
+            38,
+            39,
+            40,
+            41,
+            42
+        ],
+        "studio": [
+            37
         ]
     }
 },
@@ -421,6 +870,76 @@
         "anilist_id": 195240,
         "rank_score": 50,
         "rank_popular": null
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 8,
+    "fields": {
+        "anime": 20,
+        "anilist_id": 130003,
+        "rank_score": 36,
+        "rank_popular": 177
+    }
+},
+{
+    "model": "miru.anilistdata",
+    "pk": 9,
+    "fields": {
+        "anime": 22,
+        "anilist_id": 21316,
+        "rank_score": null,
+        "rank_popular": null
+    }
+},
+{
+    "model": "miru.myanimelistdata",
+    "pk": 1,
+    "fields": {
+        "anime": 1,
+        "mal_id": 35249,
+        "rank_score": 2792,
+        "rank_popular": 1221
+    }
+},
+{
+    "model": "miru.myanimelistdata",
+    "pk": 2,
+    "fields": {
+        "anime": 2,
+        "mal_id": 42941,
+        "rank_score": 309,
+        "rank_popular": 2217
+    }
+},
+{
+    "model": "miru.myanimelistdata",
+    "pk": 3,
+    "fields": {
+        "anime": 3,
+        "mal_id": 53526,
+        "rank_score": 1433,
+        "rank_popular": 3088
+    }
+},
+{
+    "model": "miru.myanimelistdata",
+    "pk": 4,
+    "fields": {
+        "anime": 4,
+        "mal_id": 59636,
+        "rank_score": 127,
+        "rank_popular": 2348
+    }
+},
+{
+    "model": "miru.myanimelistdata",
+    "pk": 5,
+    "fields": {
+        "anime": 5,
+        "mal_id": 61930,
+        "rank_score": 82,
+        "rank_popular": 3055
     }
 },
 {
@@ -1549,6 +2068,456 @@
     }
 },
 {
+    "model": "miru.animecharacter",
+    "pk": 152,
+    "fields": {
+        "anime": 20,
+        "character": 98,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 153,
+    "fields": {
+        "anime": 20,
+        "character": 99,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 154,
+    "fields": {
+        "anime": 20,
+        "character": 100,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 155,
+    "fields": {
+        "anime": 20,
+        "character": 101,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 156,
+    "fields": {
+        "anime": 20,
+        "character": 102,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 157,
+    "fields": {
+        "anime": 20,
+        "character": 103,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 158,
+    "fields": {
+        "anime": 20,
+        "character": 104,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 159,
+    "fields": {
+        "anime": 20,
+        "character": 105,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 160,
+    "fields": {
+        "anime": 20,
+        "character": 106,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 161,
+    "fields": {
+        "anime": 20,
+        "character": 107,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 162,
+    "fields": {
+        "anime": 20,
+        "character": 108,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 163,
+    "fields": {
+        "anime": 20,
+        "character": 109,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 164,
+    "fields": {
+        "anime": 20,
+        "character": 110,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 165,
+    "fields": {
+        "anime": 20,
+        "character": 111,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 166,
+    "fields": {
+        "anime": 20,
+        "character": 112,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 167,
+    "fields": {
+        "anime": 20,
+        "character": 113,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 168,
+    "fields": {
+        "anime": 20,
+        "character": 114,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 169,
+    "fields": {
+        "anime": 20,
+        "character": 115,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 170,
+    "fields": {
+        "anime": 20,
+        "character": 116,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 171,
+    "fields": {
+        "anime": 20,
+        "character": 117,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 172,
+    "fields": {
+        "anime": 20,
+        "character": 118,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 173,
+    "fields": {
+        "anime": 20,
+        "character": 119,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 174,
+    "fields": {
+        "anime": 20,
+        "character": 120,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 175,
+    "fields": {
+        "anime": 20,
+        "character": 121,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 176,
+    "fields": {
+        "anime": 20,
+        "character": 122,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 177,
+    "fields": {
+        "anime": 22,
+        "character": 123,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 178,
+    "fields": {
+        "anime": 22,
+        "character": 124,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 179,
+    "fields": {
+        "anime": 22,
+        "character": 125,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 180,
+    "fields": {
+        "anime": 22,
+        "character": 126,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 181,
+    "fields": {
+        "anime": 22,
+        "character": 127,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 182,
+    "fields": {
+        "anime": 22,
+        "character": 128,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 183,
+    "fields": {
+        "anime": 22,
+        "character": 129,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 184,
+    "fields": {
+        "anime": 22,
+        "character": 130,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 185,
+    "fields": {
+        "anime": 22,
+        "character": 131,
+        "role": 0
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 186,
+    "fields": {
+        "anime": 22,
+        "character": 132,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 187,
+    "fields": {
+        "anime": 22,
+        "character": 133,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 188,
+    "fields": {
+        "anime": 22,
+        "character": 134,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 189,
+    "fields": {
+        "anime": 22,
+        "character": 135,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 190,
+    "fields": {
+        "anime": 22,
+        "character": 136,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 191,
+    "fields": {
+        "anime": 22,
+        "character": 137,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 192,
+    "fields": {
+        "anime": 22,
+        "character": 138,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 193,
+    "fields": {
+        "anime": 22,
+        "character": 139,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 194,
+    "fields": {
+        "anime": 22,
+        "character": 140,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 195,
+    "fields": {
+        "anime": 22,
+        "character": 141,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 196,
+    "fields": {
+        "anime": 22,
+        "character": 142,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 197,
+    "fields": {
+        "anime": 22,
+        "character": 143,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 198,
+    "fields": {
+        "anime": 22,
+        "character": 144,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 199,
+    "fields": {
+        "anime": 22,
+        "character": 145,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 200,
+    "fields": {
+        "anime": 22,
+        "character": 146,
+        "role": 1
+    }
+},
+{
+    "model": "miru.animecharacter",
+    "pk": 201,
+    "fields": {
+        "anime": 22,
+        "character": 147,
+        "role": 1
+    }
+},
+{
     "model": "miru.animeepisode",
     "pk": 1,
     "fields": {
@@ -2013,6 +2982,150 @@
         "description": "A description will be written later",
         "anime": 3,
         "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 40,
+    "fields": {
+        "number": 1,
+        "title": "Episode #01",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/03c3fffe0ece1a5e47dc2b8a480944e01459975937_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 41,
+    "fields": {
+        "number": 2,
+        "title": "In a Pinch During Pursuit!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d94811c57dfc282813074aa18ac9edae1460582631_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 42,
+    "fields": {
+        "number": 3,
+        "title": "In a Pinch in Pajamas!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b599901965192f507d4c124021826b0f1461359536_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 43,
+    "fields": {
+        "number": 4,
+        "title": "Maidens in a Pinch!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/7fa7b0c17ea9b1ee54a036cbdfe7760c1461894376_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 44,
+    "fields": {
+        "number": 5,
+        "title": "Pinched by the Musashi!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9b84527e51b03a0506254466a7c4d6481462472719_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 45,
+    "fields": {
+        "number": 6,
+        "title": "In a Mined Pinch!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/a8b93c6ae7090fd836487c99b8eddf0b1463157909_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 46,
+    "fields": {
+        "number": 7,
+        "title": "In a Stormy Pinch!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/88584acfc0d67a89e24d84fe9a9174c51463790581_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 47,
+    "fields": {
+        "number": 8,
+        "title": "In a Pinch with the Hiei!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/dcd5ebb11ccd714a62aab62d224dd80c1464397402_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 48,
+    "fields": {
+        "number": 9,
+        "title": "Mina in a Pinch!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/477430b75eb1c41bea814b7dc673c6e41465017852_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 49,
+    "fields": {
+        "number": 10,
+        "title": "Happy at the Equator Festival!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/ae56dda5d170caf32b5bdcd3fb31f5501465628609_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 50,
+    "fields": {
+        "number": 11,
+        "title": "In a Pinch with a Battleship's Big Cannon!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/cebab3c6262c16e6f40b810f7b66145c1466235974_full.jpg",
+        "url": null
+    }
+},
+{
+    "model": "miru.animeepisode",
+    "pk": 51,
+    "fields": {
+        "number": 12,
+        "title": "In a Pinch with the Last Battle!",
+        "description": "A description will be written later",
+        "anime": 22,
+        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/722cd45d94e03e2faa19dc5d26891df61466840122_full.jpg",
         "url": null
     }
 },
@@ -2710,6 +3823,558 @@
         "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n105013-DffN0XN2Zw7G.png",
         "first_name": "Mutsumi",
         "last_name": "Tamura"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 59,
+    "fields": {
+        "slug": "yoshino-aoyama",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118475-19IqPJRpa08T.png",
+        "first_name": "Yoshino",
+        "last_name": "Aoyama"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 60,
+    "fields": {
+        "slug": "sayumi-suzushiro",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n126963-GnhNcLWFeKmy.png",
+        "first_name": "Sayumi",
+        "last_name": "Suzushiro"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 61,
+    "fields": {
+        "slug": "saku-mizuno",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n213951-EQGfRStCAJ2Q.jpg",
+        "first_name": "Saku",
+        "last_name": "Mizuno"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 62,
+    "fields": {
+        "slug": "ikumi-hasegawa",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n132768-r4FwpBpHnRtZ.png",
+        "first_name": "Ikumi",
+        "last_name": "Hasegawa"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 63,
+    "fields": {
+        "slug": "maaya-uchida",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n108639-LLrR4WptCh5s.png",
+        "first_name": "Maaya",
+        "last_name": "Uchida"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 64,
+    "fields": {
+        "slug": "kotori-koiwai",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n109131-IS92Cw9ldM2x.png",
+        "first_name": "Kotori",
+        "last_name": "Koiwai"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 65,
+    "fields": {
+        "slug": "junji-majima",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95820-5Fuosf1ljdSc.png",
+        "first_name": "Junji",
+        "last_name": "Majima"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 66,
+    "fields": {
+        "slug": "rie-suegara",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118402-GJUhYzBuQ4n8.png",
+        "first_name": "Rie",
+        "last_name": "Suegara"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 67,
+    "fields": {
+        "slug": "misaki-watada",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n152199-VVKAzgSZLFqX.png",
+        "first_name": "Misaki",
+        "last_name": "Watada"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 68,
+    "fields": {
+        "slug": "hinaki-yano",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n143887-M4a4hO3mxDm6.png",
+        "first_name": "Hinaki",
+        "last_name": "Yano"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 69,
+    "fields": {
+        "slug": "yume-miyamoto",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n104510-hB8YLsPRLNKq.png",
+        "first_name": "Yume",
+        "last_name": "Miyamoto"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 70,
+    "fields": {
+        "slug": "youhei-azakami",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n109155-kQHazg0bG4Pv.png",
+        "first_name": "Youhei",
+        "last_name": "Azakami"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 71,
+    "fields": {
+        "slug": "anna-nagase",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n182100-buLXSv62GTH2.png",
+        "first_name": "Anna",
+        "last_name": "Nagase"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 72,
+    "fields": {
+        "slug": "kouseki-kogure",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n289555-LGRtHwjanQAG.png",
+        "first_name": "Kouseki",
+        "last_name": "Kogure"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 73,
+    "fields": {
+        "slug": "hayato-komiya",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n281924-0L83nTRo3Hen.jpg",
+        "first_name": "Hayato",
+        "last_name": "Komiya"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 74,
+    "fields": {
+        "slug": "takeo-ootsuka",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n128426-uB8KFqVLbogF.png",
+        "first_name": "Takeo",
+        "last_name": "Ootsuka"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 75,
+    "fields": {
+        "slug": "natsumi-kawaida",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n151445-3qF3EB619d74.png",
+        "first_name": "Natsumi",
+        "last_name": "Kawaida"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 76,
+    "fields": {
+        "slug": "megumi-yamaguchi",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n115416-VZfvKTYsFO4r.png",
+        "first_name": "Megumi",
+        "last_name": "Yamaguchi"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 77,
+    "fields": {
+        "slug": "yuu-wakabayashi",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n203135-bRzDAbkRAKrz.png",
+        "first_name": "Yuu",
+        "last_name": "Wakabayashi"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 78,
+    "fields": {
+        "slug": "emiko-takeuchi",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n121022-DBivYQLuvknD.jpg",
+        "first_name": "Emiko",
+        "last_name": "Takeuchi"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 79,
+    "fields": {
+        "slug": "reo-osanai",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n289560-2jOMhB8wlvJs.png",
+        "first_name": "Reo",
+        "last_name": "Osanai"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 80,
+    "fields": {
+        "slug": "noriaki-kanze",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n152907-k0MSLzTIXYOj.png",
+        "first_name": "Noriaki",
+        "last_name": "Kanze"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 81,
+    "fields": {
+        "slug": "yasunori-masutani",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/6241.jpg",
+        "first_name": "Yasunori",
+        "last_name": "Masutani"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 82,
+    "fields": {
+        "slug": "shiina-natsukawa",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118818-myVmP9PWlh78.png",
+        "first_name": "Shiina",
+        "last_name": "Natsukawa"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 83,
+    "fields": {
+        "slug": "sora-amamiya",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n116517-NQh6ewlCwzBN.jpg",
+        "first_name": "Sora",
+        "last_name": "Amamiya"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 84,
+    "fields": {
+        "slug": "natsumi-takamori",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n106659-3LfNtHDY3P0Z.png",
+        "first_name": "Natsumi",
+        "last_name": "Takamori"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 85,
+    "fields": {
+        "slug": "natsuki-aikawa",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/2123.jpg",
+        "first_name": "Natsuki",
+        "last_name": "Aikawa"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 86,
+    "fields": {
+        "slug": "nozomi-furuki",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n107388-uNbc6OR8Mlzz.png",
+        "first_name": "Nozomi",
+        "last_name": "Furuki"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 87,
+    "fields": {
+        "slug": "atsumi-tanezaki",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112215-kfABGD8W2YSJ.jpg",
+        "first_name": "Atsumi",
+        "last_name": "Tanezaki"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 88,
+    "fields": {
+        "slug": "yuuko-kurose",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24860-2Nme5MY2ETkn.jpg",
+        "first_name": "Yuuko",
+        "last_name": "Kurose"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 89,
+    "fields": {
+        "slug": "yurika-kubo",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112209-6rgze0vZlnG6.png",
+        "first_name": "Yurika",
+        "last_name": "Kubo"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 90,
+    "fields": {
+        "slug": "miharu-sawada",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24861-Vf0NTp8HMHSw.jpg",
+        "first_name": "Miharu",
+        "last_name": "Sawada"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 91,
+    "fields": {
+        "slug": "hitomi-kikuchi",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24862-VdJUW2ro2JZH.jpg",
+        "first_name": "Hitomi",
+        "last_name": "Kikuchi"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 92,
+    "fields": {
+        "slug": "minami-tanaka",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118473-Zc8ufQpELoU3.jpg",
+        "first_name": "Minami",
+        "last_name": "Tanaka"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 93,
+    "fields": {
+        "slug": "rui-tanabe",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118444-ftV3GueuH2WQ.png",
+        "first_name": "Rui",
+        "last_name": "Tanabe"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 94,
+    "fields": {
+        "slug": "sakura-nakamura",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n111323-3rH4zdQLTjue.png",
+        "first_name": "Sakura",
+        "last_name": "Nakamura"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 95,
+    "fields": {
+        "slug": "chisato-satsuki",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119858-toSC2ze1LkdD.png",
+        "first_name": "Chisato",
+        "last_name": "Satsuki"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 96,
+    "fields": {
+        "slug": "emi-miyajima",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119864-BwYLj2idbpEs.png",
+        "first_name": "Emi",
+        "last_name": "Miyajima"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 97,
+    "fields": {
+        "slug": "nanami-yamashita",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118472-YEwaeltqQmPc.jpg",
+        "first_name": "Nanami",
+        "last_name": "Yamashita"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 98,
+    "fields": {
+        "slug": "akane-fujita",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n116155-5H5Dqe2oQyId.png",
+        "first_name": "Akane",
+        "last_name": "Fujita"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 99,
+    "fields": {
+        "slug": "yuu-kobayashi",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95034-AwobjrcmkMi9.png",
+        "first_name": "Yuu",
+        "last_name": "Kobayashi"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 100,
+    "fields": {
+        "slug": "ayaka-shimizu",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n104108-UXiBJxnycHhL.png",
+        "first_name": "Ayaka",
+        "last_name": "Shimizu"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 101,
+    "fields": {
+        "slug": "sanae-fuku",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24857-HPP9DXIXYdfi.jpg",
+        "first_name": "Sanae",
+        "last_name": "Fuku"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 102,
+    "fields": {
+        "slug": "ari-ozawa",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118663-fFzQqJDtYNdA.png",
+        "first_name": "Ari",
+        "last_name": "Ozawa"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 103,
+    "fields": {
+        "slug": "sayaka-kaneko",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119856-3u3nVdXKFQzL.png",
+        "first_name": "Sayaka",
+        "last_name": "Kaneko"
+    }
+},
+{
+    "model": "talent.voiceactor",
+    "pk": 104,
+    "fields": {
+        "slug": "hiyori-nitta",
+        "bio": "A bio will be written later",
+        "socials": null,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118794-6uFLYPk64yL2.png",
+        "first_name": "Hiyori",
+        "last_name": "Nitta"
     }
 },
 {
@@ -3562,6 +5227,630 @@
         "slug": "yamano-thousand",
         "voice_actor": 58,
         "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b377093-dQgNveHDW0ol.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 72,
+    "fields": {
+        "first_name": "Himeko",
+        "last_name": "Murata",
+        "nicknames": [],
+        "slug": "himeko-murata",
+        "voice_actor": null,
+        "cover_img_url": "https://teamd2x.sirv.com/character/72/main.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 98,
+    "fields": {
+        "first_name": "Hitori",
+        "last_name": "Gotou",
+        "nicknames": [],
+        "slug": "hitori-gotou",
+        "voice_actor": 59,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b257562-Ru35NYPfsqhY.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 99,
+    "fields": {
+        "first_name": "Nijika",
+        "last_name": "Ijichi",
+        "nicknames": [],
+        "slug": "nijika-ijichi",
+        "voice_actor": 60,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b261674-a8tJYvtzqWgC.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 100,
+    "fields": {
+        "first_name": "Ryou",
+        "last_name": "Yamada",
+        "nicknames": [],
+        "slug": "ryou-yamada",
+        "voice_actor": 61,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b264529-BvEusZnJLD2Y.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 101,
+    "fields": {
+        "first_name": "Ikuyo",
+        "last_name": "Kita",
+        "nicknames": [],
+        "slug": "ikuyo-kita",
+        "voice_actor": 62,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b266041-1HKgjJGP2MmM.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 102,
+    "fields": {
+        "first_name": "Seika",
+        "last_name": "Ijichi",
+        "nicknames": [],
+        "slug": "seika-ijichi",
+        "voice_actor": 63,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289054-UnScwd5RkqBk.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 103,
+    "fields": {
+        "first_name": "PA-san",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "pa-san",
+        "voice_actor": 64,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289055-khOP70WdXl2V.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 104,
+    "fields": {
+        "first_name": "Jimihen",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "jimihen",
+        "voice_actor": 64,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289056-Eob1bSBYL1ry.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 105,
+    "fields": {
+        "first_name": "Naoki",
+        "last_name": "Gotou",
+        "nicknames": [],
+        "slug": "naoki-gotou",
+        "voice_actor": 65,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289057-kxpKjfUu0KDi.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 106,
+    "fields": {
+        "first_name": "Michiyo",
+        "last_name": "Gotou",
+        "nicknames": [],
+        "slug": "michiyo-gotou",
+        "voice_actor": 66,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289058-5RE0lhteKG3P.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 107,
+    "fields": {
+        "first_name": "Futari",
+        "last_name": "Gotou",
+        "nicknames": [],
+        "slug": "futari-gotou",
+        "voice_actor": 67,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289059-AbMjfO2YoThz.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 108,
+    "fields": {
+        "first_name": "Kita no Yuujin",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "kita-no-yuujin",
+        "voice_actor": 68,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289545-9ic2u07cZEQZ.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 109,
+    "fields": {
+        "first_name": "Kita no Yuujin",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "kita-no-yuujin-2",
+        "voice_actor": 69,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289546-HnJ67v7Tovpu.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 110,
+    "fields": {
+        "first_name": "Bandman",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "bandman",
+        "voice_actor": 70,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 111,
+    "fields": {
+        "first_name": "Interviewer",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "interviewer",
+        "voice_actor": 71,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289548-SWdRZVgD45Zf.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 112,
+    "fields": {
+        "first_name": "Death Metal Voice",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "death-metal-voice",
+        "voice_actor": 72,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289549-lFZItZsHofCS.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 113,
+    "fields": {
+        "first_name": "Seito",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "seito",
+        "voice_actor": 73,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 114,
+    "fields": {
+        "first_name": "Seito",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "seito-2",
+        "voice_actor": 74,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 115,
+    "fields": {
+        "first_name": "Seito",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "seito-3",
+        "voice_actor": 75,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 116,
+    "fields": {
+        "first_name": "Seito",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "seito-4",
+        "voice_actor": 76,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 117,
+    "fields": {
+        "first_name": "Salaryman",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "salaryman",
+        "voice_actor": 77,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289557-IaIrTOSMvcVt.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 118,
+    "fields": {
+        "first_name": "Salaryman no Tsuma",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "salaryman-no-tsuma",
+        "voice_actor": 78,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289558-4BUU7WKXcWIy.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 119,
+    "fields": {
+        "first_name": "Salaryman no Musume",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "salaryman-no-musume",
+        "voice_actor": 79,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289559-XeSyZZviq7e9.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 120,
+    "fields": {
+        "first_name": "Comment",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "comment",
+        "voice_actor": 80,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 121,
+    "fields": {
+        "first_name": "Enji",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "enji",
+        "voice_actor": 49,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 122,
+    "fields": {
+        "first_name": "TV-nai Onsei",
+        "last_name": null,
+        "nicknames": [],
+        "slug": "tv-nai-onsei",
+        "voice_actor": 81,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 123,
+    "fields": {
+        "first_name": "Akeno",
+        "last_name": "Misaki",
+        "nicknames": [],
+        "slug": "akeno-misaki",
+        "voice_actor": 82,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89347-ZCqjOj9H4C25.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 124,
+    "fields": {
+        "first_name": "Moeka",
+        "last_name": "China",
+        "nicknames": [],
+        "slug": "moeka-china",
+        "voice_actor": 83,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89348-E9MR8l6STYnV.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 125,
+    "fields": {
+        "first_name": "Maron",
+        "last_name": "Yanagiwara",
+        "nicknames": [],
+        "slug": "maron-yanagiwara",
+        "voice_actor": 84,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89349-mHGmXxnCksGY.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 126,
+    "fields": {
+        "first_name": "Mashiro",
+        "last_name": "Munetani",
+        "nicknames": [],
+        "slug": "mashiro-munetani",
+        "voice_actor": 12,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89350-Bpi2kUjcYPb0.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 127,
+    "fields": {
+        "first_name": "Hiromi",
+        "last_name": "Kuroki",
+        "nicknames": [],
+        "slug": "hiromi-kuroki",
+        "voice_actor": 85,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89351-MQaGamiClMaU.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 128,
+    "fields": {
+        "first_name": "Shima",
+        "last_name": "Tateishi",
+        "nicknames": [],
+        "slug": "shima-tateishi",
+        "voice_actor": 86,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89727-czDjhlzj9wF0.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 129,
+    "fields": {
+        "first_name": "Mei",
+        "last_name": "Irizaki",
+        "nicknames": [],
+        "slug": "mei-irizaki",
+        "voice_actor": 87,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89728-MWtF9jR2Y7RR.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 130,
+    "fields": {
+        "first_name": "Kouko",
+        "last_name": "Nosa",
+        "nicknames": [],
+        "slug": "kouko-nosa",
+        "voice_actor": 88,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89729-llN6OFRvLZSr.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 131,
+    "fields": {
+        "first_name": "Rin",
+        "last_name": "Shiretoko",
+        "nicknames": [],
+        "slug": "rin-shiretoko",
+        "voice_actor": 89,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89730-rgS33PZsEpGt.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 132,
+    "fields": {
+        "first_name": "Hikari",
+        "last_name": "Ogasawara",
+        "nicknames": [],
+        "slug": "hikari-ogasawara",
+        "voice_actor": 90,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89731-dUMcS3mseuqj.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 133,
+    "fields": {
+        "first_name": "Michiru",
+        "last_name": "Takeda",
+        "nicknames": [],
+        "slug": "michiru-takeda",
+        "voice_actor": 91,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89732-HRd1sihot2gh.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 134,
+    "fields": {
+        "first_name": "Junko",
+        "last_name": "Heki",
+        "nicknames": [],
+        "slug": "junko-heki",
+        "voice_actor": 92,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89735-NH6pw8lZnj7U.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 135,
+    "fields": {
+        "first_name": "Kayoko",
+        "last_name": "Himeji",
+        "nicknames": [],
+        "slug": "kayoko-himeji",
+        "voice_actor": 93,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89736-AlrjYzJzYx41.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 136,
+    "fields": {
+        "first_name": "Kaede",
+        "last_name": "Marikouji",
+        "nicknames": [],
+        "slug": "kaede-marikouji",
+        "voice_actor": 94,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89737-URBFw2L4lHWl.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 137,
+    "fields": {
+        "first_name": "Satoko",
+        "last_name": "Katsuta",
+        "nicknames": [],
+        "slug": "satoko-katsuta",
+        "voice_actor": 95,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89738-Yav4dJgeC5Kn.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 138,
+    "fields": {
+        "first_name": "Hideko",
+        "last_name": "Yamashita",
+        "nicknames": [],
+        "slug": "hideko-yamashita",
+        "voice_actor": 42,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89739-nhdv57CQFonX.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 139,
+    "fields": {
+        "first_name": "Mayumi",
+        "last_name": "Uchida",
+        "nicknames": [],
+        "slug": "mayumi-uchida",
+        "voice_actor": 96,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89740-IhISCuy7PMRk.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 140,
+    "fields": {
+        "first_name": "Tsugumi",
+        "last_name": "Yagi",
+        "nicknames": [],
+        "slug": "tsugumi-yagi",
+        "voice_actor": 97,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89741-kC3ccasxHpxg.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 141,
+    "fields": {
+        "first_name": "Megumi",
+        "last_name": "Uda",
+        "nicknames": [],
+        "slug": "megumi-uda",
+        "voice_actor": 98,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89742-bdP4J0nncrsH.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 142,
+    "fields": {
+        "first_name": "Machiko",
+        "last_name": "Noma",
+        "nicknames": [],
+        "slug": "machiko-noma",
+        "voice_actor": 99,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89743-oiATigF62kT7.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 143,
+    "fields": {
+        "first_name": "Reo",
+        "last_name": "Wakasa",
+        "nicknames": [],
+        "slug": "reo-wakasa",
+        "voice_actor": 100,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89744-91JSg7EqSSqj.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 144,
+    "fields": {
+        "first_name": "Sakura",
+        "last_name": "Ise",
+        "nicknames": [],
+        "slug": "sakura-ise",
+        "voice_actor": 101,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89745-7cAyA6GIVhMW.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 145,
+    "fields": {
+        "first_name": "Runa",
+        "last_name": "Suruga",
+        "nicknames": [],
+        "slug": "runa-suruga",
+        "voice_actor": 102,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89746-N4oMercmIxXc.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 146,
+    "fields": {
+        "first_name": "Sora",
+        "last_name": "Hirota",
+        "nicknames": [],
+        "slug": "sora-hirota",
+        "voice_actor": 103,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89747-lj2rwYBvxK16.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 147,
+    "fields": {
+        "first_name": "Hime",
+        "last_name": "Wazumi",
+        "nicknames": [],
+        "slug": "hime-wazumi",
+        "voice_actor": 104,
+        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89748-gO9Bzd3VJzej.png"
+    }
+},
+{
+    "model": "talent.character",
+    "pk": 148,
+    "fields": {
+        "first_name": "Rio",
+        "last_name": "Tsukatsuki",
+        "nicknames": [],
+        "slug": "rio-tsukatsuki",
+        "voice_actor": 12,
+        "cover_img_url": "https://teamd2x.sirv.com/character/148/Rio.png"
     }
 }
 ]
