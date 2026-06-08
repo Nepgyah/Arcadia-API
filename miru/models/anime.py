@@ -49,8 +49,6 @@ class Anime(Media):
     genres = models.ManyToManyField(Genre, related_name='animes', blank=True)
     episode_count = models.SmallIntegerField(null=True, blank=True)
     hashtag = models.CharField(max_length=128, null=True, blank=True)
-    banner_img_url = models.URLField(null=True, blank=True)
-    cover_img_url = models.URLField(null=True, blank=True)
 
     characters = models.ManyToManyField(Character, through='AnimeCharacter', related_name='animes', blank=True)
 

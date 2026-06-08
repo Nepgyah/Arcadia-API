@@ -1,8 +1,6 @@
-from django.db.models import Prefetch
-from asobu.models import GameCharacter
 from talent.repository.voice_actor import VoiceActorRepository
-from talent.models import VoiceActor, Character
-from miru.models.relations import AnimeCharacter
+from talent.models import VoiceActor
+from talent.exceptions import TalentValidationError
 
 class VoiceActorService:
 
@@ -14,3 +12,9 @@ class VoiceActorService:
     def get_voice_actor_roles(voice_actor_id: int):
         voice_actor = VoiceActorRepository.get_voice_actor(voice_actor_id)
         return VoiceActorRepository.get_voice_actor_roles(voice_actor)
+    
+    @staticmethod
+    def search_voice_actor(name: str) -> list[VoiceActor]:
+        if(len(name) < 3):
+            raise TalentValidationError("Query must be greater than 3 characters")
+        return VoiceActorRepository.search_voice_actor(name=name)

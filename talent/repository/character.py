@@ -1,3 +1,4 @@
+from django.db.models import Q
 from talent.models import (
     Character
 )
@@ -19,3 +20,10 @@ class CharacterRepository:
             )
         
         return Character.objects.filter(id__in=character_ids)
+    
+    @staticmethod
+    def search_characters(name: str) -> list[Character]:
+        return Character.objects.filter(
+            Q(first_name__contains=name) |
+            Q(last_name__contains=name) 
+        )

@@ -35,12 +35,17 @@ class Franchise(models.Model):
         return str(self.name)
     
     def save(self, *args, **kwargs):
-        self.slug = unique_slugify(instance=self, value=self.name)
+        if self.slug is None:
+            self.slug = unique_slugify(instance=self, value=self.name)
         super().save(*args, **kwargs)
 
     @property
     def cover_image_url(self):
-        return f'{os.environ.get('BG_CDN_BASE')}/franchise/{self.slug}.jpg'
+        return f'{os.environ.get('BG_CDN_BASE')}/franchise/{self.id}/cover.jpg'
+    
+    @property
+    def bg_image_url(self):
+        return f'{os.environ.get('BG_CDN_BASE')}/franchise/{self.id}/bg.jpg'
     
 class Media(models.Model):
     """
@@ -55,7 +60,9 @@ class Media(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     franchise=models.ForeignKey(Franchise, on_delete=models.SET_NULL, null=True, blank=True)
-    bg_image_path = models.CharField(max_length=500, blank=True, null=True)
+    cover_image_url = models.URLField(null=True, blank=True)
+    banner_image_url = models.URLField(null=True, blank=True)
+    bg_image_url = models.URLField(null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -71,6 +78,6 @@ class Media(models.Model):
         return str(self.title)
     
     def save(self, *args, **kwargs):
-        if self.slug is not None:
+        if self.slug is None:
             self.slug = unique_slugify(instance=self, value=self.title)
         super().save(*args, **kwargs)

@@ -60,8 +60,8 @@ CSRF_COOKIE_SAMESITE = "None"
 
 INSTALLED_APPS = [
     'accounts',
-    'asobu',
     'base',
+    'asobu',
     'miru',
     'talent',
     'corsheaders',
