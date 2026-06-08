@@ -67,6 +67,8 @@ class AnimeType:
 
     @strawberry_django.field
     def bg_image_url(self) -> str | None:
+        if self.bg_image_url is not None:
+            return self.bg_image_url
         if self.bg_image_url is None and self.franchise:
             return self.franchise.bg_image_url
         return None

@@ -45,7 +45,7 @@ class GameReviewType:
 @strawberry_django.type(
     Game, 
     description="Video games from the asobu app",
-    exclude=["esrb_rating", "pegi_rating", "status", "franchise"]
+    exclude=["esrb_rating", "pegi_rating", "status", "franchise", "bg_image_url"]
 )
 class GameType:
     prequel: Optional["GameType"] = strawberry_django.field(field_name="prev_game")
@@ -117,8 +117,12 @@ class GameType:
         return self.cover_image_url
     
     @strawberry_django.field
-    def bg_image_url(self) -> str:
-        return self.bg_image_url
+    def bg_image_url(self) -> str | None:
+        if self.bg_image_url is not None:
+            return self.bg_image_url
+        if self.bg_image_url is None and self.franchise:
+            return self.franchise.bg_image_url
+        return None
     
 @strawberry_django.type(GameListEntry, fields="__all__")
 class GameListEntryType:
