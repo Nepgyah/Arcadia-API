@@ -123,3 +123,13 @@ class GameType:
 @strawberry_django.type(GameListEntry, fields="__all__")
 class GameListEntryType:
     game: GameType
+
+@strawberry.type
+class GameAppearanceDetailType:
+    role: str
+    game: GameType
+    
+@strawberry.type
+class GameVaRoleType:
+    character: CharacterType
+    appearances: list[GameAppearanceDetailType]

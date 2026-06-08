@@ -1,8 +1,8 @@
 from django.core.paginator import Paginator
-from asobu.models import Game, GameListEntry, DLC, Review
+from asobu.models import Game, GameListEntry, DLC, Review, GameCharacter
 from asobu.exceptions import AsobuError
 from asobu.repository import AsobuRepository
-from talent.service.character import CharacterService
+from talent.service import CharacterService, VoiceActorService
 
 class GameService:
 
@@ -153,8 +153,34 @@ class ReviewService:
         review = AsobuRepository.review.get_review(user_id, game_id)
         return AsobuRepository.review.delete_review(review)
 
+class Character:
+
+    @staticmethod
+    def get_game_roles(voice_actor_id: int):
+        characters = VoiceActorService.get_voice_actor_roles(voice_actor_id)
+        game_roles = []
+        
+        for character in characters:
+            character_appearances = GameCharacter.objects.filter(character=character).select_related('game')
+
+            if len(character_appearances) != 0:
+                appearance_json = [
+                    {
+                        "role": appearance.get_role_display(),
+                        "game": appearance.game
+                    } for appearance in character_appearances
+                ]
+                temp = {
+                    "character": character,
+                    "appearances": appearance_json
+                }
+                game_roles.append(temp)
+
+        return game_roles
+
 class AsobuService:
 
     game = GameService()
     list = ListService()
     review = ReviewService()
+    character = Character()

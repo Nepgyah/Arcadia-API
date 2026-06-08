@@ -5,7 +5,9 @@ from asobu.graphql.types import (
     GameType,
     DLCType,
     GameReviewType,
-    GameListEntryType
+    GameListEntryType,
+    GameVaRoleType,
+    GameAppearanceDetailType
 )
 from asobu.service.asobu_service import AsobuService
 from asobu.repository import AsobuRepository
@@ -92,3 +94,18 @@ class AsobuQuery:
             replaying=game_list['replaying']
         )
     
+    @strawberry.field
+    def game_roles(self, voice_actor_id: int) -> list[GameVaRoleType]:
+        game_roles = AsobuService.character.get_game_roles(voice_actor_id)
+        
+        return [
+            GameVaRoleType(
+                character=entry['character'],
+                appearances=[
+                    GameAppearanceDetailType(
+                        role=appearance['role'],
+                        game=appearance['game']
+                    ) for appearance in entry['appearances']
+                ]
+            ) for entry in game_roles
+        ]

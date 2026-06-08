@@ -114,19 +114,21 @@ class Character:
     def get_anime_roles(voice_actor_id: str):
         characters = VoiceActorService.get_voice_actor_roles(voice_actor_id)
         anime_roles = []
+        
         for character in characters:
             character_appearances = AnimeCharacter.objects.filter(character=character).select_related('anime')
-            appearance_json = [
-                {
-                    "role": appearance.get_role_display(),
-                    "anime": appearance.anime
-                } for appearance in character_appearances
-            ]
-            temp = {
-                "character": character,
-                "appearances": appearance_json
-            }
-            anime_roles.append(temp)
+            if len(character_appearances):
+                appearance_json = [
+                    {
+                        "role": appearance.get_role_display(),
+                        "anime": appearance.anime
+                    } for appearance in character_appearances
+                ]
+                temp = {
+                    "character": character,
+                    "appearances": appearance_json
+                }
+                anime_roles.append(temp)
 
         return anime_roles
 

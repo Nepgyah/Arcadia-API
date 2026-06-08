@@ -56,7 +56,7 @@ class AnimeCharacterType:
 
 @strawberry_django.type(
     Anime, 
-    exclude=['characters', 'prev_anime', 'related_anime', 'type', 'status', 'season', 'rating'],
+    exclude=['characters', 'prev_anime', 'related_anime', 'type', 'status', 'season', 'rating', 'cover_img_url'],
     description="Animation media for the Miru app"
 )
 class AnimeType:
@@ -64,6 +64,10 @@ class AnimeType:
     studio: list[AnimeCompanyType]
     producer: list[AnimeCompanyType]
     prequel: Optional["AnimeType"] = strawberry_django.field(field_name="prev_anime")
+
+    @strawberry_django.field
+    def cover_image_url(self) -> str:
+        return self.cover_img_url
 
     @strawberry_django.field
     def cast(self) -> list[AnimeCharacterType]:
