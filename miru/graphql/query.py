@@ -2,6 +2,7 @@ import strawberry
 import strawberry_django
 from strawberry_django.optimizer import optimize
 from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
+from accounts.service import AccountsService
 
 from miru.models import Anime
 from miru.exceptions import MiruNotFoundError
@@ -80,10 +81,12 @@ class MiruQuery:
         return MiruRepository.anime.get_anime_count()
 
     @strawberry_django.field
-    def user_anime_list(self, user_id: int) -> UserAnimeListResult:
-        user, anime_list = MiruService.list.get_user_list(user_id)
+    def user_anime_list(self, profile_id: int) -> UserAnimeListResult:
+        anime_list = MiruService.list.get_user_list(profile_id)
+        username = AccountsService.profile.get_profile(profile_id=profile_id).username
+        
         return UserAnimeListResult(
-            user=user,
+            user=username,
             watching=anime_list['watching'],
             completed=anime_list['completed'],
             plan_to=anime_list['plan_to'],
@@ -106,3 +109,11 @@ class MiruQuery:
             ) for entry in anime_roles
         ]
     
+    @strawberry_django.field
+    def anime_entry(self, info: strawberry.Info, anime_id: int) -> AnimeListEntryType:
+        profile_id = info.context.user_id
+        entry = MiruService.list.get_entry(
+            profile_id,
+            anime_id
+        )
+        return entry

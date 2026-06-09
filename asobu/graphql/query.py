@@ -83,6 +83,10 @@ class AsobuQuery:
         )
     
     @strawberry.field
+    def user_game_list_entry(self, info: strawberry.Info, game_id: int) -> GameListEntryType | None:
+        return AsobuService.list.get_game_entry(info.context.user_id, game_id)
+
+    @strawberry.field
     def user_game_list(self, user_id: int) -> UserGameListResult:
         user, game_list = AsobuService.list.get_user_list(user_id)
         return UserGameListResult(

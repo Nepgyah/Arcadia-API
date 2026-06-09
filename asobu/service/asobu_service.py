@@ -82,17 +82,17 @@ class GameService:
 class ListService:
 
     @staticmethod
-    def create_entry(user_id: int, game_id: int, details: dict = None) -> GameListEntry:
+    def create_entry(profile_id: int, game_id: int, details: dict = None) -> GameListEntry:
         
-        AsobuRepository.game.check_game_exists(game_id)
+        AsobuRepository.game.does_game_exist(game_id)
         return AsobuRepository.list.create_entry(
-            user_id=user_id,
+            profile_id=profile_id,
             game_id=game_id,
             **details
         )
 
     @staticmethod
-    def get_entry(user_id: int, game_id: int) -> GameListEntry:
+    def get_game_entry(user_id: int, game_id: int) -> GameListEntry:
         return AsobuRepository.list.get_entry(user_id, game_id)
 
     @staticmethod

@@ -70,44 +70,48 @@ class CompanyService:
 class ListService:
 
     @staticmethod
-    def create_entry(user_id: int, anime_id: int, details: dict = None) -> AnimeListEntry:
+    def create_entry(profile_id: int, anime_id: int, details: dict = None) -> AnimeListEntry:
         MiruRepository.anime.does_anime_exist(anime_id)
         return MiruRepository.list.create_entry(
-            user_id,
+            profile_id,
             anime_id,
             **details
         )
 
     @staticmethod
-    def get_entry(user_id: int, anime_id: int) -> AnimeListEntry:
-        return MiruRepository.list.get_entry(user_id, anime_id)
+    def get_entry(profile_id: int, anime_id: int) -> AnimeListEntry:
+        return MiruRepository.list.get_entry(profile_id, anime_id)
 
     @staticmethod
-    def update_entry(user_id: int, anime_id: int, details: dict = None) -> AnimeListEntry:
-        entry = MiruRepository.list.get_entry(user_id, anime_id)
+    def update_entry(profile_id: int, anime_id: int, details: dict = None) -> AnimeListEntry:
+        entry = MiruRepository.list.get_entry(profile_id, anime_id)
         return MiruRepository.list.update_entry(
             entry,
             **details
         )
     
     @staticmethod
-    def delete_entry(user_id: int, anime_id: int) -> None:
-        entry = MiruRepository.list.get_entry(user_id, anime_id)
+    def delete_entry(profile_id: int, anime_id: int) -> None:
+        entry = MiruRepository.list.get_entry(profile_id, anime_id)
         MiruRepository.list.delete_entry(entry)
 
     @staticmethod
-    def get_user_list(user_id: int) -> dict:
+    def get_user_list(profile_id: int) -> dict:
 
-        # user = UserService.get_user(user_id)
-        list_entries = MiruRepository.list.get_user_list(user_id)
+        # user = UserService.get_user(profile_id)
+        list_entries = MiruRepository.list.get_user_list(profile_id)
         user_anime_list = {
             'watching': list_entries.filter(status=0),
             'completed': list_entries.filter(status=1),
             'plan_to': list_entries.filter(status=2),
             'on_hold': list_entries.filter(status=3),
         }
-        return None, user_anime_list
+        return user_anime_list
     
+    @staticmethod
+    def get_user_list_count(profile_id: int) -> int:
+        return MiruRepository.list.get_user_list_count(profile_id)
+
 class Character:
 
     @staticmethod
