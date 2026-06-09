@@ -9,13 +9,17 @@ Visit Arcadia: https://arcadia-platform.vercel.app
     - Replaced graphene django with strawberry as main GraphQL module
     - Improve quality of repo and service layers
     - Improve interaction between apps via service layers
-    
-- **Asobu v0.3**
+    - Standardize CDN links for image resourcing
+    - Add Sivr as current CDN service
 
-## Why I started Arcadia
-Advid fans of anime, manga, games and more would have to multiple web apps to maintain their hobbies. For example using AniList to track Anime, MyAnimeList to track Manga, Spotify to handle music, etc. Arcadia aims to solve this issue by combining all the sites into one multi app solution, unified by a single login/account. This would remove having to manage different accounts, having multiple tabs open while also having the opporitunity to connect different datasets into one. 
+## The Problem
+Advid fans of anime, manga and games use online resources such as anilist, myanimelist and steam to help track and maintain their hobby activities. But with the current services, it requires having and maintaining multiple accounts to in order to manage those hobbies. Also datawise, there can be overlaps where characters can appear in a game, manga and video game but there is no connection to them.
 
-One the other hand, as a early career web developer, I have become fascinated on how these solutions are designed and implemented. Arcadia gives me that opporitunity to hone in on my web dev skills and explore new technologies in a sandbox enviornemnt. Using the context of anime and games allows me to add a fun twist in learning as well.
+## The solution: Arcadia
+With Arcadia, a user can manage their anime, manga, games and more in a single place with a single login and switching between the apps is simple with a few clicks. Data is no longer disconnected as the database is designed to connect the different medias together via concepts such as similar franchises, voice actors or characters.
+
+## Other Notes
+As a early career web developer, I have become fascinated on how these solutions (steam, MAL, anilist, spotify, etc) are designed and implemented. Arcadia gives me that opporitunity to hone in on my web dev skills and explore new technologies in a sandbox enviornemnt. Using the context of anime and games allows me to add a fun twist in learning as well.
 
 ## Tech
 Languages: Python
