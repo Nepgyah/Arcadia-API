@@ -140,6 +140,10 @@ class AnimeListEntryRepository:
     def get_user_list(profile_id: int) -> list[AnimeListEntry]:
         return AnimeListEntry.objects.filter(profile_id=profile_id)
     
+    @staticmethod
+    def get_user_list_count(profile_id: int) -> int:
+        return AnimeListEntry.objects.filter(profile_id=profile_id).count()
+    
 class MiruRepository:
 
     anime = AnimeRepository()

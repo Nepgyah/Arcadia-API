@@ -61,8 +61,8 @@ class GameListEntryRepository:
                 profile_id=profile_id,
                 game_id=game_id
             )
-        except GameListEntry.DoesNotExist as e:
-            raise AsobuNotFound('Entry not found') from e
+        except GameListEntry.DoesNotExist:
+            return None
         
     @staticmethod
     def update_entry(entry: GameListEntry, **details) -> GameListEntry:

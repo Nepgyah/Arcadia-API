@@ -79,11 +79,10 @@ class TestAsobuRepoList:
 
     @staticmethod
     def test_getEntry_invalidID_raisesAsobuNotFound(arcadia_profile_fixture):
-        with pytest.raises(AsobuNotFound):
-            AsobuRepository.list.get_entry(
+        assert AsobuRepository.list.get_entry(
                 arcadia_profile_fixture.id,
                 99999
-            )
+            ) == None
 
     @staticmethod
     def test_updateEntry_validInfo_updatesEntry(game_list_entry_fixture):

@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.test import APIClient
-from graphene_django.utils.testing import graphql_query
-
 from accounts.models import ArcadiaProfile
 
 @pytest.fixture
@@ -32,21 +30,3 @@ def rest_client(arcadia_user_fixture):
     client.credentials(HTTP_AUTHORIZATION='Bearer ' + str(refresh_token.access_token))
     
     return client
-
-@pytest.fixture
-def graphql_client(client):
-    def func(query, variables=None, user=None):
-        headers = {}
-        if user:
-            refresh_token = RefreshToken.for_user(user)
-            headers['Authorization'] = f'Bearer {str(refresh_token.access_token)}'
-                
-        return graphql_query(
-            query, 
-            variables=variables, 
-            client=client, 
-            graphql_url='/graphql/',
-            headers=headers
-            )
-    
-    return func
