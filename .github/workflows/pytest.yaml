@@ -49,8 +49,6 @@ jobs:
       - name: Test the Miru app
         run: pytest miru/
 
-      - name: Test the Users app
-        run: pytest users/
-
-      - name: Test the auth app
-        run: pytest authorization/
+      - name: Test the Asobu app
+        run: pytest asobu/
+        

@@ -82,7 +82,7 @@ class TestAsobuRepoList:
         assert AsobuRepository.list.get_entry(
                 arcadia_profile_fixture.id,
                 99999
-            ) == None
+            ) is None
 
     @staticmethod
     def test_updateEntry_validInfo_updatesEntry(game_list_entry_fixture):
