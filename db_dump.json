@@ -8,7 +8,7 @@
             "Admin"
         ],
         "username": "Miporin",
-        "picture_preset": 0
+        "picture_preset": 1
     }
 },
 {
@@ -18,7 +18,97 @@
         "d2x_id": 2,
         "admin_account": null,
         "username": "JVSmallz",
-        "picture_preset": 0
+        "picture_preset": 1
+    }
+},
+{
+    "model": "base.genre",
+    "pk": 1,
+    "fields": {
+        "name": "Drama"
+    }
+},
+{
+    "model": "base.genre",
+    "pk": 2,
+    "fields": {
+        "name": "Slice of Life"
+    }
+},
+{
+    "model": "base.genre",
+    "pk": 3,
+    "fields": {
+        "name": "Sports"
+    }
+},
+{
+    "model": "base.genre",
+    "pk": 18,
+    "fields": {
+        "name": "Comedy"
+    }
+},
+{
+    "model": "base.genre",
+    "pk": 19,
+    "fields": {
+        "name": "Music"
+    }
+},
+{
+    "model": "base.genre",
+    "pk": 20,
+    "fields": {
+        "name": "Action"
+    }
+},
+{
+    "model": "base.franchise",
+    "pk": 1,
+    "fields": {
+        "name": "Uma Musume",
+        "slug": "uma-musume",
+        "socials": {
+            "reddit": {
+                "url": "https://www.reddit.com/r/UmaMusume/",
+                "handle": "r/UmaMusume"
+            },
+            "twitter": {
+                "url": "https://x.com/umamusume_eng?lang=en",
+                "handle": "@umamusume_eng"
+            },
+            "website": {
+                "url": "https://umamusume.com",
+                "handle": "Umamusume.com"
+            },
+            "youtube": {
+                "url": "https://www.youtube.com/@umamusume_eng",
+                "handle": "Umamusume: Pretty Derby"
+            },
+            "instagram": {
+                "url": "https://www.instagram.com/cygames_eng/?hl=en",
+                "handle": "cygames_eng"
+            }
+        }
+    }
+},
+{
+    "model": "base.franchise",
+    "pk": 2,
+    "fields": {
+        "name": "Hoyoverse",
+        "slug": "hoyoverse",
+        "socials": {}
+    }
+},
+{
+    "model": "base.franchise",
+    "pk": 3,
+    "fields": {
+        "name": "Bocchi The Rock",
+        "slug": "bocchi-the-rock",
+        "socials": {}
     }
 },
 {
@@ -77,7 +167,7 @@
         "esrb_rating": 5,
         "pegi_rating": 5,
         "prev_game": null,
-        "trailer_url": null,
+        "trailer_url": "https://www.youtube.com/embed/uCaWqXP54Mc?si=UPsGJCsbsmZL4MdU",
         "steam_id": null,
         "tags": [],
         "genres": [],
@@ -263,93 +353,18 @@
     }
 },
 {
-    "model": "base.genre",
-    "pk": 1,
-    "fields": {
-        "name": "Drama"
-    }
-},
-{
-    "model": "base.genre",
+    "model": "asobu.gamelistentry",
     "pk": 2,
     "fields": {
-        "name": "Slice of Life"
-    }
-},
-{
-    "model": "base.genre",
-    "pk": 3,
-    "fields": {
-        "name": "Sports"
-    }
-},
-{
-    "model": "base.genre",
-    "pk": 18,
-    "fields": {
-        "name": "Comedy"
-    }
-},
-{
-    "model": "base.genre",
-    "pk": 19,
-    "fields": {
-        "name": "Music"
-    }
-},
-{
-    "model": "base.genre",
-    "pk": 20,
-    "fields": {
-        "name": "Action"
-    }
-},
-{
-    "model": "base.franchise",
-    "pk": 1,
-    "fields": {
-        "name": "Uma Musume",
-        "slug": "uma-musume",
-        "socials": {
-            "reddit": {
-                "url": "https://www.reddit.com/r/UmaMusume/",
-                "handle": "r/UmaMusume"
-            },
-            "twitter": {
-                "url": "https://x.com/umamusume_eng?lang=en",
-                "handle": "@umamusume_eng"
-            },
-            "website": {
-                "url": "https://umamusume.com",
-                "handle": "Umamusume.com"
-            },
-            "youtube": {
-                "url": "https://www.youtube.com/@umamusume_eng",
-                "handle": "Umamusume: Pretty Derby"
-            },
-            "instagram": {
-                "url": "https://www.instagram.com/cygames_eng/?hl=en",
-                "handle": "cygames_eng"
-            }
-        }
-    }
-},
-{
-    "model": "base.franchise",
-    "pk": 2,
-    "fields": {
-        "name": "Hoyoverse",
-        "slug": "hoyoverse",
-        "socials": {}
-    }
-},
-{
-    "model": "base.franchise",
-    "pk": 3,
-    "fields": {
-        "name": "Bocchi The Rock",
-        "slug": "bocchi-the-rock",
-        "socials": {}
+        "profile_id": 1,
+        "game": 3,
+        "status": 0,
+        "score": 10,
+        "note": null,
+        "start_play_date": null,
+        "end_play_date": null,
+        "updated_at": "2026-06-10T00:41:02.920Z",
+        "created_at": "2026-06-10T00:41:02.920Z"
     }
 },
 {
@@ -641,10 +656,10 @@
             3
         ],
         "producer": [
-            3,
-            6,
             8,
-            9
+            9,
+            3,
+            6
         ],
         "studio": [
             5
@@ -684,9 +699,9 @@
             3
         ],
         "producer": [
-            3,
-            10,
             11,
+            10,
+            3,
             12
         ],
         "studio": [
@@ -727,9 +742,9 @@
             3
         ],
         "producer": [
-            3,
-            10,
             11,
+            10,
+            3,
             12
         ],
         "studio": [
@@ -766,9 +781,9 @@
         "airing_end_date": "2022-12-25",
         "updated_at": "2026-06-08T06:47:07.470Z",
         "genres": [
+            19,
             2,
-            18,
-            19
+            18
         ],
         "producer": [
             35,
@@ -943,6 +958,54 @@
         "mal_id": 61930,
         "rank_score": 82,
         "rank_popular": 3055
+    }
+},
+{
+    "model": "miru.animelistentry",
+    "pk": 1,
+    "fields": {
+        "profile_id": 1,
+        "anime": 1,
+        "status": 1,
+        "score": 5.0,
+        "note": null,
+        "current_episode": 0,
+        "start_watch_date": null,
+        "end_watch_date": null,
+        "updated_at": "2026-06-09T00:01:11.247Z",
+        "created_at": "2026-06-08T21:05:18.111Z"
+    }
+},
+{
+    "model": "miru.animelistentry",
+    "pk": 3,
+    "fields": {
+        "profile_id": 1,
+        "anime": 4,
+        "status": 1,
+        "score": 7.0,
+        "note": null,
+        "current_episode": 0,
+        "start_watch_date": null,
+        "end_watch_date": null,
+        "updated_at": "2026-06-09T04:14:10.876Z",
+        "created_at": "2026-06-09T04:13:55.865Z"
+    }
+},
+{
+    "model": "miru.animelistentry",
+    "pk": 4,
+    "fields": {
+        "profile_id": 1,
+        "anime": 5,
+        "status": 2,
+        "score": null,
+        "note": null,
+        "current_episode": 0,
+        "start_watch_date": null,
+        "end_watch_date": null,
+        "updated_at": "2026-06-10T21:51:31.324Z",
+        "created_at": "2026-06-10T21:51:31.324Z"
     }
 },
 {
@@ -2528,7 +2591,7 @@
         "title": "Gate of Dreams!",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff8c8874c8c5aaed120c531acc0596e1522582422_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff8c8874c8c5aaed120c531acc0596e1522582422_full.jpg",
         "url": null
     }
 },
@@ -2540,7 +2603,7 @@
         "title": "The Debut Race out of Nowhere",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/94cb334c62fb8fdcf1120f1a4d7e6e621522582529_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/94cb334c62fb8fdcf1120f1a4d7e6e621522582529_full.jpg",
         "url": null
     }
 },
@@ -2552,7 +2615,7 @@
         "title": "First Big Win",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e8a4673fac1347c6857d55211114556e1523178571_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e8a4673fac1347c6857d55211114556e1523178571_full.jpg",
         "url": null
     }
 },
@@ -2564,7 +2627,7 @@
         "title": "Special Training!",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/556f5de6c37bc696bb5b6ea27c1c82631523786845_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/556f5de6c37bc696bb5b6ea27c1c82631523786845_full.jpg",
         "url": null
     }
 },
@@ -2576,7 +2639,7 @@
         "title": "The Derby With Rivals",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2de647128b901f483bd6102f3d4d44e1524401637_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2de647128b901f483bd6102f3d4d44e1524401637_full.jpg",
         "url": null
     }
 },
@@ -2588,7 +2651,7 @@
         "title": "Autumn Skies and Horse Girls",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fcf55d9d062555e8dc2ea31b4428aee21524697366_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fcf55d9d062555e8dc2ea31b4428aee21524697366_full.jpg",
         "url": null
     }
 },
@@ -2600,7 +2663,7 @@
         "title": "Promise",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/bab3402d5f2fb54e874b44ee1a9279ae1525617767_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/bab3402d5f2fb54e874b44ee1a9279ae1525617767_full.jpg",
         "url": null
     }
 },
@@ -2612,7 +2675,7 @@
         "title": "For You",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/773179619a90f810141ef51626e30ac81526218968_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/773179619a90f810141ef51626e30ac81526218968_full.jpg",
         "url": null
     }
 },
@@ -2624,7 +2687,7 @@
         "title": "Dreams of Spica",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a82688073847b62be1ea5cf1b071489b1526823413_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a82688073847b62be1ea5cf1b071489b1526823413_full.jpg",
         "url": null
     }
 },
@@ -2636,7 +2699,7 @@
         "title": "No Matter How Many Times I Lose",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d6bb2fcfde60aefb30901243ac07df51527577246_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d6bb2fcfde60aefb30901243ac07df51527577246_full.jpg",
         "url": null
     }
 },
@@ -2648,7 +2711,7 @@
         "title": "Welcome Back!",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/585e21eae3d229db2597fa8bd17f6a901528009131_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/585e21eae3d229db2597fa8bd17f6a901528009131_full.jpg",
         "url": null
     }
 },
@@ -2660,7 +2723,7 @@
         "title": "Stage of Dreams",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/978ab24c5d15c131fa7d87e1c7709cdc1528623466_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/978ab24c5d15c131fa7d87e1c7709cdc1528623466_full.jpg",
         "url": null
     }
 },
@@ -2672,7 +2735,7 @@
         "title": "Echo, Fanfare!",
         "description": "A description will be written later",
         "anime": 1,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
         "url": null
     }
 },
@@ -2684,7 +2747,7 @@
         "title": "Gate of Dreams!",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff8c8874c8c5aaed120c531acc0596e1522582422_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff8c8874c8c5aaed120c531acc0596e1522582422_full.jpg",
         "url": null
     }
 },
@@ -2696,7 +2759,7 @@
         "title": "The Debut Race out of Nowhere",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/94cb334c62fb8fdcf1120f1a4d7e6e621522582529_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/94cb334c62fb8fdcf1120f1a4d7e6e621522582529_full.jpg",
         "url": null
     }
 },
@@ -2708,7 +2771,7 @@
         "title": "First Big Win",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e8a4673fac1347c6857d55211114556e1523178571_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e8a4673fac1347c6857d55211114556e1523178571_full.jpg",
         "url": null
     }
 },
@@ -2720,7 +2783,7 @@
         "title": "Special Training!",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/556f5de6c37bc696bb5b6ea27c1c82631523786845_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/556f5de6c37bc696bb5b6ea27c1c82631523786845_full.jpg",
         "url": null
     }
 },
@@ -2732,7 +2795,7 @@
         "title": "The Derby With Rivals",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2de647128b901f483bd6102f3d4d44e1524401637_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2de647128b901f483bd6102f3d4d44e1524401637_full.jpg",
         "url": null
     }
 },
@@ -2744,7 +2807,7 @@
         "title": "Autumn Skies and Horse Girls",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fcf55d9d062555e8dc2ea31b4428aee21524697366_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fcf55d9d062555e8dc2ea31b4428aee21524697366_full.jpg",
         "url": null
     }
 },
@@ -2756,7 +2819,7 @@
         "title": "Promise",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/bab3402d5f2fb54e874b44ee1a9279ae1525617767_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/bab3402d5f2fb54e874b44ee1a9279ae1525617767_full.jpg",
         "url": null
     }
 },
@@ -2768,7 +2831,7 @@
         "title": "For You",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/773179619a90f810141ef51626e30ac81526218968_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/773179619a90f810141ef51626e30ac81526218968_full.jpg",
         "url": null
     }
 },
@@ -2780,7 +2843,7 @@
         "title": "Dreams of Spica",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a82688073847b62be1ea5cf1b071489b1526823413_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a82688073847b62be1ea5cf1b071489b1526823413_full.jpg",
         "url": null
     }
 },
@@ -2792,7 +2855,7 @@
         "title": "No Matter How Many Times I Lose",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d6bb2fcfde60aefb30901243ac07df51527577246_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d6bb2fcfde60aefb30901243ac07df51527577246_full.jpg",
         "url": null
     }
 },
@@ -2804,7 +2867,7 @@
         "title": "Welcome Back!",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/585e21eae3d229db2597fa8bd17f6a901528009131_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/585e21eae3d229db2597fa8bd17f6a901528009131_full.jpg",
         "url": null
     }
 },
@@ -2816,7 +2879,7 @@
         "title": "Stage of Dreams",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/978ab24c5d15c131fa7d87e1c7709cdc1528623466_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/978ab24c5d15c131fa7d87e1c7709cdc1528623466_full.jpg",
         "url": null
     }
 },
@@ -2828,7 +2891,7 @@
         "title": "Echo, Fanfare!",
         "description": "A description will be written later",
         "anime": 2,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
         "url": null
     }
 },
@@ -2840,7 +2903,7 @@
         "title": "Gate of Dreams!",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff8c8874c8c5aaed120c531acc0596e1522582422_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff8c8874c8c5aaed120c531acc0596e1522582422_full.jpg",
         "url": null
     }
 },
@@ -2852,7 +2915,7 @@
         "title": "The Debut Race out of Nowhere",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/94cb334c62fb8fdcf1120f1a4d7e6e621522582529_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/94cb334c62fb8fdcf1120f1a4d7e6e621522582529_full.jpg",
         "url": null
     }
 },
@@ -2864,7 +2927,7 @@
         "title": "First Big Win",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e8a4673fac1347c6857d55211114556e1523178571_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e8a4673fac1347c6857d55211114556e1523178571_full.jpg",
         "url": null
     }
 },
@@ -2876,7 +2939,7 @@
         "title": "Special Training!",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/556f5de6c37bc696bb5b6ea27c1c82631523786845_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/556f5de6c37bc696bb5b6ea27c1c82631523786845_full.jpg",
         "url": null
     }
 },
@@ -2888,7 +2951,7 @@
         "title": "The Derby With Rivals",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2de647128b901f483bd6102f3d4d44e1524401637_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2de647128b901f483bd6102f3d4d44e1524401637_full.jpg",
         "url": null
     }
 },
@@ -2900,7 +2963,7 @@
         "title": "Autumn Skies and Horse Girls",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fcf55d9d062555e8dc2ea31b4428aee21524697366_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fcf55d9d062555e8dc2ea31b4428aee21524697366_full.jpg",
         "url": null
     }
 },
@@ -2912,7 +2975,7 @@
         "title": "Promise",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/bab3402d5f2fb54e874b44ee1a9279ae1525617767_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/bab3402d5f2fb54e874b44ee1a9279ae1525617767_full.jpg",
         "url": null
     }
 },
@@ -2924,7 +2987,7 @@
         "title": "For You",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/773179619a90f810141ef51626e30ac81526218968_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/773179619a90f810141ef51626e30ac81526218968_full.jpg",
         "url": null
     }
 },
@@ -2936,7 +2999,7 @@
         "title": "Dreams of Spica",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a82688073847b62be1ea5cf1b071489b1526823413_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a82688073847b62be1ea5cf1b071489b1526823413_full.jpg",
         "url": null
     }
 },
@@ -2948,7 +3011,7 @@
         "title": "No Matter How Many Times I Lose",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d6bb2fcfde60aefb30901243ac07df51527577246_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d6bb2fcfde60aefb30901243ac07df51527577246_full.jpg",
         "url": null
     }
 },
@@ -2960,7 +3023,7 @@
         "title": "Welcome Back!",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/585e21eae3d229db2597fa8bd17f6a901528009131_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/585e21eae3d229db2597fa8bd17f6a901528009131_full.jpg",
         "url": null
     }
 },
@@ -2972,7 +3035,7 @@
         "title": "Stage of Dreams",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/978ab24c5d15c131fa7d87e1c7709cdc1528623466_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/978ab24c5d15c131fa7d87e1c7709cdc1528623466_full.jpg",
         "url": null
     }
 },
@@ -2984,7 +3047,7 @@
         "title": "Echo, Fanfare!",
         "description": "A description will be written later",
         "anime": 3,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0d8efce7e88fcccae8a06dd7420773d1529250804_full.jpg",
         "url": null
     }
 },
@@ -2996,7 +3059,7 @@
         "title": "Episode #01",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/03c3fffe0ece1a5e47dc2b8a480944e01459975937_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/03c3fffe0ece1a5e47dc2b8a480944e01459975937_full.jpg",
         "url": null
     }
 },
@@ -3008,7 +3071,7 @@
         "title": "In a Pinch During Pursuit!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d94811c57dfc282813074aa18ac9edae1460582631_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d94811c57dfc282813074aa18ac9edae1460582631_full.jpg",
         "url": null
     }
 },
@@ -3020,7 +3083,7 @@
         "title": "In a Pinch in Pajamas!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b599901965192f507d4c124021826b0f1461359536_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b599901965192f507d4c124021826b0f1461359536_full.jpg",
         "url": null
     }
 },
@@ -3032,7 +3095,7 @@
         "title": "Maidens in a Pinch!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/7fa7b0c17ea9b1ee54a036cbdfe7760c1461894376_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/7fa7b0c17ea9b1ee54a036cbdfe7760c1461894376_full.jpg",
         "url": null
     }
 },
@@ -3044,7 +3107,7 @@
         "title": "Pinched by the Musashi!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9b84527e51b03a0506254466a7c4d6481462472719_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9b84527e51b03a0506254466a7c4d6481462472719_full.jpg",
         "url": null
     }
 },
@@ -3056,7 +3119,7 @@
         "title": "In a Mined Pinch!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/a8b93c6ae7090fd836487c99b8eddf0b1463157909_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/a8b93c6ae7090fd836487c99b8eddf0b1463157909_full.jpg",
         "url": null
     }
 },
@@ -3068,7 +3131,7 @@
         "title": "In a Stormy Pinch!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/88584acfc0d67a89e24d84fe9a9174c51463790581_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/88584acfc0d67a89e24d84fe9a9174c51463790581_full.jpg",
         "url": null
     }
 },
@@ -3080,7 +3143,7 @@
         "title": "In a Pinch with the Hiei!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/dcd5ebb11ccd714a62aab62d224dd80c1464397402_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/dcd5ebb11ccd714a62aab62d224dd80c1464397402_full.jpg",
         "url": null
     }
 },
@@ -3092,7 +3155,7 @@
         "title": "Mina in a Pinch!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/477430b75eb1c41bea814b7dc673c6e41465017852_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/477430b75eb1c41bea814b7dc673c6e41465017852_full.jpg",
         "url": null
     }
 },
@@ -3104,7 +3167,7 @@
         "title": "Happy at the Equator Festival!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/ae56dda5d170caf32b5bdcd3fb31f5501465628609_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire4-tmb/ae56dda5d170caf32b5bdcd3fb31f5501465628609_full.jpg",
         "url": null
     }
 },
@@ -3116,7 +3179,7 @@
         "title": "In a Pinch with a Battleship's Big Cannon!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/cebab3c6262c16e6f40b810f7b66145c1466235974_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire3-tmb/cebab3c6262c16e6f40b810f7b66145c1466235974_full.jpg",
         "url": null
     }
 },
@@ -3128,7 +3191,7 @@
         "title": "In a Pinch with the Last Battle!",
         "description": "A description will be written later",
         "anime": 22,
-        "cover_img_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/722cd45d94e03e2faa19dc5d26891df61466840122_full.jpg",
+        "cover_image_url": "https://img1.ak.crunchyroll.com/i/spire2-tmb/722cd45d94e03e2faa19dc5d26891df61466840122_full.jpg",
         "url": null
     }
 },
@@ -3139,7 +3202,7 @@
         "slug": "tomoyo-takayanagi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n122320-tV8CERbhYcNV.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n122320-tV8CERbhYcNV.png",
         "first_name": "Tomoyo",
         "last_name": "Takayanagi"
     }
@@ -3151,7 +3214,7 @@
         "slug": "marika-kouno",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119383-En92dXrTlJTY.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119383-En92dXrTlJTY.png",
         "first_name": "Marika",
         "last_name": "Kouno"
     }
@@ -3163,7 +3226,7 @@
         "slug": "azumi-waki",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119517-ggxWaTnTOrxW.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119517-ggxWaTnTOrxW.jpg",
         "first_name": "Azumi",
         "last_name": "Waki"
     }
@@ -3175,7 +3238,7 @@
         "slug": "machico",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119606-f5yQ1XJAQiBN.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119606-f5yQ1XJAQiBN.png",
         "first_name": "Machico",
         "last_name": ""
     }
@@ -3187,7 +3250,7 @@
         "slug": "chisa-kimura",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/125302-IauFzcIvSkos.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/125302-IauFzcIvSkos.jpg",
         "first_name": "Chisa",
         "last_name": "Kimura"
     }
@@ -3199,7 +3262,7 @@
         "slug": "minami-takahashi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n117003-UucaZmQjVSV7.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n117003-UucaZmQjVSV7.png",
         "first_name": "Minami",
         "last_name": "Takahashi"
     }
@@ -3211,7 +3274,7 @@
         "slug": "ayaka-oohashi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n110903-GTQtkAs2pmO5.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n110903-GTQtkAs2pmO5.png",
         "first_name": "Ayaka",
         "last_name": "Oohashi"
     }
@@ -3223,7 +3286,7 @@
         "slug": "hitomi-ueda",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n125306-Kq7WCcO2EwbG.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n125306-Kq7WCcO2EwbG.png",
         "first_name": "Hitomi",
         "last_name": "Ueda"
     }
@@ -3235,7 +3298,7 @@
         "slug": "kouji-okino",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n127044-YGqvBYZ6ZfG2.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n127044-YGqvBYZ6ZfG2.jpg",
         "first_name": "Kouji",
         "last_name": "Okino"
     }
@@ -3247,7 +3310,7 @@
         "slug": "saori-oonishi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n114884-UzAes6hUiiOJ.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n114884-UzAes6hUiiOJ.jpg",
         "first_name": "Saori",
         "last_name": "Oonishi"
     }
@@ -3259,7 +3322,7 @@
         "slug": "akari-kitou",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119722-Ls7ORfBejJEP.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119722-Ls7ORfBejJEP.jpg",
         "first_name": "Akari",
         "last_name": "Kitou"
     }
@@ -3271,7 +3334,7 @@
         "slug": "lynn",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118806-2aFjOHv08Iwm.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118806-2aFjOHv08Iwm.jpg",
         "first_name": "Lynn",
         "last_name": ""
     }
@@ -3283,7 +3346,7 @@
         "slug": "yuuka-aisaka",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118478-DPtc9CAmbJOC.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118478-DPtc9CAmbJOC.jpg",
         "first_name": "Yuuka",
         "last_name": "Aisaka"
     }
@@ -3295,7 +3358,7 @@
         "slug": "azusa-tadokoro",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112297-seUP8O4obuYO.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112297-seUP8O4obuYO.png",
         "first_name": "Azusa",
         "last_name": "Tadokoro"
     }
@@ -3307,7 +3370,7 @@
         "slug": "sora-tokui",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n106361-EMvWLkEKavEM.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n106361-EMvWLkEKavEM.png",
         "first_name": "Sora",
         "last_name": "Tokui"
     }
@@ -3319,7 +3382,7 @@
         "slug": "ruriko-aoki",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24922-GZMYC1vTwn4W.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24922-GZMYC1vTwn4W.jpg",
         "first_name": "Ruriko",
         "last_name": "Aoki"
     }
@@ -3331,7 +3394,7 @@
         "slug": "eriko-matsui",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n115835-3uhE3pEKEsEN.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n115835-3uhE3pEKEsEN.png",
         "first_name": "Eriko",
         "last_name": "Matsui"
     }
@@ -3343,7 +3406,7 @@
         "slug": "rena-maeda",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112101-nOHhohG1NHb9.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112101-nOHhohG1NHb9.jpg",
         "first_name": "Rena",
         "last_name": "Maeda"
     }
@@ -3355,7 +3418,7 @@
         "slug": "yuka-ootsubo",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n107452-PcfGagaON83G.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n107452-PcfGagaON83G.png",
         "first_name": "Yuka",
         "last_name": "Ootsubo"
     }
@@ -3367,7 +3430,7 @@
         "slug": "yuiko-tatsumi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n101997-AUljb27RuBmm.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n101997-AUljb27RuBmm.png",
         "first_name": "Yuiko",
         "last_name": "Tatsumi"
     }
@@ -3379,7 +3442,7 @@
         "slug": "iori-saeki",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n139844-zjqS38xT2FK4.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n139844-zjqS38xT2FK4.png",
         "first_name": "Iori",
         "last_name": "Saeki"
     }
@@ -3391,7 +3454,7 @@
         "slug": "yui-kondou",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118538-uTOPpwruceqk.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118538-uTOPpwruceqk.png",
         "first_name": "Yui",
         "last_name": "Kondou"
     }
@@ -3403,7 +3466,7 @@
         "slug": "yui-watanabe",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/11864.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/11864.jpg",
         "first_name": "Yui",
         "last_name": "Watanabe"
     }
@@ -3415,7 +3478,7 @@
         "slug": "megumi-toyoguchi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95144-9Y8CtDVmxogE.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95144-9Y8CtDVmxogE.jpg",
         "first_name": "Megumi",
         "last_name": "Toyoguchi"
     }
@@ -3427,7 +3490,7 @@
         "slug": "kaori-maeda",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n126863-UhefvoqVWVbB.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n126863-UhefvoqVWVbB.jpg",
         "first_name": "Kaori",
         "last_name": "Maeda"
     }
@@ -3439,7 +3502,7 @@
         "slug": "rika-kinugawa",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119821-q3681hu03ayO.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119821-q3681hu03ayO.png",
         "first_name": "Rika",
         "last_name": "Kinugawa"
     }
@@ -3451,7 +3514,7 @@
         "slug": "keiko-watanabe",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n176881-gsbJoRLjZ95w.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n176881-gsbJoRLjZ95w.jpg",
         "first_name": "Keiko",
         "last_name": "Watanabe"
     }
@@ -3463,7 +3526,7 @@
         "slug": "miharu-hanai",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n121455-IJWqOtU2HKyP.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n121455-IJWqOtU2HKyP.png",
         "first_name": "Miharu",
         "last_name": "Hanai"
     }
@@ -3475,7 +3538,7 @@
         "slug": "masumi-tazawa",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/23922-Slv15f8EbFOz.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/23922-Slv15f8EbFOz.png",
         "first_name": "Masumi",
         "last_name": "Tazawa"
     }
@@ -3487,7 +3550,7 @@
         "slug": "hikaru-toono",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n137842-IOiPpNGNV9uO.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n137842-IOiPpNGNV9uO.jpg",
         "first_name": "Hikaru",
         "last_name": "Toono"
     }
@@ -3499,7 +3562,7 @@
         "slug": "saki-kousaka",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n175741-4itPRjDmXvEd.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n175741-4itPRjDmXvEd.png",
         "first_name": "Saki",
         "last_name": "Kousaka"
     }
@@ -3511,7 +3574,7 @@
         "slug": "satomi-akesaka",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95723-bV625Jngt5o6.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95723-bV625Jngt5o6.png",
         "first_name": "Satomi",
         "last_name": "Akesaka"
     }
@@ -3523,7 +3586,7 @@
         "slug": "kana-yuuki",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118739-hIVuGI5fgL5e.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118739-hIVuGI5fgL5e.png",
         "first_name": "Kana",
         "last_name": "Yuuki"
     }
@@ -3535,7 +3598,7 @@
         "slug": "naomi-oozora",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n117329-b0JyOtyttcJI.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n117329-b0JyOtyttcJI.jpg",
         "first_name": "Naomi",
         "last_name": "Oozora"
     }
@@ -3547,7 +3610,7 @@
         "slug": "mariya-ise",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95655-cR519BXmteKA.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95655-cR519BXmteKA.png",
         "first_name": "Mariya",
         "last_name": "Ise"
     }
@@ -3559,7 +3622,7 @@
         "slug": "momoko-seto",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n298582-wQG1c3x4Mej8.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n298582-wQG1c3x4Mej8.jpg",
         "first_name": "Momoko",
         "last_name": "Seto"
     }
@@ -3571,7 +3634,7 @@
         "slug": "fairouz-ai",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n133625-YpEgKD7flV2S.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n133625-YpEgKD7flV2S.jpg",
         "first_name": "Fairouz Ai",
         "last_name": ""
     }
@@ -3583,7 +3646,7 @@
         "slug": "ruriko-noguchi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n126853-CvqVZEzoojnE.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n126853-CvqVZEzoojnE.png",
         "first_name": "Ruriko",
         "last_name": "Noguchi"
     }
@@ -3595,7 +3658,7 @@
         "slug": "katsuyuki-konishi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95020-uOJO2IlwpcX0.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95020-uOJO2IlwpcX0.png",
         "first_name": "Katsuyuki",
         "last_name": "Konishi"
     }
@@ -3607,7 +3670,7 @@
         "slug": "shiori-izawa",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n111453-7fe0B5uogy3Z.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n111453-7fe0B5uogy3Z.png",
         "first_name": "Shiori",
         "last_name": "Izawa"
     }
@@ -3619,7 +3682,7 @@
         "slug": "houchuu-ootsuka",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95337-NnvEQEBKV2dR.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95337-NnvEQEBKV2dR.jpg",
         "first_name": "Houchuu",
         "last_name": "Ootsuka"
     }
@@ -3631,7 +3694,7 @@
         "slug": "you-taichi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n109251-ge8rmZwppqxy.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n109251-ge8rmZwppqxy.png",
         "first_name": "You",
         "last_name": "Taichi"
     }
@@ -3643,7 +3706,7 @@
         "slug": "ayano-shibuya",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n131242-5GS0lQor8BXe.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n131242-5GS0lQor8BXe.png",
         "first_name": "Ayano",
         "last_name": "Shibuya"
     }
@@ -3655,7 +3718,7 @@
         "slug": "yurina-amami",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n162030-fwMmg9JeyDxI.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n162030-fwMmg9JeyDxI.png",
         "first_name": "Yurina",
         "last_name": "Amami"
     }
@@ -3667,7 +3730,7 @@
         "slug": "ayumi-hinohara",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n293315-df0Bdf0bIqsP.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n293315-df0Bdf0bIqsP.png",
         "first_name": "Ayumi",
         "last_name": "Hinohara"
     }
@@ -3679,7 +3742,7 @@
         "slug": "yumiri-hanamori",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n116543-ugu1HZWiQkqi.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n116543-ugu1HZWiQkqi.jpg",
         "first_name": "Yumiri",
         "last_name": "Hanamori"
     }
@@ -3691,7 +3754,7 @@
         "slug": "saya-aizawa",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n129326-LGj20gEbOAPX.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n129326-LGj20gEbOAPX.jpg",
         "first_name": "Saya",
         "last_name": "Aizawa"
     }
@@ -3703,7 +3766,7 @@
         "slug": "michiko-kaiden",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/22455.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/22455.jpg",
         "first_name": "Michiko",
         "last_name": "Kaiden"
     }
@@ -3715,7 +3778,7 @@
         "slug": "takako-tanaka",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n125361-2LA9IYJ9A8Ix.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n125361-2LA9IYJ9A8Ix.png",
         "first_name": "Takako",
         "last_name": "Tanaka"
     }
@@ -3727,7 +3790,7 @@
         "slug": "nanako-mori",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118454-c5IJ0x8GoDuo.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118454-c5IJ0x8GoDuo.jpg",
         "first_name": "Nanako",
         "last_name": "Mori"
     }
@@ -3739,7 +3802,7 @@
         "slug": "mayuko-kazama",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n175810-qkPp3PAW4kYY.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n175810-qkPp3PAW4kYY.jpg",
         "first_name": "Mayuko",
         "last_name": "Kazama"
     }
@@ -3751,7 +3814,7 @@
         "slug": "haruno-inoue",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n136628-moFdN96deAnb.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n136628-moFdN96deAnb.jpg",
         "first_name": "Haruno",
         "last_name": "Inoue"
     }
@@ -3763,7 +3826,7 @@
         "slug": "shizuka-ishigami",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118738-60gKflxjl80c.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118738-60gKflxjl80c.png",
         "first_name": "Shizuka",
         "last_name": "Ishigami"
     }
@@ -3775,7 +3838,7 @@
         "slug": "ayahi-takagaki",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95823-gJC6Tr9HDOqy.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95823-gJC6Tr9HDOqy.png",
         "first_name": "Ayahi",
         "last_name": "Takagaki"
     }
@@ -3787,7 +3850,7 @@
         "slug": "akira-sekine",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119155-DCKagRHcI95J.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119155-DCKagRHcI95J.png",
         "first_name": "Akira",
         "last_name": "Sekine"
     }
@@ -3799,7 +3862,7 @@
         "slug": "yuuko-kaida",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95428-1e4kSvr5fkmQ.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95428-1e4kSvr5fkmQ.png",
         "first_name": "Yuuko",
         "last_name": "Kaida"
     }
@@ -3811,7 +3874,7 @@
         "slug": "miyu-tomita",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119518-vZN7TPy12iuu.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119518-vZN7TPy12iuu.png",
         "first_name": "Miyu",
         "last_name": "Tomita"
     }
@@ -3823,7 +3886,7 @@
         "slug": "mutsumi-tamura",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n105013-DffN0XN2Zw7G.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n105013-DffN0XN2Zw7G.png",
         "first_name": "Mutsumi",
         "last_name": "Tamura"
     }
@@ -3835,7 +3898,7 @@
         "slug": "yoshino-aoyama",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118475-19IqPJRpa08T.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118475-19IqPJRpa08T.png",
         "first_name": "Yoshino",
         "last_name": "Aoyama"
     }
@@ -3847,7 +3910,7 @@
         "slug": "sayumi-suzushiro",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n126963-GnhNcLWFeKmy.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n126963-GnhNcLWFeKmy.png",
         "first_name": "Sayumi",
         "last_name": "Suzushiro"
     }
@@ -3859,7 +3922,7 @@
         "slug": "saku-mizuno",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n213951-EQGfRStCAJ2Q.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n213951-EQGfRStCAJ2Q.jpg",
         "first_name": "Saku",
         "last_name": "Mizuno"
     }
@@ -3871,7 +3934,7 @@
         "slug": "ikumi-hasegawa",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n132768-r4FwpBpHnRtZ.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n132768-r4FwpBpHnRtZ.png",
         "first_name": "Ikumi",
         "last_name": "Hasegawa"
     }
@@ -3883,7 +3946,7 @@
         "slug": "maaya-uchida",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n108639-LLrR4WptCh5s.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n108639-LLrR4WptCh5s.png",
         "first_name": "Maaya",
         "last_name": "Uchida"
     }
@@ -3895,7 +3958,7 @@
         "slug": "kotori-koiwai",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n109131-IS92Cw9ldM2x.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n109131-IS92Cw9ldM2x.png",
         "first_name": "Kotori",
         "last_name": "Koiwai"
     }
@@ -3907,7 +3970,7 @@
         "slug": "junji-majima",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95820-5Fuosf1ljdSc.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95820-5Fuosf1ljdSc.png",
         "first_name": "Junji",
         "last_name": "Majima"
     }
@@ -3919,7 +3982,7 @@
         "slug": "rie-suegara",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118402-GJUhYzBuQ4n8.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118402-GJUhYzBuQ4n8.png",
         "first_name": "Rie",
         "last_name": "Suegara"
     }
@@ -3931,7 +3994,7 @@
         "slug": "misaki-watada",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n152199-VVKAzgSZLFqX.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n152199-VVKAzgSZLFqX.png",
         "first_name": "Misaki",
         "last_name": "Watada"
     }
@@ -3943,7 +4006,7 @@
         "slug": "hinaki-yano",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n143887-M4a4hO3mxDm6.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n143887-M4a4hO3mxDm6.png",
         "first_name": "Hinaki",
         "last_name": "Yano"
     }
@@ -3955,7 +4018,7 @@
         "slug": "yume-miyamoto",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n104510-hB8YLsPRLNKq.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n104510-hB8YLsPRLNKq.png",
         "first_name": "Yume",
         "last_name": "Miyamoto"
     }
@@ -3967,7 +4030,7 @@
         "slug": "youhei-azakami",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n109155-kQHazg0bG4Pv.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n109155-kQHazg0bG4Pv.png",
         "first_name": "Youhei",
         "last_name": "Azakami"
     }
@@ -3979,7 +4042,7 @@
         "slug": "anna-nagase",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n182100-buLXSv62GTH2.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n182100-buLXSv62GTH2.png",
         "first_name": "Anna",
         "last_name": "Nagase"
     }
@@ -3991,7 +4054,7 @@
         "slug": "kouseki-kogure",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n289555-LGRtHwjanQAG.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n289555-LGRtHwjanQAG.png",
         "first_name": "Kouseki",
         "last_name": "Kogure"
     }
@@ -4003,7 +4066,7 @@
         "slug": "hayato-komiya",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n281924-0L83nTRo3Hen.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n281924-0L83nTRo3Hen.jpg",
         "first_name": "Hayato",
         "last_name": "Komiya"
     }
@@ -4015,7 +4078,7 @@
         "slug": "takeo-ootsuka",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n128426-uB8KFqVLbogF.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n128426-uB8KFqVLbogF.png",
         "first_name": "Takeo",
         "last_name": "Ootsuka"
     }
@@ -4027,7 +4090,7 @@
         "slug": "natsumi-kawaida",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n151445-3qF3EB619d74.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n151445-3qF3EB619d74.png",
         "first_name": "Natsumi",
         "last_name": "Kawaida"
     }
@@ -4039,7 +4102,7 @@
         "slug": "megumi-yamaguchi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n115416-VZfvKTYsFO4r.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n115416-VZfvKTYsFO4r.png",
         "first_name": "Megumi",
         "last_name": "Yamaguchi"
     }
@@ -4051,7 +4114,7 @@
         "slug": "yuu-wakabayashi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n203135-bRzDAbkRAKrz.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n203135-bRzDAbkRAKrz.png",
         "first_name": "Yuu",
         "last_name": "Wakabayashi"
     }
@@ -4063,7 +4126,7 @@
         "slug": "emiko-takeuchi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n121022-DBivYQLuvknD.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n121022-DBivYQLuvknD.jpg",
         "first_name": "Emiko",
         "last_name": "Takeuchi"
     }
@@ -4075,7 +4138,7 @@
         "slug": "reo-osanai",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n289560-2jOMhB8wlvJs.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n289560-2jOMhB8wlvJs.png",
         "first_name": "Reo",
         "last_name": "Osanai"
     }
@@ -4087,7 +4150,7 @@
         "slug": "noriaki-kanze",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n152907-k0MSLzTIXYOj.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n152907-k0MSLzTIXYOj.png",
         "first_name": "Noriaki",
         "last_name": "Kanze"
     }
@@ -4099,7 +4162,7 @@
         "slug": "yasunori-masutani",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/6241.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/6241.jpg",
         "first_name": "Yasunori",
         "last_name": "Masutani"
     }
@@ -4111,7 +4174,7 @@
         "slug": "shiina-natsukawa",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118818-myVmP9PWlh78.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118818-myVmP9PWlh78.png",
         "first_name": "Shiina",
         "last_name": "Natsukawa"
     }
@@ -4123,7 +4186,7 @@
         "slug": "sora-amamiya",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n116517-NQh6ewlCwzBN.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n116517-NQh6ewlCwzBN.jpg",
         "first_name": "Sora",
         "last_name": "Amamiya"
     }
@@ -4135,7 +4198,7 @@
         "slug": "natsumi-takamori",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n106659-3LfNtHDY3P0Z.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n106659-3LfNtHDY3P0Z.png",
         "first_name": "Natsumi",
         "last_name": "Takamori"
     }
@@ -4147,7 +4210,7 @@
         "slug": "natsuki-aikawa",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/2123.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/2123.jpg",
         "first_name": "Natsuki",
         "last_name": "Aikawa"
     }
@@ -4159,7 +4222,7 @@
         "slug": "nozomi-furuki",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n107388-uNbc6OR8Mlzz.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n107388-uNbc6OR8Mlzz.png",
         "first_name": "Nozomi",
         "last_name": "Furuki"
     }
@@ -4171,7 +4234,7 @@
         "slug": "atsumi-tanezaki",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112215-kfABGD8W2YSJ.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112215-kfABGD8W2YSJ.jpg",
         "first_name": "Atsumi",
         "last_name": "Tanezaki"
     }
@@ -4183,7 +4246,7 @@
         "slug": "yuuko-kurose",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24860-2Nme5MY2ETkn.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24860-2Nme5MY2ETkn.jpg",
         "first_name": "Yuuko",
         "last_name": "Kurose"
     }
@@ -4195,7 +4258,7 @@
         "slug": "yurika-kubo",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112209-6rgze0vZlnG6.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n112209-6rgze0vZlnG6.png",
         "first_name": "Yurika",
         "last_name": "Kubo"
     }
@@ -4207,7 +4270,7 @@
         "slug": "miharu-sawada",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24861-Vf0NTp8HMHSw.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24861-Vf0NTp8HMHSw.jpg",
         "first_name": "Miharu",
         "last_name": "Sawada"
     }
@@ -4219,7 +4282,7 @@
         "slug": "hitomi-kikuchi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24862-VdJUW2ro2JZH.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24862-VdJUW2ro2JZH.jpg",
         "first_name": "Hitomi",
         "last_name": "Kikuchi"
     }
@@ -4231,7 +4294,7 @@
         "slug": "minami-tanaka",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118473-Zc8ufQpELoU3.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118473-Zc8ufQpELoU3.jpg",
         "first_name": "Minami",
         "last_name": "Tanaka"
     }
@@ -4243,7 +4306,7 @@
         "slug": "rui-tanabe",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118444-ftV3GueuH2WQ.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118444-ftV3GueuH2WQ.png",
         "first_name": "Rui",
         "last_name": "Tanabe"
     }
@@ -4255,7 +4318,7 @@
         "slug": "sakura-nakamura",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n111323-3rH4zdQLTjue.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n111323-3rH4zdQLTjue.png",
         "first_name": "Sakura",
         "last_name": "Nakamura"
     }
@@ -4267,7 +4330,7 @@
         "slug": "chisato-satsuki",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119858-toSC2ze1LkdD.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119858-toSC2ze1LkdD.png",
         "first_name": "Chisato",
         "last_name": "Satsuki"
     }
@@ -4279,7 +4342,7 @@
         "slug": "emi-miyajima",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119864-BwYLj2idbpEs.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119864-BwYLj2idbpEs.png",
         "first_name": "Emi",
         "last_name": "Miyajima"
     }
@@ -4291,7 +4354,7 @@
         "slug": "nanami-yamashita",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118472-YEwaeltqQmPc.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118472-YEwaeltqQmPc.jpg",
         "first_name": "Nanami",
         "last_name": "Yamashita"
     }
@@ -4303,7 +4366,7 @@
         "slug": "akane-fujita",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n116155-5H5Dqe2oQyId.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n116155-5H5Dqe2oQyId.png",
         "first_name": "Akane",
         "last_name": "Fujita"
     }
@@ -4315,7 +4378,7 @@
         "slug": "yuu-kobayashi",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95034-AwobjrcmkMi9.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n95034-AwobjrcmkMi9.png",
         "first_name": "Yuu",
         "last_name": "Kobayashi"
     }
@@ -4327,7 +4390,7 @@
         "slug": "ayaka-shimizu",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n104108-UXiBJxnycHhL.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n104108-UXiBJxnycHhL.png",
         "first_name": "Ayaka",
         "last_name": "Shimizu"
     }
@@ -4339,7 +4402,7 @@
         "slug": "sanae-fuku",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24857-HPP9DXIXYdfi.jpg",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/24857-HPP9DXIXYdfi.jpg",
         "first_name": "Sanae",
         "last_name": "Fuku"
     }
@@ -4351,7 +4414,7 @@
         "slug": "ari-ozawa",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118663-fFzQqJDtYNdA.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118663-fFzQqJDtYNdA.png",
         "first_name": "Ari",
         "last_name": "Ozawa"
     }
@@ -4363,7 +4426,7 @@
         "slug": "sayaka-kaneko",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119856-3u3nVdXKFQzL.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n119856-3u3nVdXKFQzL.png",
         "first_name": "Sayaka",
         "last_name": "Kaneko"
     }
@@ -4375,7 +4438,7 @@
         "slug": "hiyori-nitta",
         "bio": "A bio will be written later",
         "socials": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118794-6uFLYPk64yL2.png",
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/staff/large/n118794-6uFLYPk64yL2.png",
         "first_name": "Hiyori",
         "last_name": "Nitta"
     }
@@ -4389,7 +4452,7 @@
         "nicknames": [],
         "slug": "oguri-cap",
         "voice_actor": 1,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b96114-uqnjPK9012rB.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b96114-uqnjPK9012rB.png"
     }
 },
 {
@@ -4401,7 +4464,7 @@
         "nicknames": [],
         "slug": "silence-suzuka",
         "voice_actor": 2,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125298-MyaIqv1U5mcg.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125298-MyaIqv1U5mcg.jpg"
     }
 },
 {
@@ -4413,7 +4476,7 @@
         "nicknames": [],
         "slug": "special-week",
         "voice_actor": 3,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125299-hFsb6X8zcV7B.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125299-hFsb6X8zcV7B.jpg"
     }
 },
 {
@@ -4425,7 +4488,7 @@
         "nicknames": [],
         "slug": "toukai-teiou",
         "voice_actor": 4,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125300-HdAysj1aqAbS.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125300-HdAysj1aqAbS.jpg"
     }
 },
 {
@@ -4437,7 +4500,7 @@
         "nicknames": [],
         "slug": "daiwa-scarlet",
         "voice_actor": 5,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125301-8Di5MojIiCLP.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125301-8Di5MojIiCLP.jpg"
     }
 },
 {
@@ -4449,7 +4512,7 @@
         "nicknames": [],
         "slug": "el-condor-pasa",
         "voice_actor": 6,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125303-cVlxMH7W2zVE.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125303-cVlxMH7W2zVE.jpg"
     }
 },
 {
@@ -4461,7 +4524,7 @@
         "nicknames": [],
         "slug": "vodka",
         "voice_actor": 7,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125304-Sd9UI8WVvqaA.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125304-Sd9UI8WVvqaA.jpg"
     }
 },
 {
@@ -4473,7 +4536,7 @@
         "nicknames": [],
         "slug": "gold-ship",
         "voice_actor": 8,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125305-EH7Kf1WPFY5x.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125305-EH7Kf1WPFY5x.jpg"
     }
 },
 {
@@ -4485,7 +4548,7 @@
         "nicknames": [],
         "slug": "trainer",
         "voice_actor": 9,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/125308-zi5QLqjXLBAF.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/125308-zi5QLqjXLBAF.jpg"
     }
 },
 {
@@ -4497,7 +4560,7 @@
         "nicknames": [],
         "slug": "mejiro-mcqueen",
         "voice_actor": 10,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125309-gt6fsEghQK4D.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125309-gt6fsEghQK4D.jpg"
     }
 },
 {
@@ -4509,7 +4572,7 @@
         "nicknames": [],
         "slug": "seiun-sky",
         "voice_actor": 11,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125310-fhRVTmEHlipC.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125310-fhRVTmEHlipC.jpg"
     }
 },
 {
@@ -4521,7 +4584,7 @@
         "nicknames": [],
         "slug": "maruzensky",
         "voice_actor": 12,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140842-bsmco7QSJAaq.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140842-bsmco7QSJAaq.jpg"
     }
 },
 {
@@ -4533,7 +4596,7 @@
         "nicknames": [],
         "slug": "narita-brian",
         "voice_actor": 13,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140843-LbiFefZSH8w5.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140843-LbiFefZSH8w5.jpg"
     }
 },
 {
@@ -4545,7 +4608,7 @@
         "nicknames": [],
         "slug": "symboli-rudolf",
         "voice_actor": 14,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140844-96LRbgsDyMdV.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140844-96LRbgsDyMdV.jpg"
     }
 },
 {
@@ -4557,7 +4620,7 @@
         "nicknames": [],
         "slug": "tm-opera-o",
         "voice_actor": 15,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140845-BT4Q3o93CM1u.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140845-BT4Q3o93CM1u.png"
     }
 },
 {
@@ -4569,7 +4632,7 @@
         "nicknames": [],
         "slug": "air-groove",
         "voice_actor": 16,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140846-gsLxIFWO23fg.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140846-gsLxIFWO23fg.jpg"
     }
 },
 {
@@ -4581,7 +4644,7 @@
         "nicknames": [],
         "slug": "fuji-kiseki",
         "voice_actor": 17,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140847-q56xUfctlT9f.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140847-q56xUfctlT9f.jpg"
     }
 },
 {
@@ -4593,7 +4656,7 @@
         "nicknames": [],
         "slug": "grass-wonder",
         "voice_actor": 18,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140848-pYoMXeoZ8Pve.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140848-pYoMXeoZ8Pve.jpg"
     }
 },
 {
@@ -4605,7 +4668,7 @@
         "nicknames": [],
         "slug": "taiki-shuttle",
         "voice_actor": 19,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140849-f4tLbbh2wTQ0.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140849-f4tLbbh2wTQ0.jpg"
     }
 },
 {
@@ -4617,7 +4680,7 @@
         "nicknames": [],
         "slug": "hishi-amazon",
         "voice_actor": 20,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140850-O7JnZLOjrNkB.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140850-O7JnZLOjrNkB.jpg"
     }
 },
 {
@@ -4629,7 +4692,7 @@
         "nicknames": [],
         "slug": "king-halo",
         "voice_actor": 21,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b164139-0ko3YUiGiYKi.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b164139-0ko3YUiGiYKi.jpg"
     }
 },
 {
@@ -4641,7 +4704,7 @@
         "nicknames": [],
         "slug": "biwa-hayahide",
         "voice_actor": 22,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174851-9HjNmymT6Gig.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174851-9HjNmymT6Gig.png"
     }
 },
 {
@@ -4653,7 +4716,7 @@
         "nicknames": [],
         "slug": "winning-ticket",
         "voice_actor": 23,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174852-lfncTjSNRYAp.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174852-lfncTjSNRYAp.jpg"
     }
 },
 {
@@ -4665,7 +4728,7 @@
         "nicknames": [],
         "slug": "hana-toujou",
         "voice_actor": 24,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200349-H9F8fl4kDnIq.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200349-H9F8fl4kDnIq.png"
     }
 },
 {
@@ -4677,7 +4740,7 @@
         "nicknames": [],
         "slug": "nice-nature",
         "voice_actor": 25,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200350-UsnX4I52yudh.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200350-UsnX4I52yudh.jpg"
     }
 },
 {
@@ -4689,7 +4752,7 @@
         "nicknames": [],
         "slug": "narita-brian-2",
         "voice_actor": 26,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140843-LbiFefZSH8w5.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140843-LbiFefZSH8w5.jpg"
     }
 },
 {
@@ -4701,7 +4764,7 @@
         "nicknames": [],
         "slug": "hishi-amazon-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140850-O7JnZLOjrNkB.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140850-O7JnZLOjrNkB.jpg"
     }
 },
 {
@@ -4713,7 +4776,7 @@
         "nicknames": [],
         "slug": "narita-taishin",
         "voice_actor": 27,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174850-xvpZeF5nA9nC.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174850-xvpZeF5nA9nC.png"
     }
 },
 {
@@ -4725,7 +4788,7 @@
         "nicknames": [],
         "slug": "twin-turbo",
         "voice_actor": 28,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200351-IDmIqPUg3St7.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200351-IDmIqPUg3St7.png"
     }
 },
 {
@@ -4737,7 +4800,7 @@
         "nicknames": [],
         "slug": "ikuno-dictus",
         "voice_actor": 29,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200352-mNWPLsYjwf50.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200352-mNWPLsYjwf50.png"
     }
 },
 {
@@ -4749,7 +4812,7 @@
         "nicknames": [],
         "slug": "machikanetannhauser",
         "voice_actor": 30,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200353-DrAJpWOYyHxn.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b200353-DrAJpWOYyHxn.png"
     }
 },
 {
@@ -4761,7 +4824,7 @@
         "nicknames": [],
         "slug": "oguri-cap-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b96114-uqnjPK9012rB.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b96114-uqnjPK9012rB.png"
     }
 },
 {
@@ -4773,7 +4836,7 @@
         "nicknames": [],
         "slug": "el-condor-pasa-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125303-cVlxMH7W2zVE.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125303-cVlxMH7W2zVE.jpg"
     }
 },
 {
@@ -4785,7 +4848,7 @@
         "nicknames": [],
         "slug": "seiun-sky-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125310-fhRVTmEHlipC.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b125310-fhRVTmEHlipC.jpg"
     }
 },
 {
@@ -4797,7 +4860,7 @@
         "nicknames": [],
         "slug": "narita-brian-3",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140843-LbiFefZSH8w5.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140843-LbiFefZSH8w5.jpg"
     }
 },
 {
@@ -4809,7 +4872,7 @@
         "nicknames": [],
         "slug": "tm-opera-o-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140845-BT4Q3o93CM1u.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140845-BT4Q3o93CM1u.png"
     }
 },
 {
@@ -4821,7 +4884,7 @@
         "nicknames": [],
         "slug": "grass-wonder-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140848-pYoMXeoZ8Pve.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140848-pYoMXeoZ8Pve.jpg"
     }
 },
 {
@@ -4833,7 +4896,7 @@
         "nicknames": [],
         "slug": "taiki-shuttle-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140849-f4tLbbh2wTQ0.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b140849-f4tLbbh2wTQ0.jpg"
     }
 },
 {
@@ -4845,7 +4908,7 @@
         "nicknames": [],
         "slug": "king-halo-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b164139-0ko3YUiGiYKi.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b164139-0ko3YUiGiYKi.jpg"
     }
 },
 {
@@ -4857,7 +4920,7 @@
         "nicknames": [],
         "slug": "narita-taishin-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174850-xvpZeF5nA9nC.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174850-xvpZeF5nA9nC.png"
     }
 },
 {
@@ -4869,7 +4932,7 @@
         "nicknames": [],
         "slug": "biwa-hayahide-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174851-9HjNmymT6Gig.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174851-9HjNmymT6Gig.png"
     }
 },
 {
@@ -4881,7 +4944,7 @@
         "nicknames": [],
         "slug": "winning-ticket-2",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174852-lfncTjSNRYAp.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174852-lfncTjSNRYAp.jpg"
     }
 },
 {
@@ -4893,7 +4956,7 @@
         "nicknames": [],
         "slug": "gold-city",
         "voice_actor": 31,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174854-gpkBsrDRa6Yu.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b174854-gpkBsrDRa6Yu.png"
     }
 },
 {
@@ -4905,7 +4968,7 @@
         "nicknames": [],
         "slug": "misato-akasaka",
         "voice_actor": 32,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b203217-zBG9jwLmfIZN.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b203217-zBG9jwLmfIZN.png"
     }
 },
 {
@@ -4917,7 +4980,7 @@
         "nicknames": [],
         "slug": "super-creek",
         "voice_actor": 33,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b211565-hSbH83BDCTjo.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b211565-hSbH83BDCTjo.png"
     }
 },
 {
@@ -4929,7 +4992,7 @@
         "nicknames": [],
         "slug": "tamamo-cross",
         "voice_actor": 34,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b211567-7JE7nsC3AqkD.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b211567-7JE7nsC3AqkD.png"
     }
 },
 {
@@ -4941,7 +5004,7 @@
         "nicknames": [],
         "slug": "tazuna-hayakawa",
         "voice_actor": null,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b211568-wvfqOD5wuVVI.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b211568-wvfqOD5wuVVI.png"
     }
 },
 {
@@ -4953,7 +5016,7 @@
         "nicknames": [],
         "slug": "fujimasa-march",
         "voice_actor": 35,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b290963-GNPmbC9jJawa.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b290963-GNPmbC9jJawa.jpg"
     }
 },
 {
@@ -4965,7 +5028,7 @@
         "nicknames": [],
         "slug": "belno-light",
         "voice_actor": 36,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b290964-dDvAbo8HHXlp.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b290964-dDvAbo8HHXlp.png"
     }
 },
 {
@@ -4977,7 +5040,7 @@
         "nicknames": [],
         "slug": "sirius-symboli",
         "voice_actor": 37,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b294353-x1IPEG68EU7w.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b294353-x1IPEG68EU7w.png"
     }
 },
 {
@@ -4989,7 +5052,7 @@
         "nicknames": [],
         "slug": "sakura-chiyono-o",
         "voice_actor": 38,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b305092-PbHLGmfygcap.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b305092-PbHLGmfygcap.png"
     }
 },
 {
@@ -5001,7 +5064,7 @@
         "nicknames": [],
         "slug": "jou-kitahara",
         "voice_actor": 39,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b352505-pc78vqRC3voe.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b352505-pc78vqRC3voe.jpg"
     }
 },
 {
@@ -5013,7 +5076,7 @@
         "nicknames": [],
         "slug": "mini-the-lady",
         "voice_actor": 40,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363000-wzPgXqWnXYJ9.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363000-wzPgXqWnXYJ9.jpg"
     }
 },
 {
@@ -5025,7 +5088,7 @@
         "nicknames": [],
         "slug": "ginjirou-musaka",
         "voice_actor": 41,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363001-9T2ByTFxqtZM.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363001-9T2ByTFxqtZM.png"
     }
 },
 {
@@ -5037,7 +5100,7 @@
         "nicknames": [],
         "slug": "rudy-lemono",
         "voice_actor": 42,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363002-OS6fT2OUN2V2.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363002-OS6fT2OUN2V2.png"
     }
 },
 {
@@ -5049,7 +5112,7 @@
         "nicknames": [],
         "slug": "norn-ace",
         "voice_actor": 43,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363003-LAP4n4LGt8Gn.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363003-LAP4n4LGt8Gn.png"
     }
 },
 {
@@ -5061,7 +5124,7 @@
         "nicknames": [],
         "slug": "mr-cb",
         "voice_actor": 44,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363004-jtahxK63uiOt.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b363004-jtahxK63uiOt.jpg"
     }
 },
 {
@@ -5073,7 +5136,7 @@
         "nicknames": [],
         "slug": "yaeno-muteki",
         "voice_actor": 45,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365172-2dVx3KmrnBqt.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365172-2dVx3KmrnBqt.png"
     }
 },
 {
@@ -5085,7 +5148,7 @@
         "nicknames": [],
         "slug": "dicta-striker",
         "voice_actor": 46,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365173-HOEhP7BUBXi9.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365173-HOEhP7BUBXi9.png"
     }
 },
 {
@@ -5097,7 +5160,7 @@
         "nicknames": [],
         "slug": "mejiro-ardan",
         "voice_actor": 47,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365174-GZDatyfXvkfr.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365174-GZDatyfXvkfr.png"
     }
 },
 {
@@ -5109,7 +5172,7 @@
         "nicknames": [],
         "slug": "god-hannibal",
         "voice_actor": 48,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365175-ja81UzVQFcvH.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365175-ja81UzVQFcvH.png"
     }
 },
 {
@@ -5121,7 +5184,7 @@
         "nicknames": [],
         "slug": "kraft-univer",
         "voice_actor": 49,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365176-NaRtwOUE6Lpn.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365176-NaRtwOUE6Lpn.png"
     }
 },
 {
@@ -5133,7 +5196,7 @@
         "nicknames": [],
         "slug": "black-ale",
         "voice_actor": 50,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365177-RamE2kpAZhJW.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365177-RamE2kpAZhJW.png"
     }
 },
 {
@@ -5145,7 +5208,7 @@
         "nicknames": [],
         "slug": "meikun-tsukasa",
         "voice_actor": 51,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365178-rTctrDv0uN2n.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b365178-rTctrDv0uN2n.png"
     }
 },
 {
@@ -5157,7 +5220,7 @@
         "nicknames": [],
         "slug": "inari-one",
         "voice_actor": 52,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b211560-gD9vEjVh5EXi.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b211560-gD9vEjVh5EXi.png"
     }
 },
 {
@@ -5169,7 +5232,7 @@
         "nicknames": [],
         "slug": "obey-your-master",
         "voice_actor": 53,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b372412-H4z9mbEH2kO3.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b372412-H4z9mbEH2kO3.jpg"
     }
 },
 {
@@ -5181,7 +5244,7 @@
         "nicknames": [],
         "slug": "michelle-my-baby",
         "voice_actor": 54,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b373111-Tw15MUAh3BgH.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b373111-Tw15MUAh3BgH.jpg"
     }
 },
 {
@@ -5193,7 +5256,7 @@
         "nicknames": [],
         "slug": "moonlight-lunacy",
         "voice_actor": 55,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b373112-slclDrn5rQoP.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b373112-slclDrn5rQoP.jpg"
     }
 },
 {
@@ -5205,7 +5268,7 @@
         "nicknames": [],
         "slug": "toni-bianca",
         "voice_actor": 56,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b373113-Xfq8xaBtwgwx.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b373113-Xfq8xaBtwgwx.jpg"
     }
 },
 {
@@ -5217,7 +5280,7 @@
         "nicknames": [],
         "slug": "ellerslie-pride",
         "voice_actor": 57,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b373114-Rfbjy9mWnkNA.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b373114-Rfbjy9mWnkNA.jpg"
     }
 },
 {
@@ -5229,7 +5292,7 @@
         "nicknames": [],
         "slug": "yamano-thousand",
         "voice_actor": 58,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b377093-dQgNveHDW0ol.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b377093-dQgNveHDW0ol.png"
     }
 },
 {
@@ -5241,7 +5304,7 @@
         "nicknames": [],
         "slug": "himeko-murata",
         "voice_actor": null,
-        "cover_img_url": "https://teamd2x.sirv.com/character/72/main.jpg"
+        "cover_image_url": "https://teamd2x.sirv.com/character/72/main.jpg"
     }
 },
 {
@@ -5253,7 +5316,7 @@
         "nicknames": [],
         "slug": "hitori-gotou",
         "voice_actor": 59,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b257562-Ru35NYPfsqhY.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b257562-Ru35NYPfsqhY.png"
     }
 },
 {
@@ -5265,7 +5328,7 @@
         "nicknames": [],
         "slug": "nijika-ijichi",
         "voice_actor": 60,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b261674-a8tJYvtzqWgC.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b261674-a8tJYvtzqWgC.png"
     }
 },
 {
@@ -5277,7 +5340,7 @@
         "nicknames": [],
         "slug": "ryou-yamada",
         "voice_actor": 61,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b264529-BvEusZnJLD2Y.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b264529-BvEusZnJLD2Y.png"
     }
 },
 {
@@ -5289,7 +5352,7 @@
         "nicknames": [],
         "slug": "ikuyo-kita",
         "voice_actor": 62,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b266041-1HKgjJGP2MmM.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b266041-1HKgjJGP2MmM.png"
     }
 },
 {
@@ -5301,7 +5364,7 @@
         "nicknames": [],
         "slug": "seika-ijichi",
         "voice_actor": 63,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289054-UnScwd5RkqBk.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289054-UnScwd5RkqBk.png"
     }
 },
 {
@@ -5313,7 +5376,7 @@
         "nicknames": [],
         "slug": "pa-san",
         "voice_actor": 64,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289055-khOP70WdXl2V.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289055-khOP70WdXl2V.jpg"
     }
 },
 {
@@ -5325,7 +5388,7 @@
         "nicknames": [],
         "slug": "jimihen",
         "voice_actor": 64,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289056-Eob1bSBYL1ry.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289056-Eob1bSBYL1ry.png"
     }
 },
 {
@@ -5337,7 +5400,7 @@
         "nicknames": [],
         "slug": "naoki-gotou",
         "voice_actor": 65,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289057-kxpKjfUu0KDi.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289057-kxpKjfUu0KDi.png"
     }
 },
 {
@@ -5349,7 +5412,7 @@
         "nicknames": [],
         "slug": "michiyo-gotou",
         "voice_actor": 66,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289058-5RE0lhteKG3P.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289058-5RE0lhteKG3P.png"
     }
 },
 {
@@ -5361,7 +5424,7 @@
         "nicknames": [],
         "slug": "futari-gotou",
         "voice_actor": 67,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289059-AbMjfO2YoThz.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289059-AbMjfO2YoThz.png"
     }
 },
 {
@@ -5373,7 +5436,7 @@
         "nicknames": [],
         "slug": "kita-no-yuujin",
         "voice_actor": 68,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289545-9ic2u07cZEQZ.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289545-9ic2u07cZEQZ.png"
     }
 },
 {
@@ -5385,7 +5448,7 @@
         "nicknames": [],
         "slug": "kita-no-yuujin-2",
         "voice_actor": 69,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289546-HnJ67v7Tovpu.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289546-HnJ67v7Tovpu.png"
     }
 },
 {
@@ -5397,7 +5460,7 @@
         "nicknames": [],
         "slug": "bandman",
         "voice_actor": 70,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
     }
 },
 {
@@ -5409,7 +5472,7 @@
         "nicknames": [],
         "slug": "interviewer",
         "voice_actor": 71,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289548-SWdRZVgD45Zf.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289548-SWdRZVgD45Zf.png"
     }
 },
 {
@@ -5421,7 +5484,7 @@
         "nicknames": [],
         "slug": "death-metal-voice",
         "voice_actor": 72,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289549-lFZItZsHofCS.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289549-lFZItZsHofCS.png"
     }
 },
 {
@@ -5433,7 +5496,7 @@
         "nicknames": [],
         "slug": "seito",
         "voice_actor": 73,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
     }
 },
 {
@@ -5445,7 +5508,7 @@
         "nicknames": [],
         "slug": "seito-2",
         "voice_actor": 74,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
     }
 },
 {
@@ -5457,7 +5520,7 @@
         "nicknames": [],
         "slug": "seito-3",
         "voice_actor": 75,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
     }
 },
 {
@@ -5469,7 +5532,7 @@
         "nicknames": [],
         "slug": "seito-4",
         "voice_actor": 76,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
     }
 },
 {
@@ -5481,7 +5544,7 @@
         "nicknames": [],
         "slug": "salaryman",
         "voice_actor": 77,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289557-IaIrTOSMvcVt.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289557-IaIrTOSMvcVt.png"
     }
 },
 {
@@ -5493,7 +5556,7 @@
         "nicknames": [],
         "slug": "salaryman-no-tsuma",
         "voice_actor": 78,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289558-4BUU7WKXcWIy.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289558-4BUU7WKXcWIy.png"
     }
 },
 {
@@ -5505,7 +5568,7 @@
         "nicknames": [],
         "slug": "salaryman-no-musume",
         "voice_actor": 79,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289559-XeSyZZviq7e9.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b289559-XeSyZZviq7e9.png"
     }
 },
 {
@@ -5517,7 +5580,7 @@
         "nicknames": [],
         "slug": "comment",
         "voice_actor": 80,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
     }
 },
 {
@@ -5529,7 +5592,7 @@
         "nicknames": [],
         "slug": "enji",
         "voice_actor": 49,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
     }
 },
 {
@@ -5541,7 +5604,7 @@
         "nicknames": [],
         "slug": "tv-nai-onsei",
         "voice_actor": 81,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg"
     }
 },
 {
@@ -5553,7 +5616,7 @@
         "nicknames": [],
         "slug": "akeno-misaki",
         "voice_actor": 82,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89347-ZCqjOj9H4C25.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89347-ZCqjOj9H4C25.png"
     }
 },
 {
@@ -5565,7 +5628,7 @@
         "nicknames": [],
         "slug": "moeka-china",
         "voice_actor": 83,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89348-E9MR8l6STYnV.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89348-E9MR8l6STYnV.png"
     }
 },
 {
@@ -5577,7 +5640,7 @@
         "nicknames": [],
         "slug": "maron-yanagiwara",
         "voice_actor": 84,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89349-mHGmXxnCksGY.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89349-mHGmXxnCksGY.png"
     }
 },
 {
@@ -5589,7 +5652,7 @@
         "nicknames": [],
         "slug": "mashiro-munetani",
         "voice_actor": 12,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89350-Bpi2kUjcYPb0.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89350-Bpi2kUjcYPb0.png"
     }
 },
 {
@@ -5601,7 +5664,7 @@
         "nicknames": [],
         "slug": "hiromi-kuroki",
         "voice_actor": 85,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89351-MQaGamiClMaU.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89351-MQaGamiClMaU.png"
     }
 },
 {
@@ -5613,7 +5676,7 @@
         "nicknames": [],
         "slug": "shima-tateishi",
         "voice_actor": 86,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89727-czDjhlzj9wF0.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89727-czDjhlzj9wF0.png"
     }
 },
 {
@@ -5625,7 +5688,7 @@
         "nicknames": [],
         "slug": "mei-irizaki",
         "voice_actor": 87,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89728-MWtF9jR2Y7RR.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89728-MWtF9jR2Y7RR.png"
     }
 },
 {
@@ -5637,7 +5700,7 @@
         "nicknames": [],
         "slug": "kouko-nosa",
         "voice_actor": 88,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89729-llN6OFRvLZSr.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89729-llN6OFRvLZSr.png"
     }
 },
 {
@@ -5649,7 +5712,7 @@
         "nicknames": [],
         "slug": "rin-shiretoko",
         "voice_actor": 89,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89730-rgS33PZsEpGt.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89730-rgS33PZsEpGt.png"
     }
 },
 {
@@ -5661,7 +5724,7 @@
         "nicknames": [],
         "slug": "hikari-ogasawara",
         "voice_actor": 90,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89731-dUMcS3mseuqj.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89731-dUMcS3mseuqj.png"
     }
 },
 {
@@ -5673,7 +5736,7 @@
         "nicknames": [],
         "slug": "michiru-takeda",
         "voice_actor": 91,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89732-HRd1sihot2gh.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89732-HRd1sihot2gh.png"
     }
 },
 {
@@ -5685,7 +5748,7 @@
         "nicknames": [],
         "slug": "junko-heki",
         "voice_actor": 92,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89735-NH6pw8lZnj7U.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89735-NH6pw8lZnj7U.png"
     }
 },
 {
@@ -5697,7 +5760,7 @@
         "nicknames": [],
         "slug": "kayoko-himeji",
         "voice_actor": 93,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89736-AlrjYzJzYx41.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89736-AlrjYzJzYx41.png"
     }
 },
 {
@@ -5709,7 +5772,7 @@
         "nicknames": [],
         "slug": "kaede-marikouji",
         "voice_actor": 94,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89737-URBFw2L4lHWl.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/b89737-URBFw2L4lHWl.png"
     }
 },
 {
@@ -5721,7 +5784,7 @@
         "nicknames": [],
         "slug": "satoko-katsuta",
         "voice_actor": 95,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89738-Yav4dJgeC5Kn.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89738-Yav4dJgeC5Kn.png"
     }
 },
 {
@@ -5733,7 +5796,7 @@
         "nicknames": [],
         "slug": "hideko-yamashita",
         "voice_actor": 42,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89739-nhdv57CQFonX.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89739-nhdv57CQFonX.png"
     }
 },
 {
@@ -5745,7 +5808,7 @@
         "nicknames": [],
         "slug": "mayumi-uchida",
         "voice_actor": 96,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89740-IhISCuy7PMRk.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89740-IhISCuy7PMRk.png"
     }
 },
 {
@@ -5757,7 +5820,7 @@
         "nicknames": [],
         "slug": "tsugumi-yagi",
         "voice_actor": 97,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89741-kC3ccasxHpxg.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89741-kC3ccasxHpxg.png"
     }
 },
 {
@@ -5769,7 +5832,7 @@
         "nicknames": [],
         "slug": "megumi-uda",
         "voice_actor": 98,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89742-bdP4J0nncrsH.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89742-bdP4J0nncrsH.png"
     }
 },
 {
@@ -5781,7 +5844,7 @@
         "nicknames": [],
         "slug": "machiko-noma",
         "voice_actor": 99,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89743-oiATigF62kT7.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89743-oiATigF62kT7.png"
     }
 },
 {
@@ -5793,7 +5856,7 @@
         "nicknames": [],
         "slug": "reo-wakasa",
         "voice_actor": 100,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89744-91JSg7EqSSqj.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89744-91JSg7EqSSqj.png"
     }
 },
 {
@@ -5805,7 +5868,7 @@
         "nicknames": [],
         "slug": "sakura-ise",
         "voice_actor": 101,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89745-7cAyA6GIVhMW.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89745-7cAyA6GIVhMW.png"
     }
 },
 {
@@ -5817,7 +5880,7 @@
         "nicknames": [],
         "slug": "runa-suruga",
         "voice_actor": 102,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89746-N4oMercmIxXc.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89746-N4oMercmIxXc.png"
     }
 },
 {
@@ -5829,7 +5892,7 @@
         "nicknames": [],
         "slug": "sora-hirota",
         "voice_actor": 103,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89747-lj2rwYBvxK16.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89747-lj2rwYBvxK16.png"
     }
 },
 {
@@ -5841,7 +5904,7 @@
         "nicknames": [],
         "slug": "hime-wazumi",
         "voice_actor": 104,
-        "cover_img_url": "https://s4.anilist.co/file/anilistcdn/character/large/89748-gO9Bzd3VJzej.png"
+        "cover_image_url": "https://s4.anilist.co/file/anilistcdn/character/large/89748-gO9Bzd3VJzej.png"
     }
 },
 {
@@ -5853,7 +5916,7 @@
         "nicknames": [],
         "slug": "rio-tsukatsuki",
         "voice_actor": 12,
-        "cover_img_url": "https://teamd2x.sirv.com/character/148/Rio.png"
+        "cover_image_url": "https://teamd2x.sirv.com/character/148/Rio.png"
     }
 }
 ]
