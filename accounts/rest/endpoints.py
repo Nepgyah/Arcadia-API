@@ -34,7 +34,7 @@ def adminLoginView(request):
 
 @api_view(['POST'])
 def refreshTokenView(request):
-    tokens = AccountsService.authentication.refresh_token(request.POST.get('refresh', None))
+    tokens = AccountsService.authentication.refresh_token(request.data.get('refresh', None))
 
     return Response(status=200, data={
         'detail': "account_token_refresh_success",
