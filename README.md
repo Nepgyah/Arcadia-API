@@ -4,7 +4,7 @@ Introducing the Arcadia API. This is the backend repository dedicated to assisti
 <br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
-## Latest Release - Alpha v3.0 - x/xx/2026
+## Latest Release - Alpha v3.0 - 6/10/2026
 - **General**
     - Replaced graphene django with strawberry as main GraphQL module
     - Improve quality of repo and service layers
