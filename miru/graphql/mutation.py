@@ -7,9 +7,9 @@ from miru.graphql.types import AnimeListEntryType
 @strawberry.input
 class AnimeListDetails:
     status: int | None = 0
-    score: int | None = None
     current_episode: int | None = 0
     start_watch_date: str | None = None
+    note: str | None = None
     end_watch_date: str | None = None
 
 @strawberry.type
