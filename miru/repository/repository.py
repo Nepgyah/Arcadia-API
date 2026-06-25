@@ -5,10 +5,11 @@ from miru.models import (
     MyAnimeListData,
     AnimeEpisode,
     AnimeCompany,
-    AnimeListEntry
+    AnimeListEntry,
+    AnimeReview
 )
 from miru.exceptions import MiruNotFoundError, MiruError
-from miru.serializer.serializers import AnimeListEntrySerializer
+from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer
 
 class AnimeRepository:
     
@@ -144,9 +145,52 @@ class AnimeListEntryRepository:
     def get_user_list_count(profile_id: int) -> int:
         return AnimeListEntry.objects.filter(profile_id=profile_id).count()
     
+class ReviewRepository:
+    
+    @staticmethod
+    def get_review(profile_id: int, anime_id: int) -> AnimeReview | None:
+        try:
+            return AnimeReview.objects.get(
+                profile_id=profile_id,
+                anime_id=anime_id
+            )
+        except AnimeReview.DoesNotExist:
+            return None
+
+    @staticmethod
+    def create(profile_id: int, anime_id: int, **details: dict) -> AnimeReview:
+        data = {
+            'profile_id': profile_id,
+            'anime': anime_id,
+            **details
+        }
+
+        serializer = AnimeReview(data=data)
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+    
+    @staticmethod
+    def update(review: AnimeReview, **data: dict) -> AnimeReview:
+        serializer = AnimeReviewSerializer(
+            review, 
+            data=data,
+            partial=True
+        )
+
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+    
+    @staticmethod
+    def delete(review: AnimeReview) -> AnimeReview:
+        try:
+            review.delete()
+        except Exception as e:
+            raise MiruError() from e
+    
 class MiruRepository:
 
     anime = AnimeRepository()
     episode = EpisodeRepository()
     company = CompanyRepository()
     list = AnimeListEntryRepository()
+    review = ReviewRepository()
