@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator
-from miru.models import Anime, AnimeCompany, AnimeListEntry
+from miru.models import Anime, AnimeCompany, AnimeListEntry, AnimeReview
 from miru.models.relations import AnimeCharacter
 from miru.repository import MiruRepository
 from talent.service import CharacterService, VoiceActorService
@@ -136,8 +136,37 @@ class Character:
 
         return anime_roles
 
+class Review:
+
+    @staticmethod
+    def create(profile_id: int, anime_id: int, details: dict = None) -> AnimeReview:
+        MiruRepository.anime.does_anime_exist(anime_id)
+        return MiruRepository.review.create(
+            profile_id,
+            anime_id,
+            **details
+        )
+
+    @staticmethod
+    def get_entry(profile_id: int, anime_id: int) -> AnimeReview:
+        return MiruRepository.review.get_review(profile_id, anime_id)
+
+    @staticmethod
+    def update_entry(profile_id: int, anime_id: int, details: dict = None) -> AnimeReview:
+        entry = MiruRepository.review.get_review(profile_id, anime_id)
+        return MiruRepository.review.update(
+            entry,
+            **details
+        )
+    
+    @staticmethod
+    def delete_entry(profile_id: int, anime_id: int) -> None:
+        entry = MiruRepository.review.get_review(profile_id, anime_id)
+        MiruRepository.review.delete(entry)
+
 class MiruService:
     
     anime = AnimeService()
     list = ListService()
     character = Character()
+    review = Review()
