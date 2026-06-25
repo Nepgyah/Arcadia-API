@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from util import unique_slugify
 
@@ -46,7 +47,26 @@ class Franchise(models.Model):
     @property
     def bg_image_url(self):
         return f'{os.environ.get('BG_CDN_BASE')}/franchise/{self.id}/bg.jpg'
-    
+
+class Review(models.Model):
+
+    profile_id = models.IntegerField(null=False, blank=False, db_index=True)
+    score = models.FloatField(
+        null=True, 
+        blank=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)],
+        db_index=True
+    )
+    text = models.TextField()
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    like_count = models.IntegerField(blank=True, default=0)
+    dislike_count = models.IntegerField(blank=True, default=0)
+
+    class Meta:
+        abstract = True
+        ordering = ['-created_at']
+
 class Media(models.Model):
     """
     Used as the base for Miru, Yomu, and Asobu
