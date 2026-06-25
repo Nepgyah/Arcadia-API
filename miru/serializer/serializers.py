@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from accounts.service import AccountsService
-from miru.models import AnimeListEntry
+from miru.models import AnimeListEntry, AnimeReview
 from miru.exceptions import MiruValidationError
 
 class AnimeListEntrySerializer(ModelSerializer):
@@ -24,3 +24,15 @@ class AnimeListEntrySerializer(ModelSerializer):
                 raise MiruValidationError("Start date cannot be past end date")
             
         return attrs
+    
+class AnimeReviewSerializer(ModelSerializer):
+
+    class Meta:
+        model = AnimeReview
+        fields = "__all__"
+
+    def validate_profile_id(self, value):
+
+        if AccountsService.profile.does_profile_exist(value) is False:
+            raise MiruValidationError('Arcadia profile does not exist')
+        return value
