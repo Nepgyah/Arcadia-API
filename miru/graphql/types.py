@@ -4,7 +4,16 @@ from typing import Optional
 from base.graphql.types import FranchiseType, GenreType
 from talent.graphql.types import CharacterType, VoiceActorType
 
-from miru.models import Anime, AnimeCompany, AnimeListEntry, MyAnimeListData, AnimeCharacter, AniListData, AnimeEpisode
+from miru.models import (
+    Anime, 
+    AnimeCompany, 
+    AnimeListEntry, 
+    MyAnimeListData, 
+    AniListData, 
+    AnimeEpisode, 
+    AnimeReview
+)
+
 from miru.service import MiruService
 from miru.repository import MiruRepository
 
@@ -13,6 +22,13 @@ from miru.repository import MiruRepository
     fields="__all__"
 )
 class AnimeListEntryType:
+    anime: "AnimeType"
+
+@strawberry_django.type(
+    AnimeReview,
+    fields="__all__"
+)
+class AnimeReviewType:
     anime: "AnimeType"
 
 @strawberry_django.type(

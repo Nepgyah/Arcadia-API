@@ -148,11 +148,11 @@ class Review:
         )
 
     @staticmethod
-    def get_entry(profile_id: int, anime_id: int) -> AnimeReview:
+    def get(profile_id: int, anime_id: int) -> AnimeReview:
         return MiruRepository.review.get_review(profile_id, anime_id)
 
     @staticmethod
-    def update_entry(profile_id: int, anime_id: int, details: dict = None) -> AnimeReview:
+    def update(profile_id: int, anime_id: int, details: dict = None) -> AnimeReview:
         entry = MiruRepository.review.get_review(profile_id, anime_id)
         return MiruRepository.review.update(
             entry,
@@ -160,7 +160,7 @@ class Review:
         )
     
     @staticmethod
-    def delete_entry(profile_id: int, anime_id: int) -> None:
+    def delete(profile_id: int, anime_id: int) -> None:
         entry = MiruRepository.review.get_review(profile_id, anime_id)
         MiruRepository.review.delete(entry)
 
