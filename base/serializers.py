@@ -10,6 +10,13 @@ class MediaReviewSerializer(ModelSerializer):
             raise ArcadiaValidationError('Arcadia profile does not exist')
         return value
     
+    def validate_score(self, value):
+        if value < 1:
+            raise ArcadiaValidationError('Score cannot be less than 1')
+        if value > 10:
+            raise ArcadiaValidationError('Score cannot be greater than 10')
+        return value
+    
     def validate_text(self, value):
         if len(value) < 24:
             raise ArcadiaValidationError('Review is too short (min: 24)')

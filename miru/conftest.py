@@ -2,6 +2,7 @@ import pytest
 from miru.models.anime import Anime, MyAnimeListData, AniListData
 from miru.models.list import AnimeListEntry
 from miru.models.relations import AnimeCharacter, AnimeEpisode
+from miru.models.review import AnimeReview
 from talent.models import Character
 
 # Conftest allows you to declare fixtures and have every test below in the tree access them
@@ -88,4 +89,24 @@ def anime_episode_fixture(anime_fixture):
         number=1,
         title="Lonely Rolling Bocchi",
         anime=anime_fixture
+    )
+
+@pytest.fixture
+def anime_review_detail_fixture():
+    """Returns a valid dictionary of extra fields for the review."""
+    return {
+        "score": 8.5,
+        "text": "This anime was absolutely amazing! Highly recommended.",
+        "like_count": 0,
+        "dislike_count": 0,
+    }
+
+
+@pytest.fixture
+def anime_review_fixture(arcadia_profile_fixture, anime_fixture, anime_review_detail_fixture):
+    """Pre-saves a review in the DB for read/update/delete test scenarios."""
+    return AnimeReview.objects.create(
+        profile_id=arcadia_profile_fixture.id,
+        anime=anime_fixture,
+        **anime_review_detail_fixture
     )
