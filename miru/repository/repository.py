@@ -8,7 +8,7 @@ from miru.models import (
     AnimeListEntry,
     AnimeReview
 )
-from miru.exceptions import MiruNotFoundError, MiruError
+from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
 from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer
 
 class AnimeRepository:
@@ -165,8 +165,13 @@ class ReviewRepository:
             **details
         }
 
-        serializer = AnimeReview(data=data)
-        serializer.is_valid(raise_exception=True)
+        serializer = AnimeReviewSerializer(data=data)
+        if not serializer.is_valid():
+            errors = serializer.errors["non_field_errors"]
+            if errors[0].code == "unique":
+                raise MiruValidationError('Review already exists')
+            raise MiruError()
+        
         return serializer.save()
     
     @staticmethod

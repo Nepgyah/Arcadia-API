@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework.validators import UniqueTogetherValidator
 from accounts.service import AccountsService
 from miru.models import AnimeListEntry, AnimeReview
 from miru.exceptions import MiruValidationError

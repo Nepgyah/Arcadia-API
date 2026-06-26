@@ -1,4 +1,5 @@
 import strawberry
+from base.graphql.inputs import MediaReviewInput
 from main.graphql.types import MutationResponseType
 from main.graphql.permissions import IsAuthenticated
 from miru.service import MiruService
@@ -18,7 +19,7 @@ class AnimeListResponseType(MutationResponseType):
 
 @strawberry.type
 class AnimeReviewResponseType(MutationResponseType):
-    entry: AnimeReviewType | None
+    review: AnimeReviewType | None
 
 @strawberry.type
 class MiruMutation:
@@ -77,39 +78,39 @@ class MiruMutation:
     
     ## Reviews
     @strawberry.mutation(permission_classes=[IsAuthenticated])
-    def create_anime_review(self, info: strawberry.Info, anime_id: int, details: AnimeListDetails | None = None) -> AnimeReviewResponseType:
+    def create_anime_review(self, info: strawberry.Info, anime_id: int, details: MediaReviewInput | None = None) -> AnimeReviewResponseType:
         if details is None:
             details_dict = {}
         else:
             details_dict = strawberry.asdict(details)
 
-        entry = MiruService.review.create(
+        review = MiruService.review.create(
             info.context.user_id,
             anime_id=anime_id,
             details=details_dict
         )
 
         return AnimeReviewResponseType(
-            entry=entry,
+            review=review,
             message="Anime review added",
             detail="miru_anime_review_created"
         )
 
     @strawberry.mutation(permission_classes=[IsAuthenticated])
-    def update_anime_review(self, info: strawberry.Info, anime_id: int, details: AnimeListDetails | None = None) -> AnimeReviewResponseType:
+    def update_anime_review(self, info: strawberry.Info, anime_id: int, details: MediaReviewInput | None = None) -> AnimeReviewResponseType:
         if details is None:
             details_dict = {}
         else:
             details_dict = strawberry.asdict(details)
 
-        entry = MiruService.review.update(
+        review = MiruService.review.update(
             info.context.user_id,
             anime_id=anime_id,
             details=details_dict
         )
 
         return AnimeReviewResponseType(
-            entry=entry,
+            review=review,
             message="Anime review updated",
             detail="miru_anime_review_updated"
         )
@@ -122,7 +123,7 @@ class MiruMutation:
         )
 
         return AnimeReviewResponseType(
-            entry=None,
+            review=None,
             message="Anime review deleted",
             detail="miru_anime_review_deleted"
         )
