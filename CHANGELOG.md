@@ -1,9 +1,17 @@
 ## App Version Tracker
 | App        | Version |
 | ---------- | ------- |
-| Miru       | 0.4     |
+| Miru       | 1.0     |
 | Asobu      | 0.2     |
 | Accounts   | 0.1     |
+
+## Alpha v3.0 - 6/10/2026
+- **General**
+    - Replaced graphene django with strawberry as main GraphQL module
+    - Improve quality of repo and service layers
+    - Improve interaction between apps via service layers
+    - Standardize CDN links for image resourcing
+    - Add Sivr as current CDN service
 
 ## Alpha v2.2 - 5/14/2026
 - **General**
