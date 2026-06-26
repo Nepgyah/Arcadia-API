@@ -1,5 +1,5 @@
 import pytest
-from rest_framework.exceptions import ValidationError
+from miru.exceptions import MiruValidationError
 from miru.serializer import AnimeListEntrySerializer
 
 @pytest.mark.django_db
@@ -11,7 +11,6 @@ class TestAnimeListEntrySerializer:
             'profile_id': arcadia_profile_fixture.id,
             'anime': anime_fixture.id,
             "status": 1,
-            "score": 10,
             "note": "",
             "current_episode": 1,
             "start_watch_date": None,
@@ -24,7 +23,6 @@ class TestAnimeListEntrySerializer:
         assert entry.profile_id == arcadia_profile_fixture.id
         assert entry.anime == anime_fixture
         assert entry.status == 1
-        assert entry.score == 10
         assert entry.current_episode == 1
         assert entry.start_watch_date is None
         assert entry.end_watch_date is None
@@ -35,7 +33,6 @@ class TestAnimeListEntrySerializer:
             'profile_id': 1,
             'anime': anime_fixture,
             "status": 1,
-            "score": 10,
             "note": "",
             "current_episode": 1,
             "start_watch_date": None,
@@ -43,7 +40,7 @@ class TestAnimeListEntrySerializer:
         }
 
         serializer = AnimeListEntrySerializer(data=data)
-        with pytest.raises(ValidationError):
+        with pytest.raises(MiruValidationError):
             serializer.is_valid(raise_exception=True)
 
     @staticmethod
@@ -52,12 +49,11 @@ class TestAnimeListEntrySerializer:
             'profile_id': arcadia_profile_fixture.id,
             'anime': anime_fixture.id,
             "status": 1,
-            "score": 10,
             "note": "",
             "current_episode": 1,
             "start_watch_date": "2024-10-10",
             "end_watch_date": "2020-10-10"
         }
         serializer = AnimeListEntrySerializer(data=data)
-        with pytest.raises(ValidationError):
+        with pytest.raises(MiruValidationError):
             serializer.is_valid(raise_exception=True)

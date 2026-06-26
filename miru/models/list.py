@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 from .anime import Anime
 
 class AnimeListEntry(models.Model):
@@ -13,11 +12,6 @@ class AnimeListEntry(models.Model):
     profile_id = models.IntegerField(null=False, blank=False, db_index=True)
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
     status = models.IntegerField(choices=StatusType, default=StatusType.WATCHING)
-    score = models.FloatField(
-        null=True, 
-        blank=True,
-        validators=[MinValueValidator(1), MaxValueValidator(10)]
-    )
     note = models.CharField(null=True, blank=True, max_length=256)
     current_episode = models.SmallIntegerField(default=0, blank=True)
     start_watch_date = models.DateField(null=True, blank=True)

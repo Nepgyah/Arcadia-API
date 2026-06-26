@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
+from base.serializers import MediaReviewSerializer
 from accounts.service import AccountsService
-from miru.models import AnimeListEntry
+from miru.models import AnimeListEntry, AnimeReview
 from miru.exceptions import MiruValidationError
 
 class AnimeListEntrySerializer(ModelSerializer):
@@ -24,3 +25,9 @@ class AnimeListEntrySerializer(ModelSerializer):
                 raise MiruValidationError("Start date cannot be past end date")
             
         return attrs
+    
+class AnimeReviewSerializer(MediaReviewSerializer):
+
+    class Meta:
+        model = AnimeReview
+        fields = "__all__"

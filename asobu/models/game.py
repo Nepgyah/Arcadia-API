@@ -56,17 +56,17 @@ class Game(Media):
 
     def __str__(self):
         return str(self.title)
-
+    
     @property
-    def banner_image_url(self):
+    def prop_banner_image_url(self):
         return f'{os.environ.get('BG_CDN_BASE')}/asobu/{self.slug}/banner.jpg'
     
     @property
-    def cover_image_url(self):
+    def prop_cover_image_url(self):
         return f'{os.environ.get('BG_CDN_BASE')}/asobu/{self.slug}/cover.jpg'
     
     @property
-    def bg_image_url(self):
+    def prop_bg_image_url(self):
         return f'{os.environ.get('BG_CDN_BASE')}/asobu/{self.slug}/bg.jpg'
     
 class DLC(models.Model):

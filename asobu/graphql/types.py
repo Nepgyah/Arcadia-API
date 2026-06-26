@@ -110,16 +110,16 @@ class GameType:
     
     @strawberry_django.field
     def banner_image_url(self) -> str:
-        return self.banner_image_url
+        return self.prop_banner_image_url
     
     @strawberry_django.field
     def cover_image_url(self) -> str:
-        return self.cover_image_url
+        return self.prop_cover_image_url
     
     @strawberry_django.field
     def bg_image_url(self) -> str | None:
         if self.bg_image_url is not None:
-            return self.bg_image_url
+            return self.prop_bg_image_url
         if self.bg_image_url is None and self.franchise:
             return self.franchise.bg_image_url
         return None
