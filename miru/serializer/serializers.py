@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from base.serializers import MediaReviewSerializer
 from accounts.service import AccountsService
-from miru.models import AnimeListEntry, AnimeReview
+from miru.models import AnimeListEntry, AnimeReview, CustomAnimeList
 from miru.exceptions import MiruValidationError
 
 class AnimeListEntrySerializer(ModelSerializer):
@@ -31,3 +31,14 @@ class AnimeReviewSerializer(MediaReviewSerializer):
     class Meta:
         model = AnimeReview
         fields = "__all__"
+
+class CustomAnimeListSerializer(ModelSerializer):
+
+    class Meta:
+        model = CustomAnimeList
+        fields = ['title', 'profile_id', 'is_public']
+
+    def validate_title(self, value):
+        if len(value) > 125:
+            raise MiruValidationError("Title too long (Max: 125)")
+        return value

@@ -12,7 +12,7 @@ from miru.models import (
     CustomAnimeList
 )
 from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
-from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer
+from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer, CustomAnimeListSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -159,15 +159,37 @@ class AnimeListEntryRepository:
             return None
 
     @staticmethod
-    def create_custom_anime_list(profile_id: int, list_name: str | None) -> None:
-        CustomAnimeList.objects.create(
-            profile_id=profile_id,
-            title=list_name
+    def create_custom_anime_list(**data: dict) -> None:
+        serializer = CustomAnimeListSerializer(data=data)
+
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+
+    @staticmethod
+    def update_custom_anime_list_details(custom_list: CustomAnimeList, **data: dict) -> CustomAnimeList:
+        serializer = CustomAnimeListSerializer(
+            custom_list, 
+            data=data,
+            partial=True
         )
+
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
 
     @staticmethod
     def delete_custom_anime_list(target_list: CustomAnimeList) -> None:
         target_list.delete()
+
+    @staticmethod
+    def add_to_custom_anime_list(target_list: CustomAnimeList, anime: Anime) -> None:
+        target_list.anime.add(anime)
+
+    @staticmethod
+    def remove_to_custom_anime_list(target_list: CustomAnimeList, anime: Anime) -> None:
+        try:
+            target_list.anime.remove(anime)
+        except Exception as e:
+            raise MiruError('An error occured removing the anime') from e
 
 class ReviewRepository:
     
