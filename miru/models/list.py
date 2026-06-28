@@ -1,4 +1,6 @@
 from django.db import models
+from base.models import ArcadiaProfileMixin, TimestampMixin
+from accounts.service import AccountsService
 from .anime import Anime
 
 class AnimeListEntry(models.Model):
@@ -30,3 +32,16 @@ class AnimeListEntry(models.Model):
 
     def __str__(self):
         return f'Anime: {self.anime.title} - Status: {self.get_status_display()}'
+
+class CustomAnimeList(ArcadiaProfileMixin, TimestampMixin):
+
+    title = models.CharField(max_length=125, blank=True, null=False)
+    anime = models.ManyToManyField(Anime, related_name="custom_list_appearance")
+
+    def save(self, *args, **kwargs):
+        if self.pk is None and not self.title:
+            previously_created_count = self.__class__.objects.filter(profile_id=self.profile_id).count()
+            profile = AccountsService.profile.get_profile(self.profile_id)
+            self.title = f"{profile.username}'s custom list #{previously_created_count + 1}"
+        
+        super().save(*args, **kwargs)
