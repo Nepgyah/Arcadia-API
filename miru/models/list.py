@@ -1,5 +1,5 @@
 from django.db import models
-from base.models import ArcadiaProfileMixin, TimestampMixin
+from base.models import ArcadiaProfileMixin, TimestampMixin, PublicMixin
 from accounts.service import AccountsService
 from .anime import Anime
 
@@ -33,7 +33,7 @@ class AnimeListEntry(models.Model):
     def __str__(self):
         return f'Anime: {self.anime.title} - Status: {self.get_status_display()}'
 
-class CustomAnimeList(ArcadiaProfileMixin, TimestampMixin):
+class CustomAnimeList(ArcadiaProfileMixin, TimestampMixin, PublicMixin):
 
     title = models.CharField(max_length=125, blank=True, null=False)
     anime = models.ManyToManyField(Anime, related_name="custom_list_appearance")

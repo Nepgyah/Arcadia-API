@@ -7,7 +7,8 @@ from miru.models import (
     AnimeCompany,
     AnimeListEntry,
     AnimeReview,
-    FavoriteAnime
+    FavoriteAnime,
+    CustomAnimeList
 )
 from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
 from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer
