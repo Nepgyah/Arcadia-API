@@ -1,3 +1,4 @@
+import logging
 from miru.models import (
     Anime, 
     AnimeCharacter,
@@ -12,6 +13,8 @@ from miru.models import (
 )
 from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
 from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer
+
+logger = logging.getLogger(__name__)
 
 class AnimeRepository:
     
@@ -147,6 +150,25 @@ class AnimeListEntryRepository:
     def get_user_list_count(profile_id: int) -> int:
         return AnimeListEntry.objects.filter(profile_id=profile_id).count()
     
+    @staticmethod
+    def get_custom_anime_list(profile_id: int, list_id: int) -> CustomAnimeList:
+        try:
+            return CustomAnimeList.objects.get(id=list_id, profile_id=profile_id)
+        except CustomAnimeList.DoesNotExist:
+            logger.info('Attempt to find custom anime list with id: %s', list_id)
+            return None
+
+    @staticmethod
+    def create_custom_anime_list(profile_id: int, list_name: str | None) -> None:
+        CustomAnimeList.objects.create(
+            profile_id=profile_id,
+            title=list_name
+        )
+
+    @staticmethod
+    def delete_custom_anime_list(target_list: CustomAnimeList) -> None:
+        target_list.delete()
+
 class ReviewRepository:
     
     @staticmethod
