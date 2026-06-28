@@ -117,6 +117,16 @@ class TimestampMixin(models.Model):
     class Meta:
         abstract = True
 
+class PublicMixin(models.Model):
+    is_public = models.BooleanField(default=False)
+
+    class Meta:
+        abstract = True
+
+    def set_status(self, status: bool) -> None:
+        self.is_public = status
+        self.save()
+
 class ArcadiaProfileMixin(models.Model):
     profile_id = models.IntegerField(null=False, blank=False, db_index=True)
 
