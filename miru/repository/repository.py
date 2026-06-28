@@ -16,7 +16,7 @@ from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSer
 
 logger = logging.getLogger(__name__)
 
-class AnimeRepository:
+class AnimeModule:
     
     @staticmethod
     def get_anime_count() -> int:
@@ -64,7 +64,7 @@ class AnimeRepository:
     def get_episodes(anime_id: int) -> list[AnimeEpisode]:
         return AnimeEpisode.objects.filter(anime_id=anime_id)
     
-class EpisodeRepository:
+class EpisodeModule:
     
     @staticmethod
     def get_episode(episode_id: int) -> AnimeEpisode:
@@ -76,7 +76,7 @@ class EpisodeRepository:
                 code="miru_episode_not_found"
             ) from None
 
-class CompanyRepository:
+class CompanyModule:
 
     @staticmethod
     def get_company(company_id: int) -> AnimeCompany:
@@ -100,7 +100,7 @@ class CompanyRepository:
     def get_studios() -> list[AnimeCharacter]:
         return AnimeCompany.objects.filter(studio_animes__isnull=False).distinct()
     
-class AnimeListEntryRepository:
+class ListModule:
 
     @staticmethod
     def create_entry(profile_id: int, anime_id: int, **details: dict) -> AnimeListEntry:
@@ -191,7 +191,7 @@ class AnimeListEntryRepository:
         except Exception as e:
             raise MiruError('An error occured removing the anime') from e
 
-class ReviewRepository:
+class ReviewModule:
     
     @staticmethod
     def get_review(profile_id: int, anime_id: int) -> AnimeReview | None:
@@ -238,7 +238,7 @@ class ReviewRepository:
         except Exception as e:
             raise MiruError() from e
 
-class Favorite:
+class FavoriteModule:
 
     @staticmethod
     def add_favorite_anime(profile_id: int, anime: Anime) -> None:
@@ -267,9 +267,9 @@ class Favorite:
     
 class MiruRepository:
 
-    anime = AnimeRepository()
-    episode = EpisodeRepository()
-    company = CompanyRepository()
-    list = AnimeListEntryRepository()
-    review = ReviewRepository()
-    favorite = Favorite()
+    anime = AnimeModule()
+    episode = EpisodeModule()
+    company = CompanyModule()
+    list = ListModule()
+    review = ReviewModule()
+    favorite = FavoriteModule()
