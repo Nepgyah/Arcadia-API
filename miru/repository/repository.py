@@ -203,7 +203,7 @@ class Favorite:
                 anime=anime
             )
         except Exception as e:
-            raise MiruValidationError('An error occured adding anime to favorites') from e
+            raise MiruValidationError('You have already favorited this anime') from e
     
     @staticmethod
     def remove_favorite_anime(profile_id: int, anime: Anime) -> None:

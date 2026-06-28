@@ -3,6 +3,7 @@ from miru.models.anime import Anime, MyAnimeListData, AniListData
 from miru.models.list import AnimeListEntry
 from miru.models.relations import AnimeCharacter, AnimeEpisode
 from miru.models.review import AnimeReview
+from miru.models.favorite import FavoriteAnime
 from talent.models import Character
 
 # Conftest allows you to declare fixtures and have every test below in the tree access them
@@ -109,4 +110,12 @@ def anime_review_fixture(arcadia_profile_fixture, anime_fixture, anime_review_de
         profile_id=arcadia_profile_fixture.id,
         anime=anime_fixture,
         **anime_review_detail_fixture
+    )
+
+@pytest.fixture
+def favorite_anime_fixture(arcadia_profile_fixture, anime_fixture):
+    """Creates a FavoriteAnime entry ahead of time for unique constraint and removal tests."""
+    return FavoriteAnime.objects.create(
+        profile_id=arcadia_profile_fixture.id,
+        anime=anime_fixture
     )
