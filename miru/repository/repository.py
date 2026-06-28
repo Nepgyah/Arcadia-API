@@ -6,7 +6,8 @@ from miru.models import (
     AnimeEpisode,
     AnimeCompany,
     AnimeListEntry,
-    AnimeReview
+    AnimeReview,
+    FavoriteAnime
 )
 from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
 from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer
@@ -191,6 +192,33 @@ class ReviewRepository:
             review.delete()
         except Exception as e:
             raise MiruError() from e
+
+class Favorite:
+
+    @staticmethod
+    def add_favorite_anime(profile_id: int, anime: Anime) -> None:
+        try:
+            FavoriteAnime.objects.create(
+                profile_id=profile_id,
+                anime=anime
+            )
+        except Exception as e:
+            raise MiruValidationError('You have already favorited this anime') from e
+    
+    @staticmethod
+    def remove_favorite_anime(profile_id: int, anime: Anime) -> None:
+        try:
+            favorite_target = FavoriteAnime.objects.get(
+                profile_id=profile_id,
+                anime=anime
+            )
+            favorite_target.delete()
+        except FavoriteAnime.DoesNotExist:
+            raise MiruValidationError('Could not find anime to remove from favorites') from None
+        
+    @staticmethod
+    def get_favorite_anime(profile_id: int) -> list[FavoriteAnime]:
+        return FavoriteAnime.objects.filter(profile_id=profile_id)
     
 class MiruRepository:
 
@@ -199,3 +227,4 @@ class MiruRepository:
     company = CompanyRepository()
     list = AnimeListEntryRepository()
     review = ReviewRepository()
+    favorite = Favorite()

@@ -11,11 +11,19 @@ from miru.models import (
     MyAnimeListData, 
     AniListData, 
     AnimeEpisode, 
-    AnimeReview
+    AnimeReview,
+    FavoriteAnime
 )
 
 from miru.service import MiruService
 from miru.repository import MiruRepository
+
+@strawberry_django.type(
+    FavoriteAnime,
+    fields="__all__"
+)
+class FavoriteAnimeType:
+    anime: "AnimeType"
 
 @strawberry_django.type(
     AnimeListEntry,

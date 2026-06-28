@@ -9,8 +9,6 @@ Visit Arcadia: https://arcadia-platform.vercel.app
     - Add ability to review anime
     - Add custom lists
     - Add recommendations per profile
-    
-- **Accounts v0.2**
     - Add anime favorites
 
 ## The Problem

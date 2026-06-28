@@ -1,12 +1,10 @@
 import pytest
-from rest_framework.exceptions import ValidationError
-from main.exceptions import ArcadiaValidationError
 from miru.repository import MiruRepository
-from miru.models import AnimeListEntry, AnimeReview
+from miru.models import AnimeListEntry, FavoriteAnime
 from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
 
 @pytest.mark.django_db
-class TestMiruAnimeRepository:
+class TestAnimeModule:
 
     @staticmethod
     def test_animeCount_returnsCount(anime_fixture):
@@ -57,7 +55,7 @@ class TestMiruAnimeRepository:
             MiruRepository.anime.get_mal_data(9999)
 
 @pytest.mark.django_db
-class TestMiruEpisodeRepository:
+class TestAnimeEpisodeModule:
 
     @staticmethod
     def test_getEpisode_validID_returnsEpisode(anime_episode_fixture):
@@ -69,7 +67,7 @@ class TestMiruEpisodeRepository:
             MiruRepository.episode.get_episode(1)
             
 @pytest.mark.django_db
-class TestListRepository:
+class TestAnimeListModule:
 
     @staticmethod
     def test_createEntry_validData_returnsEntry(anime_fixture, arcadia_profile_fixture):
@@ -138,77 +136,86 @@ class TestListRepository:
         assert len(MiruRepository.list.get_user_list(1)) == 0
 
 @pytest.mark.django_db
-class TestAnimeReview:
+class TestFavoriteModule:
 
     @staticmethod
-    def test_get_review_success(arcadia_profile_fixture, anime_fixture, anime_review_fixture):
-        """Should successfully return the review if it exists."""
-        review = MiruRepository.review.get_review(
+    def test_add_favorite_anime_success(arcadia_profile_fixture, anime_fixture):
+        """Should successfully link an anime to a profile's favorites list."""
+        MiruRepository.favorite.add_favorite_anime(
             profile_id=arcadia_profile_fixture.id, 
-            anime_id=anime_fixture.id
+            anime=anime_fixture
         )
-        assert review is not None
-        assert review.id == anime_review_fixture.id
 
-    @staticmethod
-    def test_get_review_not_found(arcadia_profile_fixture, anime_fixture):
-        """Should return None if no review matches the profile and anime."""
-        review = MiruRepository.review.get_review(
+        # Verify it now exists in the database
+        assert FavoriteAnime.objects.filter(
             profile_id=arcadia_profile_fixture.id, 
-            anime_id=anime_fixture.id
-        )
-        assert review is None
+            anime=anime_fixture
+        ).exists()
 
     @staticmethod
-    def test_create_review_success(arcadia_profile_fixture, anime_fixture, anime_review_detail_fixture):
-        """Should successfully create and return a review given valid data."""
-        review = MiruRepository.review.create(
-            profile_id=arcadia_profile_fixture.id,
-            anime_id=anime_fixture.id,
-            **anime_review_detail_fixture
-        )
-        
-        assert isinstance(review, AnimeReview)
-        assert review.profile_id == arcadia_profile_fixture.id
-        assert review.anime_id == anime_fixture.id
-        assert review.score == anime_review_detail_fixture["score"]
-
-    @staticmethod
-    def test_create_review_duplicate_raises_miru_validation_error(
-        arcadia_profile_fixture, anime_fixture, anime_review_detail_fixture, anime_review_fixture
+    def test_add_favorite_anime_duplicate_raises_validation_error(
+        arcadia_profile_fixture, anime_fixture, favorite_anime_fixture
     ):
-        """Should raise MiruValidationError if a unique constraint error happens on serializer level."""
+        """Should raise MiruValidationError if the user has already favorited this specific anime."""
         with pytest.raises(MiruValidationError) as exc_info:
-            MiruRepository.review.create(
-                profile_id=arcadia_profile_fixture.id,
-                anime_id=anime_fixture.id,
-                **anime_review_detail_fixture
+            MiruRepository.favorite.add_favorite_anime(
+                profile_id=arcadia_profile_fixture.id, 
+                anime=anime_fixture
             )
-        assert str(exc_info.value) == "Review already exists"
+        assert str(exc_info.value) == "You have already favorited this anime"
+
+    # ==========================================
+    # REMOVE_FAVORITE_ANIME TESTS
+    # ==========================================
 
     @staticmethod
-    def test_update_review_success(anime_review_fixture):
-        """Should patch and return the updated review model."""
-        updated_data = {"score": 9.0, "text": "Actually, changing my mind. It is a 9/10."}
-        
-        updated_review = MiruRepository.review.update(anime_review_fixture, **updated_data)
-        
-        assert updated_review.score == 9.0
-        assert updated_review.text == "Actually, changing my mind. It is a 9/10."
+    def test_remove_favorite_anime_success(arcadia_profile_fixture, favorite_anime_fixture):
+        """Should successfully delete the FavoriteAnime record if it exists."""
+        # Ensure it exists before running the method
+        assert FavoriteAnime.objects.filter(
+            profile_id=favorite_anime_fixture.profile_id, 
+            anime=favorite_anime_fixture.anime
+        ).exists()
+
+        MiruRepository.favorite.remove_favorite_anime(
+            profile_id=favorite_anime_fixture.profile_id, 
+            anime=favorite_anime_fixture.anime
+        )
+
+        # Verify it is gone
+        assert not FavoriteAnime.objects.filter(
+            profile_id=favorite_anime_fixture.profile_id, 
+            anime=favorite_anime_fixture.anime
+        ).exists()
 
     @staticmethod
-    def test_update_review_validation_error(anime_review_fixture):
-        """Should propagate Django Rest Framework ValidationError if given out-of-bounds data."""
-        # Score is validated out of bounds (1-10)
-        invalid_data = {"score": 15.0} 
-        
-        with pytest.raises(ValidationError):
-            MiruRepository.review.update(anime_review_fixture, **invalid_data)
+    def test_remove_favorite_anime_not_found_raises_validation_error(
+        arcadia_profile_fixture, anime_fixture
+    ):
+        """Should raise MiruValidationError if attempting to unfavorite an un-favorited anime."""
+        with pytest.raises(MiruValidationError) as exc_info:
+            MiruRepository.favorite.remove_favorite_anime(
+                profile_id=arcadia_profile_fixture.id, 
+                anime=anime_fixture
+            )
+        assert str(exc_info.value) == "Could not find anime to remove from favorites"
+
+    # ==========================================
+    # GET_FAVORITE_ANIME TESTS
+    # ==========================================
 
     @staticmethod
-    def test_delete_review_success(anime_review_fixture):
-        """Should delete the review object successfully from the database."""
-        review_id = anime_review_fixture.id
-        MiruRepository.review.delete(anime_review_fixture)
+    def test_get_favorite_anime_returns_list(arcadia_profile_fixture, favorite_anime_fixture):
+        """Should return a QuerySet listing all favorites tied to this profile id."""
+        favorites = MiruRepository.favorite.get_favorite_anime(profile_id=arcadia_profile_fixture.id)
         
-        assert not AnimeReview.objects.filter(id=review_id).exists()
+        # Check that it returns a collection with our item inside
+        assert len(favorites) == 1
+        assert favorites[0].id == favorite_anime_fixture.id
+
+    @staticmethod
+    def test_get_favorite_anime_empty_list(arcadia_profile_fixture):
+        """Should return an empty QuerySet if the user has no favorites yet."""
+        favorites = MiruRepository.favorite.get_favorite_anime(profile_id=arcadia_profile_fixture.id)
+        
+        assert len(favorites) == 0

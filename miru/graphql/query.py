@@ -8,7 +8,7 @@ from miru.models import Anime
 from miru.exceptions import MiruNotFoundError
 from miru.service import MiruService
 from miru.repository import MiruRepository
-from .types import AnimeType, AnimeListEntryType, CharacterAppearanceType, AppearanceType
+from .types import AnimeType, AnimeListEntryType, CharacterAppearanceType, AppearanceType, FavoriteAnimeType
 
 @strawberry.input
 class AnimeFilterInput:
@@ -117,3 +117,8 @@ class MiruQuery:
             anime_id
         )
         return entry
+
+    @strawberry.field
+    def favorite_anime(self, info: strawberry.Info) -> list[FavoriteAnimeType]:
+        return MiruService.favorite.get_favorite_anime(info.context.user_id)
+    
