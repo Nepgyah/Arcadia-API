@@ -101,3 +101,24 @@ class Media(models.Model):
         if self.slug is None:
             self.slug = unique_slugify(instance=self, value=self.title)
         super().save(*args, **kwargs)
+
+class ImageMixin(models.Model):
+    cover_image_url = models.URLField(null=True, blank=True)
+    banner_image_url = models.URLField(null=True, blank=True)
+    bg_image_url = models.URLField(null=True, blank=True)
+
+    class Meta:
+        abstract = True
+
+class TimestampMixin(models.Model):
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        abstract = True
+
+class ArcadiaProfileMixin(models.Model):
+    profile_id = models.IntegerField(null=False, blank=False, db_index=True)
+
+    class Meta:
+        abstract = True
