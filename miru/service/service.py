@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
-from miru.models import Anime, AnimeCompany, AnimeListEntry, AnimeReview
+from base.wrappers import require_profile
+from miru.models import Anime, AnimeCompany, AnimeListEntry, AnimeReview, FavoriteAnime
 from miru.models.relations import AnimeCharacter
 from miru.repository import MiruRepository
 from talent.service import CharacterService, VoiceActorService
@@ -164,9 +165,29 @@ class Review:
         entry = MiruRepository.review.get_review(profile_id, anime_id)
         MiruRepository.review.delete(entry)
 
+class Favorite:
+    
+    @staticmethod
+    @require_profile
+    def add_favorite_anime(profile_id: int, anime_id: int) -> None:
+        anime = MiruRepository.anime.get_anime(anime_id)
+        MiruRepository.favorite.add_favorite_anime(profile_id, anime)
+
+    @staticmethod
+    @require_profile
+    def remove_favorite_anime(profile_id: int, anime_id: int) -> None:
+        anime = MiruRepository.anime.get_anime(anime_id)
+        MiruRepository.favorite.remove_favorite_anime(profile_id, anime)
+
+    @staticmethod
+    @require_profile
+    def get_favorite_anime(profile_id: int) -> list[FavoriteAnime]:
+        return MiruRepository.favorite.get_favorite_anime(profile_id)
+    
 class MiruService:
     
     anime = AnimeService()
     list = ListService()
     character = Character()
     review = Review()
+    favorite = Favorite()

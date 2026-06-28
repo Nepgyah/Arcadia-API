@@ -22,6 +22,10 @@ class AnimeReviewResponseType(MutationResponseType):
     review: AnimeReviewType | None
 
 @strawberry.type
+class MiruFavoriteResponseType(MutationResponseType):
+    pass
+
+@strawberry.type
 class MiruMutation:
 
     # List Entries
@@ -128,3 +132,18 @@ class MiruMutation:
             detail="miru_anime_review_deleted"
         )
     
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
+    def add_favorite_anime(self, info: strawberry.Info, anime_id: int) -> MiruFavoriteResponseType:
+        MiruService.favorite.add_favorite_anime(info.context.user_id, anime_id)
+        return MutationResponseType(
+            message="You favorited an anime",
+            detail="miru_anime_favorited"
+        )
+
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
+    def remove_favorite_anime(self, info: strawberry.Info, anime_id: int) -> MiruFavoriteResponseType:
+        MiruService.favorite.remove_favorite_anime(info.context.user_id, anime_id)
+        return MutationResponseType(
+            message="You unfavorited an anime",
+            detail="miru_anime_unfavorited"
+        )

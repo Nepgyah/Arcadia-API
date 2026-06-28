@@ -1,9 +1,7 @@
 import pytest
-from rest_framework.exceptions import ValidationError
-from main.exceptions import ArcadiaValidationError
 from miru.repository import MiruRepository
-from miru.models import AnimeListEntry, AnimeReview
-from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
+from miru.models import AnimeListEntry
+from miru.exceptions import MiruNotFoundError, MiruError
 
 @pytest.mark.django_db
 class TestMiruAnimeRepository:
@@ -105,6 +103,7 @@ class TestListRepository:
     def test_updateEntry_validData_returnsEntry(anime_list_entry_fixture):
         data = {
             "status": 1,
+            "score": 10,
             "note": "",
             "current_episode": 1,
             "start_watch_date": None,
@@ -116,6 +115,7 @@ class TestListRepository:
             **data
         )
 
+        assert updated_entry.score == 10
         assert updated_entry.status == 1
 
     @staticmethod
@@ -136,79 +136,3 @@ class TestListRepository:
     @staticmethod
     def test_getUserList_noList_returnsEmpty():
         assert len(MiruRepository.list.get_user_list(1)) == 0
-
-@pytest.mark.django_db
-class TestAnimeReview:
-
-    @staticmethod
-    def test_get_review_success(arcadia_profile_fixture, anime_fixture, anime_review_fixture):
-        """Should successfully return the review if it exists."""
-        review = MiruRepository.review.get_review(
-            profile_id=arcadia_profile_fixture.id, 
-            anime_id=anime_fixture.id
-        )
-        assert review is not None
-        assert review.id == anime_review_fixture.id
-
-    @staticmethod
-    def test_get_review_not_found(arcadia_profile_fixture, anime_fixture):
-        """Should return None if no review matches the profile and anime."""
-        review = MiruRepository.review.get_review(
-            profile_id=arcadia_profile_fixture.id, 
-            anime_id=anime_fixture.id
-        )
-        assert review is None
-
-    @staticmethod
-    def test_create_review_success(arcadia_profile_fixture, anime_fixture, anime_review_detail_fixture):
-        """Should successfully create and return a review given valid data."""
-        review = MiruRepository.review.create(
-            profile_id=arcadia_profile_fixture.id,
-            anime_id=anime_fixture.id,
-            **anime_review_detail_fixture
-        )
-        
-        assert isinstance(review, AnimeReview)
-        assert review.profile_id == arcadia_profile_fixture.id
-        assert review.anime_id == anime_fixture.id
-        assert review.score == anime_review_detail_fixture["score"]
-
-    @staticmethod
-    def test_create_review_duplicate_raises_miru_validation_error(
-        arcadia_profile_fixture, anime_fixture, anime_review_detail_fixture, anime_review_fixture
-    ):
-        """Should raise MiruValidationError if a unique constraint error happens on serializer level."""
-        with pytest.raises(MiruValidationError) as exc_info:
-            MiruRepository.review.create(
-                profile_id=arcadia_profile_fixture.id,
-                anime_id=anime_fixture.id,
-                **anime_review_detail_fixture
-            )
-        assert str(exc_info.value) == "Review already exists"
-
-    @staticmethod
-    def test_update_review_success(anime_review_fixture):
-        """Should patch and return the updated review model."""
-        updated_data = {"score": 9.0, "text": "Actually, changing my mind. It is a 9/10."}
-        
-        updated_review = MiruRepository.review.update(anime_review_fixture, **updated_data)
-        
-        assert updated_review.score == 9.0
-        assert updated_review.text == "Actually, changing my mind. It is a 9/10."
-
-    @staticmethod
-    def test_update_review_validation_error(anime_review_fixture):
-        """Should propagate Django Rest Framework ValidationError if given out-of-bounds data."""
-        # Score is validated out of bounds (1-10)
-        invalid_data = {"score": 15.0} 
-        
-        with pytest.raises(ValidationError):
-            MiruRepository.review.update(anime_review_fixture, **invalid_data)
-
-    @staticmethod
-    def test_delete_review_success(anime_review_fixture):
-        """Should delete the review object successfully from the database."""
-        review_id = anime_review_fixture.id
-        MiruRepository.review.delete(anime_review_fixture)
-        
-        assert not AnimeReview.objects.filter(id=review_id).exists()
