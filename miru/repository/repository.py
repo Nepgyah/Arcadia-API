@@ -177,8 +177,8 @@ class ListModule:
         return serializer.save()
 
     @staticmethod
-    def delete_custom_anime_list(target_list: CustomAnimeList) -> None:
-        target_list.delete()
+    def delete_custom_anime_list(custom_list: CustomAnimeList) -> None:
+        custom_list.delete()
 
     @staticmethod
     def add_to_custom_anime_list(target_list: CustomAnimeList, anime: Anime) -> None:
