@@ -185,7 +185,7 @@ class ListModule:
         target_list.anime.add(anime)
 
     @staticmethod
-    def remove_to_custom_anime_list(target_list: CustomAnimeList, anime: Anime) -> None:
+    def remove_from_custom_anime_list(target_list: CustomAnimeList, anime: Anime) -> None:
         try:
             target_list.anime.remove(anime)
         except Exception as e:

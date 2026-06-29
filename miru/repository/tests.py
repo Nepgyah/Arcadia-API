@@ -1,6 +1,8 @@
+## Dev Note: This file is mostly curated by AI and thus not fully verified for its correctness
 import pytest
+from rest_framework.exceptions import ValidationError
 from miru.repository import MiruRepository
-from miru.models import AnimeListEntry, FavoriteAnime
+from miru.models import AnimeListEntry, FavoriteAnime, CustomAnimeList
 from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
 
 @pytest.mark.django_db
@@ -219,3 +221,114 @@ class TestFavoriteModule:
         favorites = MiruRepository.favorite.get_favorite_anime(profile_id=arcadia_profile_fixture.id)
         
         assert len(favorites) == 0
+
+@pytest.mark.django_db
+class TestCustomAnimeListRepository:
+
+    # ==========================================
+    # GET_CUSTOM_ANIME_LIST TESTS
+    # ==========================================
+
+    @staticmethod
+    def test_get_custom_anime_list_success(arcadia_profile_fixture, custom_anime_list_fixture):
+        """Should return the custom list if both list ID and profile ID match."""
+        result = MiruRepository.list.get_custom_anime_list(
+            profile_id=arcadia_profile_fixture.id,
+            list_id=custom_anime_list_fixture.id
+        )
+        assert result is not None
+        assert result.id == custom_anime_list_fixture.id
+        assert result.title == custom_anime_list_fixture.title
+
+    @staticmethod
+    def test_get_custom_anime_list_not_found(arcadia_profile_fixture):
+        """Should return None and log info if the list does not exist or profile mismatch occurs."""
+        result = MiruRepository.list.get_custom_anime_list(
+            profile_id=arcadia_profile_fixture.id,
+            list_id=99999  # Non-existent ID
+        )
+        assert result is None
+
+    # ==========================================
+    # CREATE TESTS
+    # ==========================================
+
+    @staticmethod
+    def test_create_custom_anime_list_success(arcadia_profile_fixture):
+        """Should validate data through serializer, save, and return the new list instance."""
+        payload = {
+            "profile_id": arcadia_profile_fixture.id,
+            "title": "Shounen Hype List"
+        }
+        
+        new_list = MiruRepository.list.create_custom_anime_list(**payload)
+        
+        assert isinstance(new_list, CustomAnimeList)
+        assert new_list.title == "Shounen Hype List"
+        assert new_list.profile_id == arcadia_profile_fixture.id
+
+    @staticmethod
+    def test_create_custom_anime_list_validation_error():
+        """Should bubble up DRF ValidationError if input payloads violate serializer rules."""
+        # Supplying an illegally long title or missing required data
+        invalid_payload = {
+            "title": "x" * 130  # Max length is 125
+        }
+        
+        with pytest.raises(ValidationError):
+            MiruRepository.list.create_custom_anime_list(**invalid_payload)
+
+    # ==========================================
+    # UPDATE TESTS
+    # ==========================================
+
+    @staticmethod
+    def test_update_custom_anime_list_details_success(custom_anime_list_fixture):
+        """Should seamlessly run partial updates on titles or visibility settings."""
+        updated_data = {"title": "Updated Watchlist Title"}
+        
+        updated_list = MiruRepository.list.update_custom_anime_list_details(
+            custom_anime_list_fixture, 
+            **updated_data
+        )
+        
+        assert updated_list.title == "Updated Watchlist Title"
+
+    # ==========================================
+    # DELETE TESTS
+    # ==========================================
+
+    @staticmethod
+    def test_delete_custom_anime_list_success(custom_anime_list_fixture):
+        """Should safely purge the target custom list record from the database."""
+        list_id = custom_anime_list_fixture.id
+        
+        MiruRepository.list.delete_custom_anime_list(custom_anime_list_fixture)
+        
+        assert not CustomAnimeList.objects.filter(id=list_id).exists()
+
+    # ==========================================
+    # MANY-TO-MANY (ADD/REMOVE) TESTS
+    # ==========================================
+
+    @staticmethod
+    def test_add_to_custom_anime_list(custom_anime_list_fixture, anime_fixture):
+        """Should add an Anime reference to the ManyToMany relationship."""
+        # Ensure it's empty to start
+        assert custom_anime_list_fixture.anime.count() == 0
+        
+        MiruRepository.list.add_to_custom_anime_list(custom_anime_list_fixture, anime_fixture)
+        
+        assert custom_anime_list_fixture.anime.count() == 1
+        assert custom_anime_list_fixture.anime.filter(id=anime_fixture.id).exists()
+
+    @staticmethod
+    def test_remove_from_custom_anime_list_success(custom_anime_list_fixture, anime_fixture):
+        """Should remove an associated Anime reference from the ManyToMany field mapping."""
+        # Pre-seed the M2M mapping
+        custom_anime_list_fixture.anime.add(anime_fixture)
+        assert custom_anime_list_fixture.anime.count() == 1
+        
+        MiruRepository.list.remove_from_custom_anime_list(custom_anime_list_fixture, anime_fixture)
+        
+        assert custom_anime_list_fixture.anime.count() == 0
