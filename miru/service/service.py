@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from base.wrappers import require_profile
-from miru.models import Anime, AnimeCompany, AnimeListEntry, AnimeReview, FavoriteAnime
+from miru.models import Anime, AnimeCompany, AnimeListEntry, AnimeReview, FavoriteAnime, CustomAnimeList
 from miru.models.relations import AnimeCharacter
 from miru.repository import MiruRepository
 from talent.service import CharacterService, VoiceActorService
@@ -113,6 +113,38 @@ class ListService:
     def get_user_list_count(profile_id: int) -> int:
         return MiruRepository.list.get_user_list_count(profile_id)
 
+    #TODO: Add custom anime list methods
+    @staticmethod
+    def get_custom_anime_list(profile_id: int, list_id: int) -> CustomAnimeList:
+        return MiruRepository.list.get_custom_anime_list(profile_id, list_id)
+
+    @staticmethod
+    def create_custom_anime_list(profile_id: int, details = dict) -> None:
+        details['profile_id'] = profile_id
+        MiruRepository.list.create_custom_anime_list(**details)
+
+    @staticmethod
+    def update_custom_anime_list_details(profile_id: int, list_id: int, data: dict) -> None:
+        custom_list = MiruRepository.list.get_custom_anime_list(profile_id, list_id)
+        MiruRepository.list.update_custom_anime_list_details(custom_list, **data)
+
+    @staticmethod
+    def delete_custom_anime_list(profile_id: int, list_id: int) -> None:
+        custom_list = MiruRepository.list.get_custom_anime_list(profile_id, list_id)
+        MiruRepository.list.delete_custom_anime_list(custom_list)
+
+    @staticmethod
+    def add_to_custom_anime_list(profile_id: int, list_id: int, anime_id: int) -> None:
+        custom_list = MiruRepository.list.get_custom_anime_list(profile_id, list_id)
+        anime = MiruRepository.anime.get_anime(anime_id)
+        MiruRepository.list.add_to_custom_anime_list(custom_list, anime)
+
+    @staticmethod
+    def remove_from_custom_anime_list(profile_id: int, list_id: int, anime_id: int) -> None:
+        custom_list = MiruRepository.list.get_custom_anime_list(profile_id, list_id)
+        anime = MiruRepository.anime.get_anime(anime_id)
+        MiruRepository.list.remove_from_custom_anime_list(custom_list, anime)
+    
 class Character:
 
     @staticmethod

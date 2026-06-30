@@ -1,3 +1,4 @@
+import logging
 from miru.models import (
     Anime, 
     AnimeCharacter,
@@ -7,12 +8,15 @@ from miru.models import (
     AnimeCompany,
     AnimeListEntry,
     AnimeReview,
-    FavoriteAnime
+    FavoriteAnime,
+    CustomAnimeList
 )
 from miru.exceptions import MiruNotFoundError, MiruError, MiruValidationError
-from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer
+from miru.serializer.serializers import AnimeListEntrySerializer, AnimeReviewSerializer, CustomAnimeListSerializer
 
-class AnimeRepository:
+logger = logging.getLogger(__name__)
+
+class AnimeModule:
     
     @staticmethod
     def get_anime_count() -> int:
@@ -60,7 +64,7 @@ class AnimeRepository:
     def get_episodes(anime_id: int) -> list[AnimeEpisode]:
         return AnimeEpisode.objects.filter(anime_id=anime_id)
     
-class EpisodeRepository:
+class EpisodeModule:
     
     @staticmethod
     def get_episode(episode_id: int) -> AnimeEpisode:
@@ -72,7 +76,7 @@ class EpisodeRepository:
                 code="miru_episode_not_found"
             ) from None
 
-class CompanyRepository:
+class CompanyModule:
 
     @staticmethod
     def get_company(company_id: int) -> AnimeCompany:
@@ -96,7 +100,7 @@ class CompanyRepository:
     def get_studios() -> list[AnimeCharacter]:
         return AnimeCompany.objects.filter(studio_animes__isnull=False).distinct()
     
-class AnimeListEntryRepository:
+class ListModule:
 
     @staticmethod
     def create_entry(profile_id: int, anime_id: int, **details: dict) -> AnimeListEntry:
@@ -146,7 +150,48 @@ class AnimeListEntryRepository:
     def get_user_list_count(profile_id: int) -> int:
         return AnimeListEntry.objects.filter(profile_id=profile_id).count()
     
-class ReviewRepository:
+    @staticmethod
+    def get_custom_anime_list(profile_id: int, list_id: int) -> CustomAnimeList:
+        try:
+            return CustomAnimeList.objects.prefetch_related('anime').get(id=list_id, profile_id=profile_id)
+        except CustomAnimeList.DoesNotExist:
+            logger.info('Attempt to find custom anime list with id: %s', list_id)
+            raise MiruNotFoundError('Unable to find anime list') from None
+
+    @staticmethod
+    def create_custom_anime_list(**data: dict) -> None:
+        serializer = CustomAnimeListSerializer(data=data)
+
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+
+    @staticmethod
+    def update_custom_anime_list_details(custom_list: CustomAnimeList, **data: dict) -> CustomAnimeList:
+        serializer = CustomAnimeListSerializer(
+            custom_list, 
+            data=data,
+            partial=True
+        )
+
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()
+
+    @staticmethod
+    def delete_custom_anime_list(custom_list: CustomAnimeList) -> None:
+        custom_list.delete()
+
+    @staticmethod
+    def add_to_custom_anime_list(target_list: CustomAnimeList, anime: Anime) -> None:
+        target_list.anime.add(anime)
+
+    @staticmethod
+    def remove_from_custom_anime_list(target_list: CustomAnimeList, anime: Anime) -> None:
+        try:
+            target_list.anime.remove(anime)
+        except Exception as e:
+            raise MiruError('An error occured removing the anime') from e
+
+class ReviewModule:
     
     @staticmethod
     def get_review(profile_id: int, anime_id: int) -> AnimeReview | None:
@@ -193,7 +238,7 @@ class ReviewRepository:
         except Exception as e:
             raise MiruError() from e
 
-class Favorite:
+class FavoriteModule:
 
     @staticmethod
     def add_favorite_anime(profile_id: int, anime: Anime) -> None:
@@ -222,9 +267,9 @@ class Favorite:
     
 class MiruRepository:
 
-    anime = AnimeRepository()
-    episode = EpisodeRepository()
-    company = CompanyRepository()
-    list = AnimeListEntryRepository()
-    review = ReviewRepository()
-    favorite = Favorite()
+    anime = AnimeModule()
+    episode = EpisodeModule()
+    company = CompanyModule()
+    list = ListModule()
+    review = ReviewModule()
+    favorite = FavoriteModule()

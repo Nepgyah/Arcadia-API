@@ -1,6 +1,6 @@
 import pytest
 from miru.models.anime import Anime, MyAnimeListData, AniListData
-from miru.models.list import AnimeListEntry
+from miru.models.list import AnimeListEntry, CustomAnimeList
 from miru.models.relations import AnimeCharacter, AnimeEpisode
 from miru.models.review import AnimeReview
 from miru.models.favorite import FavoriteAnime
@@ -118,4 +118,13 @@ def favorite_anime_fixture(arcadia_profile_fixture, anime_fixture):
     return FavoriteAnime.objects.create(
         profile_id=arcadia_profile_fixture.id,
         anime=anime_fixture
+    )
+
+@pytest.fixture
+def custom_anime_list_fixture(arcadia_profile_fixture):
+    """Creates and returns a basic custom anime list for the user profile."""
+    return CustomAnimeList.objects.create(
+        profile_id=arcadia_profile_fixture.id,
+        title="My All-Time Favorites",
+        is_public=True  # Assumed from your PublicMixin, adjust as needed
     )

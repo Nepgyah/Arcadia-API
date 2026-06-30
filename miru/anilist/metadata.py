@@ -1,8 +1,5 @@
-import requests
-import os
-import json
-from dotenv import load_dotenv
 from pathlib import Path
+from dotenv import load_dotenv
 
 load_dotenv()
 
