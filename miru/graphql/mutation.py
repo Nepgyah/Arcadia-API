@@ -17,6 +17,7 @@ class AnimeListDetails:
 class CustomAnimeListDetailsInput:
     title: str | None = None
     description: str | None = None
+    is_public: bool | None = False
 
 @strawberry.type
 class AnimeListResponseType(MutationResponseType):

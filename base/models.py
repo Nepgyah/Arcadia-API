@@ -127,7 +127,7 @@ class PublicMixin(models.Model):
         self.is_public = status
         self.save()
 
-class ArcadiaProfileMixin(models.Model):
+class ProfileIDMixin(models.Model):
     profile_id = models.IntegerField(null=False, blank=False, db_index=True)
 
     class Meta:

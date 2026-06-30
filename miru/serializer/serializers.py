@@ -36,7 +36,7 @@ class CustomAnimeListSerializer(ModelSerializer):
 
     class Meta:
         model = CustomAnimeList
-        fields = ['title', 'profile_id', 'is_public']
+        fields = ['title', 'profile_id', 'is_public', 'description']
 
     def validate_title(self, value):
         if len(value) > 125:
