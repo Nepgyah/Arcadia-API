@@ -8,7 +8,9 @@ jobs:
   Pylinter:
     name: Run python linter
     runs-on: ubuntu-latest
-
+    env:
+      DJANGO_SECRET: testkey
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
