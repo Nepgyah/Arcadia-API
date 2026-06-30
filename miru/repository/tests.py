@@ -243,11 +243,12 @@ class TestCustomAnimeListRepository:
     @staticmethod
     def test_get_custom_anime_list_not_found(arcadia_profile_fixture):
         """Should return None and log info if the list does not exist or profile mismatch occurs."""
-        result = MiruRepository.list.get_custom_anime_list(
-            profile_id=arcadia_profile_fixture.id,
-            list_id=99999  # Non-existent ID
-        )
-        assert result is None
+
+        with pytest.raises(MiruNotFoundError):
+            MiruRepository.list.get_custom_anime_list(
+                profile_id=arcadia_profile_fixture.id,
+                list_id=99999  # Non-existent ID
+            )
 
     # ==========================================
     # CREATE TESTS
