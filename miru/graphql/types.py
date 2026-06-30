@@ -1,6 +1,6 @@
+from typing import Optional
 import strawberry
 import strawberry_django
-from typing import Optional
 from base.graphql.types import FranchiseType, GenreType
 from talent.graphql.types import CharacterType, VoiceActorType
 
@@ -12,11 +12,22 @@ from miru.models import (
     AniListData, 
     AnimeEpisode, 
     AnimeReview,
-    FavoriteAnime
+    FavoriteAnime,
+    CustomAnimeList
 )
 
 from miru.service import MiruService
 from miru.repository import MiruRepository
+
+@strawberry_django.type(
+    CustomAnimeList,
+    exclude=["anime"]
+)
+class CustomAnimeListType:
+    
+    @strawberry.field
+    def anime(self) -> list["AnimeType"]:
+        return self.anime.all()
 
 @strawberry_django.type(
     FavoriteAnime,

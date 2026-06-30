@@ -5,6 +5,10 @@ class MutationResponseType:
     message: str
     detail: str
 
+@strawberry.type
+class BaseMutationResponse(MutationResponseType):
+    pass
+
 @strawberry.input
 class PaginationInput:
     per_page: int = 12
