@@ -33,6 +33,11 @@ class AnimeModule:
             ) from None
 
     @staticmethod
+    def get_similar_anime(origin_anime: Anime) -> list[Anime]:
+        genre_ids = origin_anime.genres.values_list('id', flat=True)
+        return Anime.objects.filter(genres__id__in=genre_ids).exclude(id=origin_anime.id).distinct()[:5]
+
+    @staticmethod
     def does_anime_exist(anime_id: int) -> bool:
         return Anime.objects.filter(id=anime_id).exists()
 
