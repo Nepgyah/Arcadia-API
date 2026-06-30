@@ -1,6 +1,15 @@
 import logging
 from django.db import transaction
 from django.contrib import admin, messages
+from base.anilist_scripts.syncGenres import SyncGenres
+from miru.myanimelist.syncRankings import syncMALRankings
+from miru.anilist import (
+    fetch_anilist_data,
+    sync_characters,
+    sync_companies,
+    sync_episodes,
+    sync_metadata
+)
 from .models.anime import (
     Anime,
     AniListData,
@@ -14,15 +23,6 @@ from .models.relations import (
 from .forms import AniListForm
 from .models.misc import AnimeCompany
 from .models.list import AnimeListEntry
-from base.anilist_scripts.syncGenres import SyncGenres
-from miru.anilist import (
-    fetch_anilist_data,
-    sync_characters,
-    sync_companies,
-    sync_episodes,
-    sync_metadata
-)
-from miru.myanimelist.syncRankings import syncMALRankings
 
 logger = logging.getLogger(__name__)
 
@@ -59,7 +59,7 @@ class MyAnimeListAdmin(admin.ModelAdmin):
             self.message_user(request, "MyAnimeList data successfully updated.", messages.SUCCESS)
 
         except Exception as e:
-            logging.error(f"MAL Admin Import Failed: {e}") 
+            logging.error("MAL Admin Import Failed: %s", e) 
             self.message_user(request, f"Import Failed: {str(e)}", messages.ERROR)
 
         

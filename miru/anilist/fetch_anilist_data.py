@@ -1,7 +1,7 @@
-import requests
 import os
 import logging
 from pathlib import Path
+import requests
 
 # Provides the name of the py module as a dotted path
 logger = logging.getLogger(__name__)

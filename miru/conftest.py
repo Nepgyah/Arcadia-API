@@ -121,7 +121,7 @@ def favorite_anime_fixture(arcadia_profile_fixture, anime_fixture):
     )
 
 @pytest.fixture
-def custom_anime_list_fixture(db, arcadia_profile_fixture):
+def custom_anime_list_fixture(arcadia_profile_fixture):
     """Creates and returns a basic custom anime list for the user profile."""
     return CustomAnimeList.objects.create(
         profile_id=arcadia_profile_fixture.id,

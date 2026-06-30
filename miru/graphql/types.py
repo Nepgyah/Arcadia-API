@@ -152,14 +152,14 @@ class AnimeType:
     def mal_data(self) -> MALDataType | None:
         try:
             return MiruRepository.anime.get_mal_data(self.id)
-        except:
+        except Exception:
             return None
     
     @strawberry_django.field
     def anilist_data(self) -> AnilistDataType | None:
         try:
             return MiruRepository.anime.get_anilist_data(self.id)
-        except:
+        except Exception:
             return None
         
     @strawberry_django.field
