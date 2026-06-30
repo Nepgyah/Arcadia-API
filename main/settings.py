@@ -175,9 +175,6 @@ SIMPLE_JWT = {
     "LEEWAY": 30
 }
 
-# GRAPHENE = {
-#     'SCHEMA': 'main.schema.schema',
-#     'MIDDLEWARE': [
-#         'main.graphql_middleware.GrapheneAuthMiddleware'
-#     ]
-# }
+SHELL_PLUS_IMPORTS = [
+    'from miru.repository import MiruRepository'
+]
