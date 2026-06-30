@@ -1,10 +1,8 @@
-import json
 from django.contrib.auth.models import AnonymousUser
-from django.http import HttpResponse
-from .serializers import GameListEntrySerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from asobu.repository import AsobuRepository
+from .serializers import GameListEntrySerializer
 
 @api_view(['GET'])
 def export_list(request):

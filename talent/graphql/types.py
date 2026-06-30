@@ -1,7 +1,6 @@
 from typing import List
 import strawberry_django
 from talent.models import Character, VoiceActor
-from talent.service import VoiceActorService
 
 @strawberry_django.type
 class AnimeRole:
