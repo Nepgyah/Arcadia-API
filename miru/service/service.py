@@ -42,6 +42,15 @@ class AnimeService:
         return queryset, None
 
     @staticmethod
+    def get_similar_anime(anime_id: int, count: int) -> list[Anime]:
+        count = min(count, 10)
+        count = max(count, 0)
+
+        anime = MiruRepository.anime.get_anime(anime_id)
+        similar_anime = MiruRepository.anime.get_similar_anime(anime, count)
+        return similar_anime
+    
+    @staticmethod
     def get_cast(anime_id: int) -> list:
         character_relations = MiruRepository.anime.get_characters(anime_id)
         char_ids = [rel.character_id for rel in character_relations]
