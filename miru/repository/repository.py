@@ -156,7 +156,7 @@ class ListModule:
             return CustomAnimeList.objects.prefetch_related('anime').get(id=list_id, profile_id=profile_id)
         except CustomAnimeList.DoesNotExist:
             logger.info('Attempt to find custom anime list with id: %s', list_id)
-            raise MiruNotFoundError('Cannot find anime list') from None
+            raise MiruNotFoundError('Unable to find anime list') from None
 
     @staticmethod
     def create_custom_anime_list(**data: dict) -> None:
