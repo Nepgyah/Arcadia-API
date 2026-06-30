@@ -77,6 +77,10 @@ class MiruQuery:
         )
     
     @strawberry_django.field
+    def similar_anime(self, anime_id: int, count: int | None = 5) -> list[AnimeType]:
+        return MiruService.anime.get_similar_anime(anime_id, count)
+
+    @strawberry_django.field
     def anime_count(self) -> int:
         return MiruRepository.anime.get_anime_count()
 
