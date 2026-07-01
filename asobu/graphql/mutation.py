@@ -1,5 +1,5 @@
 import strawberry
-from base.graphql.response import MutationResponseType
+from arcadia.graphql.response import MutationResponseType
 from main.graphql.permissions import IsAuthenticated
 from asobu.service import AsobuService
 from asobu.graphql.types import GameListEntryType, GameReviewType

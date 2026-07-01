@@ -1,6 +1,6 @@
 import strawberry
-from base.graphql.input import SortInput, PaginationInput
-from base.graphql.response import PaginationResultsType
+from arcadia.graphql.input import SortInput, PaginationInput
+from arcadia.graphql.response import PaginationResultsType
 from main.graphql.permissions import IsAuthenticated
 from asobu.graphql.types import (
     GameType,

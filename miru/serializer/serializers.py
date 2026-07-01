@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from base.serializers import MediaReviewSerializer
+from arcadia.serializer import ReviewSerializer
 from accounts.service import AccountsService
 from miru.models import AnimeListEntry, AnimeReview, CustomAnimeList
 from miru.exceptions import MiruValidationError
@@ -26,7 +26,7 @@ class AnimeListEntrySerializer(ModelSerializer):
             
         return attrs
     
-class AnimeReviewSerializer(MediaReviewSerializer):
+class AnimeReviewSerializer(ReviewSerializer):
 
     class Meta:
         model = AnimeReview

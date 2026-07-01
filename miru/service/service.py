@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator
-from base.wrappers import require_profile
+from arcadia.wrappers import require_profile
 from miru.models import Anime, AnimeCompany, AnimeListEntry, AnimeReview, FavoriteAnime, CustomAnimeList
 from miru.models.relations import AnimeCharacter
 from miru.repository import MiruRepository
