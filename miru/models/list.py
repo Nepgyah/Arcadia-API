@@ -1,5 +1,5 @@
 from django.db import models
-from base.models import ProfileIDMixin, TimestampMixin, PublicMixin
+from arcadia.mixins import ProfileIDMixin, TimestampMixin, PublicMixin
 from accounts.service import AccountsService
 from .anime import Anime
 

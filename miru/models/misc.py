@@ -1,6 +1,6 @@
-from base.models import Company
+from arcadia.mixins import CompanyMixin
 
-class AnimeCompany(Company):
+class AnimeCompany(CompanyMixin):
     """
         Miru specific company model to handle both producers, studios and licensors
     """

@@ -1,25 +1,18 @@
 from django.db import models
+from arcadia.mixins import SlugMixin
+from arcadia.util import unique_slugify
 
-from util import unique_slugify
-
-class Talent(models.Model):
+class Talent(SlugMixin, models.Model):
     """
     Abstract model for real personalities that include voice actors, music artists, etc
     """
 
-    slug = models.SlugField(unique=True, blank=True)
     bio = models.TextField(default='A bio will be written later', blank=True)
     socials = models.JSONField(null=True, blank=True)
     cover_image_url = models.URLField(null=True, blank=True)
     
     class Meta: 
         abstract = True
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = unique_slugify(self, self.display_name)
-        super().save(*args, **kwargs)
-
     @property
     def display_name(self):
         raise NotImplementedError

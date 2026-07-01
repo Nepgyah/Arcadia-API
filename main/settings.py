@@ -59,6 +59,7 @@ CSRF_COOKIE_SAMESITE = "None"
 # Application definition
 
 INSTALLED_APPS = [
+    'arcadia',
     'accounts',
     'base',
     'asobu',
