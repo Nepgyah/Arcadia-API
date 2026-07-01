@@ -1,4 +1,4 @@
-from main.exceptions import ArcadiaAppError, ArcadiaNotFoundError, ArcadiaValidationError
+from arcadia.exceptions import ArcadiaAppError, ArcadiaNotFoundError, ArcadiaValidationError
 
 class TalentError(ArcadiaAppError):
     default_detail = 'An internal error occured within the Talent service.'

@@ -1,4 +1,4 @@
-from main.exceptions import ArcadiaAppError, ArcadiaNotFoundError, ArcadiaValidationError
+from arcadia.exceptions import ArcadiaAppError, ArcadiaNotFoundError, ArcadiaValidationError
 
 class MiruError(ArcadiaAppError):
     default_detail = 'An internal error occured within the Miru app'

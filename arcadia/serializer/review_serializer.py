@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from accounts.service import AccountsService
-from main.exceptions import ArcadiaValidationError
+from arcadia.exceptions import ArcadiaValidationError
 
 class ReviewSerializer(ModelSerializer):
 

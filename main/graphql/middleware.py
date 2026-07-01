@@ -2,7 +2,7 @@ import logging
 from strawberry.django.views import GraphQLView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken, ExpiredTokenError
-from main.exceptions import ArcadiaAppError
+from arcadia.exceptions import ArcadiaAppError
 
 logger = logging.getLogger(__name__)
 
