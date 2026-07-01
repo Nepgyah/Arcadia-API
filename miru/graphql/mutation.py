@@ -1,6 +1,6 @@
 import strawberry
-from base.graphql.inputs import MediaReviewInput
-from main.graphql.types import MutationResponseType, BaseMutationResponse
+from base.graphql.input import MediaReviewInput
+from base.graphql.response import MutationResponseType, BaseMutationResponse
 from main.graphql.permissions import IsAuthenticated
 from miru.service import MiruService
 from miru.graphql.types import AnimeListEntryType, AnimeReviewType

@@ -7,17 +7,8 @@ class MutationResponseType:
 
 @strawberry.type
 class BaseMutationResponse(MutationResponseType):
+    """Basic response type if no further objects are needed"""
     pass
-
-@strawberry.input
-class PaginationInput:
-    per_page: int = 12
-    target_page: int = 1
-
-@strawberry.input
-class SortInput:
-    category: str
-    direction: str
 
 @strawberry.type
 class PaginationResultsType:
