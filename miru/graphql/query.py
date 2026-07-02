@@ -1,7 +1,8 @@
 import strawberry
 import strawberry_django
+from arcadia.graphql.input import SortInput, PaginationInput
+from arcadia.graphql.response import PaginationResultsType
 from strawberry_django.optimizer import optimize
-from main.graphql.types import PaginationResultsType, SortInput, PaginationInput
 from accounts.service import AccountsService
 
 from miru.models import Anime

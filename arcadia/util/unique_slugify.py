@@ -1,9 +1,7 @@
 from django.utils.text import slugify
 
 def unique_slugify(instance, value, slug_field_name='slug'):
-    """
-    Creates a slug that takes into account multiple of same name
-    """
+    """Creates a slug that takes into account multiple of same name"""
     
     slug = slugify(value)
     model = instance.__class__

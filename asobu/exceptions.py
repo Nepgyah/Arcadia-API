@@ -1,4 +1,4 @@
-from main.exceptions import ArcadiaAppError, ArcadiaValidationError, ArcadiaNotFoundError
+from arcadia.exceptions import ArcadiaAppError, ArcadiaValidationError, ArcadiaNotFoundError
 
 class AsobuError(ArcadiaAppError):
     default_detail = 'An internal error occured within the Asobu service.'

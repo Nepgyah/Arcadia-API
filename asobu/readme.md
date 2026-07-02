@@ -1,5 +1,15 @@
 # Asobu Docs
 
+## Latest Release - Asobu v0.2 - 5/14/2026
+- Create gamelist entry model
+- Create game review model
+- Add GraphQL operations for gamelist entries
+- Add Graphql operations for game reviews
+- Add REST endpoing for gamelist json export
+- Add gamelist entry serializer
+- Improve exception chaining
+- Add tests for repo layer
+
 ## Overview
 This app manages all things related to games on the arcadia platform from displaying game details, handling a users game/library list and possibly handle mods and forums.
 

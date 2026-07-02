@@ -1,5 +1,8 @@
 # Talent App docs
 
+## Latest Release - Talent v0.2 - 3/19/2026
+- Adjust models to handle image url
+
 ## Overview
 This app manages people entities of Arcadia such as:
 - Characters (Game, Anime, Manga)

@@ -1,12 +1,12 @@
 from django.db import models
+from arcadia.mixins import MediaMixin
 from base.models import (
-    Genre,
-    Media
+    Genre
 )
 from talent.models import Character
 from .misc import AnimeCompany
 
-class Anime(Media):
+class Anime(MediaMixin):
     
     class Meta:
         ordering = ['title']
@@ -60,7 +60,6 @@ class Anime(Media):
 
     airing_start_date=models.DateField(null=True, blank=True)
     airing_end_date=models.DateField(null=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return str(self.title)

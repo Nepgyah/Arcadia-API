@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import path, include
 # from strawberry.django.views import GraphQLView
-from util.views import ObtainD2XAuthorization
+from main.rest import endpoints
+from main.views import ObtainD2XAuthorization
 from main.schema import schema
 from main.graphql.middleware import JWTGraphQLView
 
@@ -26,9 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.rest.urls')),
 
-    path('api/util/', include('util.rest.urls')),
     path('api/asobu/', include('asobu.rest.urls')),
     path('api/oauth/exchange/', ObtainD2XAuthorization.as_view(), name="oauth-obtain-d2x-auth"),
-    
+    path('csrf/', endpoints.ObtainCSRFToken.as_view(), name='util-rest-csrf'),
+    path('health-check/', endpoints.health_check, name='util-rest-csrf'),
     path('graphql/', csrf_exempt(JWTGraphQLView.as_view(schema=schema)))
 ]

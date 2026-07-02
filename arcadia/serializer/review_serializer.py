@@ -1,8 +1,8 @@
 from rest_framework.serializers import ModelSerializer
 from accounts.service import AccountsService
-from main.exceptions import ArcadiaValidationError
+from arcadia.exceptions import ArcadiaValidationError
 
-class MediaReviewSerializer(ModelSerializer):
+class ReviewSerializer(ModelSerializer):
 
     def validate_profile_id(self, value):
 

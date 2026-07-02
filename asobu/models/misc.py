@@ -1,7 +1,7 @@
 from django.db import models
-from base.models import Company
+from arcadia.mixins import CompanyMixin
 
-class GameCompany(Company):
+class GameCompany(CompanyMixin):
 
     def __str__(self):
         return f"{self.name}"

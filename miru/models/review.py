@@ -1,8 +1,8 @@
 from django.db import models
-from base.models import Review
+from arcadia.mixins import ReviewMixin
 from .anime import Anime
 
-class AnimeReview(Review):
+class AnimeReview(ReviewMixin):
 
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE, db_index=True)
 

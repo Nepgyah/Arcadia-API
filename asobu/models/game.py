@@ -1,15 +1,15 @@
 import os
 from dotenv import load_dotenv
 from django.db import models
-from util import unique_slugify
-from base.models import Media, Genre
+from arcadia.mixins import MediaMixin, SlugMixin
+from base.models import Genre
 from talent.models import Character
 
 from .misc import Tag, GameCompany, Platform
 
 load_dotenv()
 
-class Game(Media):
+class Game(MediaMixin):
     
     class Status(models.IntegerChoices):
         ANNOUNCED = 0, 'Announced'
@@ -69,7 +69,7 @@ class Game(Media):
     def prop_bg_image_url(self):
         return f'{os.environ.get('BG_CDN_BASE')}/asobu/{self.slug}/bg.jpg'
     
-class DLC(models.Model):
+class DLC(SlugMixin, models.Model):
 
     class DLCType(models.IntegerChoices):
         STORY = 0, 'Story'
@@ -78,12 +78,7 @@ class DLC(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=255)
     score = models.FloatField(default=0.0)
-    slug = models.SlugField(unique=True, blank=True)
     type = models.IntegerField(choices=DLCType.choices, default=DLCType.STORY, blank=True)
-
-    def save(self, *args, **kwargs):
-        self.slug = unique_slugify(instance=self, value=self.title)
-        super().save(*args, **kwargs)
 
 class GamePlatform(models.Model):
     
