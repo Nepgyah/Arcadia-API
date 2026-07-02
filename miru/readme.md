@@ -1,5 +1,11 @@
 # Miru Docs
 
+## Latest Release Miru v1.0 - xx/xx/2026
+- Add ability to create custom, curated anime lists
+- Add ability to favorite anime
+- Add graphql mutations and queries for the previously mentioned
+- Improve recommendation of anime via related genres
+
 ## Overview
 This app manages all things related to anime on the arcadia platform from displaying anime details to handling a users anime list
 
