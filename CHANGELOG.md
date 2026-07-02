@@ -1,8 +1,9 @@
 ## Individual App Changelogs
-[Miru](miru/changelog.md)\
-[Asobu](asobu/changelog.md)\
-[Talent](talent/changelog.md)\
-[Arcadia Library](arcadia/changelog.md)
+[Account](accounts/CHANGELOG.md)
+[Miru](miru/CHANGELOG.md)\
+[Asobu](asobu/CHANGELOG.md)\
+[Talent](talent/CHANGELOG.md)\
+[Arcadia Library](arcadia/CHANGELOG.md)
 
 ## Alpha v3.0 - 6/10/2026
 - **General**
