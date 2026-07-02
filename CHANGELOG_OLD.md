@@ -1,0 +1,145 @@
+## App Version Tracker
+| App        | Version |
+| ---------- | ------- |
+| Miru       | 1.0     |
+| Asobu      | 0.2     |
+| Accounts   | 0.1     |
+
+## Alpha v3.0 - 6/10/2026
+- **General**
+    - Replaced graphene django with strawberry as main GraphQL module
+    - Improve quality of repo and service layers
+    - Improve interaction between apps via service layers
+    - Standardize CDN links for image resourcing
+    - Add Sivr as current CDN service
+
+## Alpha v2.2 - 5/14/2026
+- **General**
+    - Change admin to use email field instead of username
+    - Add background CDNs for media
+
+- **Asobu v0.2**
+    - **Models**
+        - Create gamelist entry model
+        - Create game review model
+    - **Graphql**
+        - Add crud operations for gamelist entries
+        - Add crud operations for game reviews
+    - **REST**
+        - Add json export endpoint
+        - Add gamelist entry serializer
+    - **Other**
+        - Improve exception chaining
+        - Add test for repo layer
+
+## Alpha v2.1 - 4/15/2026
+- **General**
+    - Update test db contents
+
+
+## Alpha v2.0 - 4/10/2026
+- **General**
+    - Convert token based auth to bearer authentication
+    - Add middleware to utilize jwt tokens for GraphQL authentication
+
+- **Miru v0.4**
+    - **Models**
+        - Add anilist statistics
+        - Add myanimelist statistics
+    - **GraphQL**
+        - Adjust mutations to anime entry lists
+    - **Other**
+        - Add script to update anilist and mal ratings
+        - Add custom exceptions for app
+        - Update unit layered unit tests
+
+- **Users v0.1**
+    - **Model**
+        - Add local arcadia user
+    - **Graphql**
+        - Add arcadia user detail query
+    - **Rest**
+        - Add admin login endpoint
+    - **Other**
+        - Add layering and unit testing
+
+## Alpha v1.1 - 3/20/2026
+- **Asobu**
+    - **Models**
+        - Improve game relationship logic
+    -**Graphql API**
+        - Update schema to query game by id
+
+## Alpha v1.0 - 3/19/2026
+Dev note: After finalizing the base of miru and implementing a better way to input data through the help of Anilist API. The progress from this patch has been deemed big enough to jump from 0.6 to 1.0. Thank you to everyone involved through testing and suggestions - A.P
+
+- **Miru**
+    - **Models**
+        - Add anilist model to handle rank data from anilist
+    - **Admin**
+        - Add admin page to ease the process of adding anime entries
+    - **Other**
+        - Add multi part script to fetch and format Anilist api data into the Arcadia DB schema
+
+- **Talent**
+    - **Models**
+        - Adjusted several models to handle a image url
+
+## Alpha v0.6 - 3/17/2026
+- **General**
+    - Add github actions for the following
+        - Run unit tests on pr to main
+        - Run python linter on pr to main
+    - Improved code following pylinter suggestions
+
+## Alpha v0.5 - 3/16/2026
+- **Asobu**
+    - **Models**
+        - Add game model
+        - Add relation models (characters, games, platforms)
+    - **Graphql API**
+        - Add queries for games, character by games and franchise by games
+
+- **Talent**
+    - **Service**
+        - Improve querying efficiency
+
+## Alpha v0.4 - 3/9/2026
+- **General**
+    - Add oauth journey via D2X Accounts
+
+## Alpha v0.3 - 3/4/2026
+- **Miru v0.3**
+    - **Models**
+        - Add AnimeEpisode
+    - **API**
+        - Add graphql query for anime episodes
+        - Adjusted graphl query for fetching anime details
+
+## Alpha v0.2 - 2/8/2026
+- **Miru v0.2**
+    - **Models**
+        - Add AnimeListEntry
+    - **API**
+        - Adjust graphql Anime schema to allow voice actors and franchises
+        - Add CRUD functionality to user anime lists
+    - **Others**
+        - Add several notes for some service layer methods
+        - Improve folder structure to reflect layer architecture
+
+- Create talent app to hold characters, voice actors and artists
+- Create test case for user anime lists
+
+## Alpha v0.1 - 2/24/2026
+- **Miru v0.2**
+    - **Models**
+        - Add Studio
+        - Add Season
+        - Add Anime
+        - Add AnimeCharacter
+        - Add AnimeRelation
+    - **API**
+        - Add graphql with read queries for anime
+
+
+- Initial setup from previous iterations of Arcadia concept testing
