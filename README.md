@@ -1,7 +1,6 @@
 # Arcadia API
 Introducing the Arcadia API. This is the backend repository dedicated to assisting fans in the world of anime, manga, games and more.
 
-<br><br>
 Visit Arcadia: https://arcadia-platform.vercel.app
 
 ## Latest Release - Alpha v3.1 - xx/xx/2026
@@ -12,6 +11,8 @@ Visit Arcadia: https://arcadia-platform.vercel.app
 - **Apps Updated**
     - Arcadia Library *NEW**
     - Miru
+
+See overall [changelog](./CHANGELOG.md)
 
 ## The Problem
 Advid fans of anime, manga and games use online resources such as anilist, myanimelist and steam to help track and maintain their hobby activities. But with the current services, it requires having and maintaining multiple accounts to in order to manage those hobbies. Also datawise, there can be overlaps where characters can appear in a game, manga and video game but there is no connection to them.
@@ -31,9 +32,9 @@ Database: Postgresql
 ## Features
 As Arcadia is planned to be a multi app platform, here are the apps and their inspirationed counterparts
 
-**Miru** - Anime info, tracking and watching (MyAnimeList + Crunchyroll)<br>
+[Miru](miru/) - Anime info, tracking and watching (MyAnimeList + Crunchyroll)<br>
 **Yomu** - Manga, LN, etc tracking and reading (Mangadex)<br>
-**Asobu** - Game info, tracking and mod community (Steam + Nexus mods)<br>
+[Asobu](asobu/) - Game info, tracking and mod community (Steam + Nexus mods)<br>
 **Kiku** - Music and playlist (Spotify)<br>
 **Iku** - Event tracker (Google Events? lol)
 
