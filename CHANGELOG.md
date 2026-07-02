@@ -1,7 +1,7 @@
 ## Individual App changelogs
-[miru/changelog.md](Miru)
-[asobu/changelog.md](Asobu)
-[talent/changelog.md](Talent)
+[Miru](miru/changelog.md)/
+[Asobu](asobu/changelog.md)/
+[Talent](talent/changelog.md)
 
 ## Alpha v3.0 - 6/10/2026
 - **General**
