@@ -2,6 +2,7 @@
 [Miru](miru/changelog.md)\
 [Asobu](asobu/changelog.md)\
 [Talent](talent/changelog.md)\
+[Arcadia Library](arcadia/changelog.md)
 
 ## Alpha v3.0 - 6/10/2026
 - **General**
