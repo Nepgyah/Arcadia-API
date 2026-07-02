@@ -5,11 +5,13 @@ Introducing the Arcadia API. This is the backend repository dedicated to assisti
 Visit Arcadia: https://arcadia-platform.vercel.app
 
 ## Latest Release - Alpha v3.1 - xx/xx/2026
-- **Miru v1.0**
-    - Add ability to review anime
-    - Add custom lists
-    - Add recommendations per profile
-    - Add anime favorites
+- **General**
+    - Create main arcadia library for standardization
+    - Reorganize version changes for each app
+    
+- **Apps Updated**
+    - Arcadia Library *NEW**
+    - Miru
 
 ## The Problem
 Advid fans of anime, manga and games use online resources such as anilist, myanimelist and steam to help track and maintain their hobby activities. But with the current services, it requires having and maintaining multiple accounts to in order to manage those hobbies. Also datawise, there can be overlaps where characters can appear in a game, manga and video game but there is no connection to them.
