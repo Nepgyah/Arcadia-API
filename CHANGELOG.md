@@ -1,4 +1,4 @@
-## Individual App changelogs
+## Individual App Changelogs
 [Miru](miru/changelog.md)\
 [Asobu](asobu/changelog.md)\
 [Talent](talent/changelog.md)\
@@ -71,5 +71,6 @@ Dev note: After finalizing the base of miru and implementing a better way to inp
 
 ## Alpha v0.1 - 2/24/2026 INITIAL
 Dev note: Codebase up to this points comes from previous iterations of Arcadia concept testing
+
 - **Apps Updated**
     - Miru *NEW*

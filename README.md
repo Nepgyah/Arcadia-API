@@ -32,9 +32,9 @@ Database: Postgresql
 ## Features
 As Arcadia is planned to be a multi app platform, here are the apps and their inspirationed counterparts
 
-[Miru](miru/) - Anime info, tracking and watching (MyAnimeList + Crunchyroll)<br>
+[Miru](miru/readme.md) - Anime info, tracking and watching (MyAnimeList + Crunchyroll)<br>
 **Yomu** - Manga, LN, etc tracking and reading (Mangadex)<br>
-[Asobu](asobu/) - Game info, tracking and mod community (Steam + Nexus mods)<br>
+[Asobu](asobu/readme.md) - Game info, tracking and mod community (Steam + Nexus mods)<br>
 **Kiku** - Music and playlist (Spotify)<br>
 **Iku** - Event tracker (Google Events? lol)
 
