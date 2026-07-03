@@ -1,4 +1,4 @@
-from main.exceptions import ArcadiaNotFound
+from arcadia.exceptions import ArcadiaNotFoundError
 from base.models import Franchise, Genre
 
 class FranchiseRepository:
@@ -8,7 +8,7 @@ class FranchiseRepository:
         try:
             return Franchise.objects.get(id=franchise_id)
         except Franchise.DoesNotExist:
-            raise ArcadiaNotFound('Franchise not found') from None
+            raise ArcadiaNotFoundError('Franchise not found') from None
 
     @staticmethod
     def does_franchise_exist(franchise_id: int) -> bool:
@@ -21,7 +21,7 @@ class GenreRepository:
         try:
             return Genre.objects.get(id=genre_id)
         except Genre.DoesNotExist:
-            raise ArcadiaNotFound('Genre not found') from None
+            raise ArcadiaNotFoundError('Genre not found') from None
         
     @staticmethod
     def get_genres(genre_id_list: list[int]) -> list[Genre]:
