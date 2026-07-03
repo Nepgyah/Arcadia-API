@@ -1,8 +1,12 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from accounts.service import AccountsService
 from arcadia.exceptions import ArcadiaValidationError
 
-class ReviewSerializer(ModelSerializer):
+# pylint: disable=abstract-method
+class ReviewSerializer(serializers.Serializer):
+    profile_id = serializers.IntegerField()
+    score = serializers.IntegerField()
+    text = serializers.CharField()
 
     def validate_profile_id(self, value):
 
