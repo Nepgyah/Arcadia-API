@@ -1,9 +1,9 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from arcadia.mixins import ProfileIDMixin, ReviewMixin
+from arcadia.mixins import ProfileIDMixin, ReviewMixin, TimestampMixin
 from asobu.models import Game
 
-class GameListEntry(ProfileIDMixin, models.Model):
+class GameListEntry(ProfileIDMixin, TimestampMixin, models.Model):
         
     class StatusType(models.IntegerChoices):
         PLAYING = 0, 'Playing'
@@ -22,8 +22,6 @@ class GameListEntry(ProfileIDMixin, models.Model):
     note = models.CharField(null=True, blank=True, max_length=256)
     start_play_date = models.DateField(null=True, blank=True)
     end_play_date = models.DateField(null=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-updated_at']
