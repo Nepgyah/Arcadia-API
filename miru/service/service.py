@@ -5,7 +5,7 @@ from miru.models.relations import AnimeCharacter
 from miru.repository import MiruRepository
 from talent.service import CharacterService, VoiceActorService
 
-class AnimeService:
+class AnimeModule:
 
     @staticmethod
     def get_anime(anime_id: int) -> Anime:
@@ -71,13 +71,13 @@ class AnimeService:
 
         return game_characters
     
-class CompanyService:
+class CompanyModule:
 
     @staticmethod
     def get_producers(company_id_list: list[int]) -> list[AnimeCompany]:
         return MiruRepository.company.get_companies(company_id_list)
     
-class ListService:
+class ListModule:
 
     @staticmethod
     def create_entry(profile_id: int, anime_id: int, details: dict = None) -> AnimeListEntry:
@@ -154,7 +154,7 @@ class ListService:
         anime = MiruRepository.anime.get_anime(anime_id)
         MiruRepository.list.remove_from_custom_anime_list(custom_list, anime)
     
-class Character:
+class CharacterModule:
 
     @staticmethod
     def get_anime_roles(voice_actor_id: str):
@@ -178,7 +178,7 @@ class Character:
 
         return anime_roles
 
-class Review:
+class ReviewModule:
 
     @staticmethod
     def create(profile_id: int, anime_id: int, details: dict = None) -> AnimeReview:
@@ -206,7 +206,7 @@ class Review:
         entry = MiruRepository.review.get_review(profile_id, anime_id)
         MiruRepository.review.delete(entry)
 
-class Favorite:
+class FavoriteModule:
     
     @staticmethod
     @require_profile
@@ -227,8 +227,8 @@ class Favorite:
     
 class MiruService:
     
-    anime = AnimeService()
-    list = ListService()
-    character = Character()
-    review = Review()
-    favorite = Favorite()
+    anime = AnimeModule()
+    list = ListModule()
+    character = CharacterModule()
+    review = ReviewModule()
+    favorite = FavoriteModule()
