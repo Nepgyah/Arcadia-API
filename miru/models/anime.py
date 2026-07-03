@@ -1,8 +1,6 @@
 from django.db import models
 from arcadia.mixins import MediaMixin
-from base.models import (
-    Genre
-)
+from base.models import Genre
 from talent.models import Character
 from .misc import AnimeCompany
 
