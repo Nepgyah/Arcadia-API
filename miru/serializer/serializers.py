@@ -26,7 +26,7 @@ class AnimeListEntrySerializer(ModelSerializer):
             
         return attrs
     
-class AnimeReviewSerializer(ReviewSerializer):
+class AnimeReviewSerializer(ModelSerializer, ReviewSerializer):
 
     class Meta:
         model = AnimeReview
