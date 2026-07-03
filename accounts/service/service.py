@@ -1,6 +1,7 @@
-from main import settings
-from django.utils import timezone
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.utils import timezone
+from main import settings
+from arcadia.exceptions import ArcadiaAppError
 from accounts.models import ArcadiaProfile
 from accounts.repository import AccountsRepository
 from accounts.exceptions import AccountsValidationError, AccountsAppError
@@ -29,14 +30,17 @@ class AuthenticationService:
             raise AccountsValidationError("You must provide a password")
 
         arcadia_profile = AccountsRepository.authentication.admin_login(email, password)
-
-        refresh = RefreshToken.for_user(arcadia_profile)
-        access_token = str(refresh.access_token)
-        access_token_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
         
-        refresh_token = str(refresh)
-        refresh_token_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
-
+        try:
+            refresh = RefreshToken.for_user(arcadia_profile)
+            access_token = str(refresh.access_token)
+            access_token_expiry = timezone.now() + settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
+            
+            refresh_token = str(refresh)
+            refresh_token_expiry = timezone.now() + settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
+        except AttributeError as e:
+            raise ArcadiaAppError('Unable to assign token expiry value') from e
+        
         return {
             "access": {
                 "value": str(access_token),
