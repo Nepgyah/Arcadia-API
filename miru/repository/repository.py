@@ -153,6 +153,7 @@ class ListModule:
     
     @staticmethod
     def get_user_list_count(profile_id: int) -> int:
+        """Returns the number of entries a user has"""
         return AnimeListEntry.objects.filter(profile_id=profile_id).count()
     
     @staticmethod
