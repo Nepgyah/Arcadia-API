@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
 from arcadia.wrappers import require_profile
+from miru.exceptions import MiruNotFoundError, MiruError
 from miru.models import Anime, AnimeCompany, AnimeListEntry, AnimeReview, FavoriteAnime, CustomAnimeList
 from miru.models.relations import AnimeCharacter
 from miru.repository import MiruRepository
@@ -81,7 +82,10 @@ class ListModule:
 
     @staticmethod
     def create_entry(profile_id: int, anime_id: int, details: dict = None) -> AnimeListEntry:
-        MiruRepository.anime.does_anime_exist(anime_id)
+        if not MiruRepository.anime.does_anime_exist(anime_id):
+            raise MiruNotFoundError('Anime not found')
+        if details is None:
+            raise MiruError('Missing detail dictionary')
         return MiruRepository.list.create_entry(
             profile_id,
             anime_id,

@@ -55,6 +55,16 @@ def bocchi_character_fixture(anime_fixture):
     return animeCharacters, anime_fixture
 
 @pytest.fixture
+def anime_list_entry_detail_fixture():
+    return {
+        'status': 0,
+        'current_episode': 0,
+        'start_watch_date': None,
+        'end_watch_date': None,
+        'note': None
+        }
+
+@pytest.fixture
 def anime_list_entry_fixture(anime_fixture, arcadia_profile_fixture):
     list_entry = AnimeListEntry.objects.create(
         profile_id=arcadia_profile_fixture.id,
