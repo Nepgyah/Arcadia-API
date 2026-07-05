@@ -17,8 +17,19 @@ See overall [changelog](./CHANGELOG.md)
 ## The Problem
 Advid fans of anime, manga and games use online resources such as anilist, myanimelist and steam to help track and maintain their hobby activities. But with the current services, it requires having and maintaining multiple accounts to in order to manage those hobbies. Also datawise, there can be overlaps where characters can appear in a game, manga and video game but there is no connection to them.
 
-## The solution: Arcadia
+## The solution
 With Arcadia, a user can manage their anime, manga, games and more in a single place with a single login and switching between the apps is simple with a few clicks. Data is no longer disconnected as the database is designed to connect the different medias together via concepts such as similar franchises, voice actors or characters.
+
+## AI Usage Disclaimer
+Though there is a big rise in the use of artificial intelligence in the development world, the use of AI in project arcadia will be limited for this reason./
+
+Utilzing tools such as gemini or claude to generate the majority of the Arcadia codebase contradicts the reason I began this project. As a aspiring developer in this industry, I want to be able to say '*I* built Arcadia'. Though the solutions are not going to be perfect in terms of efficiency and scalability, it does bring about joy knowing the solution is 'mine' to begin with. AI can help and improve afterwards but I would like to pride myself in laying down the foundation for Arcadia's solutions. It does seem that AI is here to stay (though its the desired capacity is debated) but I believe there are some growing pains I need to expereince as a solo developer on this project in order to grow. In the end, I aim to have AI as a 'assistance' rather than a 'reliance'.
+
+That being said there are some parts I utilize AI for:
+- Refining some snippets of code that i have written first
+- Obscure bugs
+- Research/Lookup for general practice and foundation of concepts (Architecture, Formatting, Etc)
+- Writing unit tests for the repository and service layers to reduce time on this part of development allowing for more time on more major aspects (features, refactoring, etc)
 
 ## Other Notes
 As a early career web developer, I have become fascinated on how these solutions (steam, MAL, anilist, spotify, etc) are designed and implemented. Arcadia gives me that opporitunity to hone in on my web dev skills and explore new technologies in a sandbox enviornemnt. Using the context of anime and games allows me to add a fun twist in learning as well.
