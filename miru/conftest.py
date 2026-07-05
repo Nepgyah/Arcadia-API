@@ -20,6 +20,36 @@ def anime_fixture():
     return anime
 
 @pytest.fixture
+def csn_anime_fixture():
+    return Anime.objects.create(
+        title='Chainsaw Man',
+        slug='chainsaw-man',
+        type=0,  # TV
+        status=2, # Finished Airing
+        season_year=2022
+    )
+
+@pytest.fixture
+def yourname_anime_fixture():
+    return Anime.objects.create(
+        title='Kimi no Na wa',
+        slug='kimi-no-na-wa',
+        type=1,  # Movie
+        status=2, # Finished Airing
+        season_year=2016
+    )
+
+@pytest.fixture
+def edgerunners_anime_fixture():
+    return Anime.objects.create(
+        title='Cyberpunk: Edgerunners',
+        slug='cyberpunk-edgerunners',
+        type=3,  # Ona
+        status=2, # Finished Airing
+        season_year=2022
+    )
+
+@pytest.fixture
 def anime_sequel_fixture(anime_fixture):
     anime = Anime.objects.create(
         title='Bocchi the rock Season 2',
