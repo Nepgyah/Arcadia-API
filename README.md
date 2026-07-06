@@ -21,7 +21,7 @@ Advid fans of anime, manga and games use online resources such as anilist, myani
 With Arcadia, a user can manage their anime, manga, games and more in a single place with a single login and switching between the apps is simple with a few clicks. Data is no longer disconnected as the database is designed to connect the different medias together via concepts such as similar franchises, voice actors or characters.
 
 ## AI Usage Disclaimer
-Though there is a big rise in the use of artificial intelligence in the development world, the use of AI in project arcadia will be limited for this reason./
+Though there is a big rise in the use of artificial intelligence in the development world, the use of AI in project arcadia will be limited for the following reason.
 
 Utilzing tools such as gemini or claude to generate the majority of the Arcadia codebase contradicts the reason I began this project. As a aspiring developer in this industry, I want to be able to say '*I* built Arcadia'. Though the solutions are not going to be perfect in terms of efficiency and scalability, it does bring about joy knowing the solution is 'mine' to begin with. AI can help and improve afterwards but I would like to pride myself in laying down the foundation for Arcadia's solutions. It does seem that AI is here to stay (though its the desired capacity is debated) but I believe there are some growing pains I need to expereince as a solo developer on this project in order to grow. In the end, I aim to have AI as a 'assistance' rather than a 'reliance'.
 
