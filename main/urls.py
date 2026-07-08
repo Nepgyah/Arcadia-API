@@ -29,7 +29,7 @@ urlpatterns = [
 
     path('api/asobu/', include('asobu.rest.urls')),
     path('api/oauth/exchange/', ObtainD2XAuthorization.as_view(), name="oauth-obtain-d2x-auth"),
-    path('csrf/', endpoints.ObtainCSRFToken.as_view(), name='util-rest-csrf'),
+    path('api/csrf/', endpoints.ObtainCSRFToken.as_view(), name='util-rest-csrf'),
     path('health-check/', endpoints.health_check, name='util-rest-csrf'),
     path('graphql/', csrf_exempt(JWTGraphQLView.as_view(schema=schema)))
 ]

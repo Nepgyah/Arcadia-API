@@ -4,7 +4,8 @@ class AccountsAppError(APIException):
     default_detail = "An internal error occurred within the Accounts app"
     default_code = "accounts_internal_error"
 
-class AccountsValidationError(ValidationError):
+class AccountsValidationError(APIException):
+    status_code = 400
     default_detail = "An error occured processing input within the Accounts app"
     default_code = "accounts_input_error"
 

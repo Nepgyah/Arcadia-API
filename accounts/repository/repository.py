@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User 
 from accounts.models import ArcadiaProfile
-from accounts.exceptions import AccountsAppNotFound
+from accounts.exceptions import AccountsAppNotFound, AccountsValidationError
 
 class ArcadiaProfileRepository:
     
@@ -29,10 +29,10 @@ class AuthenticationRepository:
         try:
             admin_user = User.objects.get(email=email)
         except User.DoesNotExist:
-            raise AccountsAppNotFound("Admin not found") from None
+            raise AccountsValidationError("Invalid credentials") from None
         
         if not admin_user.check_password(password):
-            raise AccountsAppNotFound("Incorrect password") from None
+            raise AccountsValidationError("Incorrect password") from None
         
         try:
             return ArcadiaProfile.objects.get(admin_account=admin_user)
