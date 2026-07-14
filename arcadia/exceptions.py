@@ -1,10 +1,10 @@
-from rest_framework.exceptions import APIException, NotFound
+from rest_framework.exceptions import APIException, NotFound, ParseError
 
 class ArcadiaAppError(APIException):
     default_detail = 'An internal error occured'
     default_code = 'arcadia_error'
 
-class ArcadiaValidationError(APIException):
+class ArcadiaValidationError(ParseError):
     
     # Importing the drf validation exception converts detail into a list of error objects
     # making message display from the api on the frontend more of a hassle

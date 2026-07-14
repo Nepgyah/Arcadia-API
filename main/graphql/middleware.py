@@ -24,7 +24,6 @@ class JWTGraphQLView(GraphQLView):
 
                 validated_token = authenticator.get_validated_token(parts[1])
                 user_id = validated_token.get('user_id')
-
             except ExpiredTokenError as e:
                 pass
                 # raise AuthorizationError('The access token has expired', code='auth_error_access_expired') from e

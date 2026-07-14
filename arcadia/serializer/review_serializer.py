@@ -5,7 +5,10 @@ from arcadia.exceptions import ArcadiaValidationError
 # pylint: disable=abstract-method
 class ReviewSerializer(serializers.Serializer):
     profile_id = serializers.IntegerField()
-    score = serializers.IntegerField()
+    score = serializers.IntegerField(
+        required=False,
+        allow_null=True
+    )
     text = serializers.CharField()
 
     def validate_profile_id(self, value):
@@ -15,10 +18,14 @@ class ReviewSerializer(serializers.Serializer):
         return value
     
     def validate_score(self, value):
-        if value < 1:
-            raise ArcadiaValidationError('Score cannot be less than 1')
-        if value > 10:
-            raise ArcadiaValidationError('Score cannot be greater than 10')
+        if value == -1:
+            return None
+        
+        if value is not None:
+            if value < 1:
+                raise ArcadiaValidationError('Score cannot be less than 1')
+            if value > 10:
+                raise ArcadiaValidationError('Score cannot be greater than 10')
         return value
     
     def validate_text(self, value):

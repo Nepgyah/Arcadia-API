@@ -186,6 +186,8 @@ class ReviewModule:
 
     @staticmethod
     def create(profile_id: int, anime_id: int, details: dict = None) -> AnimeReview:
+        print("SERVICE")
+        print(details)
         MiruRepository.anime.does_anime_exist(anime_id)
         return MiruRepository.review.create(
             profile_id,

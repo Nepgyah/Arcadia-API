@@ -219,9 +219,7 @@ class ReviewModule:
 
         serializer = AnimeReviewSerializer(data=data)
         if not serializer.is_valid():
-            errors = serializer.errors["non_field_errors"]
-            if errors[0].code == "unique":
-                raise MiruValidationError('Review already exists')
+            #TODO: Fix error parsing
             raise MiruError()
         
         return serializer.save()
